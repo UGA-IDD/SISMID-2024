@@ -1,19 +1,101 @@
 project:
-  type: website
+  type: book
 
-website:
-  title: "SISMID-2024"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+book:
+  title: "SISMID Module NUMBER Materials (2025)"
+  subtitle: "Introduction to R"
+  author:
+    - name: "Zane Billings"
+      url: https://wzbillings.com/
+      affiliation: University of Georgia
+      orcid: 0000-0002-0184-6134
+    - name: "Amy Winter"
+      url: https://publichealth.uga.edu/faculty-member/amy-k-winter/
+      affiliation: University of Georgia
+  date: "2024-07-15"
+  chapters:
+    - index.qmd
+    - schedule.qmd
+    # - part: "Pre-Requisites"
+    #   chapters:
+    #     - exercise-requirements.qmd
+    #     - install-r.qmd
+    #     - just-enough-rstudio.qmd
+    #     - just-enough-r.qmd
+    #     - project-management.qmd
+    # - part: "Day 1"
+    #   chapters: 
+    #     - L01_intro-to-modeling.qmd
+    #     - L02_sir-basics.qmd
+    #     - r-session-01.qmd
+    #     - L03_hit-and-vaccinations.qmd
+    # - part: "Day 2"
+    #   chapters: 
+    #     - L04_heterogeneity.qmd
+    #     - L05_age-structure.qmd
+    #     - r-session-02.qmd
+    #     - L06_parameter-estimation.qmd
+    #     - r-session-03.qmd
+    # - part: "Day 3"
+    #   chapters: 
+    #     - L07_models-and-data.qmd
+    #     - L08_stochastic-models.qmd
+    - references.qmd
+  repo-url: https://github.com/UGA-IDD/SISMID-2024
+  repo-actions: [edit]
+  sidebar:
+    # logo: ./images/sismid2023-logo-green.png
+    search: true
+    border: true
+    pinned: true
+  reader-mode: true
+  # favicon: ./images/sismid2023-logo-green.png
+
+# Default for table of contents
+toc: true
+toc-title: Page Items
+toc-location: right
+
+# Default knitr options
+execute:
+  echo: true
+  message: true
+  warning: true
+  cache: true
+
+# Default author
+author:
+  - name: "Zane Billings"
+    url: https://wzbillings.com/
+    affiliation: University of Georgia
+    orcid: 0000-0002-0184-6134
+
+# Default fields for citation
+citation: true
+license: "CC BY-NC"
+
+bibliography: SISMID-Module.bib
+
+crossref:
+  chapters: true
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
-    toc: true
+    theme:
+      light: [cosmo, format/_fonts.scss, format/_light.scss, format/_callouts.scss]
+      dark: [cosmo, format/_fonts.scss, format/_dark.scss, format/_callouts.scss]
+    grid:
+      sidebar-width: 270px
+      body-width: 1000px
+      margin-width: 200px
+      gutter-width: 1rem
+    code-copy: true
+    code-fold: show
+    code-overflow: wrap
+    code-link: true
+    code-tools: true
+    code-line-numbers: true
 
-
-
+# Extension Lua filters
+filters:
+  - line-highlight
