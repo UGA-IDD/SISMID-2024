@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "SISMID Module NUMBER Materials (2025)",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n\nCode\n1 + 1\n\n\n[1] 2",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nCode1 + 1\n\n[1] 2",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>SISMID-2024</span>"
     ]
@@ -12,9 +12,9 @@
   {
     "objectID": "schedule.html",
     "href": "schedule.html",
-    "title": "2  About",
+    "title": "\n2  About\n",
     "section": "",
-    "text": "About this site\n\n\nCode\n1 + 1\n\n\n[1] 2",
+    "text": "About this site\n\nCode1 + 1\n\n[1] 2",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>About</span>"
     ]
