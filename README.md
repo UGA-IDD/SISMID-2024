@@ -4,7 +4,10 @@
 
 # SISMID `Introduction to R` Materials (2024)
 
-## About This Project
+This is the GitHub hosting the code and resources for the SISMID 2024
+Intro to R Module.
+
+## About This Course
 
 ### Module Summary
 
