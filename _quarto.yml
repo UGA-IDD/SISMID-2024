@@ -1,9 +1,9 @@
 project:
   type: website
   output-dir: docs
-  render: 
-    - "*.qmd"
-    - "!*/slides.qmd"
+  # render: 
+  #   - "*.qmd"
+  #   - "!*/slides.qmd"
 
 website:
   title: "SISMID Module NUMBER Materials (2025)"
