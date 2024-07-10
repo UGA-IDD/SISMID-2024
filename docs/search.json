@@ -40,21 +40,14 @@
     ]
   },
   {
-    "objectID": "modules/ModuleXX-Iteration/slides.html#learning-goals",
-    "href": "modules/ModuleXX-Iteration/slides.html#learning-goals",
+    "objectID": "modules/ModuleXX-Iteration.html#learning-goals",
+    "href": "modules/ModuleXX-Iteration.html#learning-goals",
     "title": "Iteration in R",
     "section": "Learning goals",
-    "text": "Learning goals\n\nReplace repetitive code with a for loop\nCompare and contrast for loops and *apply() functions\nDefine and apply vectorization to replace unnecessary loops"
-  },
-  {
-    "objectID": "modules/Module01-Intro/index.html",
-    "href": "modules/Module01-Intro/index.html",
-    "title": "Intro to Modeling",
-    "section": "",
-    "text": "ReuseCC BY-NC 4.0",
+    "text": "Learning goals\n\nReplace repetitive code with a for loop\nCompare and contrast for loops and *apply() functions\nDefine and apply vectorization to replace unnecessary loops",
     "crumbs": [
-      "Day 1",
-      "Intro to Modeling"
+      "Day 2",
+      "Iteration in R"
     ]
   },
   {
@@ -82,20 +75,20 @@
     "href": "index.html#about-the-instructors",
     "title": "Welcome",
     "section": "About the instructors",
-    "text": "About the instructors\n\n\n\nDr. Amy Winter\n\n\nDr. Winter is an Assistant Professor of Epidemiology at the University of Georgia. She has been coding in R for 10 years, and uses R day-to-day to conduct her research addressing policy-relevant questions on the transmission and control of infectious diseases in human populations, particularly VPDs. She teaches a semester-long course titled Introduction to Coding in R for Public Health to graduate students at the University of Georgia.\n\n\n\nZane Billings\n\n\nZane Billings is a PhD student in Epidemiology and Biostatistics at the University of Georgia, working with Andreas Handel. He has been using R since 2017, and uses R for nearly all of his statistics and data science practice. Zane’s research focuses on the immune response to influenza vaccination, and uses machine learning and multilevel regression modeling (in R!) to improve our understanding of influenza immunology.",
+    "text": "About the instructors\n\n\n\nInstructor: Dr. Amy Winter\n\n\nDr. Winter is an Assistant Professor of Epidemiology at the University of Georgia. She has been coding in R for 10 years, and uses R day-to-day to conduct her research addressing policy-relevant questions on the transmission and control of infectious diseases in human populations, particularly VPDs. She teaches a semester-long course titled Introduction to Coding in R for Public Health to graduate students at the University of Georgia.\n\n\n\nTA: Zane Billings\n\n\nZane Billings is a PhD student in Epidemiology and Biostatistics at the University of Georgia, working with Andreas Handel. He has been using R since 2017, and uses R for nearly all of his statistics and data science practice. Zane’s research focuses on the immune response to influenza vaccination, and uses machine learning and multilevel regression modeling (in R!) to improve our understanding of influenza immunology.",
     "crumbs": [
       "Welcome!"
     ]
   },
   {
-    "objectID": "modules/ModuleXX-Iteration/index.html",
-    "href": "modules/ModuleXX-Iteration/index.html",
-    "title": "Iteration in R",
+    "objectID": "modules/Module01-Intro.html",
+    "href": "modules/Module01-Intro.html",
+    "title": "Intro to Modeling",
     "section": "",
-    "text": "Your browser does not support embedded HTML iframes, so the slides cannot be displayed.\n\n\n\n\n\n\nReuseCC BY-NC 4.0",
+    "text": "ReuseCC BY-NC 4.0",
     "crumbs": [
-      "Day 2",
-      "Iteration in R"
+      "Day 1",
+      "Intro to Modeling"
     ]
   },
   {
@@ -103,6 +96,9 @@
     "href": "references.html",
     "title": "",
     "section": "",
-    "text": "Code\n\n\n\n\n\nReferences\n\n\n\n\n\n\n\n\n\nReuseCC BY-NC 4.0"
+    "text": "Code\n\n\n\n\n\nReferences\n\n\nMatloff, Norman. 2011. The Art of R Programming. San Francisco, CA: No Starch Press.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science. 2nd ed. Sebastopol, CA: O’Reilly Media.\n\n\n\n\n\n\n\n\nReuseCC BY-NC 4.0",
+    "crumbs": [
+      "More References"
+    ]
   }
 ]

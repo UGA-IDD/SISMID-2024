@@ -30,12 +30,16 @@ website:
         href: index.qmd
       - text: "Course Schedule"
         href: schedule.qmd
+      - text: "More References"
+        href: references.qmd
       - section: "Day 1"
         contents:
-          - modules/Module01-Intro/index.qmd
+          - href: modules/Module01-Intro.qmd
+            target: _blank
       - section: "Day 2"
         contents:
-          - modules/ModuleXX-Iteration/index.qmd
+          - href: modules/ModuleXX-Iteration.qmd
+            target: _blank
       - section: "Day 3"
   repo-url: https://github.com/UGA-IDD/SISMID-2024
   reader-mode: true

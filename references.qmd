@@ -1,3 +1,8 @@
+---
+bibliography: SISMID-Module.bib
+nocite: "@*"
+---
+
 # **References** {.unnumbered}
 
 ::: {#refs}
