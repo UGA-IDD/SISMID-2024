@@ -78,7 +78,7 @@
 
 #### Question 4 ####
 # For this question, we want to load a data set that our friend give us in
-# Stata format. You should download the file "Diphtheria_IgG_Serology.sas7bdat"
+# SAS format. You should download the file "Diphtheria_IgG_Serology.sas7bdat"
 # to your data directory.
 
 # Part A: use google to find a package that can allow you to read a SAS

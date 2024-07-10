@@ -1,0 +1,9 @@
+---
+title: Intro to Modeling
+format:
+    html:
+        page-layout: full
+---
+
+<object data="slides.pdf" width="100%" height="800" title = "presentation slides" class="objectSet" type="application/pdf">
+</object>

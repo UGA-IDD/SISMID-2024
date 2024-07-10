@@ -72,8 +72,9 @@ get rendered on this page.
 * `exercises`: contains R or Rmd files for each of the exercises
 * `format`: contains code to format the website appearance
 * `images`: put static image files here
-* `modules`: qmd files for each module go here
-* `slides`: put slide decks here
+* `modules`: all of the modules go here. Each module gets its own folder with
+an `index.qmd` page that holds the web page content and a separate document
+for the slides.
 * Everything else is housekeeping files needed for the website.
 
 ## Built With

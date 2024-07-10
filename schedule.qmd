@@ -1,9 +1,56 @@
 ---
-title: "About"
+title: "Course Schedule"
 ---
 
-About this site
+*Meeting times:*
 
-```{r}
-1 + 1
-```
+* Monday, July 15, 8:30 AM – 5:00 PM
+* Tuesday July 16, 8:30 AM – 5:00 PM
+* Wednesday July 17, 8:30 AM – 12:00 PM
+
+*Location:* Randal Rollins Building (RR) 201, Emory University
+
+::: {.callout-important}
+All times are in Eastern Daylight Time (EDT; UTC-4)
+:::
+
+## Day 01 – Monday 
+
+| Time                | Section |
+|:--------------------|:--------|
+| 08:30 am - 10:00 am | content |
+| 10:00 am - 10:15 am | Coffee break |
+| 10:30 am - 12:00 pm | content |
+| 12:00 pm - 01:30 pm | Lunch (2nd floor lobby) |
+| 01:30 pm - 03:00 pm | content |
+| 03:00 pm - 03:15 pm | Coffee break |
+| 03:00 pm - 05:00 pm | content |
+| 05:00 pm - 07:00 pm | **Networking night** and poster session, Randal Rollins P01 |
+
+: {.striped .hover tbl-colwidths="[25,75]"}
+
+
+## Day 02 – Tuesday
+
+| Time                | Section |
+|:--------------------|:--------|
+| 08:30 am - 10:00 am | content |
+| 10:00 am - 10:15 am | Coffee break |
+| 10:30 am - 12:00 pm | content |
+| 12:00 pm - 01:30 pm | Lunch (2nd floor lobby); **Lunch and Learn!** |
+| 01:30 pm - 03:00 pm | content |
+| 03:00 pm - 03:15 pm | Coffee break |
+| 03:00 pm - 05:00 pm | content |
+| 05:00 pm - 07:00 pm | Networking night and poster session, Randal Rollins P01 |
+
+: {.striped .hover tbl-colwidths="[25,75]"}
+
+## Day 03 – Wednesday
+
+| Time                | Section |
+|:--------------------|:--------|
+| 08:30 am - 10:00 am | content |
+| 10:00 am - 10:15 am | Coffee break |
+| 10:30 am - 12:00 pm | content |
+
+: {.striped .hover tbl-colwidths="[25,75]"}

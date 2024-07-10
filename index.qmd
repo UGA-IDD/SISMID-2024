@@ -1,11 +1,48 @@
 ---
-title: "SISMID-2024"
+title: "Welcome"
 ---
 
-This is a Quarto website.
+Welcome to "Introduction to R"!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This website contains all of the slides and exercises for the [2024
+Summer Institute in Modeling for Infectious Diseases (SISMID) Module
+"Introduction to R"](https://sph.emory.edu/SISMID/modules/intro-to-r/index.html).
 
-```{r}
-1 + 1
-```
+## Prerequisities {.unnumbered}
+
+Familiary with basic statistical concepts on the level of an introductory
+statistics class is assumed for our course
+
+Before the course begins, you should install R and RStudio on your laptop.
+**If you are using an older version of R, you should update it before the
+course begins.** You will need at least R version 4.3.0 for this course, but
+using the most recent version (4.4.1 at the time of writing) is always preferable.
+
+* You can install R from the [CRAN website](https://cran.r-project.org/)
+by clicking on the correct download link for your OS.
+* You can install RStudio from the
+[Posit website](https://posit.co/download/rstudio-desktop/).
+
+## About the instructors {.unnumbered}
+
+<div class="container">
+<div class="box" style="--width: 50%">
+<h3 style="margin-top:0px; text-align: center">[Dr. Amy Winter](https://publichealth.uga.edu/faculty-member/amy-k-winter/)</h3>
+
+<img src="./images/amy.jpg" style="width: 100%"/>
+
+Dr. Winter is an Assistant Professor of Epidemiology at the University of
+Georgia. She has been coding in R for 10 years, and uses R day-to-day to conduct
+her research addressing policy-relevant questions on the transmission and
+control of infectious diseases in human populations, particularly VPDs. She
+teaches a semester-long course titled Introduction to Coding in R for Public
+Health to graduate students at the University of Georgia.
+</div>
+
+<div class="box" style="--width: 50%">
+<h3 style="margin-top:0px; text-align: center">[Zane Billings](https://wzbillings.com/ )</h3>
+
+<img src="./images/zane.jpg" style="width: 100%"/>
+
+Zane Billings is a PhD student in Epidemiology and Biostatistics at the University of Georgia, working with Andreas Handel. He has been using R since 2017, and uses R for nearly all of his statistics and data science practice. Zane’s research focuses on the immune response to influenza vaccination, and uses machine learning and multilevel regression modeling (in R!) to improve our understanding of influenza immunology.
+</div></div>

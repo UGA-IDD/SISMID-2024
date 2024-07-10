@@ -1,54 +1,43 @@
 project:
-  type: book
+  type: website
   output-dir: docs
+  render: 
+    - "*.qmd"
+    - "!*/slides.qmd"
 
-book:
+website:
   title: "SISMID Module NUMBER Materials (2025)"
-  subtitle: "Introduction to R"
-  author:
-    - name: "Zane Billings"
-      url: https://wzbillings.com/
-      affiliation: University of Georgia
-      orcid: 0000-0002-0184-6134
-    - name: "Amy Winter"
-      url: https://publichealth.uga.edu/faculty-member/amy-k-winter/
-      affiliation: University of Georgia
-  date: "2024-07-15"
-  chapters:
-    - index.qmd
-    - schedule.qmd
-    # - part: "Pre-Requisites"
-    #   chapters:
-    #     - exercise-requirements.qmd
-    #     - install-r.qmd
-    #     - just-enough-rstudio.qmd
-    #     - just-enough-r.qmd
-    #     - project-management.qmd
-    # - part: "Day 1"
-    #   chapters: 
-    #     - L01_intro-to-modeling.qmd
-    #     - L02_sir-basics.qmd
-    #     - r-session-01.qmd
-    #     - L03_hit-and-vaccinations.qmd
-    # - part: "Day 2"
-    #   chapters: 
-    #     - L04_heterogeneity.qmd
-    #     - L05_age-structure.qmd
-    #     - r-session-02.qmd
-    #     - L06_parameter-estimation.qmd
-    #     - r-session-03.qmd
-    # - part: "Day 3"
-    #   chapters: 
-    #     - L07_models-and-data.qmd
-    #     - L08_stochastic-models.qmd
-    - references.qmd
-  repo-url: https://github.com/UGA-IDD/SISMID-2024
-  repo-actions: [edit]
+  # subtitle: "Introduction to R"
+  # author:
+  #   - name: "Zane Billings"
+  #     url: https://wzbillings.com/
+  #     affiliation: University of Georgia
+  #     orcid: 0000-0002-0184-6134
+  #   - name: "Amy Winter"
+  #     url: https://publichealth.uga.edu/faculty-member/amy-k-winter/
+  #     affiliation: University of Georgia
+  #     orcid: 0000-0003-2737-7003
+  # date: "2024-07-15"
   sidebar:
-    # logo: ./images/sismid2023-logo-green.png
+    style: docked
     search: true
-    border: true
     pinned: true
+    tools: 
+      - icon: github
+        href: https://github.com/UGA-IDD/SISMID-2024
+    contents: 
+      - text: "Welcome!"
+        href: index.qmd
+      - text: "Course Schedule"
+        href: schedule.qmd
+      - section: "Day 1"
+        contents:
+          - modules/Module01-Intro/index.qmd
+      - section: "Day 2"
+        contents:
+          - modules/ModuleXX-Iteration/index.qmd
+      - section: "Day 3"
+  repo-url: https://github.com/UGA-IDD/SISMID-2024
   reader-mode: true
   # favicon: ./images/sismid2023-logo-green.png
 
@@ -62,23 +51,25 @@ execute:
   echo: true
   message: true
   warning: true
-  cache: true
+  freeze: auto
+
+engine: knitr
 
 # Default author
 author:
+  - name: "Amy Winter"
+    url: https://publichealth.uga.edu/faculty-member/amy-k-winter/
+    orcid: 0000-0003-2737-7003
   - name: "Zane Billings"
     url: https://wzbillings.com/
-    affiliation: University of Georgia
     orcid: 0000-0002-0184-6134
 
 # Default fields for citation
-citation: true
 license: "CC BY-NC"
 
-bibliography: SISMID-Module.bib
-
-crossref:
-  chapters: true
+# bibliography: SISMID-Module.bib
+# nocite: |
+#   @*
 
 format:
   html:

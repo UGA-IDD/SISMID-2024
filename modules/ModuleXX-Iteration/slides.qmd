@@ -1,0 +1,14 @@
+---
+title: "Iteration in R"
+format: revealjs
+---
+
+## Learning goals
+
+1. Replace repetitive code with a `for` loop
+1. Compare and contrast `for` loops and `*apply()` functions
+1. Define and apply vectorization to replace unnecessary loops
+
+# What is iteration?
+
+
