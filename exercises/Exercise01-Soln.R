@@ -112,8 +112,4 @@ summary(diph)
 sum(diph$DP_vacc)
 mean(diph$DP_infection)
 
-# Part D: Make a 2x2 table of infection vs. vaccination. Make sure the rows
-# and columns have understandable labels.
-table(diph$DP_vacc, diph$DP_infection, dnn = list("Vaccination", "Infection"))
-
 #### Congratulations! You finished this exercise!! ####

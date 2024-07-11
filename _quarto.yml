@@ -36,6 +36,8 @@ website:
         contents:
           - href: modules/Module01-Intro.qmd
             target: _blank
+          - href: modules/CaseStudy01.qmd
+            target: _blank
       - section: "Day 2"
         contents:
           - href: modules/ModuleXX-Iteration.qmd

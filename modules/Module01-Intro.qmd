@@ -1,9 +1,11 @@
 ---
 title: Intro to Modeling
-format:
-    html:
-        page-layout: full
+format: revealjs
 ---
 
-<object data="slides.pdf" width="100%" height="800" title = "presentation slides" class="objectSet" type="application/pdf">
-</object>
+## Welcome to class!
+
+```{r}
+2 + 2
+```
+

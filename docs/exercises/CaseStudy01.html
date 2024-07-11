@@ -12,7 +12,7 @@
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) – Intro to Modeling</title>
+  <title>SISMID Module NUMBER Materials (2025) – Algorithmic Thinking Case Study 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Intro to Modeling</h1>
+  <h1 class="title">Algorithmic Thinking Case Study 1</h1>
+  <p class="subtitle">SISMID 2024 – Introduction to R</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -407,29 +408,178 @@
 </div>
 </div>
 
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Page Items</h2>
-<ul>
-<li><a href="#/welcome-to-class" id="/toc-welcome-to-class">Welcome to class!</a></li>
-</ul>
-</nav>
 </section>
-<section id="welcome-to-class" class="slide level2">
-<h2>Welcome to class!</h2>
+<section id="learning-goals" class="slide level2">
+<h2>Learning goals</h2>
+<ul>
+<li>Use logical operators, subsetting functions, and math calculations in R</li>
+<li>Translate human-understandable problem descriptions into instructions that R can understand.</li>
+</ul>
+</section>
+<section>
+<section id="remember-r-always-does-exactly-what-you-tell-it-to-do" class="title-slide slide level1 center">
+<h1>Remember, R always does EXACTLY what you tell it to do!</h1>
+
+</section>
+<section id="instructions" class="slide level2">
+<h2>Instructions</h2>
+<ul>
+<li>Make a new R script for this case study, and save it to your code folder.</li>
+<li>We’ll use the diphtheria serosample data from Exercise 1 for this case study. Load it into R and use the functions we’ve learned to look at it.</li>
+</ul>
+</section>
+<section id="instructions-1" class="slide level2">
+<h2>Instructions</h2>
+<ul>
+<li>Make a new R script for this case study, and save it to your code folder.</li>
+<li>We’ll use the diphtheria serosample data from Exercise 1 for this case study. Load it into R and use the functions we’ve learned to look at it.</li>
+<li>The <code>str()</code> of your dataset should look like this.</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>tibble [250 × 5] (S3: tbl_df/tbl/data.frame)
+ $ age_months  : num [1:250] 15 44 103 88 88 118 85 19 78 112 ...
+ $ group       : chr [1:250] "urban" "rural" "urban" "urban" ...
+ $ DP_antibody : num [1:250] 0.481 0.657 1.368 1.218 0.333 ...
+ $ DP_infection: num [1:250] 1 1 1 1 1 1 1 1 1 1 ...
+ $ DP_vacc     : num [1:250] 0 1 1 1 1 1 1 1 1 1 ...</code></pre>
 </div>
 </div>
+</section>
+<section id="q1-was-the-overall-prevalence-higher-in-urban-or-rural-areas" class="slide level2">
+<h2>Q1: Was the overall prevalence higher in urban or rural areas?</h2>
+<div>
+<ol type="1">
+<li class="fragment">How do we calculate the prevalence from the data?</li>
+<li class="fragment">How do we calculate the prevalence separately for urban and rural areas?</li>
+<li class="fragment">How do we determine which prevalence is higher and if the difference is meaningful?</li>
+</ol>
+</div>
+</section>
+<section id="q1-how-do-we-calculate-the-prevalence-from-the-data" class="slide level2">
+<h2>Q1: How do we calculate the prevalence from the data?</h2>
+<div>
+<ul>
+<li class="fragment">The variable <code>DP_infection</code> in our dataset is binary / dichotomous.</li>
+<li class="fragment">The prevalence is the number or percent of people who had the disease over some duration.</li>
+<li class="fragment">The average of a binary variable gives the prevalence!</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">mean</span>(diph<span class="sc">$</span>DP_infection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="q1-how-do-we-calculate-the-prevalence-separately-for-urban-and-rural-areas" class="slide level2">
+<h2>Q1: How do we calculate the prevalence separately for urban and rural areas?</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">mean</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"urban"</span>, ]<span class="sc">$</span>DP_infection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8235294</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">mean</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"rural"</span>, ]<span class="sc">$</span>DP_infection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.778626</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>There are many ways you could write this code! You can use <code>subset()</code> or you can write the indices many ways.</li>
+<li>Using <code>tbl_df</code> objects from <code>haven</code> uses different <code>[[</code> rules than a base R data frame.</li>
+</ul>
+</div>
+</section>
+<section id="q1-how-do-we-calculate-the-prevalence-separately-for-urban-and-rural-areas-1" class="slide level2">
+<h2>Q1: How do we calculate the prevalence separately for urban and rural areas?</h2>
+<ul>
+<li>One easy way is to use the <code>aggregate()</code> function.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">aggregate</span>(DP_infection <span class="sc">~</span> group, <span class="at">data =</span> diph, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  group DP_infection
+1 rural    0.7786260
+2 urban    0.8235294</code></pre>
+</div>
+</div>
+</section>
+<section id="q1-how-do-we-determine-which-prevalence-is-higher-and-if-the-difference-is-meaningful" class="slide level2">
+<h2>Q1: How do we determine which prevalence is higher and if the difference is meaningful?</h2>
+<div>
+<ul>
+<li class="fragment">We probably need to include a confidence interval in our calculation.</li>
+<li class="fragment">This is actually not so easy without more advanced tools that we will learn in upcoming modules.</li>
+<li class="fragment">Right now the best options are to do it by hand or google a function.</li>
+</ul>
+</div>
+</section>
+<section id="q1-by-hand" class="slide level2">
+<h2>Q1: By hand</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>p_urban <span class="ot">&lt;-</span> <span class="fu">mean</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"urban"</span>, ]<span class="sc">$</span>DP_infection)</span>
+<span id="cb10-2"><a></a>p_rural <span class="ot">&lt;-</span> <span class="fu">mean</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"rural"</span>, ]<span class="sc">$</span>DP_infection)</span>
+<span id="cb10-3"><a></a>se_urban <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_urban <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_urban) <span class="sc">/</span> <span class="fu">nrow</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"urban"</span>, ]))</span>
+<span id="cb10-4"><a></a>se_rural <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_rural <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_rural) <span class="sc">/</span> <span class="fu">nrow</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"rural"</span>, ])) </span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a>result_urban <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb10-7"><a></a>    <span class="st">"Urban: "</span>, <span class="fu">round</span>(p_urban, <span class="dv">2</span>), <span class="st">"; 95% CI: ("</span>,</span>
+<span id="cb10-8"><a></a>    <span class="fu">round</span>(p_urban <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se_urban, <span class="dv">2</span>), <span class="st">", "</span>,</span>
+<span id="cb10-9"><a></a>    <span class="fu">round</span>(p_urban <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se_urban, <span class="dv">2</span>), <span class="st">")"</span></span>
+<span id="cb10-10"><a></a>)</span>
+<span id="cb10-11"><a></a></span>
+<span id="cb10-12"><a></a>result_rural <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb10-13"><a></a>    <span class="st">"Rural: "</span>, <span class="fu">round</span>(p_rural, <span class="dv">2</span>), <span class="st">"; 95% CI: ("</span>,</span>
+<span id="cb10-14"><a></a>    <span class="fu">round</span>(p_rural <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se_rural, <span class="dv">2</span>), <span class="st">", "</span>,</span>
+<span id="cb10-15"><a></a>    <span class="fu">round</span>(p_rural <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se_rural, <span class="dv">2</span>), <span class="st">")"</span></span>
+<span id="cb10-16"><a></a>)</span>
+<span id="cb10-17"><a></a></span>
+<span id="cb10-18"><a></a><span class="fu">cat</span>(result_urban, result_rural, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Urban: 0.82; 95% CI: (0.76, 0.89)
+Rural: 0.78; 95% CI: (0.71, 0.85)</code></pre>
+</div>
+</div>
+</section>
+<section id="q1-by-hand-1" class="slide level2">
+<h2>Q1: By hand</h2>
+<ul>
+<li>We can see that the 95% CI’s overlap, so the groups are probably not that different. <strong>To be sure, we need to do a 2-sample test! But this is not a statistics class.</strong></li>
+<li>Some people will tell you that coding like this is “bad”. <strong>But ‘bad’ code that gives you answers is better than broken code!</strong> We will learn techniques for writing this with less work and less repetition in upcoming modules.</li>
+</ul>
+</section>
+<section id="q1-googling-a-package" class="slide level2">
+<h2>Q1: Googling a package</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># install.packages("DescTools")</span></span>
+<span id="cb12-2"><a></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a><span class="fu">aggregate</span>(DP_infection <span class="sc">~</span> group, <span class="at">data =</span> diph, <span class="at">FUN =</span> DescTools<span class="sc">::</span>MeanCI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  group DP_infection.mean DP_infection.lwr.ci DP_infection.upr.ci
+1 rural         0.7786260           0.7065872           0.8506647
+2 urban         0.8235294           0.7540334           0.8930254</code></pre>
+</div>
+</div>
+</section>
+<section id="congratulations-for-finishing-the-first-case-study" class="slide level2">
+<h2>Congratulations for finishing the first case study!</h2>
+<ul>
+<li>What R functions and skills did you practice?</li>
+<li>What other questions could you answer about the same dataset with the skills you know now?</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

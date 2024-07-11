@@ -1,6 +1,6 @@
 ################################################################################
 # SISMID Intro to R 2024
-# Exercise 01 Solution
+# Exercise 01
 # Zane Billings and Amy Winter
 ################################################################################
 
@@ -91,10 +91,6 @@
 
 # Part C: How many people got vaccinated in the data set? What is the overall
 # prevalence of diphtheria in the dataset?
-
-
-# Part D: Make a 2x2 table of infection vs. vaccination. Make sure the rows
-# and columns have understandable labels.
 
 
 #### Congratulations! You finished this exercise!! ####
