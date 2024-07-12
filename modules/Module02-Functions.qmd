@@ -1,0 +1,189 @@
+---
+title: "Module 2: Functions"
+format: revealjs
+---
+
+```{r knit-setup, echo=FALSE, include = FALSE}
+
+help_console <- function(topic, package, format=c("text", "html", "latex", "Rd"),
+                         lines=NULL, before=NULL, after=NULL) {  
+  format=match.arg(format)
+  library(package, character.only=TRUE)
+  if (!is.character(topic)) topic <- deparse(substitute(topic))
+  helpfile = utils:::.getHelpFile(help(topic))
+  
+  hs <- capture.output(switch(format, 
+                              text=tools:::Rd2txt(helpfile),
+                              html=tools:::Rd2HTML(helpfile),
+                              latex=tools:::Rd2latex(helpfile),
+                              Rd=tools:::prepare_Rd(helpfile)
+  )
+  )
+  if(!is.null(lines)) hs <- hs[lines]
+  hs <- c(before, hs, after)
+  cat(hs, sep="\n")
+  invisible(hs)
+}
+
+```
+
+
+## Learning Objectives
+
+After module 2, you should be able to...
+
+-   Describe and execute functions in R
+-   Modify default behavior of functions using arguments in R
+-   Use R-specific sources of help to get more information about functions and packages 
+-   Differentiate between Base R functions and functions that come from other packages
+
+
+## Function - Basic term
+
+**Function** - Functions are "self contained" modules of code that accomplish specific tasks. Functions usually take in some sort of object (e.g., vector, list), process it, and return a result. You can write your own, use functions that come directly from installing R (i.e., Base R functions), or use functions from external packages.
+
+A function might help you add numbers together, create a plot, or organize your data. In fact, we have already used three functions in the Module 1, including `c()`, `matrix()`, `list()`. Here is another one, `sum()`
+
+```{r echo=TRUE}
+sum(1, 20234)
+```
+
+
+## Function
+
+The general usage for a function is the name of the function followed by parentheses. Within the parentheses are **arguments**.
+
+```{r echo=TRUE, eval=FALSE}
+function_name(argument1, argument2, ...)
+```
+
+
+## Arguments - Basic term
+
+**Arguments** are what you pass to the function and can include:
+
+1.  the physical object on which the function carries out a task (e.g., can be data such as a number 1 or 20234)
+
+```{r echo=TRUE}
+sum(1, 20234)
+```
+
+2.  options that alter the way the function operates (e.g., such as the `base` argument in the function `log()`)
+
+```{r echo=TRUE}
+log(10, base = 10)
+log(10, base = 2)
+log(10, base=exp(1))
+```
+
+## Arguments
+
+Most functions are created with **default argument options**. The defaults represent standard values that the author of the function specified as being "good enough in standard cases". This means if you don't specify an argument when calling the function, it will use a default.
+
+-   If you want something specific, simply change the argument yourself with a value of your choice.
+-   If an argument is required but you did not specify it and there is no default argument specified when the function was created, you will receive an error.
+
+## Example
+
+What is the default in the `base` argument of the `log()` function?
+
+```{r echo=TRUE}
+log(10)
+```
+
+**But, how do you know the purpose of a function and what arguments a function includes and how to specify the arguments?**
+
+## Seeking help for using functions
+
+The best way of finding out this information is to use the `?` followed by the name of the function. Doing this will open up the help manual in the bottom RStudio Help panel. It provides a description of the function, usage, arguments, details, and examples. Lets look at the help file for the function `round()`
+
+```{r echo = TRUE}
+?round
+```
+
+xxzane - i want to be to view the whole help file (i.e., scroll down in the slide deck) and now have it look weird (i.e., spaces between letters)
+
+```{r, echo = FALSE, results = "asis"}
+help_console("round", format="text", lines=0:127, before = "", after = "")
+```
+
+## How to specify arguments
+
+1.  Arguments are separated with a comma
+2.  You can specify arguments by either including them in the correct order OR by assigning the argument within the function parentheses.
+
+```{r, echo = FALSE, results = "asis"}
+help_console("round", format="text", lines=36:45, before = "", after = "")
+```
+
+```{r echo=FALSE}
+log(10, 2)
+log(x=10, base=2)
+log(x=10, 2)
+log(10, base=2)
+```
+
+## Package - Basic term
+
+When you download R, it has a "base" set of functions, that are associated with a "base" set of packages including: 'base', 'datasets', 'graphics', 'grDevices', 'methods', 'stats', 'methods' (typically just referred to as **Base R**).
+
+-   e.g., the `log()` function comes from the 'base' package
+
+**Package** - a package in R is a bundle or "package" of code (and or possibly data) that can be loaded together for easy repeated use or for **sharing** with others.
+
+Packages are analogous to software applications like Microsoft Word. After installation, your operating system allows you to use it, just like having Word installed allows you to use it.
+
+## Packages
+
+The Packages window in RStudio can help you identify what have been installed (listed), and which one have been called (check mark).
+
+Lets go look at the Packages window, find the `base` package and find the `log()` function. It automatically loads the help file that we looked at earlier using `?log`.
+
+
+## Additional Packages
+
+You can install additional packages for your uses from [CRAN](https://cran.r-project.org/) or [GitHub](https://github.com/). These additional packages are written by RStudio or R users/developers (like us)
+
+-   Not all packages available on CRAN or GitHub are trustworthy
+-   RStudio (the company) makes a lot of great packages
+-   Who wrote it? **Hadley Wickham** is a major authority on R (Employee and Developer at RStudio)
+-   How to [trust](https://simplystatistics.org/posts/2015-11-06-how-i-decide-when-to-trust-an-r-package/#:~:text=The%20first%20thing%20I%20do,I%20immediately%20trust%20the%20package.) an R package
+
+## Installing and calling packages
+
+To install a package you can use the following code
+```{r echo=TRUE, eval=FALSE}
+install.packages(package_name)
+```
+or by going to Tools ---\> Install Packages in the RStudio header
+
+
+To call (i.e., be able to use the package) you can use the following code
+```{r echo=TRUE, eval=FALSE}
+library(package_name)
+```
+
+More on this later...
+
+
+## Mini Exercise
+
+Find and execute a **Base R** function that will round the number 0.86424 to two digits.
+
+
+## Summary
+
+- Functions are "self contained" modules of code that accomplish specific tasks.
+- Arguments are what you pass to functions (e.g., objects on which you carry out the task or options for how to carry out the task)
+- Arguments may include defaults that the author of the function specified as being "good enough in standard cases", but that can be changed.
+- An R Package is a bundle or "package" of code (and or possibly data) that can be used by installing it once and calling it (using `library()`) each time R/Rstudio is opened
+- The Help window in RStudio is useful for to get more information about functions and packages 
+
+
+## Acknowledgements
+
+These are the materials I looked through, modified, or extracted to complete this module's lecture.
+
+- ["Introduction to R - ARCHIVED" from  Harvard Chan Bioinformatics Core (HBC)](https://hbctraining.github.io/Intro-to-R/lessons/03_introR-functions-and-arguments.html#:\~:text=A%20key%20feature%20of%20R,it%2C%20and%20return%20a%20result.)
+
+

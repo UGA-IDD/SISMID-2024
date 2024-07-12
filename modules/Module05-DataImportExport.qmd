@@ -1,0 +1,220 @@
+---
+title: "Module 5: Data Import and Export"
+format: revealjs
+---
+
+```{r knit-setup, echo=FALSE, include = FALSE}
+
+help_console <- function(topic, package, format=c("text", "html", "latex", "Rd"),
+                         lines=NULL, before=NULL, after=NULL) {  
+  format=match.arg(format)
+  library(package, character.only=TRUE)
+  if (!is.character(topic)) topic <- deparse(substitute(topic))
+  helpfile = utils:::.getHelpFile(help(topic))
+  
+  hs <- capture.output(switch(format, 
+                              text=tools:::Rd2txt(helpfile),
+                              html=tools:::Rd2HTML(helpfile),
+                              latex=tools:::Rd2latex(helpfile),
+                              Rd=tools:::prepare_Rd(helpfile)
+  )
+  )
+  if(!is.null(lines)) hs <- hs[lines]
+  hs <- c(before, hs, after)
+  cat(hs, sep="\n")
+  invisible(hs)
+}
+
+```
+
+
+## Learning Objectives
+
+After module 5, you should be able to...
+
+-   Use 'base' R functions to load data
+-   Install and call external R Packages to extend R's functionality
+-   Install any type of data into R
+-   Find loaded data in the Environment window of RStudio
+
+
+## Import Data
+
+-   'Reading in' data is the first step of any real project/analysis
+-   R can read almost any file format, especially with external, non-Base R, packages
+-   We are going to focus on simple delimited files first. 
+    -   comma separated (e.g. '.csv')
+    -   tab delimited (e.g. '.txt')
+
+IBM.com definition: A delimited file is a sequential file with column delimiters. Each delimited file is a stream of records, which consists of fields that are ordered by column. Each record contains fields for one row. Within each row, individual fields are separated by column delimiters.
+
+## Data Input: Read in Directly 
+
+Within the Base R 'util' package we can find a handful of useful functions including  `read.csv()` and `read.delim()` to importing data.
+
+## Data Input: Read in Directly 
+
+So what is going on "behind the scenes"? 
+
+`read.csv()` parses a "flat" text file (.csv) and turns it into a **data frame**
+
+- First, a flat file is parsed into a rectangular matrix of strings
+
+- Second, the type of each column is determined (heuristic-based guess)
+
+
+## Data Input: Read in Directly 
+
+`read.csv()` needs the path to your file. It will return a data frame.
+
+```
+read.csv(file, header = TRUE, sep = ",", quote = "\"",
+         dec = ".", fill = TRUE, comment.char = "", ...)
+```
+
+## Data Input: Read in Directly 
+
+- `file` is the first argument and is the path to your file, in quotes 
+- can be path in your local computer -- absolute file path or relative file path 
+- can be path to a file on a website
+
+```{r, eval = FALSE}
+## Examples
+dat <- read.csv(file = "data/file.csv")
+dat <- read.csv(file = "~/Users/Winter/Dropbox/Git/SISMID/data/file.csv")
+```
+
+Luckily, we were already in our R Project and were able to use a relative path.
+
+
+## Data Input: Read in Directly 
+
+`read.csv()` is a special case of `read.delim()` -- a general function to read a delimited file into a data frame  
+
+`read.delim()` needs path to your file and file's delimiter, will return a data frame.
+
+```
+read.delim(file, header = TRUE, sep = "\t", quote = "\"",
+           dec = ".", fill = TRUE, comment.char = "", ...)
+```
+
+- `file` is the path to your file, in quotes 
+- `delim` is what separates the fields within a record. The default for csv is comma
+
+```{r, eval = FALSE}
+## Examples
+dat <- read.delim(file = "data/filename.csv", sep = ",")
+
+```
+
+The data is now successfully read into your R workspace, **many times actually.** Column specification of first few columns is printed to the console. 
+
+## What if we have a .xlsx file - what do we do?
+
+0. See if there is a Base R function related (optional)
+1. Google / Ask ChatGPT
+2. Find and vet function and package you want
+3. Install package
+4. Call package
+5. Use function
+
+## 0. See if there is a Base R function related
+
+You can use the search option in the Packages window of RStudio to search for "excel".  
+
+## 1. Internet Search
+
+```{r, out.width = "33%", echo = FALSE}
+knitr::include_graphics("images/ChatGPT.png")
+knitr::include_graphics("images/GoogleSearch.png")
+knitr::include_graphics("images/StackOverflow.png")
+```
+
+## 2. Find and vet function and package you want
+
+I am getting consistent message to use `readxl` package and the `read_excel()` function.  This was developed by Hadley Wickham, whom we know if reputable. Also, you can check that data was read in correctly, b/c this is a straightforward task. 
+
+## 3. Install Package
+
+Reminder -- Installing and calling packages
+
+To install a package you can use the following code
+```{r echo=TRUE, eval=FALSE}
+install.packages(package_name)
+```
+or by going to Tools ---\> Install Packages in the RStudio header
+
+```{r echo=TRUE, eval=FALSE}
+install.packages(readxl)
+```
+
+## 4. Call Package
+
+Reminder -- Installing and calling packages
+
+To call (i.e., be able to use the package) you can use the following code
+```{r echo=TRUE, eval=FALSE}
+library(package_name)
+```
+
+```{r echo=TRUE, eval=FALSE}
+library(readxl)
+```
+
+## 5. Use Function
+
+```{r, echo = FALSE, results = "asis"}
+help_console("read_excel", package="readxl", format="text", lines=0:195, before = "", after = "")
+```
+
+## 5. Use Function
+
+```{r echo=TRUE, eval=FALSE}
+df <- read_xlsx(path, sheet = NULL)
+```
+
+Note, I assigned the data frame to an object called `df`.  I could have called the data frame anything, but in order to use the data (i.e., as an object we can find in the Global Environment), I need to assign it to an object. 
+
+## Mini Excercise
+
+1. Clear your Global Environment by executing `rm(list = ls())`
+2. Execute `read_xlsx(path, sheet = NULL)` 
+3. Notice you only find the data in the consule (unusable)
+
+
+## Installing and calling packages - Common confusion
+
+You only need to install a package once (unless you update R), but you will need to call or load a package each time you want to use it. 
+
+The exception to this rule are the "base" set of packages (i.e., **Base R**) that are installed automatically when you install R and that automatically called whenever you open R or RStudio.
+
+
+## Common Error
+
+Be prepared to see the error 
+
+```{r echo=TRUE, eval=FALSE}
+Error: could not find function "some_function"
+```
+
+This usually mean that either 
+
+- you called the function by the wrong name 
+- you have installed a package but you **forgot to call it**  (i.e., `library(package_name)`)
+
+
+## Export Data 
+
+
+
+
+## Summary
+
+-   
+
+## Acknowledgements
+
+These are the materials I looked through, modified, or extracted to complete this module's lecture.
+
+-   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
+

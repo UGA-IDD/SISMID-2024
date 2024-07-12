@@ -1,11 +1,347 @@
 ---
-title: Intro to Modeling
+title: "Module 1: Introduction to RStudio and R Basics"
 format: revealjs
 ---
 
-## Welcome to class!
+## Learning Objectives
 
-```{r}
-2 + 2
+After module 1, you should be able to...
+
+-   Create and save an R script
+-   Describe the utility and differences b/w the console and an R script
+-   Modify R Studio windows
+-   Create objects
+-   Describe the difference b/w character, numeric, list, and matrix objects
+-   Reference objects in the RStudio Global Environment
+-   Use basic arithmetic operators in R
+-   Use comments within an R script to create header, sections, and make notes
+
+## Working with R -- RStudio
+
+RStudio is an Integrated Development Environment (IDE) for R
+
+-   It helps the user effectively use R
+-   Makes things easier
+-   Is NOT a dropdown statistical tool (such as Stata)
+    -   See [Rcmdr](https://cran.r-project.org/web/packages/Rcmdr/index.html) or [Radiant](http://vnijs.github.io/radiant/)
+
+```{r, fig.alt="RStudio logo", out.width = "30%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg")
 ```
 
+<sub>\[[source](https://www.rstudio.com/)\]</sub>
+
+## RStudio
+
+Easier working with R
+
+-   Syntax highlighting, code completion, and smart indentation
+-   Easily manage multiple working directories and projects
+
+More information
+
+-   Workspace browser and data viewer
+-   Plot history, zooming, and flexible image and file export
+-   Integrated R help and documentation
+-   Searchable command history
+
+## RStudio
+
+```{r, fig.alt="RStudio", out.width = "80%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://ayeimanolr.files.wordpress.com/2013/04/r-rstudio-1-1.png?w=640&h=382")
+```
+
+## Getting the editor
+
+```{r, out.width = "90%", echo = FALSE}
+knitr::include_graphics("images/both.png")
+```
+
+## Working with R in RStudio - 2 major panes:
+
+1)  The **Source/Editor**: "Analysis" Script + Interactive Exploration
+    -   Static copy of what you did (reproducibility)
+    -   Top by default
+2)  The **R Console**: "interprets" whatever you type
+    -   Calculator
+    -   Try things out interactively, then add to your editor
+    -   Bottom by default
+
+## Source / Editor
+
+-   Where files open to
+-   Have R code and comments in them
+-   Can highlight and press (CMD+Enter (Mac) or Ctrl+Enter (Windows)) to run the code
+
+A .R file is called an R script where code is saved
+
+```{r, out.width = "200%", echo = FALSE}
+knitr::include_graphics("images/rstudio_script.png")
+```
+
+## R Console
+
+```{r, out.width = "60%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/rstudio_console.png")
+```
+
+-   Where code is executed (where things happen)
+-   You can type here for things interactively
+-   Code is **not saved**
+
+## RStudio
+
+Useful RStudio "cheat sheet": <https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf>
+
+```{r, fig.alt="RStudio", out.width = "65%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/rstudio_sheet.png")
+```
+
+
+## RStudio Layout
+
+If RStudio doesn't look the way you want (or like our RStudio), then do:
+
+RStudio --\> View --\> Panes --\> Pane Layout
+
+```{r, out.width = "500px", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/pane_layout.png")
+```
+
+## Workspace/Environment
+
+-   Tells you what **objects** are in R
+-   What exists in memory/what is loaded?/what did I read in?
+
+```{r, out.width = "90%", echo = FALSE}
+knitr::include_graphics("images/rstudio_environment.png")
+```
+
+## Workspace/History
+
+-   Shows previous commands. Good to look at for debugging, but **don't rely** on it.
+-   Also type the "up" key in the Console to scroll through previous commands
+
+## Workspace/Other Panes
+
+-   **Files** - shows the files on your computer of the directory you are working in
+-   **Viewer** - can view data or R objects
+-   **Help** - shows help of R commands
+-   **Plots** - pictures and figures
+-   **Packages** - list of R packages that are loaded in memory
+
+## Getting Started
+
+-   File --\> New File --\> R Script
+-   Save the blank R script as Module1.R
+-   Add a comment header...
+
+
+## Explaining output on slides
+
+In slides, a command (we'll also call them code or a code chunk) will look like this
+
+```{r echo=T}
+print("I'm code")
+```
+
+And then directly after it, will be the output of the code.  
+So `print("I'm code")` is the code chunk and [1] "I'm code" is the output.
+
+## R as a calculator
+
+You can do basic arithmetic in R, which I surprisingly use all the time.
+
+```{r echo=T}
+2 + 2
+2 * 4
+2^3
+```
+
+## R as a calculator
+
+- The R console is a full calculator
+- Try to play around with it:
+    - +, -, /, * are add, subtract, divide and multiply
+    - ^ or ** is power
+    - parentheses -- ( and ) -- work with order of operations 
+    - %% finds the remainder
+    
+
+## Execute / Run Code
+
+To execute or run a line of code, you just put your cursor on line of code and then:
+
+1. Press Run (which you will find at the top of your window
+OR
+2. Press `Cmd + Return` (iOS) OR `Ctrl + Enter` (Windows).
+
+To execute or run multiple lines of code, you just need to highlight the code you want to run and then follow option 1 or 2.
+
+## Mini exercise 
+
+Execute `5+4` from your .R file, and then find the answer 9 in the Console.
+
+## Commenting in Scripts
+
+The syntax `#` creates a comment, which means anything to the right of `#` can be evaluated (i.e., "run")
+
+Commenting is useful to:
+
+1. Create headers for R Scripts
+2. Create sections within an R Script
+3. Explain what is happening in your code 
+
+## Commenting an R Script header
+
+Add a comment header to Module1.R.  This is the one I typically use, but you may have your own preference.  The goal is that you are consistent so that future you / collaborators can make sense of your code.
+
+```{r, echo=T, eval=F}
+### Title: Module 1
+### Author: Amy Winter 
+### Objective: Mini Exercise - Developing first R Script
+### Date: 15 July 2024
+```
+
+## Commenting to create sections
+
+You can also create sections within your code by ending a comment with 4 hash marks. **This is very useful for creating an outline of your R Script.** The "Outline" can be found in the top right of the your source window.
+
+```{r, echo=T, eval=F}
+# Section 1 Header ####
+## Section 2 Sub-header ####
+### Section 3 Sub-sub-header ####
+#### Section 4 Sub-sub-sub-header ####
+```
+
+## Commenting to explain code
+
+```{r, echo=T, eval=F}
+## this # is still a comment
+### you can use many #'s as you want
+
+# sometimes you have a really long comment,
+#    like explaining what you are doing
+#    for a step in analysis. 
+# Take it to another line
+```
+
+Again, you can take on whatever style you want, the most important thing is to be consistent.  
+
+## Commenting to explain code
+
+I tend to use:
+
+-   One hash tag with a space to describe what might be happening in the following few lines of code
+-   One hastag with no space after a command to list specifics 
+
+```{r, echo=T, eval=F}
+# Practicing my arithmetic
+5+2
+3*5
+9/8
+
+5+2 #5 plus 2 
+```
+
+## Object - Basic terms
+
+**Object** - an object is something that can be worked with in R - can be lots of different things!
+
+-   a scalar / number
+-   a vector
+-   a matrix of numbers
+-   a list
+-   a plot
+-   a function
+
+... many more
+
+## Objects
+
+- You can create objects from within the R environment and from files on your computer
+- R uses `<-` to assign values to an object name (you might also see `=` used, but this is not best practice)
+- Object names are case-sensitive, i.e. X and x are different
+
+```{r echo=T}
+number.object <- 3
+character.object <- "blue"
+vector.object1 <- c(2,3,4,5)
+vector.object2 <- c("blue", "red", "yellow")
+matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
+```
+
+## Objects 
+
+Note, you can find these objects now in the Global Environment.
+```{r, out.width = "90%", echo = FALSE}
+knitr::include_graphics("images/global_env.png")
+```
+
+Also, you can call them anytime (i.e, see them in the Console) by executing (running) the object.  For example,
+
+```{r, echo = TRUE}
+character.object
+```
+
+```{r, echo = TRUE}
+matrix.object
+```
+
+
+## Assignment - Good coding
+
+`=` and `<-` can both be used for assignment, but `<-` is better coding practice, because `==` is a logical operator. We will talk about this more, later.
+
+## Lists
+
+List is a special data class, that can hold vectors, strings, matrices, models, list of other lists.
+
+```{r echo=T}
+list.object <- list(number.object, vector.object2, matrix.object)
+list.object
+```
+
+
+## Useful R Studio Shortcuts
+
+Will certainly save you time
+
+- `Cmd + Return` (iOS) OR `Ctrl + Enter` (Windows) in your script evaluates current line/selection
+    -   It's like copying and pasting the code into the console for it to run.
+- pressing Up/Down in the Console allows you to navigate command history
+
+See <http://www.rstudio.com/ide/docs/using/keyboard_shortcuts> for many more
+
+
+## Common new users frustrations
+
+1.  **Different versions of software**
+1.  **Data type problems (is that a character or a number?)** -->
+2.  Typos (R is **case sensitive**, `x` and `X` are different)
+    - RStudio helps with "tab completion"
+    - discussed throughout
+
+## Summary
+
+-   RStudio makes working in R easier
+-   The Editor is for static code like R Scripts
+-   The console is for testing code that can't be saved
+-   Commenting is your new best friend
+-   In R we create objects that can be viewed in the Global Environment panel and called anytime
+-   An object is something that can be worked with in R
+-   Use `<-` syntax to create objects
+
+
+## Mini Exercise
+
+1. Create a new number object and name it `my.object`
+2. Create a vector of 4 numbers and name it `my.vector`
+3. Add `my.object` and `my.vector`
+
+## Acknowledgements
+
+These are the materials I looked through, modified, or extracted to complete this module's lecture.
+
+-   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
+-   Some RStudio snapshots were pulled from <http://ayeimanol-r.net/2013/04/21/289/>
