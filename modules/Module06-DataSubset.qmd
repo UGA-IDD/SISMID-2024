@@ -1,0 +1,335 @@
+---
+title: "Module 6: Get to Know Your Data and Subsetting"
+format: revealjs
+scrollable: true
+smaller: true
+---
+
+## Learning Objectives
+
+After module 6, you should be able to...
+
+-   Use basic functions to get to know you data
+-   Use two approaches to indexing
+-   Rely on indexing to extract part of an object (e.g., subset data) and to replace parts of an object (e.g., rename variables / columns)
+-   Describe what logical operators are and how to use them
+-   Use on the `subset()` function to subset data
+
+
+## Getting to know our data
+
+The `dim()` , `nrow()`, and `ncol()` functions are good options to check the dimensions of your data before moving forward. 
+
+Let's first read in the data from the previous module.
+
+```{r echo=TRUE}
+df <- read.csv(file = "data/serodata.csv") #relative path
+```
+
+```{r echo=TRUE}
+dim(df) # rows, columns
+nrow(df) # number of rows
+ncol(df) # number of columns
+```
+
+## Quick summary of data
+
+The `summary()`function of Base R is another great function assess the data type and some summary statistics.  Note, if you have a very large dataset with 15+ variables, this is not so efficient.   
+
+```{r echo=T}
+summary(df)
+```
+
+Otherwise, try  `colnames()` to at least get a list of variable names.
+
+```{r echo=T}
+colnames(df)
+```
+
+
+## View the data as a whole dataframe
+
+The `View()` function, one of the few Base R functions with a capital letter can be used to open a new tab in the Console and view the data as you would in excel, for example.  
+
+```{r, out.width = "50%", echo = FALSE}
+knitr::include_graphics("images/ViewTab.png")
+```
+
+## View the data as a whole dataframe
+
+You can also open a new tab of the data by clicking on the data icon beside the object in the Environment window.
+
+```{r, out.width = "90%", echo = FALSE}
+knitr::include_graphics("images/View.png")
+```
+
+## Indexing
+
+R contains several constructs which allow access to individual elements or subsets through indexing operations. Indexing can be used both to extract part of an object and to replace parts of an object (or to add parts).
+
+```
+x[i]
+x[i, j]
+x[[i]]
+x$a
+x$"a"
+```
+
+## Vectors and multi-dimensional objects
+
+To index a vector, `vector[i]` select the ith element. To index a multi-dimensional objects such as a matrix, `matrix[i, j]` selects the element in row i and column j, where as in a three dimensional `array[k, i, i, j]` selects the element in matrix k, row i, and column j. 
+
+```{r echo=F}
+number.object <- 3
+character.object <- "blue"
+vector.object1 <- c(2,3,4,5)
+vector.object2 <- c("blue", "red", "yellow")
+matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
+```
+
+```{r echo=T}
+vector.object1
+matrix.object
+```
+
+```{r echo=T}
+vector.object1[2]
+matrix.object[1,2]
+```
+
+
+## List objects
+
+For lists, one generally uses `list[[p]] to select any single element p.
+
+```{r}
+list.object <- list(number.object, vector.object2, matrix.object)
+list.object
+```
+
+```{r echo=T}
+list.object[[3]]
+```
+
+## $ for indexing
+
+`$` allows only a literal character string or a symbol as the index.
+
+```{r echo=T}
+df$IgG_concentration
+```
+
+## $ for indexing with lists
+
+List elements can be named
+
+```{r makeListv}
+list.object.named <- list(
+  emory = number.object,
+  uga = vector.object2,
+  gsu = matrix.object
+)
+list.object.named
+```
+
+You can reference data from list using `$` (if elements are named) or using double square brackets, `[[ ]]`
+
+```{r}
+list.object.named[["uga"]] 
+list.object.named$uga 
+```
+
+
+## Using indexing to rename columns
+
+As mentioned above, indexing can be used both to extract part of an object and to replace parts of an object (or to add parts).
+
+```{r}
+colnames(df) # just prints
+colnames(df)[1:2] <- c("IgG_concentration_mIU/mL", "age_year") # reassigns
+colnames(df)
+colnames(df)[1:2] <- c("IgG_concentration", "age") #reset
+```
+
+##  Using indexing to subset data
+
+We can also subset a data frames and matrices (2-dimensional objects) using the bracket `[, ]`. 
+
+We can subset by columns and pull the `x` column using the index of the column or the column name ("`age`") 
+
+```{r echo=T}
+df[, "age"] #same as df[, 2]
+```
+We can select multiple columns using multiple column names:
+```{r echo=T}
+df[, c("age", "gender")]
+```
+We can remove select columns using column names as well: (xxzane - why - c("slum") not working)
+```{r echo=T}
+df[, -3] #remove column 3, "slum" variable
+#Note df$slum <- NULL would also work
+```
+We can also grab the `age` column using the `$` operator. 
+```{r echo=T}
+df$age
+```
+
+Or we can subset by rows and pull the 100th observation/row.
+```{r echo=T}
+df[100,] 
+```
+ or maybe the age of the 100th observation/row.
+```{r echo=T}
+df[100,"age"] 
+```
+ 
+
+## Logical operators
+
+Logical operators can be evaluated on object(s) in order to return a binary response of TRUE/FALSE
+
+operator | operator option |description
+-----|-----|-----:
+`<`|%l%|less than
+`<=`|%le%|less than or equal to
+`>`|%g%|greater than
+`>=`|%ge%|greater than or equal to
+`==`||equal to
+`!=`|not equal to
+`x&y`||x and y
+`x|y`||x or y
+`%in%`||match
+`%!in%`||do not match
+
+
+## Logical operators examples
+
+```{r echo=TRUE}
+number.object
+```
+
+```{r echo=TRUE}
+number.object<4
+number.object>=3
+number.object!=5
+number.object %in% c(6,7,2)
+```
+
+
+## Using indexing and logical operators to rename columns
+
+We can assign the column names, change the ones we want, and then re-assign the column names:
+
+```{r}
+cn <- colnames(df)
+cn[cn=="IgG_concentration"] <-"IgG_concentration_mIU" #rename cn to "IgG_concentration" when cn is "IgG_concentration_mIU"
+colnames(df) <- cn
+colnames(df)[colnames(df)=="IgG_concentration_mIU"] <- "IgG_concentration" #reset
+```
+
+##  Using indexing and logical operators to subset data
+
+Subset by rows and pull only observations with an age of  less than or equal to 10.
+```{r echo=T}
+df_lte10 <- df[df$age<=10,]
+df_lte5_gt10 <- df[df$age<=5 | df$age>10,]
+```
+Note that the logical operators `df$age<=10` and `df$age<=5 | df$age>10` are before the comma because I want to subset by rows. I saved the subset data to `df_lt10` and `df_lte5_gt10`. Lets check that my subsets worked using the `summary()` function. 
+```{r echo=T}
+summary(df_lte10$age)
+summary(df_lte5_gt10$age)
+```
+
+
+## Missing values 
+
+Types of "missing" values:
+
+-   `NA` - general missing data
+-   `NaN` - stands for "**N**ot **a** **N**umber", happens when you do
+    0/0.
+-   `Inf` and `-Inf` - Infinity, happens when you divide a positive
+    number (or negative number) by 0.
+-   blank space - sometimes when data is read it, there is a blank space left
+
+## More Logical Operators
+
+operator | operator option |description
+-----|-----|-----:
+`is.na`||is NAN or NA
+`is.nan`||is NAN
+`!is.na`||is not NAN or NA
+`!is.nan`||is not NAN
+`is.infinite`||is infinite
+`any`||are any TRUE
+
+## More logical operators examples
+
+```{r}
+test <- c(0,NA, -1)/0
+test
+is.na(test)
+is.nan(test)
+is.infinite(test)
+```
+
+## More logical operators examples
+
+`any(is.na(x))` means do we have any `NA`'s in the object `x`?
+
+```{r  echo=TRUE}
+A <- c(1, 2, 4, NA)
+B <- c(1, 2, 3, 4)
+any(is.na(A)) # are there any NAs - YES/TRUE
+any(is.na(B)) # are there any NAs- NO/FALSE
+```
+
+
+## `subset()` function
+
+The Base R `subset()` function is a slighly easier way to select variables and observations.
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?subset
+```
+
+## Subsetting use the `subset()` function
+
+Here are a few examples using the `subset()` function
+
+```{r echo=T}
+df_lte10_v2 <- subset(df, df$age<=10, select=c(IgG_concentration, age))
+df_lt5_f <- subset(df, df$age<=5 & gender=="Female", select=c(IgG_concentration, slum))
+```
+
+## `subset()` function vs logical operators
+
+`subset()` automatically removes NAs, which is a different behavior from doing logical operations on NAs.
+
+```{r echo=T}
+summary(df_lte10$age)
+summary(df_lte10_v2$age)
+```
+
+We can also see this by looking at the number or rows in each dataset.
+
+```{r echo=T}
+nrow(df_lte10)
+nrow(df_lte10_v2)
+```
+
+
+
+## Summary
+
+-   
+
+## Acknowledgements
+
+These are the materials I looked through, modified, or extracted to complete this module's lecture.
+
+-   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
+-   [CRAN Project](https://cran.r-project.org/doc/manuals/R-lang.html#Indexing)
+-   [CRAN Project](https://cran.r-project.org/web/packages/extraoperators/vignettes/logicals-vignette.html)
+

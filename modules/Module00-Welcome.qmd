@@ -104,7 +104,7 @@ knitr::include_graphics("https://www.r-project.org/logo/Rlogo.png")
 
 ## Workshop Objective
 
-We hope to teach you to fish
+We hope to teach you to fish -- Note in a full semester course some of these more abstract themes are sprinkled in throughout the semester while we continue to learn all sorts of functions.  Here we need you to get some of these main themes as quickly as possible ...
 What you can expect at the end
 How this differs from Tidy course
 

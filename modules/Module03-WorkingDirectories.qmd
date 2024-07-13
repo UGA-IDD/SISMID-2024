@@ -1,6 +1,8 @@
 ---
 title: "Module 3: Working Directories"
 format: revealjs
+scrollable: true
+smaller: true
 ---
 
 ## Learning Objectives
@@ -41,15 +43,17 @@ setwd("~/")
     -   "\~" - is your "home" directory
 
 
-## Absoluate vs. relative paths (From Wiki)
+## Absoluate vs. relative paths
+
+From Wiki
 
 -   An **absolute or full path** points to the same location in a file system, regardless of the current working directory. To do that, it must include the root directory. Absolute path is specific to your system alone. This means if I try your code, and you use absolute paths, it won't work unless we have the exact same folder structure where R is looking (bad).
 
--   By contrast, a **relative path starts from some given working directory**, avoiding the need to provide the full absolute path. A filename can is considered as a relative path based on the current working directory.
+-   By contrast, a **relative path starts from some given working directory**, avoiding the need to provide the full absolute path.
 
 ## Relative path
 
-You want to set you code up based on relative paths.  This allows sharing of code, and also, allows you to modify your own file structure (above of the working directory) without breaking your own code.
+You want to set you code up based on relative paths.  This allows sharing of code, and also, allows you to modify your own file structure (above the working directory) without breaking your own code.
 
 
 ## Setting the working directory using your cursor
@@ -59,7 +63,7 @@ Remember above "Many people recommend not setting a directory in the scripts, ra
 RStudio will show the code in the Console for the action you took with your cursor. This is a good way to learn about your file system how to set a correct working directory!
 
 ```{r, eval = FALSE}
-setwd("~/Dropbox/SISMID2024/")
+setwd("~/Dropbox/Git/SISMID-2024")
 ```
 
 
