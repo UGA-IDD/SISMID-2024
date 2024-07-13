@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -348,6 +413,30 @@
 <ul>
 <li><a href="#/learning-goals" id="/toc-learning-goals">Learning goals</a></li>
 <li><a href="#/what-is-iteration" id="/toc-what-is-iteration">What is iteration?</a></li>
+<li><a href="#/parts-of-a-loop" id="/toc-parts-of-a-loop">Parts of a loop</a></li>
+<li><a href="#/parts-of-a-loop-1" id="/toc-parts-of-a-loop-1">Parts of a loop</a></li>
+<li><a href="#/header-parts" id="/toc-header-parts">Header parts</a></li>
+<li><a href="#/header-parts-1" id="/toc-header-parts-1">Header parts</a></li>
+<li><a href="#/loop-iteration-1" id="/toc-loop-iteration-1">Loop iteration 1</a></li>
+<li><a href="#/loop-iteration-2" id="/toc-loop-iteration-2">Loop iteration 2</a></li>
+<li><a href="#/loop-iteration-3" id="/toc-loop-iteration-3">Loop iteration 3</a></li>
+<li><a href="#/the-loop-structure-automates-this-process-for-us-so-we-dont-have-to-copy-and-paste-our-code" id="/toc-the-loop-structure-automates-this-process-for-us-so-we-dont-have-to-copy-and-paste-our-code">The loop structure automates this process for us so we don’t have to copy and paste our code!</a></li>
+<li><a href="#/remember-write-dry-code" id="/toc-remember-write-dry-code">Remember: write DRY code!</a></li>
+
+<li><a href="#/you-try-it" id="/toc-you-try-it">You try it!</a></li>
+<li><a href="#/wait-did-we-need-to-do-that" id="/toc-wait-did-we-need-to-do-that">Wait, did we need to do that?</a></li>
+<li><a href="#/wait-did-we-need-to-do-that-1" id="/toc-wait-did-we-need-to-do-that-1">Wait, did we need to do that?</a></li>
+<li><a href="#/wait-did-we-need-to-do-that-2" id="/toc-wait-did-we-need-to-do-that-2">Wait, did we need to do that?</a></li>
+<li><a href="#/loop-walkthrough" id="/toc-loop-walkthrough">Loop walkthrough</a></li>
+<li><a href="#/loop-walkthrough-1" id="/toc-loop-walkthrough-1">Loop walkthrough</a></li>
+<li><a href="#/loop-walkthrough-2" id="/toc-loop-walkthrough-2">Loop walkthrough</a></li>
+<li><a href="#/loop-walkthrough-3" id="/toc-loop-walkthrough-3">Loop walkthrough</a></li>
+<li><a href="#/you-try-it-if-we-have-time" id="/toc-you-try-it-if-we-have-time">You try it! (if we have time)</a></li>
+<li><a href="#/main-problem-solution" id="/toc-main-problem-solution">Main problem solution</a></li>
+<li><a href="#/main-problem-solution-1" id="/toc-main-problem-solution-1">Main problem solution</a></li>
+<li><a href="#/bonus-problem-solution" id="/toc-bonus-problem-solution">Bonus problem solution</a></li>
+<li><a href="#/bonus-problem-solution-1" id="/toc-bonus-problem-solution-1">Bonus problem solution</a></li>
+<li><a href="#/more-practice-on-your-own" id="/toc-more-practice-on-your-own">More practice on your own</a></li>
 </ul>
 </nav>
 </section>
@@ -356,11 +445,956 @@
 <ol type="1">
 <li>Replace repetitive code with a <code>for</code> loop</li>
 <li>Compare and contrast <code>for</code> loops and <code>*apply()</code> functions</li>
-<li>Define and apply vectorization to replace unnecessary loops</li>
+<li>Use vectorization to replace unnecessary loops</li>
 </ol>
 </section>
-<section id="what-is-iteration" class="title-slide slide level1 center">
-<h1>What is iteration?</h1>
+<section id="what-is-iteration" class="slide level2">
+<h2>What is iteration?</h2>
+<ul>
+<li>Whenever you repeat something, that’s iteration.</li>
+<li>In <code>R</code>, this means running the same code multiple times in a row.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">data</span>(<span class="st">"penguins"</span>, <span class="at">package =</span> <span class="st">"palmerpenguins"</span>)</span>
+<span id="cb1-2"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
+<span id="cb1-3"><a></a>    island_mean <span class="ot">&lt;-</span></span>
+<span id="cb1-4"><a></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb1-7"><a></a>    </span>
+<span id="cb1-8"><a></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb1-9"><a></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb1-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The mean bill depth on Biscoe Island was 15.87 mm.
+The mean bill depth on Dream Island was 18.34 mm.
+The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
+</div>
+</div>
+</section>
+<section id="parts-of-a-loop" class="slide level2">
+<h2>Parts of a loop</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="1,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
+<span id="cb3-2"><a></a>    island_mean <span class="ot">&lt;-</span></span>
+<span id="cb3-3"><a></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb3-6"><a></a>    </span>
+<span id="cb3-7"><a></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb3-8"><a></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb3-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <strong>header</strong> declares how many times we will repeat the same code. The header contains a <strong>control variable</strong> that changes in each repetition and a <strong>sequence</strong> of values for the control variable to take.</p>
+</section>
+<section id="parts-of-a-loop-1" class="slide level2">
+<h2>Parts of a loop</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
+<span id="cb4-2"><a></a>    island_mean <span class="ot">&lt;-</span></span>
+<span id="cb4-3"><a></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb4-6"><a></a>    </span>
+<span id="cb4-7"><a></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb4-8"><a></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb4-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <strong>body</strong> of the loop contains code that will be repeated a number of times based on the header instructions. In <code>R</code>, the body has to be surrounded by curly braces.</p>
+</section>
+<section id="header-parts" class="slide level2">
+<h2>Header parts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>for</code>: keyword that declares we are doing a for loop.</li>
+<li><code>(...)</code>: parentheses after <code>for</code> declare the control variable and sequence.</li>
+<li><code>this_island</code>: the control variable.</li>
+<li><code>in</code>: keyword that separates the control varibale and sequence.</li>
+<li><code>levels(penguins$island)</code>: the sequence.</li>
+<li><code>{}</code>: curly braces will contain the body code.</li>
+</ul>
+</section>
+<section id="header-parts-1" class="slide level2">
+<h2>Header parts</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Since <code>levels(penguins$island)</code> evaluates to <code>c("Biscoe", "Dream", "Torgersen")</code>, our loop will repeat 3 times.</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Iteration</th>
+<th><code>this_island</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>“Biscoe”</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>“Dream”</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>“Torgersen”</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Everything inside of <code>{...}</code> will be repeated three times.</li>
+</ul>
+</section>
+<section id="loop-iteration-1" class="slide level2">
+<h2>Loop iteration 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>island_mean <span class="ot">&lt;-</span></span>
+<span id="cb7-2"><a></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Biscoe"</span>] <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Biscoe"</span>, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb7-7"><a></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The mean bill depth on Biscoe Island was 15.87 mm.</code></pre>
+</div>
+</div>
+</section>
+<section id="loop-iteration-2" class="slide level2">
+<h2>Loop iteration 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>island_mean <span class="ot">&lt;-</span></span>
+<span id="cb9-2"><a></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Dream"</span>] <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb9-5"><a></a></span>
+<span id="cb9-6"><a></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Dream"</span>, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb9-7"><a></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The mean bill depth on Dream Island was 18.34 mm.</code></pre>
+</div>
+</div>
+</section>
+<section id="loop-iteration-3" class="slide level2">
+<h2>Loop iteration 3</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>island_mean <span class="ot">&lt;-</span></span>
+<span id="cb11-2"><a></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>] <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Torgersen"</span>, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb11-7"><a></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
+</div>
+</div>
+</section>
+<section id="the-loop-structure-automates-this-process-for-us-so-we-dont-have-to-copy-and-paste-our-code" class="slide level2">
+<h2>The loop structure automates this process for us so we don’t have to copy and paste our code!</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
+<span id="cb13-2"><a></a>    island_mean <span class="ot">&lt;-</span></span>
+<span id="cb13-3"><a></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-5"><a></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb13-6"><a></a>    </span>
+<span id="cb13-7"><a></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb13-8"><a></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb13-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The mean bill depth on Biscoe Island was 15.87 mm.
+The mean bill depth on Dream Island was 18.34 mm.
+The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
+</div>
+</div>
+</section>
+<section id="remember-write-dry-code" class="slide level2">
+<h2>Remember: write DRY code!</h2>
+<ul>
+<li>DRY = “Don’t Repeat Yourself”</li>
+<li>Instead of copying and pasting, write loops and functions.</li>
+<li>Easier to debug and change in the future!</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Of course, we all copy and paste code sometimes. If you are running on a tight deadline or can’t get a loop or function to work, you might need to. <strong>DRY code is good, but working code is best!</strong></li>
+</ul>
+</div>
+</section>
+<section id="tweet-slide" class="slide level2 center" data-menu-title="Hadley tweet">
+<h2></h2>
+
+<img data-src="../images/hadley-tweet.PNG" class="r-stretch"></section>
+<section id="you-try-it" class="slide level2">
+<h2>You try it!</h2>
+<p>Write a loop that goes from 1 to 10, squares each of the numbers, and prints the squared number.</p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb15-2"><a></a>    <span class="fu">cat</span>(i <span class="sc">^</span> <span class="dv">2</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 
+4 
+9 
+16 
+25 
+36 
+49 
+64 
+81 
+100 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="wait-did-we-need-to-do-that" class="slide level2 incremental">
+<h2>Wait, did we need to do that?</h2>
+<ul>
+<li>Well, yes, because you need to practice loops!</li>
+<li>But technically no, because we can use <strong>vectorization</strong>.</li>
+<li>Almost all basic operations in R are <strong>vectorized</strong>: they work on a vector of arguments all at the same time.</li>
+</ul>
+</section>
+<section id="wait-did-we-need-to-do-that-1" class="slide level2">
+<h2>Wait, did we need to do that?</h2>
+<ul>
+<li>Well, yes, because you need to practice loops!</li>
+<li>But technically no, because we can use <strong>vectorization</strong>.</li>
+<li>Almost all basic operations in R are <strong>vectorized</strong>: they work on a vector of arguments all at the same time.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># No loop needed!</span></span>
+<span id="cb17-2"><a></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+</div>
+</div>
+</section>
+<section id="wait-did-we-need-to-do-that-2" class="slide level2">
+<h2>Wait, did we need to do that?</h2>
+<ul>
+<li>Well, yes, because you need to practice loops!</li>
+<li>But technically no, because we can use <strong>vectorization</strong>.</li>
+<li>Almost all basic operations in R are <strong>vectorized</strong>: they work on a vector of arguments all at the same time.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># No loop needed!</span></span>
+<span id="cb19-2"><a></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Get the first 10 odd numbers, a common CS 101 loop problem on exams</span></span>
+<span id="cb21-2"><a></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)[<span class="fu">which</span>((<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="sc">%%</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">1</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  3  5  7  9 11 13 15 17 19</code></pre>
+</div>
+</div>
+<ul>
+<li>So you should really try vectorization first, then use loops only when you can’t use vectorization.</li>
+</ul>
+</section>
+<section id="loop-walkthrough" class="slide level2">
+<h2>Loop walkthrough</h2>
+<ul>
+<li>Let’s walk through a complex but useful example where we can’t use vectorization.</li>
+<li>Load the cleaned measles dataset, and subset it so you only have MCV1 records.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>meas <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"measles_final.Rds"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a></a>    <span class="fu">subset</span>(vaccine_antigen <span class="sc">==</span> <span class="st">"MCV1"</span>)</span>
+<span id="cb23-3"><a></a><span class="fu">str</span>(meas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   7972 obs. of  7 variables:
+ $ iso3c           : chr  "AFG" "AFG" "AFG" "AFG" ...
+ $ time            : int  1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 ...
+ $ country         : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+ $ Cases           : int  2792 5166 2900 640 353 2012 1511 638 1154 492 ...
+ $ vaccine_antigen : chr  "MCV1" "MCV1" "MCV1" "MCV1" ...
+ $ vaccine_coverage: int  11 NA 8 9 14 14 14 31 34 22 ...
+ $ total_pop       : chr  "12486631" "11155195" "10088289" "9951449" ...</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="loop-walkthrough-1" class="slide level2">
+<h2>Loop walkthrough</h2>
+<ul>
+<li>First, make an empty <code>list</code>. This is where we’ll store our results. Make it the same length as the number of countries in the dataset.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(<span class="fu">unique</span>(meas<span class="sc">$</span>country)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>This is called <em>preallocation</em> and it can make your loops much faster.</li>
+</ul>
+</div>
+</section>
+<section id="loop-walkthrough-2" class="slide level2">
+<h2>Loop walkthrough</h2>
+<ul>
+<li>Loop through every country in the dataset, and get the median, first and third quartiles, and range for each country. Store those summary statistics in a data frame.</li>
+<li>What should the header look like?</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>countries <span class="ot">&lt;-</span> <span class="fu">unique</span>(meas<span class="sc">$</span>country)</span>
+<span id="cb26-2"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Note that we use the <strong>index</strong> as the control variable. When you need to do complex operations inside a loop, this is easier than the <strong>for-each</strong> construction we used earlier.</li>
+</ul>
+</div>
+</section>
+<section id="loop-walkthrough-3" class="slide level2 scrollable">
+<h2>Loop walkthrough</h2>
+<ul>
+<li>Now write out the body of the code. First we need to subset the data, to get only the data for the current country.</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb27-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb27-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb27-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Next we need to get the summary of the cases for that country.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb28-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb28-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb28-4"><a></a>    </span>
+<span id="cb28-5"><a></a>    <span class="co"># Get the summary statistics for this country</span></span>
+<span id="cb28-6"><a></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
+<span id="cb28-7"><a></a>    country_med <span class="ot">&lt;-</span> <span class="fu">median</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-8"><a></a>    country_iqr <span class="ot">&lt;-</span> <span class="fu">IQR</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-9"><a></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Next we save the summary statistics into a data frame.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb29-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb29-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb29-4"><a></a>    </span>
+<span id="cb29-5"><a></a>    <span class="co"># Get the summary statistics for this country</span></span>
+<span id="cb29-6"><a></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
+<span id="cb29-7"><a></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb29-8"><a></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb29-9"><a></a>    )</span>
+<span id="cb29-10"><a></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-11"><a></a>    </span>
+<span id="cb29-12"><a></a>    <span class="co"># Save the summary statistics into a data frame</span></span>
+<span id="cb29-13"><a></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb29-14"><a></a>        <span class="at">country =</span> countries[[i]],</span>
+<span id="cb29-15"><a></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
+<span id="cb29-16"><a></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
+<span id="cb29-17"><a></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
+<span id="cb29-18"><a></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
+<span id="cb29-19"><a></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
+<span id="cb29-20"><a></a>    )</span>
+<span id="cb29-21"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>And finally, we save the data frame as the next element in our storage list.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb30-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb30-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb30-4"><a></a>    </span>
+<span id="cb30-5"><a></a>    <span class="co"># Get the summary statistics for this country</span></span>
+<span id="cb30-6"><a></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
+<span id="cb30-7"><a></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb30-8"><a></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb30-9"><a></a>    )</span>
+<span id="cb30-10"><a></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-11"><a></a>    </span>
+<span id="cb30-12"><a></a>    <span class="co"># Save the summary statistics into a data frame</span></span>
+<span id="cb30-13"><a></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-14"><a></a>        <span class="at">country =</span> countries[[i]],</span>
+<span id="cb30-15"><a></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
+<span id="cb30-16"><a></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
+<span id="cb30-17"><a></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
+<span id="cb30-18"><a></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
+<span id="cb30-19"><a></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
+<span id="cb30-20"><a></a>    )</span>
+<span id="cb30-21"><a></a>    </span>
+<span id="cb30-22"><a></a>    <span class="co"># Save the results to our container</span></span>
+<span id="cb30-23"><a></a>    res[[i]] <span class="ot">&lt;-</span> country_summary</span>
+<span id="cb30-24"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in min(x): no non-missing arguments to min; returning Inf</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in max(x): no non-missing arguments to max; returning -Inf</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in min(x): no non-missing arguments to min; returning Inf</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in max(x): no non-missing arguments to max; returning -Inf</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in min(x): no non-missing arguments to min; returning Inf</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in max(x): no non-missing arguments to max; returning -Inf</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Let’s take a look at the results.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">head</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+      country min   Q1 median   Q3   max
+1 Afghanistan 353 1154   2205 5166 31107
+
+[[2]]
+  country min  Q1 median    Q3   max
+1  Angola  29 700   3271 14474 30067
+
+[[3]]
+  country min Q1 median Q3    max
+1 Albania   0  1     12 29 136034
+
+[[4]]
+  country min Q1 median Q3 max
+1 Andorra   0  0      1  2   5
+
+[[5]]
+               country min    Q1 median   Q3  max
+1 United Arab Emirates  22 89.75    320 1128 2913
+
+[[6]]
+    country min Q1 median     Q3   max
+1 Argentina   0  0     17 4591.5 42093</code></pre>
+</div>
+</div>
+<ul>
+<li>How do we deal with this to get it into a nice form?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>We can use a <em>vectorization</em> trick: the function <code>do.call()</code> seems like ancient computer science magic. And it is. But it will actually help us a lot.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>res_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, res)</span>
+<span id="cb39-2"><a></a><span class="fu">head</span>(res_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">Q1</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">353</td>
+<td style="text-align: right;">1154.00</td>
+<td style="text-align: right;">2205</td>
+<td style="text-align: right;">5166.0</td>
+<td style="text-align: right;">31107</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Angola</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">700.00</td>
+<td style="text-align: right;">3271</td>
+<td style="text-align: right;">14474.0</td>
+<td style="text-align: right;">30067</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">29.0</td>
+<td style="text-align: right;">136034</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Andorra</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">United Arab Emirates</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">89.75</td>
+<td style="text-align: right;">320</td>
+<td style="text-align: right;">1128.0</td>
+<td style="text-align: right;">2913</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Argentina</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">4591.5</td>
+<td style="text-align: right;">42093</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>It combined our data frames together! Let’s take a look at the <code>rbind</code> and <code>do.call()</code> help packages to see what happened.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>?rbind</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Combine R Objects by Rows or Columns
+
+Description:
+
+     Take a sequence of vector, matrix or data-frame arguments and
+     combine by _c_olumns or _r_ows, respectively.  These are generic
+     functions with methods for other R classes.
+
+Usage:
+
+     cbind(..., deparse.level = 1)
+     rbind(..., deparse.level = 1)
+     ## S3 method for class 'data.frame'
+     rbind(..., deparse.level = 1, make.row.names = TRUE,
+           stringsAsFactors = FALSE, factor.exclude = TRUE)
+     
+Arguments:
+
+     ...: (generalized) vectors or matrices.  These can be given as
+          named arguments.  Other R objects may be coerced as
+          appropriate, or S4 methods may be used: see sections
+          'Details' and 'Value'.  (For the '"data.frame"' method of
+          'cbind' these can be further arguments to 'data.frame' such
+          as 'stringsAsFactors'.)
+
+deparse.level: integer controlling the construction of labels in the
+          case of non-matrix-like arguments (for the default method):
+          'deparse.level = 0' constructs no labels;
+          the default 'deparse.level = 1' typically and 'deparse.level
+          = 2' always construct labels from the argument names, see the
+          'Value' section below.
+
+make.row.names: (only for data frame method:) logical indicating if
+          unique and valid 'row.names' should be constructed from the
+          arguments.
+
+stringsAsFactors: logical, passed to 'as.data.frame'; only has an
+          effect when the '...' arguments contain a (non-'data.frame')
+          'character'.
+
+factor.exclude: if the data frames contain factors, the default 'TRUE'
+          ensures that 'NA' levels of factors are kept, see PR#17562
+          and the 'Data frame methods'.  In R versions up to 3.6.x,
+          'factor.exclude = NA' has been implicitly hardcoded (R &lt;=
+          3.6.0) or the default (R = 3.6.x, x &gt;= 1).
+
+Details:
+
+     The functions 'cbind' and 'rbind' are S3 generic, with methods for
+     data frames.  The data frame method will be used if at least one
+     argument is a data frame and the rest are vectors or matrices.
+     There can be other methods; in particular, there is one for time
+     series objects.  See the section on 'Dispatch' for how the method
+     to be used is selected.  If some of the arguments are of an S4
+     class, i.e., 'isS4(.)' is true, S4 methods are sought also, and
+     the hidden 'cbind' / 'rbind' functions from package 'methods'
+     maybe called, which in turn build on 'cbind2' or 'rbind2',
+     respectively.  In that case, 'deparse.level' is obeyed, similarly
+     to the default method.
+
+     In the default method, all the vectors/matrices must be atomic
+     (see 'vector') or lists.  Expressions are not allowed.  Language
+     objects (such as formulae and calls) and pairlists will be coerced
+     to lists: other objects (such as names and external pointers) will
+     be included as elements in a list result.  Any classes the inputs
+     might have are discarded (in particular, factors are replaced by
+     their internal codes).
+
+     If there are several matrix arguments, they must all have the same
+     number of columns (or rows) and this will be the number of columns
+     (or rows) of the result.  If all the arguments are vectors, the
+     number of columns (rows) in the result is equal to the length of
+     the longest vector.  Values in shorter arguments are recycled to
+     achieve this length (with a 'warning' if they are recycled only
+     _fractionally_).
+
+     When the arguments consist of a mix of matrices and vectors the
+     number of columns (rows) of the result is determined by the number
+     of columns (rows) of the matrix arguments.  Any vectors have their
+     values recycled or subsetted to achieve this length.
+
+     For 'cbind' ('rbind'), vectors of zero length (including 'NULL')
+     are ignored unless the result would have zero rows (columns), for
+     S compatibility.  (Zero-extent matrices do not occur in S3 and are
+     not ignored in R.)
+
+     Matrices are restricted to less than 2^31 rows and columns even on
+     64-bit systems.  So input vectors have the same length
+     restriction: as from R 3.2.0 input matrices with more elements
+     (but meeting the row and column restrictions) are allowed.
+
+Value:
+
+     For the default method, a matrix combining the '...' arguments
+     column-wise or row-wise.  (Exception: if there are no inputs or
+     all the inputs are 'NULL', the value is 'NULL'.)
+
+     The type of a matrix result determined from the highest type of
+     any of the inputs in the hierarchy raw &lt; logical &lt; integer &lt;
+     double &lt; complex &lt; character &lt; list .
+
+     For 'cbind' ('rbind') the column (row) names are taken from the
+     'colnames' ('rownames') of the arguments if these are matrix-like.
+     Otherwise from the names of the arguments or where those are not
+     supplied and 'deparse.level &gt; 0', by deparsing the expressions
+     given, for 'deparse.level = 1' only if that gives a sensible name
+     (a 'symbol', see 'is.symbol').
+
+     For 'cbind' row names are taken from the first argument with
+     appropriate names: rownames for a matrix, or names for a vector of
+     length the number of rows of the result.
+
+     For 'rbind' column names are taken from the first argument with
+     appropriate names: colnames for a matrix, or names for a vector of
+     length the number of columns of the result.
+
+Data frame methods:
+
+     The 'cbind' data frame method is just a wrapper for
+     'data.frame(..., check.names = FALSE)'.  This means that it will
+     split matrix columns in data frame arguments, and convert
+     character columns to factors unless 'stringsAsFactors = FALSE' is
+     specified.
+
+     The 'rbind' data frame method first drops all zero-column and
+     zero-row arguments.  (If that leaves none, it returns the first
+     argument with columns otherwise a zero-column zero-row data
+     frame.)  It then takes the classes of the columns from the first
+     data frame, and matches columns by name (rather than by position).
+     Factors have their levels expanded as necessary (in the order of
+     the levels of the level sets of the factors encountered) and the
+     result is an ordered factor if and only if all the components were
+     ordered factors.  Old-style categories (integer vectors with
+     levels) are promoted to factors.
+
+     Note that for result column 'j', 'factor(., exclude = X(j))' is
+     applied, where
+
+       X(j) := if(isTRUE(factor.exclude)) {
+                  if(!NA.lev[j]) NA # else NULL
+               } else factor.exclude
+     
+     where 'NA.lev[j]' is true iff any contributing data frame has had
+     a 'factor' in column 'j' with an explicit 'NA' level.
+
+Dispatch:
+
+     The method dispatching is _not_ done via 'UseMethod()', but by
+     C-internal dispatching.  Therefore there is no need for, e.g.,
+     'rbind.default'.
+
+     The dispatch algorithm is described in the source file
+     ('.../src/main/bind.c') as
+
+       1. For each argument we get the list of possible class
+          memberships from the class attribute.
+
+       2. We inspect each class in turn to see if there is an
+          applicable method.
+
+       3. If we find a method, we use it.  Otherwise, if there was an
+          S4 object among the arguments, we try S4 dispatch; otherwise,
+          we use the default code.
+
+     If you want to combine other objects with data frames, it may be
+     necessary to coerce them to data frames first.  (Note that this
+     algorithm can result in calling the data frame method if all the
+     arguments are either data frames or vectors, and this will result
+     in the coercion of character vectors to factors.)
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth &amp; Brooks/Cole.
+
+See Also:
+
+     'c' to combine vectors (and lists) as vectors, 'data.frame' to
+     combine vectors and matrices as a data frame.
+
+Examples:
+
+     m &lt;- cbind(1, 1:7) # the '1' (= shorter vector) is recycled
+     m
+     m &lt;- cbind(m, 8:14)[, c(1, 3, 2)] # insert a column
+     m
+     cbind(1:7, diag(3)) # vector is subset -&gt; warning
+     
+     cbind(0, rbind(1, 1:3))
+     cbind(I = 0, X = rbind(a = 1, b = 1:3))  # use some names
+     xx &lt;- data.frame(I = rep(0,2))
+     cbind(xx, X = rbind(a = 1, b = 1:3))   # named differently
+     
+     cbind(0, matrix(1, nrow = 0, ncol = 4)) #&gt; Warning (making sense)
+     dim(cbind(0, matrix(1, nrow = 2, ncol = 0))) #-&gt; 2 x 1
+     
+     ## deparse.level
+     dd &lt;- 10
+     rbind(1:4, c = 2, "a++" = 10, dd, deparse.level = 0) # middle 2 rownames
+     rbind(1:4, c = 2, "a++" = 10, dd, deparse.level = 1) # 3 rownames (default)
+     rbind(1:4, c = 2, "a++" = 10, dd, deparse.level = 2) # 4 rownames
+     
+     ## cheap row names:
+     b0 &lt;- gl(3,4, labels=letters[1:3])
+     bf &lt;- setNames(b0, paste0("o", seq_along(b0)))
+     df  &lt;- data.frame(a = 1, B = b0, f = gl(4,3))
+     df. &lt;- data.frame(a = 1, B = bf, f = gl(4,3))
+     new &lt;- data.frame(a = 8, B ="B", f = "1")
+     (df1  &lt;- rbind(df , new))
+     (df.1 &lt;- rbind(df., new))
+     stopifnot(identical(df1, rbind(df,  new, make.row.names=FALSE)),
+               identical(df1, rbind(df., new, make.row.names=FALSE)))</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>?do.call</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Execute a Function Call
+
+Description:
+
+     'do.call' constructs and executes a function call from a name or a
+     function and a list of arguments to be passed to it.
+
+Usage:
+
+     do.call(what, args, quote = FALSE, envir = parent.frame())
+     
+Arguments:
+
+    what: either a function or a non-empty character string naming the
+          function to be called.
+
+    args: a _list_ of arguments to the function call.  The 'names'
+          attribute of 'args' gives the argument names.
+
+   quote: a logical value indicating whether to quote the arguments.
+
+   envir: an environment within which to evaluate the call.  This will
+          be most useful if 'what' is a character string and the
+          arguments are symbols or quoted expressions.
+
+Details:
+
+     If 'quote' is 'FALSE', the default, then the arguments are
+     evaluated (in the calling environment, not in 'envir').  If
+     'quote' is 'TRUE' then each argument is quoted (see 'quote') so
+     that the effect of argument evaluation is to remove the quotes -
+     leaving the original arguments unevaluated when the call is
+     constructed.
+
+     The behavior of some functions, such as 'substitute', will not be
+     the same for functions evaluated using 'do.call' as if they were
+     evaluated from the interpreter.  The precise semantics are
+     currently undefined and subject to change.
+
+Value:
+
+     The result of the (evaluated) function call.
+
+Warning:
+
+     This should not be used to attempt to evade restrictions on the
+     use of '.Internal' and other non-API calls.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth &amp; Brooks/Cole.
+
+See Also:
+
+     'call' which creates an unevaluated call.
+
+Examples:
+
+     do.call("complex", list(imaginary = 1:3))
+     
+     ## if we already have a list (e.g., a data frame)
+     ## we need c() to add further arguments
+     tmp &lt;- expand.grid(letters[1:2], 1:3, c("+", "-"))
+     do.call("paste", c(tmp, sep = ""))
+     
+     do.call(paste, list(as.name("A"), as.name("B")), quote = TRUE)
+     
+     ## examples of where objects will be found.
+     A &lt;- 2
+     f &lt;- function(x) print(x^2)
+     env &lt;- new.env()
+     assign("A", 10, envir = env)
+     assign("f", f, envir = env)
+     f &lt;- function(x) print(x)
+     f(A)                                      # 2
+     do.call("f", list(A))                     # 2
+     do.call("f", list(A), envir = env)        # 4
+     do.call( f,  list(A), envir = env)        # 2
+     do.call("f", list(quote(A)), envir = env) # 100
+     do.call( f,  list(quote(A)), envir = env) # 10
+     do.call("f", list(as.name("A")), envir = env) # 100
+     
+     eval(call("f", A))                      # 2
+     eval(call("f", quote(A)))               # 2
+     eval(call("f", A), envir = env)         # 4
+     eval(call("f", quote(A)), envir = env)  # 100</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>OK, so basically what happened is that</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">do.call</span>(rbind, list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Gets transformed into</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">rbind</span>(list[[<span class="dv">1</span>]], list[[<span class="dv">2</span>]], list[[<span class="dv">3</span>]], ..., list[[<span class="fu">length</span>(list)]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>That’s vectorization magic!</li>
+</ul>
+</div>
+</section>
+<section id="you-try-it-if-we-have-time" class="slide level2 smaller">
+<h2>You try it! (if we have time)</h2>
+<ul>
+<li>Use the code you wrote before the get the incidence per 1000 people on the entire measles data set (add a column for incidence to the full data).</li>
+<li>Use the code <code>plot(NULL, NULL, ...)</code> to make a blank plot. You will need to set the <code>xlim</code> and <code>ylim</code> arguments to sensible values, and specify the axis titles as “Year” and “Incidence per 1000 people”.</li>
+<li>Using a <code>for</code> loop and the <code>lines()</code> function, make a plot that shows all of the incidence curves over time, overlapping on the plot.</li>
+<li>HINT: use <code>col = adjustcolor(black, alpha.f = 0.25)</code> to make the curves transparent, so you can see the others.</li>
+<li>BONUS PROBLEM: using the function <code>cumsum()</code>, make a plot of the cumulative incidence per 1000 people over time for all of the countries. (Dealing with the NA’s here is tricky!!)</li>
+</ul>
+</section>
+<section id="main-problem-solution" class="slide level2">
+<h2>Main problem solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>meas<span class="sc">$</span>cases_per_thousand <span class="ot">&lt;-</span> meas<span class="sc">$</span>Cases <span class="sc">/</span> <span class="fu">as.numeric</span>(meas<span class="sc">$</span>total_pop) <span class="sc">*</span> <span class="dv">1000</span></span>
+<span id="cb46-2"><a></a>countries <span class="ot">&lt;-</span> <span class="fu">unique</span>(meas<span class="sc">$</span>country)</span>
+<span id="cb46-3"><a></a></span>
+<span id="cb46-4"><a></a><span class="fu">plot</span>(</span>
+<span id="cb46-5"><a></a>    <span class="cn">NULL</span>, <span class="cn">NULL</span>,</span>
+<span id="cb46-6"><a></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1980</span>, <span class="dv">2022</span>),</span>
+<span id="cb46-7"><a></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>),</span>
+<span id="cb46-8"><a></a>    <span class="at">xlab =</span> <span class="st">"Year"</span>,</span>
+<span id="cb46-9"><a></a>    <span class="at">ylab =</span> <span class="st">"Incidence per 1000 people"</span></span>
+<span id="cb46-10"><a></a>)</span>
+<span id="cb46-11"><a></a></span>
+<span id="cb46-12"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb46-13"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[[i]])</span>
+<span id="cb46-14"><a></a>    <span class="fu">lines</span>(</span>
+<span id="cb46-15"><a></a>        <span class="at">x =</span> country_data<span class="sc">$</span>time,</span>
+<span id="cb46-16"><a></a>        <span class="at">y =</span> country_data<span class="sc">$</span>cases_per_thousand,</span>
+<span id="cb46-17"><a></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"black"</span>, <span class="at">alpha.f =</span> <span class="fl">0.25</span>)</span>
+<span id="cb46-18"><a></a>    )</span>
+<span id="cb46-19"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="main-problem-solution-1" class="slide level2">
+<h2>Main problem solution</h2>
+
+<img data-src="ModuleXX-Iteration_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"></section>
+<section id="bonus-problem-solution" class="slide level2">
+<h2>Bonus problem solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="co"># First calculate the cumulative cases, treating NA as zeroes</span></span>
+<span id="cb47-2"><a></a>cumulative_cases <span class="ot">&lt;-</span> <span class="fu">ave</span>(</span>
+<span id="cb47-3"><a></a>    <span class="at">x =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(meas<span class="sc">$</span>Cases), <span class="dv">0</span>, meas<span class="sc">$</span>Cases),</span>
+<span id="cb47-4"><a></a>    meas<span class="sc">$</span>country,</span>
+<span id="cb47-5"><a></a>    <span class="at">FUN =</span> cumsum</span>
+<span id="cb47-6"><a></a>)</span>
+<span id="cb47-7"><a></a></span>
+<span id="cb47-8"><a></a><span class="co"># Now put the NAs back where they should be</span></span>
+<span id="cb47-9"><a></a>meas<span class="sc">$</span>cumulative_cases <span class="ot">&lt;-</span> cumulative_cases <span class="sc">+</span> (meas<span class="sc">$</span>Cases <span class="sc">*</span> <span class="dv">0</span>)</span>
+<span id="cb47-10"><a></a></span>
+<span id="cb47-11"><a></a><span class="fu">plot</span>(</span>
+<span id="cb47-12"><a></a>    <span class="cn">NULL</span>, <span class="cn">NULL</span>,</span>
+<span id="cb47-13"><a></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1980</span>, <span class="dv">2022</span>),</span>
+<span id="cb47-14"><a></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">6.2e6</span>),</span>
+<span id="cb47-15"><a></a>    <span class="at">xlab =</span> <span class="st">"Year"</span>,</span>
+<span id="cb47-16"><a></a>    <span class="at">ylab =</span> <span class="st">"Cumulative cases per 1000 people"</span></span>
+<span id="cb47-17"><a></a>)</span>
+<span id="cb47-18"><a></a></span>
+<span id="cb47-19"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb47-20"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[[i]])</span>
+<span id="cb47-21"><a></a>    <span class="fu">lines</span>(</span>
+<span id="cb47-22"><a></a>        <span class="at">x =</span> country_data<span class="sc">$</span>time,</span>
+<span id="cb47-23"><a></a>        <span class="at">y =</span> country_data<span class="sc">$</span>cumulative_cases,</span>
+<span id="cb47-24"><a></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"black"</span>, <span class="at">alpha.f =</span> <span class="fl">0.25</span>)</span>
+<span id="cb47-25"><a></a>    )</span>
+<span id="cb47-26"><a></a>}</span>
+<span id="cb47-27"><a></a></span>
+<span id="cb47-28"><a></a><span class="fu">text</span>(</span>
+<span id="cb47-29"><a></a>    <span class="at">x =</span> <span class="dv">2020</span>,</span>
+<span id="cb47-30"><a></a>    <span class="at">y =</span> <span class="fl">6e6</span>,</span>
+<span id="cb47-31"><a></a>    <span class="at">labels =</span> <span class="st">"China →"</span></span>
+<span id="cb47-32"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bonus-problem-solution-1" class="slide level2">
+<h2>Bonus problem solution</h2>
+
+<img data-src="ModuleXX-Iteration_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
+<section id="more-practice-on-your-own" class="slide level2 smaller">
+<h2>More practice on your own</h2>
+<ul>
+<li>Merge the <code>countries-regions.csv</code> data with the <code>measles_final.Rds</code> data. Reshape the measles data so that <code>MCV1</code> and <code>MCV2</code> vaccine coverage are two separate columns. Then use a loop to fit a poisson regression model for each continent where <code>Cases</code> is the outcome, and <code>MCV1 coverage</code> and <code>MCV2 coverage</code> are the predictors. Discuss your findings, and try adding an interation term.</li>
+<li>Assess the impact of <code>age_months</code> as a confounder in the Diphtheria serology data. First, write code to transform <code>age_months</code> into age ranges for each year. Then, using a loop, calculate the crude odds ratio for the effect of vaccination on infection for each of the age ranges. How does the odds ratio change as age increases? Can you formalize this analysis by fitting a logistic regression model with <code>age_months</code> and vaccination as predictors?</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -578,6 +1612,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
