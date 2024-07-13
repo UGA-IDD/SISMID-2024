@@ -1,0 +1,87 @@
+---
+title: "Module 7: Variable Creation, Classes, and Summaries"
+format: revealjs
+scrollable: true
+smaller: true
+---
+
+## Learning Objectives
+
+After module 7, you should be able to...
+
+-   Create new variables
+-		Remove variables
+
+
+## Import data for this module
+Let's first read in the data from the previous module.
+
+```{r echo=TRUE}
+df <- read.csv(file = "~/Dropbox/SISMID/data/serodata.csv") #relative path
+```
+
+
+
+# Adding/Removing Columns
+
+## Adding new columns
+
+You can add a new column, called `newcol` to `df`, using the `$` operator:
+```{r}
+df$newcol <- df$wt/2.2
+head(df,3)
+```
+
+## Creating conditional variables
+
+One frequently-used tool is creating variables with conditions. A general function for creating new variables based on existing variables is the Base R `ifelse()` function, which "returns a value depending on whether the element of test is `TRUE` or `FALSE`."
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?ifelse
+```
+
+
+## `ifelse` example
+
+```{r}
+df$disp
+```
+
+Now with `ifelse`()
+```{r}
+#ifelse(test, yes, no)
+ifelse(df$disp <= 200, "low", "high")
+```
+
+
+## Removing columns
+
+You can remove a column by assigning to `NULL` or by indeing like we leared in last module
+```{r, eval = FALSE}
+df$newcol <- NULL 
+df <- df[,-"newcol"]
+```
+
+
+
+
+
+## Summary
+
+- Adding (or modifying) columns/variable to a data frame by using `$` 
+- can remove a column in a few ways:  
+    1. assigning a column to `NULL`  
+    2. using `[]` with negative sign in front of column name(s)  
+-   
+-   
+
+
+## Acknowledgements
+
+These are the materials I looked through, modified, or extracted to complete this module's lecture.
+
+-   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
+-   [CRAN Project](https://cran.r-project.org/doc/manuals/R-lang.html#Indexing)
+-   [CRAN Project](https://cran.r-project.org/web/packages/extraoperators/vignettes/logicals-vignette.html)
+
