@@ -691,5 +691,54 @@
       "Day 2",
       "Iteration in R"
     ]
+  },
+  {
+    "objectID": "modules/ModuleXX-RMarkdown.html#learning-goals",
+    "href": "modules/ModuleXX-RMarkdown.html#learning-goals",
+    "title": "Literate Programming",
+    "section": "Learning goals",
+    "text": "Learning goals\n\nDefine literate programming\nImplement literate programming in R using knitr and either R Markdown or Quarto\nInclude plots, tables, and references along with your code in a written report.\nLocate additional resources for literate programming with R Markdown or Quarto."
+  },
+  {
+    "objectID": "modules/ModuleXX-RMarkdown.html#what-is-literate-programming",
+    "href": "modules/ModuleXX-RMarkdown.html#what-is-literate-programming",
+    "title": "Literate Programming",
+    "section": "What is literate programming?",
+    "text": "What is literate programming?\n\nProgramming files contain code along with text, code results, and other supporting information.\nInstead of having separate code and text, that you glue together in Word, we have one document which combines code and text."
+  },
+  {
+    "objectID": "modules/ModuleXX-RMarkdown.html#literate-programming-examples",
+    "href": "modules/ModuleXX-RMarkdown.html#literate-programming-examples",
+    "title": "Literate Programming",
+    "section": "Literate programming examples",
+    "text": "Literate programming examples\n\nWriting a research paper with R Markdown: https://github.com/wzbillings/Patient-vs-Clinician-Symptom-Reports\nWriting a book with R Markdown: https://github.com/moderndive/ModernDive_book\nPersonal websites (like my tutorial!): https://jadeyryan.com/blog/2024-02-19_beginner-quarto-netlify/\nOther examples: https://bookdown.org/yihui/rmarkdown/basics-examples.html"
+  },
+  {
+    "objectID": "modules/ModuleXX-RMarkdown.html#r-markdown-and-quarto",
+    "href": "modules/ModuleXX-RMarkdown.html#r-markdown-and-quarto",
+    "title": "Literate Programming",
+    "section": "R Markdown and Quarto",
+    "text": "R Markdown and Quarto\n\nR Markdown and Quarto are both implementations of literate programming using R, with the knitr package for the backend. Both are supported by RStudio.\nTo use R Markdown, you need to install.packages(\"rmarkdown\").\nQuarto comes with new versions of RStudio, but you can also install the latest version from the Quarto website.\nR Markdown is older and now very commonly used. Quarto is newer and so has many fancy new features, but more bugs that are constantly being found and fixed.\nIn this class, we will use R Markdown. But if you decide to use quarto, 90% of your knowledge will transfer since they are very similar.\n\nAdvantages of R Markdown: more online resources, most common bugs have been fixed over the years, many people are familiar with it.\nAdvantages of Quarto: supports other programming languages like Python and Julia, uses more modern syntax, less slapped together overall."
+  },
+  {
+    "objectID": "modules/ModuleXX-RMarkdown.html#what-is-literate-programming-1",
+    "href": "modules/ModuleXX-RMarkdown.html#what-is-literate-programming-1",
+    "title": "Literate Programming",
+    "section": "What is literate programming?",
+    "text": "What is literate programming?\n\nR markdown example, from https://rmarkdown.rstudio.com/authoring_quick_tour.html"
+  },
+  {
+    "objectID": "modules/ModuleXX-RMarkdown.html#a-few-sticking-points",
+    "href": "modules/ModuleXX-RMarkdown.html#a-few-sticking-points",
+    "title": "Literate Programming",
+    "section": "A few sticking points",
+    "text": "A few sticking points\n\nKnitting to html format is really easy, but most scientist don’t like html format for some reason. If you want to knit to pdf, you should install the package tinytex and read the intro.\nIf you want to knit to word (what many journals in epidemiology require), you need to have Word installed on your computer. Note that with word, you are a bit more restricted in your formatting options, so if weird things happen you’ll have to try some other options.\nYou maybe noticed in the tutorial that I used the here::here() function for all of my file paths. This is because R Markdown and Quarto files use a different working directory from the R Project. Using here::here() translates relative paths into absolute paths based on your R Project, so it makes sure your R Markdown files can always find the right path!"
+  },
+  {
+    "objectID": "modules/ModuleXX-RMarkdown.html#you-try-it",
+    "href": "modules/ModuleXX-RMarkdown.html#you-try-it",
+    "title": "Literate Programming",
+    "section": "You try it!",
+    "text": "You try it!\n\nCreate an R Markdown document. Write about either the measles or diphtheria example data sets, and include a figure and a table.\nBONUS EXERCISE: read the intro of the bookdown book, and create a bookdown document. Modify your writeup to have a few references with a bibliography, and cross-references with your figures and tables.\nBONUS: Try to structure your document like a report, with a section stating the questions you want to answer (intro), a section with your R code and results, and a section with your interpretations (discussion). This is a very open ended exercise but by now I believe you can do it, and you’ll have a nice document you can put on your portfolio or show employers!"
   }
 ]
