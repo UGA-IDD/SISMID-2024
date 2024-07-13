@@ -31,7 +31,7 @@ library(printr)
 ## Adding new columns
 
 You can add a new column, called `newcol` to `df`, using the `$` operator:
-```{r}
+```{r echo=TRUE}
 df$log_IgG_concentration <- log(df$IgG_concentration)
 head(df,3)
 ```
@@ -50,13 +50,13 @@ library(printr)
 
 Reminder of the first three arguments in the `ifelse()` function are `ifelse(the test, what happens in TRUE, what happens if false)`...
 
-```{r}
+```{r echo=TRUE}
 df$age_group <- ifelse(df$age <= 5, "young", "old")
 head(df)
 ```
 
 What is we nest `ifelse()` statements?
-```{r}
+```{r echo=TRUE}
 df$age_group <- ifelse(df$age <= 5, "young", 
 											 ifelse(df$age<=10 & df$age>5, "middle"), "old")
 head(df)
@@ -152,7 +152,7 @@ There are two useful functions associated with practically all R classes:
 
 ## Examples `is.CLASS_NAME(x)`
 
-```{r logical_coercion}
+```{r echo=TRUE}
 is.numeric(df$IgG_concentration)
 is.character(df$age)
 is.charact(df$gender)
@@ -215,14 +215,14 @@ library(printr)
 
 ## Changing factor reference examples
 
-```{r}
+```{r echo=TRUE}
 df$age_group_factor <- relevel(df$age_group_factor, ref="young")
 levels(df$age_group_factor)
 ```
 
 OR
 
-```{r}
+```{r echo=TRUE}
 df$age_group_factor <- factor(df$age_group, levels=c("young", "middle", "old"))
 levels(df$age_group_factor)
 ```
@@ -246,7 +246,7 @@ Matrices, like data frames are also composed of rows and columns. Matrices, unli
 
 You can also create a matrix from scratch using `matrix()` Use `?matrix` to see the arguments.  
 
-```{r}
+```{r echo=TRUE}
 matrix(1:6, ncol = 2) 
 matrix(1:6, ncol=2, byrow=TRUE) 
 ```
@@ -257,39 +257,84 @@ Notice, the first matrix filled in numbers 1-6 by columns first and then rows be
 
 You can transform an existing matrix into data frames and tibble using `as.data.frame()`.  
 
-```{r}
+```{r echo=TRUE}
 as.data.frame(matrix(1:6, ncol = 2) ) 
 ```
 
 
-## 1 Variable Data Summaries
+## Numeric variable data summary
+
+Data summarization on numeric vectors/variables:
+-		`mean()`: takes the mean of x
+-		`sd()`: takes the standard deviation of x
+-		`median()`: takes the median of x
+-		`quantile()`: displays sample quantiles of x. Default is min, IQR, max
+-		`range()`: displays the range. Same as `c(min(), max())`
+-		`sum()`: sum of x
+-		`max()`: maximum value in x
+-		`min()`: minimum value in x
+
+Note, **all have the ** `na.rm =` **argument for missing data**
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?mean
+```
+
+## Numeric variable data summary examples
+
+```{r echo=TRUE}
+summary(df)
+range(df$age)
+range(df$age, na.rm=TRUE)
+median(df$IgG_concentration, na.rm=TRUE)
+```
+
+
+## Character Variable Data Summaries
+
+Data summarization on character or factor vectors/variables
+		* `table()`
+		
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?table
+```
+
+
+
+## Character variable data summary examples
+
+Number of observations in each category
+
+```{r echo=TRUE}
+table(df$gender)
+table(df$gender, useNA="always")
+```
+
+Percent of observations in each category (xxzane - better way in base r?)
+
+```{r echo=TRUE}
+table(df$gender)/nrow(df)
+table(df$gender)/nrow(df[!is.na(df$gender),]) #if there were NA values
+table(df$gender)/nrow(subset(df, !is.na(df$gender),)) #if there were NA values
+```
 
 
 
 ## Summary
 
-- Adding (or modifying) columns/variable to a data frame by using `$` 
-- can remove a column in a few ways:  
-    1. assigning a column to `NULL`  
-    2. using `[]` with negative sign in front of column name(s)  
-- There are two types of numeric class objects: integer and double
-- Logic class objects only have `TRUE` or `False` (without quotes)
-- is.CLASS_NAME(x) can be used to test the class of an object x
-- as.CLASS_NAME(x) can be used to change the class of an object x
-- Factors are a special character class that has levels 
- - two dimensional object classes include: data frames, tibbles, matrices, and lists
- - matrix has columns and rows but  is all one data class
-     - can create a matrix with `matrix()` from scratch or `as.matrix()` from something
- - lists can contain multiples of any other class of data including lists!
-     - can create lists with `list()`
- - calendar dates can be represented with the `Date` class using `ymd()`, `mdy()` functions from `lubridate` package 
-- `POSIXct` class representing a calendar date with hours, minutes, seconds. Can use `ymd_hms()` or `ymd_hm()` or `ymd_h()`functions from the `lubridate` package
+-		Adding (or modifying) columns/variable to a data frame by using `$` 
+-		There are two types of numeric class objects: integer and double
+-		Logical class objects only have `TRUE` or `False` (without quotes)
+-		is.CLASS_NAME(x) can be used to test the class of an object x
+-		as.CLASS_NAME(x) can be used to change the class of an object x
+-		Factors are a special character class that has levels 
+		
 
 ## Acknowledgements
 
 These are the materials I looked through, modified, or extracted to complete this module's lecture.
 
 -   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
--   [CRAN Project](https://cran.r-project.org/doc/manuals/R-lang.html#Indexing)
--   [CRAN Project](https://cran.r-project.org/web/packages/extraoperators/vignettes/logicals-vignette.html)
 

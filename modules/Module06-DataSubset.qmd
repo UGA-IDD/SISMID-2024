@@ -23,7 +23,7 @@ The `dim()` , `nrow()`, and `ncol()` functions are good options to check the dim
 Let's first read in the data from the previous module.
 
 ```{r echo=TRUE}
-df <- read.csv(file = "~/Dropbox/SISMID/data/serodata.csv") #relative path
+df <- read.csv(file = "data/serodata.csv") #relative path
 ```
 
 ```{r echo=TRUE}

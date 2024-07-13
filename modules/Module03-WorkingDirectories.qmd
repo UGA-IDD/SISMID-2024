@@ -63,7 +63,7 @@ Remember above "Many people recommend not setting a directory in the scripts, ra
 RStudio will show the code in the Console for the action you took with your cursor. This is a good way to learn about your file system how to set a correct working directory!
 
 ```{r, eval = FALSE}
-setwd("~/Dropbox/SISMID2024/")
+setwd("~/Dropbox/Git/SISMID-2024")
 ```
 
 

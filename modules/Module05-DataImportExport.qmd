@@ -63,7 +63,7 @@ Lets import a new data file
 ```{r, echo=TRUE, eval = FALSE}
 ## Examples
 df <- read.csv(file = "data/serodata.csv") #relative path
-df <- read.csv(file = "~/Dropbox/SISMID/data/serodata.csv") #absolute path starting from my home directory
+df <- read.csv(file = "~/Dropbox/Git/SISMID-2024/modules/data/serodata.csv") #absolute path starting from my home directory
 ```
 
 
@@ -178,7 +178,6 @@ read_excel(
 ```
 
 ```{r echo=TRUE, eval=FALSE}
-df <- read_xlsx(path = "~/Dropbox/SISMID/data/serodata.xlsx", sheet = "Data")
 ```
 
 
@@ -228,7 +227,7 @@ library(printr)
 
 ## Export delimited data
 
-```{r echo=TRUE}
+```{r echo=TRUE, eval=FALSE}
 write.csv(df, file="data/serodata_new.csv", row.names = FALSE) #comma delimited
 write.table(df, file="data/serodata1_new.txt", sep="\t", row.names = FALSE) #tab delimited
 write.table(df, file="data/serodata2_new.txt", sep=";", row.names = FALSE) #semicolon delimited
