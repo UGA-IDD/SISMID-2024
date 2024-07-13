@@ -3,12 +3,582 @@ title: "Iteration in R"
 format: revealjs
 ---
 
+```{r}
+#| label: setup
+#| include: false
+
+library(printr)
+```
+
+
 ## Learning goals
 
 1. Replace repetitive code with a `for` loop
 1. Compare and contrast `for` loops and `*apply()` functions
-1. Define and apply vectorization to replace unnecessary loops
+1. Use vectorization to replace unnecessary loops
 
-# What is iteration?
+## What is iteration?
+
+* Whenever you repeat something, that's iteration.
+* In `R`, this means running the same code multiple times in a row.
+
+```{r example, echo = TRUE}
+data("penguins", package = "palmerpenguins")
+for (this_island in levels(penguins$island)) {
+	island_mean <-
+		penguins$bill_depth_mm[penguins$island == this_island] |>
+		mean(na.rm = TRUE) |>
+		round(digits = 2)
+	
+	cat(paste("The mean bill depth on", this_island, "Island was", island_mean,
+							"mm.\n"))
+}
+```
+
+## Parts of a loop
+
+```{r}
+#| code-line-numbers: "1,9"
+#| eval: false
+
+for (this_island in levels(penguins$island)) {
+	island_mean <-
+		penguins$bill_depth_mm[penguins$island == this_island] |>
+		mean(na.rm = TRUE) |>
+		round(digits = 2)
+	
+	cat(paste("The mean bill depth on", this_island, "Island was", island_mean,
+							"mm.\n"))
+}
+```
+
+The **header** declares how many times we will repeat the same code. The header
+contains a **control variable** that changes in each repetition and a
+**sequence** of values for the control variable to take.
+
+## Parts of a loop
+
+```{r}
+#| code-line-numbers: "2-8"
+#| eval: false
+
+for (this_island in levels(penguins$island)) {
+	island_mean <-
+		penguins$bill_depth_mm[penguins$island == this_island] |>
+		mean(na.rm = TRUE) |>
+		round(digits = 2)
+	
+	cat(paste("The mean bill depth on", this_island, "Island was", island_mean,
+							"mm.\n"))
+}
+```
+
+The **body** of the loop contains code that will be repeated a number of times
+based on the header instructions. In `R`, the body has to be surrounded by
+curly braces.
+
+## Header parts
+
+```{r}
+#| eval: false
+
+for (this_island in levels(penguins$island)) {...}
+```
+
+* `for`: keyword that declares we are doing a for loop.
+* `(...)`: parentheses after `for` declare the control variable and sequence.
+* `this_island`: the control variable.
+* `in`: keyword that separates the control varibale and sequence.
+* `levels(penguins$island)`: the sequence.
+* `{}`: curly braces will contain the body code.
+
+## Header parts
+
+```{r}
+#| eval: false
+
+for (this_island in levels(penguins$island)) {...}
+```
+
+* Since `levels(penguins$island)` evaluates to
+`c("Biscoe", "Dream", "Torgersen")`, our loop will repeat 3 times.
+
+| Iteration | `this_island` |
+|-----------|---------------|
+| 1         | "Biscoe"      |
+| 2         | "Dream"       |
+| 3         | "Torgersen"   |
+
+* Everything inside of `{...}` will be repeated three times.
+
+## Loop iteration 1
+
+```{r}
+island_mean <-
+	penguins$bill_depth_mm[penguins$island == "Biscoe"] |>
+	mean(na.rm = TRUE) |>
+	round(digits = 2)
+
+cat(paste("The mean bill depth on", "Biscoe", "Island was", island_mean,
+					"mm.\n"))
+```
+
+## Loop iteration 2
+
+```{r}
+island_mean <-
+	penguins$bill_depth_mm[penguins$island == "Dream"] |>
+	mean(na.rm = TRUE) |>
+	round(digits = 2)
+
+cat(paste("The mean bill depth on", "Dream", "Island was", island_mean,
+					"mm.\n"))
+```
+
+## Loop iteration 3
+
+```{r}
+island_mean <-
+	penguins$bill_depth_mm[penguins$island == "Torgersen"] |>
+	mean(na.rm = TRUE) |>
+	round(digits = 2)
+
+cat(paste("The mean bill depth on", "Torgersen", "Island was", island_mean,
+					"mm.\n"))
+```
+
+## The loop structure automates this process for us so we don't have to copy and paste our code!
+
+```{r}
+for (this_island in levels(penguins$island)) {
+	island_mean <-
+		penguins$bill_depth_mm[penguins$island == this_island] |>
+		mean(na.rm = TRUE) |>
+		round(digits = 2)
+	
+	cat(paste("The mean bill depth on", this_island, "Island was", island_mean,
+							"mm.\n"))
+}
+```
+
+## Remember: write DRY code!
+
+* DRY = "Don't Repeat Yourself"
+* Instead of copying and pasting, write loops and functions.
+* Easier to debug and change in the future!
+
+. . .
+
+* Of course, we all copy and paste code sometimes. If you are running on a
+tight deadline or can't get a loop or function to work, you might need to.
+**DRY code is good, but working code is best!**
+
+## {#tweet-slide data-menu-title="Hadley tweet" .center}
+
+```{r}
+#| echo: false
+knitr::include_graphics(here::here("images", "hadley-tweet.png"))
+```
+
+## You try it!
+
+Write a loop that goes from 1 to 10, squares each of the numbers, and prints
+the squared number.
+
+. . .
+
+```{r}
+for (i in 1:10) {
+	cat(i ^ 2, "\n")
+}
+```
+
+## Wait, did we need to do that? {.incremental}
+
+* Well, yes, because you need to practice loops!
+* But technically no, because we can use **vectorization**.
+* Almost all basic operations in R are **vectorized**: they work on a vector of
+arguments all at the same time.
+
+## Wait, did we need to do that?
+
+* Well, yes, because you need to practice loops!
+* But technically no, because we can use **vectorization**.
+* Almost all basic operations in R are **vectorized**: they work on a vector of
+arguments all at the same time.
+
+```{r}
+# No loop needed!
+(1:10)^2
+```
+
+## Wait, did we need to do that?
+
+* Well, yes, because you need to practice loops!
+* But technically no, because we can use **vectorization**.
+* Almost all basic operations in R are **vectorized**: they work on a vector of
+arguments all at the same time.
+
+```{r}
+# No loop needed!
+(1:10)^2
+```
+
+```{r}
+# Get the first 10 odd numbers, a common CS 101 loop problem on exams
+(1:20)[which((1:20 %% 2) == 1)]
+```
+
+* So you should really try vectorization first, then use loops only when
+you can't use vectorization.
+
+## Loop walkthrough
+
+* Let's walk through a complex but useful example where we can't use
+vectorization.
+* Load the cleaned measles dataset, and subset it so you only have MCV1 records.
+
+. . .
+
+```{r}
+meas <- readRDS(here::here("data", "measles_final.Rds")) |>
+	subset(vaccine_antigen == "MCV1")
+str(meas)
+```
+
+## Loop walkthrough
+
+* First, make an empty `list`. This is where we'll store our results. Make it
+the same length as the number of countries in the dataset.
+
+. . .
+
+```{r}
+res <- vector(mode = "list", length = length(unique(meas$country)))
+```
+
+* This is called *preallocation* and it can make your loops much faster.
+
+## Loop walkthrough
+
+* Loop through every country in the dataset, and get the median, first and third
+quartiles, and range for each country. Store those summary statistics in a data frame.
+* What should the header look like?
+
+. . .
+
+```{r}
+#| eval: true
+#| include: false
+countries <- unique(meas$country)
+```
+
+
+```{r}
+#| eval: false
+countries <- unique(meas$country)
+for (i in 1:length(countries)) {...}
+```
+
+. . .
+
+* Note that we use the **index** as the control variable. When you need to
+do complex operations inside a loop, this is easier than the **for-each**
+construction we used earlier.
+
+## Loop walkthrough {.scrollable}
+
+* Now write out the body of the code. First we need to subset the data, to get
+only the data for the current country.
+
+. . .
+
+```{r, eval = FALSE}
+for (i in 1:length(countries)) {
+	# Get the data for the current country only
+	country_data <- subset(meas, country == countries[i])
+}
+```
+
+. . .
+
+* Next we need to get the summary of the cases for that country.
+
+. . .
+
+```{r, eval = FALSE}
+for (i in 1:length(countries)) {
+	# Get the data for the current country only
+	country_data <- subset(meas, country == countries[i])
+	
+	# Get the summary statistics for this country
+	country_cases <- country_data$Cases
+	country_med <- median(country_cases, na.rm = TRUE)
+	country_iqr <- IQR(country_cases, na.rm = TRUE)
+	country_range <- range(country_cases, na.rm = TRUE)
+}
+```
+
+. . .
+
+* Next we save the summary statistics into a data frame.
+
+```{r, eval = FALSE}
+for (i in 1:length(countries)) {
+	# Get the data for the current country only
+	country_data <- subset(meas, country == countries[i])
+	
+	# Get the summary statistics for this country
+	country_cases <- country_data$Cases
+	country_quart <- quantile(
+		country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)
+	)
+	country_range <- range(country_cases, na.rm = TRUE)
+	
+	# Save the summary statistics into a data frame
+	country_summary <- data.frame(
+		country = countries[[i]],
+		min = country_range[[1]],
+		Q1 = country_quart[[1]],
+		median = country_quart[[2]],
+		Q3 = country_quart[[3]],
+		max = country_range[[2]]
+	)
+}
+```
+
+. . .
+
+* And finally, we save the data frame as the next element in our storage list.
+
+```{r}
+for (i in 1:length(countries)) {
+	# Get the data for the current country only
+	country_data <- subset(meas, country == countries[i])
+	
+	# Get the summary statistics for this country
+	country_cases <- country_data$Cases
+	country_quart <- quantile(
+		country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)
+	)
+	country_range <- range(country_cases, na.rm = TRUE)
+	
+	# Save the summary statistics into a data frame
+	country_summary <- data.frame(
+		country = countries[[i]],
+		min = country_range[[1]],
+		Q1 = country_quart[[1]],
+		median = country_quart[[2]],
+		Q3 = country_quart[[3]],
+		max = country_range[[2]]
+	)
+	
+	# Save the results to our container
+	res[[i]] <- country_summary
+}
+```
+
+. . .
+
+* Let's take a look at the results.
+
+```{r}
+head(res)
+```
+
+* How do we deal with this to get it into a nice form?
+
+. . .
+
+* We can use a *vectorization* trick: the function `do.call()` seems like
+ancient computer science magic. And it is. But it will actually help us a
+lot.
+
+```{r}
+res_df <- do.call(rbind, res)
+head(res_df)
+```
+
+* It combined our data frames together! Let's take a look at the `rbind` and
+`do.call()` help packages to see what happened.
+
+. . .
+
+```{r}
+?rbind
+```
+
+. . .
+
+```{r}
+?do.call
+```
+
+. . .
+
+* OK, so basically what happened is that
+
+```{r, eval = FALSE}
+do.call(rbind, list)
+```
+
+* Gets transformed into
+
+```{r, eval = FALSE}
+rbind(list[[1]], list[[2]], list[[3]], ..., list[[length(list)]])
+```
+
+* That's vectorization magic!
+
+## You try it! (if we have time) {.smaller}
+
+* Use the code you wrote before the get the incidence per 1000 people on the
+entire measles data set (add a column for incidence to the full data).
+* Use the code `plot(NULL, NULL, ...)` to make a blank plot. You will need to
+set the `xlim` and `ylim` arguments to sensible values, and specify the axis
+titles as "Year" and "Incidence per 1000 people".
+* Using a `for` loop and the `lines()` function, make a plot that shows all of
+the incidence curves over time, overlapping on the plot.
+* HINT: use `col = adjustcolor(black, alpha.f = 0.25)` to make the curves
+transparent, so you can see the others.
+* BONUS PROBLEM: using the function `cumsum()`, make a plot of the cumulative
+incidence per 1000 people over time for all of the countries. (Dealing with
+the NA's here is tricky!!)
+
+## Main problem solution
+
+```{r, eval = FALSE}
+meas$cases_per_thousand <- meas$Cases / as.numeric(meas$total_pop) * 1000
+countries <- unique(meas$country)
+
+plot(
+	NULL, NULL,
+	xlim = c(1980, 2022),
+	ylim = c(0, 50),
+	xlab = "Year",
+	ylab = "Incidence per 1000 people"
+)
+
+for (i in 1:length(countries)) {
+	country_data <- subset(meas, country == countries[[i]])
+	lines(
+		x = country_data$time,
+		y = country_data$cases_per_thousand,
+		col = adjustcolor("black", alpha.f = 0.25)
+	)
+}
+```
+
+## Main problem solution
+
+```{r, echo = FALSE}
+meas$cases_per_thousand <- meas$Cases / as.numeric(meas$total_pop) * 1000
+countries <- unique(meas$country)
+
+plot(
+	NULL, NULL,
+	xlim = c(1980, 2022),
+	ylim = c(0, 50),
+	xlab = "Year",
+	ylab = "Incidence per 1000 people"
+)
+
+for (i in 1:length(countries)) {
+	country_data <- subset(meas, country == countries[[i]])
+	lines(
+		x = country_data$time,
+		y = country_data$cases_per_thousand,
+		col = adjustcolor("black", alpha.f = 0.25)
+	)
+}
+```
+
+## Bonus problem solution
+
+```{r, eval = FALSE}
+# First calculate the cumulative cases, treating NA as zeroes
+cumulative_cases <- ave(
+	x = ifelse(is.na(meas$Cases), 0, meas$Cases),
+	meas$country,
+	FUN = cumsum
+)
+
+# Now put the NAs back where they should be
+meas$cumulative_cases <- cumulative_cases + (meas$Cases * 0)
+
+plot(
+	NULL, NULL,
+	xlim = c(1980, 2022),
+	ylim = c(1, 6.2e6),
+	xlab = "Year",
+	ylab = "Cumulative cases per 1000 people"
+)
+
+for (i in 1:length(countries)) {
+	country_data <- subset(meas, country == countries[[i]])
+	lines(
+		x = country_data$time,
+		y = country_data$cumulative_cases,
+		col = adjustcolor("black", alpha.f = 0.25)
+	)
+}
+
+text(
+	x = 2020,
+	y = 6e6,
+	labels = "China →"
+)
+```
+
+## Bonus problem solution
+
+```{r, echo = FALSE}
+# First calculate the cumulative cases, treating NA as zeroes
+cumulative_cases <- ave(
+	x = ifelse(is.na(meas$Cases), 0, meas$Cases),
+	meas$country,
+	FUN = cumsum
+)
+
+# Now put the NAs back where they should be
+meas$cumulative_cases <- cumulative_cases + (meas$Cases * 0)
+
+plot(
+	NULL, NULL,
+	xlim = c(1980, 2022),
+	ylim = c(1, 6.2e6),
+	xlab = "Year",
+	ylab = "Cumulative cases per 1000 people"
+)
+
+for (i in 1:length(countries)) {
+	country_data <- subset(meas, country == countries[[i]])
+	lines(
+		x = country_data$time,
+		y = country_data$cumulative_cases,
+		col = adjustcolor("black", alpha.f = 0.25)
+	)
+}
+
+text(
+	x = 2020,
+	y = 6e6,
+	labels = "China →"
+)
+```
+
+## More practice on your own {.smaller}
+
+* Merge the `countries-regions.csv` data with the `measles_final.Rds` data.
+Reshape the measles data so that `MCV1` and `MCV2` vaccine coverage are two
+separate columns. Then use a loop to fit a poisson regression model for each
+continent where `Cases` is the outcome, and `MCV1 coverage` and `MCV2 coverage`
+are the predictors. Discuss your findings, and try adding an interation term.
+* Assess the impact of `age_months` as a confounder in the Diphtheria serology
+data. First, write code to transform `age_months` into age ranges for each
+year. Then, using a loop, calculate the crude odds ratio for the effect of
+vaccination on infection for each of the age ranges. How does the odds ratio
+change as age increases? Can you formalize this analysis by fitting a logistic
+regression model with `age_months` and vaccination as predictors?
 
 

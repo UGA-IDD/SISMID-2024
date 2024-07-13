@@ -44,7 +44,7 @@
     "href": "modules/ModuleXX-Iteration.html#learning-goals",
     "title": "Iteration in R",
     "section": "Learning goals",
-    "text": "Learning goals\n\nReplace repetitive code with a for loop\nCompare and contrast for loops and *apply() functions\nDefine and apply vectorization to replace unnecessary loops",
+    "text": "Learning goals\n\nReplace repetitive code with a for loop\nCompare and contrast for loops and *apply() functions\nUse vectorization to replace unnecessary loops",
     "crumbs": [
       "Day 2",
       "Iteration in R"
@@ -404,6 +404,292 @@
     "crumbs": [
       "Day 1",
       "Algorithmic Thinking Case Study 1"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#what-is-iteration",
+    "href": "modules/ModuleXX-Iteration.html#what-is-iteration",
+    "title": "Iteration in R",
+    "section": "What is iteration?",
+    "text": "What is iteration?\n\nWhenever you repeat something, that’s iteration.\nIn R, this means running the same code multiple times in a row.\n\n\ndata(\"penguins\", package = \"palmerpenguins\")\nfor (this_island in levels(penguins$island)) {\n    island_mean &lt;-\n        penguins$bill_depth_mm[penguins$island == this_island] |&gt;\n        mean(na.rm = TRUE) |&gt;\n        round(digits = 2)\n    \n    cat(paste(\"The mean bill depth on\", this_island, \"Island was\", island_mean,\n                            \"mm.\\n\"))\n}\n\nThe mean bill depth on Biscoe Island was 15.87 mm.\nThe mean bill depth on Dream Island was 18.34 mm.\nThe mean bill depth on Torgersen Island was 18.43 mm.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#parts-of-a-loop",
+    "href": "modules/ModuleXX-Iteration.html#parts-of-a-loop",
+    "title": "Iteration in R",
+    "section": "Parts of a loop",
+    "text": "Parts of a loop\n\nfor (this_island in levels(penguins$island)) {\n    island_mean &lt;-\n        penguins$bill_depth_mm[penguins$island == this_island] |&gt;\n        mean(na.rm = TRUE) |&gt;\n        round(digits = 2)\n    \n    cat(paste(\"The mean bill depth on\", this_island, \"Island was\", island_mean,\n                            \"mm.\\n\"))\n}\n\nThe header declares how many times we will repeat the same code. The header contains a control variable that changes in each repetition and a sequence of values for the control variable to take.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#parts-of-a-loop-1",
+    "href": "modules/ModuleXX-Iteration.html#parts-of-a-loop-1",
+    "title": "Iteration in R",
+    "section": "Parts of a loop",
+    "text": "Parts of a loop\n\nfor (this_island in levels(penguins$island)) {\n    island_mean &lt;-\n        penguins$bill_depth_mm[penguins$island == this_island] |&gt;\n        mean(na.rm = TRUE) |&gt;\n        round(digits = 2)\n    \n    cat(paste(\"The mean bill depth on\", this_island, \"Island was\", island_mean,\n                            \"mm.\\n\"))\n}\n\nThe body of the loop contains code that will be repeated a number of times based on the header instructions. In R, the body has to be surrounded by curly braces.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#header-parts",
+    "href": "modules/ModuleXX-Iteration.html#header-parts",
+    "title": "Iteration in R",
+    "section": "Header parts",
+    "text": "Header parts\n\nfor (this_island in levels(penguins$island)) {...}\n\n\nfor: keyword that declares we are doing a for loop.\n(...): parentheses after for declare the control variable and sequence.\nthis_island: the control variable.\nin: keyword that separates the control varibale and sequence.\nlevels(penguins$island): the sequence.\n{}: curly braces will contain the body code.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#header-parts-1",
+    "href": "modules/ModuleXX-Iteration.html#header-parts-1",
+    "title": "Iteration in R",
+    "section": "Header parts",
+    "text": "Header parts\n\nfor (this_island in levels(penguins$island)) {...}\n\n\nSince levels(penguins$island) evaluates to c(\"Biscoe\", \"Dream\", \"Torgersen\"), our loop will repeat 3 times.\n\n\n\n\nIteration\nthis_island\n\n\n\n\n1\n“Biscoe”\n\n\n2\n“Dream”\n\n\n3\n“Torgersen”\n\n\n\n\nEverything inside of {...} will be repeated three times.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#loop-iteration-1",
+    "href": "modules/ModuleXX-Iteration.html#loop-iteration-1",
+    "title": "Iteration in R",
+    "section": "Loop iteration 1",
+    "text": "Loop iteration 1\n\nisland_mean &lt;-\n    penguins$bill_depth_mm[penguins$island == \"Biscoe\"] |&gt;\n    mean(na.rm = TRUE) |&gt;\n    round(digits = 2)\n\ncat(paste(\"The mean bill depth on\", \"Biscoe\", \"Island was\", island_mean,\n                    \"mm.\\n\"))\n\nThe mean bill depth on Biscoe Island was 15.87 mm.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#loop-iteration-2",
+    "href": "modules/ModuleXX-Iteration.html#loop-iteration-2",
+    "title": "Iteration in R",
+    "section": "Loop iteration 2",
+    "text": "Loop iteration 2\n\nisland_mean &lt;-\n    penguins$bill_depth_mm[penguins$island == \"Dream\"] |&gt;\n    mean(na.rm = TRUE) |&gt;\n    round(digits = 2)\n\ncat(paste(\"The mean bill depth on\", \"Dream\", \"Island was\", island_mean,\n                    \"mm.\\n\"))\n\nThe mean bill depth on Dream Island was 18.34 mm.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#loop-iteration-3",
+    "href": "modules/ModuleXX-Iteration.html#loop-iteration-3",
+    "title": "Iteration in R",
+    "section": "Loop iteration 3",
+    "text": "Loop iteration 3\n\nisland_mean &lt;-\n    penguins$bill_depth_mm[penguins$island == \"Torgersen\"] |&gt;\n    mean(na.rm = TRUE) |&gt;\n    round(digits = 2)\n\ncat(paste(\"The mean bill depth on\", \"Torgersen\", \"Island was\", island_mean,\n                    \"mm.\\n\"))\n\nThe mean bill depth on Torgersen Island was 18.43 mm.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#the-loop-structure-automates-this-process-for-us-so-we-dont-have-to-copy",
+    "href": "modules/ModuleXX-Iteration.html#the-loop-structure-automates-this-process-for-us-so-we-dont-have-to-copy",
+    "title": "Iteration in R",
+    "section": "The loop structure automates this process for us so we don’t have to copy",
+    "text": "The loop structure automates this process for us so we don’t have to copy\nand paste our code!\n\nfor (this_island in levels(penguins$island)) {\n    island_mean &lt;-\n        penguins$bill_depth_mm[penguins$island == this_island] |&gt;\n        mean(na.rm = TRUE) |&gt;\n        round(digits = 2)\n    \n    cat(paste(\"The mean bill depth on\", this_island, \"Island was\", island_mean,\n                            \"mm.\\n\"))\n}\n\nThe mean bill depth on Biscoe Island was 15.87 mm.\nThe mean bill depth on Dream Island was 18.34 mm.\nThe mean bill depth on Torgersen Island was 18.43 mm.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#the-loop-structure-automates-this-process-for-us-so-we-dont-have-to-copy-and-paste-our-code",
+    "href": "modules/ModuleXX-Iteration.html#the-loop-structure-automates-this-process-for-us-so-we-dont-have-to-copy-and-paste-our-code",
+    "title": "Iteration in R",
+    "section": "The loop structure automates this process for us so we don’t have to copy and paste our code!",
+    "text": "The loop structure automates this process for us so we don’t have to copy and paste our code!\n\nfor (this_island in levels(penguins$island)) {\n    island_mean &lt;-\n        penguins$bill_depth_mm[penguins$island == this_island] |&gt;\n        mean(na.rm = TRUE) |&gt;\n        round(digits = 2)\n    \n    cat(paste(\"The mean bill depth on\", this_island, \"Island was\", island_mean,\n                            \"mm.\\n\"))\n}\n\nThe mean bill depth on Biscoe Island was 15.87 mm.\nThe mean bill depth on Dream Island was 18.34 mm.\nThe mean bill depth on Torgersen Island was 18.43 mm.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#remember-write-dry-code",
+    "href": "modules/ModuleXX-Iteration.html#remember-write-dry-code",
+    "title": "Iteration in R",
+    "section": "Remember: write DRY code!",
+    "text": "Remember: write DRY code!\n\nDRY = “Don’t Repeat Yourself”\nInstead of copying and pasting, write loops and functions.\nEasier to debug and change in the future!\n\n\n\nOf course, we all copy and paste code sometimes. If you are running on a tight deadline or can’t get a loop or function to work, you might need to. DRY code is good, but working code is best!",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#tweet-slide",
+    "href": "modules/ModuleXX-Iteration.html#tweet-slide",
+    "title": "Iteration in R",
+    "section": "",
+    "text": "quart",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#you-try-it",
+    "href": "modules/ModuleXX-Iteration.html#you-try-it",
+    "title": "Iteration in R",
+    "section": "You try it!",
+    "text": "You try it!\nWrite a loop that goes from 1 to 10, squares each of the numbers, and prints the squared number.\n\n\nfor (i in 1:10) {\n    cat(i ^ 2, \"\\n\")\n}\n\n1 \n4 \n9 \n16 \n25 \n36 \n49 \n64 \n81 \n100",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#wait-did-we-need-to-do-that",
+    "href": "modules/ModuleXX-Iteration.html#wait-did-we-need-to-do-that",
+    "title": "Iteration in R",
+    "section": "Wait, did we need to do that?",
+    "text": "Wait, did we need to do that?\n\nWell, yes, because you need to practice loops!\nBut technically no, because we can use vectorization.\nAlmost all basic operations in R are vectorized: they work on a vector of arguments all at the same time.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#wait-did-we-need-to-do-that-1",
+    "href": "modules/ModuleXX-Iteration.html#wait-did-we-need-to-do-that-1",
+    "title": "Iteration in R",
+    "section": "Wait, did we need to do that?",
+    "text": "Wait, did we need to do that?\n\nWell, yes, because you need to practice loops!\nBut technically no, because we can use vectorization.\nAlmost all basic operations in R are vectorized: they work on a vector of arguments all at the same time.\n\n\n# No loop needed!\n(1:10)^2\n\n [1]   1   4   9  16  25  36  49  64  81 100",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#wait-did-we-need-to-do-that-2",
+    "href": "modules/ModuleXX-Iteration.html#wait-did-we-need-to-do-that-2",
+    "title": "Iteration in R",
+    "section": "Wait, did we need to do that?",
+    "text": "Wait, did we need to do that?\n\nWell, yes, because you need to practice loops!\nBut technically no, because we can use vectorization.\nAlmost all basic operations in R are vectorized: they work on a vector of arguments all at the same time.\n\n\n# No loop needed!\n(1:10)^2\n\n [1]   1   4   9  16  25  36  49  64  81 100\n\n\n\n# Get the first 10 odd numbers, a common CS 101 loop problem on exams\n(1:20)[which((1:20 %% 2) == 1)]\n\n [1]  1  3  5  7  9 11 13 15 17 19\n\n\n\nSo you should really try vectorization first, then use loops only when you can’t use vectorization.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#loop-walkthrough",
+    "href": "modules/ModuleXX-Iteration.html#loop-walkthrough",
+    "title": "Iteration in R",
+    "section": "Loop walkthrough",
+    "text": "Loop walkthrough\n\nLet’s walk through a complex but useful example where we can’t use vectorization.\nLoad the cleaned measles dataset, and subset it so you only have MCV1 records.\n\n\n\nmeas &lt;- readRDS(here::here(\"data\", \"measles_final.Rds\")) |&gt;\n    subset(vaccine_antigen == \"MCV1\")\nstr(meas)\n\n'data.frame':   7972 obs. of  7 variables:\n $ iso3c           : chr  \"AFG\" \"AFG\" \"AFG\" \"AFG\" ...\n $ time            : int  1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 ...\n $ country         : chr  \"Afghanistan\" \"Afghanistan\" \"Afghanistan\" \"Afghanistan\" ...\n $ Cases           : int  2792 5166 2900 640 353 2012 1511 638 1154 492 ...\n $ vaccine_antigen : chr  \"MCV1\" \"MCV1\" \"MCV1\" \"MCV1\" ...\n $ vaccine_coverage: int  11 NA 8 9 14 14 14 31 34 22 ...\n $ total_pop       : chr  \"12486631\" \"11155195\" \"10088289\" \"9951449\" ...",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#loop-walkthrough-1",
+    "href": "modules/ModuleXX-Iteration.html#loop-walkthrough-1",
+    "title": "Iteration in R",
+    "section": "Loop walkthrough",
+    "text": "Loop walkthrough\n\nFirst, make an empty list. This is where we’ll store our results. Make it the same length as the number of countries in the dataset.\n\n\n\nres &lt;- vector(mode = \"list\", length = length(unique(meas$country)))\n\n\nThis is called preallocation and it can make your loops much faster.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#loop-walkthrough-2",
+    "href": "modules/ModuleXX-Iteration.html#loop-walkthrough-2",
+    "title": "Iteration in R",
+    "section": "Loop walkthrough",
+    "text": "Loop walkthrough\n\nLoop through every country in the dataset, and get the median, first and third quartiles, and range for each country. Store those summary statistics in a data frame.\nWhat should the header look like?\n\n\n\ncountries &lt;- unique(meas$country)\nfor (i in 1:length(countries)) {...}\n\n\n\n\nNote that we use the index as the control variable. When you need to do complex operations inside a loop, this is easier than the for-each construction we used earlier.",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#loop-walkthrough-3",
+    "href": "modules/ModuleXX-Iteration.html#loop-walkthrough-3",
+    "title": "Iteration in R",
+    "section": "Loop walkthrough",
+    "text": "Loop walkthrough\n\nNow write out the body of the code. First we need to subset the data, to get only the data for the current country.\n\n\n\nfor (i in 1:length(countries)) {\n    # Get the data for the current country only\n    country_data &lt;- subset(meas, country == countries[i])\n}\n\n\n\n\nNext we need to get the summary of the cases for that country.\n\n\n\n\nfor (i in 1:length(countries)) {\n    # Get the data for the current country only\n    country_data &lt;- subset(meas, country == countries[i])\n    \n    # Get the summary statistics for this country\n    country_cases &lt;- country_data$Cases\n    country_med &lt;- median(country_cases, na.rm = TRUE)\n    country_iqr &lt;- IQR(country_cases, na.rm = TRUE)\n    country_range &lt;- range(country_cases, na.rm = TRUE)\n}\n\n\n\n\nNext we save the summary statistics into a data frame.\n\n\nfor (i in 1:length(countries)) {\n    # Get the data for the current country only\n    country_data &lt;- subset(meas, country == countries[i])\n    \n    # Get the summary statistics for this country\n    country_cases &lt;- country_data$Cases\n    country_quart &lt;- quantile(\n        country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)\n    )\n    country_range &lt;- range(country_cases, na.rm = TRUE)\n    \n    # Save the summary statistics into a data frame\n    country_summary &lt;- data.frame(\n        country = countries[[i]],\n        min = country_range[[1]],\n        Q1 = country_quart[[1]],\n        median = country_quart[[2]],\n        Q3 = country_quart[[3]],\n        max = country_range[[2]]\n    )\n}\n\n\n\n\nAnd finally, we save the data frame as the next element in our storage list.\n\n\nfor (i in 1:length(countries)) {\n    # Get the data for the current country only\n    country_data &lt;- subset(meas, country == countries[i])\n    \n    # Get the summary statistics for this country\n    country_cases &lt;- country_data$Cases\n    country_quart &lt;- quantile(\n        country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)\n    )\n    country_range &lt;- range(country_cases, na.rm = TRUE)\n    \n    # Save the summary statistics into a data frame\n    country_summary &lt;- data.frame(\n        country = countries[[i]],\n        min = country_range[[1]],\n        Q1 = country_quart[[1]],\n        median = country_quart[[2]],\n        Q3 = country_quart[[3]],\n        max = country_range[[2]]\n    )\n    \n    # Save the results to our container\n    res[[i]] &lt;- country_summary\n}\n\nWarning in min(x): no non-missing arguments to min; returning Inf\n\n\nWarning in max(x): no non-missing arguments to max; returning -Inf\n\n\nWarning in min(x): no non-missing arguments to min; returning Inf\n\n\nWarning in max(x): no non-missing arguments to max; returning -Inf\n\n\nWarning in min(x): no non-missing arguments to min; returning Inf\n\n\nWarning in max(x): no non-missing arguments to max; returning -Inf\n\n\n\n\n\nLet’s take a look at the results.\n\n\nhead(res)\n\n[[1]]\n      country min   Q1 median   Q3   max\n1 Afghanistan 353 1154   2205 5166 31107\n\n[[2]]\n  country min  Q1 median    Q3   max\n1  Angola  29 700   3271 14474 30067\n\n[[3]]\n  country min Q1 median Q3    max\n1 Albania   0  1     12 29 136034\n\n[[4]]\n  country min Q1 median Q3 max\n1 Andorra   0  0      1  2   5\n\n[[5]]\n               country min    Q1 median   Q3  max\n1 United Arab Emirates  22 89.75    320 1128 2913\n\n[[6]]\n    country min Q1 median     Q3   max\n1 Argentina   0  0     17 4591.5 42093\n\n\n\nHow do we deal with this to get it into a nice form?\n\n\n\n\nWe can use a vectorization trick: the function do.call() seems like ancient computer science magic. And it is. But it will actually help us a lot.\n\n\nres_df &lt;- do.call(rbind, res)\nhead(res_df)\n\n\n\n\ncountry\nmin\nQ1\nmedian\nQ3\nmax\n\n\n\n\nAfghanistan\n353\n1154.00\n2205\n5166.0\n31107\n\n\nAngola\n29\n700.00\n3271\n14474.0\n30067\n\n\nAlbania\n0\n1.00\n12\n29.0\n136034\n\n\nAndorra\n0\n0.00\n1\n2.0\n5\n\n\nUnited Arab Emirates\n22\n89.75\n320\n1128.0\n2913\n\n\nArgentina\n0\n0.00\n17\n4591.5\n42093\n\n\n\n\n\n\nIt combined our data frames together! Let’s take a look at the rbind and do.call() help packages to see what happened.\n\n\n\n\n?rbind\n\nCombine R Objects by Rows or Columns\n\nDescription:\n\n     Take a sequence of vector, matrix or data-frame arguments and\n     combine by _c_olumns or _r_ows, respectively.  These are generic\n     functions with methods for other R classes.\n\nUsage:\n\n     cbind(..., deparse.level = 1)\n     rbind(..., deparse.level = 1)\n     ## S3 method for class 'data.frame'\n     rbind(..., deparse.level = 1, make.row.names = TRUE,\n           stringsAsFactors = FALSE, factor.exclude = TRUE)\n     \nArguments:\n\n     ...: (generalized) vectors or matrices.  These can be given as\n          named arguments.  Other R objects may be coerced as\n          appropriate, or S4 methods may be used: see sections\n          'Details' and 'Value'.  (For the '\"data.frame\"' method of\n          'cbind' these can be further arguments to 'data.frame' such\n          as 'stringsAsFactors'.)\n\ndeparse.level: integer controlling the construction of labels in the\n          case of non-matrix-like arguments (for the default method):\n          'deparse.level = 0' constructs no labels;\n          the default 'deparse.level = 1' typically and 'deparse.level\n          = 2' always construct labels from the argument names, see the\n          'Value' section below.\n\nmake.row.names: (only for data frame method:) logical indicating if\n          unique and valid 'row.names' should be constructed from the\n          arguments.\n\nstringsAsFactors: logical, passed to 'as.data.frame'; only has an\n          effect when the '...' arguments contain a (non-'data.frame')\n          'character'.\n\nfactor.exclude: if the data frames contain factors, the default 'TRUE'\n          ensures that 'NA' levels of factors are kept, see PR#17562\n          and the 'Data frame methods'.  In R versions up to 3.6.x,\n          'factor.exclude = NA' has been implicitly hardcoded (R &lt;=\n          3.6.0) or the default (R = 3.6.x, x &gt;= 1).\n\nDetails:\n\n     The functions 'cbind' and 'rbind' are S3 generic, with methods for\n     data frames.  The data frame method will be used if at least one\n     argument is a data frame and the rest are vectors or matrices.\n     There can be other methods; in particular, there is one for time\n     series objects.  See the section on 'Dispatch' for how the method\n     to be used is selected.  If some of the arguments are of an S4\n     class, i.e., 'isS4(.)' is true, S4 methods are sought also, and\n     the hidden 'cbind' / 'rbind' functions from package 'methods'\n     maybe called, which in turn build on 'cbind2' or 'rbind2',\n     respectively.  In that case, 'deparse.level' is obeyed, similarly\n     to the default method.\n\n     In the default method, all the vectors/matrices must be atomic\n     (see 'vector') or lists.  Expressions are not allowed.  Language\n     objects (such as formulae and calls) and pairlists will be coerced\n     to lists: other objects (such as names and external pointers) will\n     be included as elements in a list result.  Any classes the inputs\n     might have are discarded (in particular, factors are replaced by\n     their internal codes).\n\n     If there are several matrix arguments, they must all have the same\n     number of columns (or rows) and this will be the number of columns\n     (or rows) of the result.  If all the arguments are vectors, the\n     number of columns (rows) in the result is equal to the length of\n     the longest vector.  Values in shorter arguments are recycled to\n     achieve this length (with a 'warning' if they are recycled only\n     _fractionally_).\n\n     When the arguments consist of a mix of matrices and vectors the\n     number of columns (rows) of the result is determined by the number\n     of columns (rows) of the matrix arguments.  Any vectors have their\n     values recycled or subsetted to achieve this length.\n\n     For 'cbind' ('rbind'), vectors of zero length (including 'NULL')\n     are ignored unless the result would have zero rows (columns), for\n     S compatibility.  (Zero-extent matrices do not occur in S3 and are\n     not ignored in R.)\n\n     Matrices are restricted to less than 2^31 rows and columns even on\n     64-bit systems.  So input vectors have the same length\n     restriction: as from R 3.2.0 input matrices with more elements\n     (but meeting the row and column restrictions) are allowed.\n\nValue:\n\n     For the default method, a matrix combining the '...' arguments\n     column-wise or row-wise.  (Exception: if there are no inputs or\n     all the inputs are 'NULL', the value is 'NULL'.)\n\n     The type of a matrix result determined from the highest type of\n     any of the inputs in the hierarchy raw &lt; logical &lt; integer &lt;\n     double &lt; complex &lt; character &lt; list .\n\n     For 'cbind' ('rbind') the column (row) names are taken from the\n     'colnames' ('rownames') of the arguments if these are matrix-like.\n     Otherwise from the names of the arguments or where those are not\n     supplied and 'deparse.level &gt; 0', by deparsing the expressions\n     given, for 'deparse.level = 1' only if that gives a sensible name\n     (a 'symbol', see 'is.symbol').\n\n     For 'cbind' row names are taken from the first argument with\n     appropriate names: rownames for a matrix, or names for a vector of\n     length the number of rows of the result.\n\n     For 'rbind' column names are taken from the first argument with\n     appropriate names: colnames for a matrix, or names for a vector of\n     length the number of columns of the result.\n\nData frame methods:\n\n     The 'cbind' data frame method is just a wrapper for\n     'data.frame(..., check.names = FALSE)'.  This means that it will\n     split matrix columns in data frame arguments, and convert\n     character columns to factors unless 'stringsAsFactors = FALSE' is\n     specified.\n\n     The 'rbind' data frame method first drops all zero-column and\n     zero-row arguments.  (If that leaves none, it returns the first\n     argument with columns otherwise a zero-column zero-row data\n     frame.)  It then takes the classes of the columns from the first\n     data frame, and matches columns by name (rather than by position).\n     Factors have their levels expanded as necessary (in the order of\n     the levels of the level sets of the factors encountered) and the\n     result is an ordered factor if and only if all the components were\n     ordered factors.  Old-style categories (integer vectors with\n     levels) are promoted to factors.\n\n     Note that for result column 'j', 'factor(., exclude = X(j))' is\n     applied, where\n\n       X(j) := if(isTRUE(factor.exclude)) {\n                  if(!NA.lev[j]) NA # else NULL\n               } else factor.exclude\n     \n     where 'NA.lev[j]' is true iff any contributing data frame has had\n     a 'factor' in column 'j' with an explicit 'NA' level.\n\nDispatch:\n\n     The method dispatching is _not_ done via 'UseMethod()', but by\n     C-internal dispatching.  Therefore there is no need for, e.g.,\n     'rbind.default'.\n\n     The dispatch algorithm is described in the source file\n     ('.../src/main/bind.c') as\n\n       1. For each argument we get the list of possible class\n          memberships from the class attribute.\n\n       2. We inspect each class in turn to see if there is an\n          applicable method.\n\n       3. If we find a method, we use it.  Otherwise, if there was an\n          S4 object among the arguments, we try S4 dispatch; otherwise,\n          we use the default code.\n\n     If you want to combine other objects with data frames, it may be\n     necessary to coerce them to data frames first.  (Note that this\n     algorithm can result in calling the data frame method if all the\n     arguments are either data frames or vectors, and this will result\n     in the coercion of character vectors to factors.)\n\nReferences:\n\n     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S\n     Language_.  Wadsworth & Brooks/Cole.\n\nSee Also:\n\n     'c' to combine vectors (and lists) as vectors, 'data.frame' to\n     combine vectors and matrices as a data frame.\n\nExamples:\n\n     m &lt;- cbind(1, 1:7) # the '1' (= shorter vector) is recycled\n     m\n     m &lt;- cbind(m, 8:14)[, c(1, 3, 2)] # insert a column\n     m\n     cbind(1:7, diag(3)) # vector is subset -&gt; warning\n     \n     cbind(0, rbind(1, 1:3))\n     cbind(I = 0, X = rbind(a = 1, b = 1:3))  # use some names\n     xx &lt;- data.frame(I = rep(0,2))\n     cbind(xx, X = rbind(a = 1, b = 1:3))   # named differently\n     \n     cbind(0, matrix(1, nrow = 0, ncol = 4)) #&gt; Warning (making sense)\n     dim(cbind(0, matrix(1, nrow = 2, ncol = 0))) #-&gt; 2 x 1\n     \n     ## deparse.level\n     dd &lt;- 10\n     rbind(1:4, c = 2, \"a++\" = 10, dd, deparse.level = 0) # middle 2 rownames\n     rbind(1:4, c = 2, \"a++\" = 10, dd, deparse.level = 1) # 3 rownames (default)\n     rbind(1:4, c = 2, \"a++\" = 10, dd, deparse.level = 2) # 4 rownames\n     \n     ## cheap row names:\n     b0 &lt;- gl(3,4, labels=letters[1:3])\n     bf &lt;- setNames(b0, paste0(\"o\", seq_along(b0)))\n     df  &lt;- data.frame(a = 1, B = b0, f = gl(4,3))\n     df. &lt;- data.frame(a = 1, B = bf, f = gl(4,3))\n     new &lt;- data.frame(a = 8, B =\"B\", f = \"1\")\n     (df1  &lt;- rbind(df , new))\n     (df.1 &lt;- rbind(df., new))\n     stopifnot(identical(df1, rbind(df,  new, make.row.names=FALSE)),\n               identical(df1, rbind(df., new, make.row.names=FALSE)))\n\n\n\n\n\n?do.call\n\nExecute a Function Call\n\nDescription:\n\n     'do.call' constructs and executes a function call from a name or a\n     function and a list of arguments to be passed to it.\n\nUsage:\n\n     do.call(what, args, quote = FALSE, envir = parent.frame())\n     \nArguments:\n\n    what: either a function or a non-empty character string naming the\n          function to be called.\n\n    args: a _list_ of arguments to the function call.  The 'names'\n          attribute of 'args' gives the argument names.\n\n   quote: a logical value indicating whether to quote the arguments.\n\n   envir: an environment within which to evaluate the call.  This will\n          be most useful if 'what' is a character string and the\n          arguments are symbols or quoted expressions.\n\nDetails:\n\n     If 'quote' is 'FALSE', the default, then the arguments are\n     evaluated (in the calling environment, not in 'envir').  If\n     'quote' is 'TRUE' then each argument is quoted (see 'quote') so\n     that the effect of argument evaluation is to remove the quotes -\n     leaving the original arguments unevaluated when the call is\n     constructed.\n\n     The behavior of some functions, such as 'substitute', will not be\n     the same for functions evaluated using 'do.call' as if they were\n     evaluated from the interpreter.  The precise semantics are\n     currently undefined and subject to change.\n\nValue:\n\n     The result of the (evaluated) function call.\n\nWarning:\n\n     This should not be used to attempt to evade restrictions on the\n     use of '.Internal' and other non-API calls.\n\nReferences:\n\n     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S\n     Language_.  Wadsworth & Brooks/Cole.\n\nSee Also:\n\n     'call' which creates an unevaluated call.\n\nExamples:\n\n     do.call(\"complex\", list(imaginary = 1:3))\n     \n     ## if we already have a list (e.g., a data frame)\n     ## we need c() to add further arguments\n     tmp &lt;- expand.grid(letters[1:2], 1:3, c(\"+\", \"-\"))\n     do.call(\"paste\", c(tmp, sep = \"\"))\n     \n     do.call(paste, list(as.name(\"A\"), as.name(\"B\")), quote = TRUE)\n     \n     ## examples of where objects will be found.\n     A &lt;- 2\n     f &lt;- function(x) print(x^2)\n     env &lt;- new.env()\n     assign(\"A\", 10, envir = env)\n     assign(\"f\", f, envir = env)\n     f &lt;- function(x) print(x)\n     f(A)                                      # 2\n     do.call(\"f\", list(A))                     # 2\n     do.call(\"f\", list(A), envir = env)        # 4\n     do.call( f,  list(A), envir = env)        # 2\n     do.call(\"f\", list(quote(A)), envir = env) # 100\n     do.call( f,  list(quote(A)), envir = env) # 10\n     do.call(\"f\", list(as.name(\"A\")), envir = env) # 100\n     \n     eval(call(\"f\", A))                      # 2\n     eval(call(\"f\", quote(A)))               # 2\n     eval(call(\"f\", A), envir = env)         # 4\n     eval(call(\"f\", quote(A)), envir = env)  # 100\n\n\n\n\n\nOK, so basically what happened is that\n\n\ndo.call(rbind, list)\n\n\nGets transformed into\n\n\nrbind(list[[1]], list[[2]], list[[3]], ..., list[[length(list)]])\n\n\nThat’s vectorization magic!",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#you-try-it-if-we-have-time",
+    "href": "modules/ModuleXX-Iteration.html#you-try-it-if-we-have-time",
+    "title": "Iteration in R",
+    "section": "You try it! (if we have time)",
+    "text": "You try it! (if we have time)\n\nUse the code you wrote before the get the incidence per 1000 people on the entire measles data set (add a column for incidence to the full data).\nUse the code plot(NULL, NULL, ...) to make a blank plot. You will need to set the xlim and ylim arguments to sensible values, and specify the axis titles as “Year” and “Incidence per 1000 people”.\nUsing a for loop and the lines() function, make a plot that shows all of the incidence curves over time, overlapping on the plot.\nHINT: use col = adjustcolor(black, alpha.f = 0.25) to make the curves transparent, so you can see the others.\nBONUS PROBLEM: using the function cumsum(), make a plot of the cumulative incidence per 1000 people over time for all of the countries. (Dealing with the NA’s here is tricky!!)",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#main-problem-solution",
+    "href": "modules/ModuleXX-Iteration.html#main-problem-solution",
+    "title": "Iteration in R",
+    "section": "Main problem solution",
+    "text": "Main problem solution\n\nmeas$cases_per_thousand &lt;- meas$Cases / as.numeric(meas$total_pop) * 1000\ncountries &lt;- unique(meas$country)\n\nplot(\n    NULL, NULL,\n    xlim = c(1980, 2022),\n    ylim = c(0, 50),\n    xlab = \"Year\",\n    ylab = \"Incidence per 1000 people\"\n)\n\nfor (i in 1:length(countries)) {\n    country_data &lt;- subset(meas, country == countries[[i]])\n    lines(\n        x = country_data$time,\n        y = country_data$cases_per_thousand,\n        col = adjustcolor(\"black\", alpha.f = 0.25)\n    )\n}",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#bonus-problem-solution",
+    "href": "modules/ModuleXX-Iteration.html#bonus-problem-solution",
+    "title": "Iteration in R",
+    "section": "Bonus problem solution",
+    "text": "Bonus problem solution\n\n# First calculate the cumulative cases, treating NA as zeroes\ncumulative_cases &lt;- ave(\n    x = ifelse(is.na(meas$Cases), 0, meas$Cases),\n    meas$country,\n    FUN = cumsum\n)\n\n# Now put the NAs back where they should be\nmeas$cumulative_cases &lt;- cumulative_cases + (meas$Cases * 0)\n\nplot(\n    NULL, NULL,\n    xlim = c(1980, 2022),\n    ylim = c(1, 6.2e6),\n    xlab = \"Year\",\n    ylab = \"Cumulative cases per 1000 people\"\n)\n\nfor (i in 1:length(countries)) {\n    country_data &lt;- subset(meas, country == countries[[i]])\n    lines(\n        x = country_data$time,\n        y = country_data$cumulative_cases,\n        col = adjustcolor(\"black\", alpha.f = 0.25)\n    )\n}\n\ntext(\n    x = 2020,\n    y = 6e6,\n    labels = \"China →\"\n)",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#main-problem-solution-1",
+    "href": "modules/ModuleXX-Iteration.html#main-problem-solution-1",
+    "title": "Iteration in R",
+    "section": "Main problem solution",
+    "text": "Main problem solution",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#bonus-problem-solution-1",
+    "href": "modules/ModuleXX-Iteration.html#bonus-problem-solution-1",
+    "title": "Iteration in R",
+    "section": "Bonus problem solution",
+    "text": "Bonus problem solution",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
+    ]
+  },
+  {
+    "objectID": "modules/ModuleXX-Iteration.html#more-practice-on-your-own",
+    "href": "modules/ModuleXX-Iteration.html#more-practice-on-your-own",
+    "title": "Iteration in R",
+    "section": "More practice on your own",
+    "text": "More practice on your own\n\nMerge the countries-regions.csv data with the measles_final.Rds data. Reshape the measles data so that MCV1 and MCV2 vaccine coverage are two separate columns. Then use a loop to fit a poisson regression model for each continent where Cases is the outcome, and MCV1 coverage and MCV2 coverage are the predictors. Discuss your findings, and try adding an interation term.\nAssess the impact of age_months as a confounder in the Diphtheria serology data. First, write code to transform age_months into age ranges for each year. Then, using a loop, calculate the crude odds ratio for the effect of vaccination on infection for each of the age ranges. How does the odds ratio change as age increases? Can you formalize this analysis by fitting a logistic regression model with age_months and vaccination as predictors?",
+    "crumbs": [
+      "Day 2",
+      "Iteration in R"
     ]
   }
 ]
