@@ -1,0 +1,134 @@
+---
+title: "R Markdown Notes"
+author: "Zane and Amy"
+date: "2024-07-13"
+output:
+  html_document:
+    fig_caption: true
+    number_sections: false
+bibliography: example-bib.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# This is an example R Markdown document
+
+* The top part of this document (between the `---`) is called the **YAML
+header**. You specify options here that change the configuration of the document.
+* Text in the R Markdown **body** is formatted in the Pandoc Markdown language.
+Most of the syntax can be found on the cheat sheets in the references section.
+* To include a bibliography in your document, add the `bibliography` option to
+your YAML header and include a BIBTEX file. A bibtex file looks like this:
+
+````{verbatim, lang = "bibtex"}
+@Book{rmarkdown-cookbook,
+  title = {R Markdown Cookbook},
+  author = {Yihui Xie and Christophe Dervieux and Emily Riederer},
+  publisher = {Chapman and Hall/CRC},
+  address = {Boca Raton, Florida},
+  year = {2020},
+  isbn = {9780367563837},
+  url = {https://bookdown.org/yihui/rmarkdown-cookbook},
+}
+
+@Manual{rmarkdown-package,
+  title = {rmarkdown: Dynamic Documents for R},
+  author = {JJ Allaire and Yihui Xie and Christophe Dervieux and Jonathan McPherson and Javier Luraschi and Kevin Ushey and Aron Atkins and Hadley Wickham and Joe Cheng and Winston Chang and Richard Iannone},
+  year = {2024},
+  note = {R package version 2.27},
+  url = {https://github.com/rstudio/rmarkdown},
+}
+````
+
+* You can then add citations from your bibliography by adding special text in
+your R Markdown document: `@rmarkdown-cookbook`. That's how we can get this
+citation here [@rmarkdown-cookbook].
+
+# Including R code in your Markdown document
+
+You have to put all of your code in a "Code chunk" and tell `knitr` that you
+are using R code.
+
+```{r}
+meas <- readRDS(here::here("data", "measles_final.Rds"))
+str(meas)
+```
+
+You can make plots and add captions in Markdown as well.
+
+```{r indiaplot, fig.cap = "Meases cases over time in India."}
+meas_plot <- subset(meas, country == "India" & vaccine_antigen == "MCV1")
+plot(
+	meas_plot$time, meas_plot$Cases,
+	xlab = "Year",
+	ylab = "Measles cases by year in India",
+	type = "b"
+)
+```
+
+Note that if you want to **automatically reference your figures** like you would
+need to for a research paper, you will also need to use the `bookdown` package,
+and you can read about it [here](https://bookdown.org/yihui/rmarkdown-cookbook/cross-ref.html). For
+this document, we would have to write out "Figure 1." manually in our text.
+
+# Including tables and figures from files
+
+Including tables is a bit more complicated, because unlike `plot()`, R cannot
+produce any tables on its own. Instead we need to use another package. The
+easiest option is to use the `knitr` package which has a function called
+`knitr::kable()` that can make a table for us, like this.
+
+```{r indiatable}
+meas_table <- data.frame(
+	"Median cases" = median(meas_plot$Cases),
+	"IQR cases" = IQR(meas_plot$Cases)
+)
+
+knitr::kable(
+	meas_table,
+	caption = "Median and IQR number of measles cases across all years in India."
+)
+```
+
+You can also use the `kableExtra` package to format your table more nicely.
+In general there are a lot of nice table making packages in R, like we saw
+with the `tinytable` package in the exercise.
+
+```{r india-tinytable}
+tinytable::tt(meas_table)
+```
+
+Finally, if you want to include a figure that you already saved somewhere,
+you can do that with `knitr` also.
+
+```{r}
+knitr::include_graphics(here::here("images", "xkcd.png"))
+```
+
+
+# R Markdown resources
+
+* Yihui Xie, the creator of R Markdown, has written three very helpful and FREE
+books on R Markdown, which can answer many of your questions.
+    - [The Definitive Guide to R Markdown](https://bookdown.org/yihui/rmarkdown/)
+    - [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+    - [Bookdown: Authoring books and technical documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+* Before Quarto came around, R Studio created a bunch of great R Markdown resources.
+    - RStudio has created a cheatsheet with the most common commands, that you can get [here](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
+    - There's also a slightly longer [reference guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.135548086.688985490.1593521771-610318113.1566927154).
+    - RStudio also has a [series of online lessons](https://rmarkdown.rstudio.com/lesson-1.html) about R Markdown.
+* To learn more about making and presenting tables in R and R Markdown, you
+can check out [this free online course material](https://andreashandel.github.io/MADAcourse/content/module-data-presentation/presenting-results-overview.html).
+* And if you still don't quite get that R Project and `here` package stuff,
+[here](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/) and
+[here](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) are some good readings to help.
+    
+# References
+
+<!-- This is a comment which will not get printed in the final document. I just
+wanted to let you know that the references will get printed at the end of the
+document if you include any citations, so remember to add a header! -->
+
+<!-- see how easy it is to write comments? -->

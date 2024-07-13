@@ -1,6 +1,6 @@
 ---
 title: "Module 8: Data Merging and Reshaping"
-format: 
+format:
   revealjs:
     scrollable: true
     smaller: true

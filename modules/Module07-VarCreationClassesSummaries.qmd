@@ -1,9 +1,9 @@
 ---
 title: "Module 7: Variable Creation, Classes, and Summaries"
-format: 
+format:
   revealjs:
-    scrollable: true
     smaller: true
+    scrollable: true
 ---
 
 ## Learning Objectives
