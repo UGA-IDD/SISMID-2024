@@ -1,8 +1,9 @@
 ---
 title: "Module 8: Data Merging and Reshaping"
-format: revealjs
- scrollable: true
- smaller: true
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
 ---
 
 ## Learning Objectives
@@ -42,7 +43,7 @@ library(printr)
     
 ## Lets import the new data we want to merge and take a look
 
-The new data `serodata_new.csv` represents a follow-up serological survey four years later. At this follow-up individuals were retested for measles virus-specific IgG antibody concentrations and their ages were collected.
+The new data `serodata_new.csv` represents a follow-up serological survey four years later. At this follow-up individuals were retested for IgG antibody concentrations and their ages were collected.
 
 ```{r echo=TRUE}
 df_new <- read.csv("data/serodata_new.csv")

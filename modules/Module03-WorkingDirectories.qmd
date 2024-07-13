@@ -1,8 +1,9 @@
 ---
 title: "Module 3: Working Directories"
-format: revealjs
-scrollable: true
-smaller: true
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
 ---
 
 ## Learning Objectives

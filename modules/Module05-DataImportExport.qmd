@@ -1,8 +1,9 @@
 ---
 title: "Module 5: Data Import and Export"
-format: revealjs
-scrollable: true
-smaller: true
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
 ---
 
 ## Learning Objectives

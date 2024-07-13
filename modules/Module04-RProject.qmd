@@ -1,8 +1,9 @@
 ---
 title: "Module 4: R Project"
-format: revealjs
-scrollable: true
-smaller: true
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
 ---
 
 ## Learning Objectives

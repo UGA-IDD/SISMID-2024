@@ -1,8 +1,9 @@
 ---
 title: "Module 1: Introduction to RStudio and R Basics"
-format: revealjs
-scrollable: true
-smaller: true
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
 ---
 
 ## Learning Objectives

@@ -1,8 +1,9 @@
 ---
 title: "Module 6: Get to Know Your Data and Subsetting"
-format: revealjs
-scrollable: true
-smaller: true
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
 ---
 
 ## Learning Objectives
@@ -46,7 +47,7 @@ Note, if you have a very large dataset with 15+ variables, `summary()` is not so
 
 ## Description of data
 
-This is data based on a simulated measles IgG serological survey.  The rows represent individuals.  Variables include measles-specific IgG concentrations based on EIA, age in years, gender, and residence based on slum characterization.  We will use this dataset for lectures throught the Workshop.
+This is data based on a simulated pathogen X IgG serological survey.  The rows represent individuals. Variables include IgG concentrations, age in years, gender, and residence based on slum characterization.  We will use this dataset for lectures throughout the Workshop.
 
 ## View the data as a whole dataframe
 

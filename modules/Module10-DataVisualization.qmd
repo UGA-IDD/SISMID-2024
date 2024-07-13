@@ -1,0 +1,69 @@
+---
+title: "Module 10: Data Visualization"
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
+---
+
+## Learning Objectives
+
+After module 10, you should be able to...
+
+-		Create Base R plots
+
+## Import data for this module
+
+Let's read in our data (again) and take a quick look.
+
+```{r echo=TRUE}
+df <- read.csv(file = "data/serodata.csv") #relative path
+head(x=df, n=3)
+```
+
+## Prep data
+
+Create `age_group` three level factor variable
+```{r echo=TRUE}
+df$age_group <- ifelse(df$age <= 5, "young", 
+                       ifelse(df$age<=10 & df$age>5, "middle", 
+                              ifelse(df$age>10, "old", NA)))
+df$age_group <- factor(df$age_group, levels=c("young", "middle", "old"))
+```
+
+Create `seropos` binary variable representing seropositivity if antibody concentrations are >10 mIUmL.
+```{r echo=TRUE}
+df$seropos <- ifelse(df$IgG_concentration<10, 0, 
+										ifelse(df$IgG_concentration>=10, 1, NA))
+```
+
+## Base R data visualizattion functions
+
+The Base R 'graphics' package has a ton of graphics options. 
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?graphics
+```
+
+```{r echo=TRUE}
+library(help = "graphics")
+```
+
+
+## Focus on a handful here today
+
+`hist()` displays histogram of one variable
+`plot()` displays x-y plot of two variables
+
+
+
+## Summary
+
+-		
+
+## Acknowledgements
+
+These are the materials I looked through, modified, or extracted to complete this module's lecture.
+
+-   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)

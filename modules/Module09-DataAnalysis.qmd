@@ -1,0 +1,182 @@
+---
+title: "Module 9: Data Analysis"
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
+---
+
+## Learning Objectives
+
+After module 9, you should be able to...
+
+-		Descriptively assess association between two variables
+-		Compute basic statistics 
+-		Fit a generalized linear model
+
+## Import data for this module
+
+Let's read in our data (again) and take a quick look.
+
+```{r echo=TRUE}
+df <- read.csv(file = "data/serodata.csv") #relative path
+head(x=df, n=3)
+```
+
+## Prep data
+
+Create `age_group` three level factor variable
+```{r echo=TRUE}
+df$age_group <- ifelse(df$age <= 5, "young", 
+                       ifelse(df$age<=10 & df$age>5, "middle", 
+                              ifelse(df$age>10, "old", NA)))
+df$age_group <- factor(df$age_group, levels=c("young", "middle", "old"))
+```
+
+Create `seropos` binary variable representing seropositivity if antibody concentrations are >10 mIUmL.
+```{r echo=TRUE}
+df$seropos <- ifelse(df$IgG_concentration<10, 0, 
+										ifelse(df$IgG_concentration>=10, 1, NA))
+```
+
+
+## 2 variable contingency tables
+
+We use `table()` prior to look at one variable, now we can generate frequency tables for 2 plus variables.  To get cell percentages, the `prop.table()` is useful.  
+
+```{r echo=TRUE}
+freq <- table(df$age_group, df$seropo)
+prop <- prop.table(freq)
+freq
+prop
+```
+
+## Chi-Square test
+
+The `chisq.test()` function test of independence of factor variables from `stats` package.
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?chisq.test
+```
+
+
+## Chi-Square test
+
+```{r}
+chisq.test(freq)
+```
+
+We reject the null hypothesis that the proportion of seropositive individuals who are young (<5yo) is the same for individuals who are middle (5-10yo) or old (>10yo).
+
+
+## Correlation
+
+First, we compute correlation by providing two vectors.
+
+Like other functions, if there are `NA`s, you get `NA` as the result. But if you specify use only the complete observations, then it will give you correlation using the non-missing data.
+
+```{r echo=TRUE}
+cor(df$age, df$IgG_concentration, method="pearson")
+cor(df$age, df$IgG_concentration, method="pearson", use = "complete.obs") #IF have missing data
+```
+
+Small positive correlation between IgG concentration and age.
+
+## T-test
+
+The commonly used are:
+
+-   **one-sample t-test** -- used to test mean of a variable in one group (to the null hypothesis mean)
+-   **two-sample t-test** -- used to test difference in means of a variable between two groups (null hypothesis - the group means are the *same*); if "two groups" are data of the *same* individuals collected at 2 time points, we say it is two-sample paired t-test
+
+## T-test
+
+We can use the `t.test()` function from the `stats` package.
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?t.test
+```
+
+## Running two-sample t-test
+
+The **base R** - `t.test()` function from the `stats` package. It tests test difference in means of a variable between two groups. By default:
+
+-   tests whether difference in means of a variable is equal to 0 (default `mu=0`)
+-   uses "two sided" alternative (`alternative = "two.sided"`)
+-   returns result assuming confidence level 0.95 (`conf.level = 0.95`)
+-   assumes data are not paired (`paired = FALSE`)
+-   assumes true variance in the two groups is not equal (`var.equal = FALSE`)
+
+## Running two-sample t-test
+
+```{r}
+IgG_young <- df$IgG_concentration[df$age_group=="young"]
+IgG_old <- df$IgG_concentration[df$age_group=="old"]
+
+t.test(IgG_young, IgG_old)
+```
+
+The mean IgG concenration of young and old is 45.05 and 129.35 mIU/mL, respectively. We reject null hypothesis that the difference in the mean IgG concentration of young and old is 0 mIU/mL.
+
+## Linear regression fit in R
+
+To fit regression models in R, we use the function `glm()` (Generalized Linear Model).
+
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?glm
+```
+
+## Linear regression fit in R
+
+We tend to focus on three arguments:
+
+-   `formula` -- model formula written using names of columns in our data
+-   `data` -- our data frame
+-		`family` -- error distribution and link function
+
+```{r echo=TRUE}
+fit1 <- glm(IgG_concentration~age+gender+slum, data=df, family=gaussian())
+fit2 <- glm(seropos~age_group+gender+slum, data=df, family = binomial(link = "logit"))
+```
+
+## `summary.glm()`
+
+The `summary()` function when applied to a fit object based on a glm is technically the `summary.glm()` function and produces details of the model fit. Note on object oriented code.
+
+```{r, out.width = "200%", echo = FALSE}
+knitr::include_graphics("images/rstudio_script.png")
+```
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?summary.glm
+```
+
+
+## Linear regression fit in R
+
+Lets look at the output...
+
+```{r echo=TRUE}
+summary(fit1)
+summary(fit2)
+```
+
+
+
+## Summary
+
+-		Use `cor()` to calculate correlation between two numeric vectors.
+-   `corrplot()` and `ggpairs()` is nice for a quick visualization of correlations
+-   `t.test()` or `t_test()` tests the mean compared to null or difference in means between two groups
+-		... xxamy more
+
+## Acknowledgements
+
+These are the materials I looked through, modified, or extracted to complete this module's lecture.
+
+-   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)

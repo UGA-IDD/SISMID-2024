@@ -1,9 +1,9 @@
 ---
 title: "Module 7: Variable Creation, Classes, and Summaries"
 format: 
- revealjs
-  scrollable:true
-  smaller:true
+  revealjs:
+    scrollable: true
+    smaller: true
 ---
 
 ## Learning Objectives
@@ -257,7 +257,7 @@ matrix(1:6, ncol=2, byrow=TRUE)
 
 Notice, the first matrix filled in numbers 1-6 by columns first and then rows because default `byrow` argument is FALSE. In the second matrix, we changed the argument `byrow` to `TRUE`, and now numbers 1-6 are filled by rows first and then columns.
 
-## Data Frame 
+## Data frame 
 
 You can transform an existing matrix into data frames and tibble using `as.data.frame()`.  
 
@@ -295,16 +295,14 @@ median(df$IgG_concentration, na.rm=TRUE)
 ```
 
 
-## Character Variable Data Summaries
+## Character variable data summaries
 
-Data summarization on character or factor vectors/variables
-		* `table()`
+Data summarization on character or factor vectors/variables using `table()`
 		
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
 ?table
 ```
-
 
 
 ## Character variable data summary examples
@@ -317,14 +315,11 @@ table(df$gender, useNA="always")
 table(df$age_group, useNA="always")
 ```
 
-Percent of observations in each category (xxzane - better way in base r?)
-
 ```{r echo=TRUE}
 table(df$gender)/nrow(df) #if no NA values
 table(df$age_group)/nrow(df[!is.na(df$age_group),]) #if there are NA values
 table(df$age_group)/nrow(subset(df, !is.na(df$age_group),)) #if there are NA values
 ```
-
 
 
 ## Summary
@@ -335,7 +330,7 @@ table(df$age_group)/nrow(subset(df, !is.na(df$age_group),)) #if there are NA val
 -   `is.CLASS_NAME(x)` can be used to test the class of an object x
 -   `as.CLASS_NAME(x)` can be used to change the class of an object x
 -   Factors are a special character class that has levels 
--   ...
+-   ...xxamy complete
 		
 
 ## Acknowledgements
