@@ -11,7 +11,7 @@ After module 6, you should be able to...
 
 -   Use basic functions to get to know you data
 -   Use two approaches to indexing
--   Rely on indexing to extract part of an object (e.g., subset data) and to replace parts of an object (e.g., rename columns)
+-   Rely on indexing to extract part of an object (e.g., subset data) and to replace parts of an object (e.g., rename variables / columns)
 -   Describe what logical operators are and how to use them
 -   Use on the `subset()` function to subset data
 
@@ -104,13 +104,8 @@ For lists, one generally uses `list[[p]] to select any single element p.
 
 ```{r}
 list.object <- list(number.object, vector.object2, matrix.object)
-```
-
-
-```{r echo=T}
 list.object
 ```
-
 
 ```{r echo=T}
 list.object[[3]]
@@ -122,6 +117,26 @@ list.object[[3]]
 
 ```{r echo=T}
 df$IgG_concentration
+```
+
+## $ for indexing with lists
+
+List elements can be named
+
+```{r makeListv}
+list.object.named <- list(
+  emory = number.object,
+  uga = vector.object2,
+  gsu = matrix.object
+)
+list.object.named
+```
+
+You can reference data from list using `$` (if elements are named) or using double square brackets, `[[ ]]`
+
+```{r}
+list.object.named[["uga"]] 
+list.object.named$uga 
 ```
 
 
@@ -148,6 +163,11 @@ df[, "age"] #same as df[, 2]
 We can select multiple columns using multiple column names:
 ```{r echo=T}
 df[, c("age", "gender")]
+```
+We can remove select columns using column names as well: (xxzane - why - c("slum") not working)
+```{r echo=T}
+df[, -3] #remove column 3, "slum" variable
+#Note df$slum <- NULL would also work
 ```
 We can also grab the `age` column using the `$` operator. 
 ```{r echo=T}
