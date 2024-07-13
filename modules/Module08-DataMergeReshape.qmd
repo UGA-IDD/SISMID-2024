@@ -1,0 +1,155 @@
+---
+title: "Module 8: Data Merging and Reshaping"
+format: revealjs
+ scrollable: true
+ smaller: true
+---
+
+## Learning Objectives
+
+After module 8, you should be able to...
+
+-   Merge/join data together
+-   Reshape data from wide to long
+-   Reshape data from long to wide
+
+## Joining types
+
+Pay close attention to the number of rows in your data set before and after a join. This will help flag when an issue has arisen. This will depend on the type of merge:
+
+-   1:1 merge (one-to-one merge) – Simplest merge (sometimes things go wrong)
+-   1:m merge (one-to-many merge) – More complex (things often go wrong)
+    -   The "one" suggests that one dataset has the merging variable (e.g., id) each represented once and the "many” implies that one dataset has the merging variable represented multiple times
+-   m:m merge (many-to-many merge) – Danger zone (can be unpredictable)
+    
+
+## one-to-one merge
+
+-   This means that each row of data represents a unique unit of analysis that exists in another dataset
+-   Will likely have variables that don’t exist in the current dataset (that’s why you are trying to merge it in)
+-   The merging variable (e.g., id) each represented a single time
+-   You should try to structure your data so that a 1:1 merge or 1:m merge is possible so that fewer things can go wrong.
+
+## `merge()` function
+
+We will use the `merge()` function to conduct one-to-one merge
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?merge
+```
+
+    
+## Lets import the new data we want to merge and take a look
+
+The new data `serodata_new.csv` represents a follow-up serological survey four years later. At this follow-up individuals were retested for measles virus-specific IgG antibody concentrations and their ages were collected.
+
+```{r echo=TRUE}
+df_new <- read.csv("data/serodata_new.csv")
+str(df_new)
+summary(df_new)
+```
+
+
+## Merge the new data with the original data
+
+Lets load the old data as well and look for a variable, or variables, to merge by.
+
+```{r echo=TRUE}
+df <- read.csv("data/serodata.csv")
+colnames(df)
+```
+
+We notice that `observation_id` seems to be the obvious variable by which to merge.  However, we also realize that `IgG_concentration` and `age` are the exact same names.  If we merge now we see that 
+
+```{r echo=TRUE}
+head(merge(df, df_new, all.x=T, all.y=T, by=c('observation_id')))
+```
+
+## Merge the new data with the original data
+
+The first option is to rename the `IgG_concentration` and `age` variables before the merge, so that it is clear which is time point 1 and time point 2. 
+```{r echo=TRUE}
+df$IgG_concentration_time1 <- df$IgG_concentration
+df$age_time1 <- df$age
+df$IgG_concentration <- df$age <- NULL #remove the original variables
+
+df_new$IgG_concentration_time2 <- df_new$IgG_concentration
+df_new$age_time2 <- df_new$age
+df_new$IgG_concentration <- df_new$age <- NULL #remove the original variables
+```
+
+Now, lets merge.
+```{r echo=TRUE}
+df_all_wide <- merge(df, df_new, all.x=T, all.y=T, by=c('observation_id'))
+str(df_all_wide)
+```
+
+## Merge the new data with the original data
+
+The second option is to add a time variable to the two data sets and then merge by `observation_id`, `time` as well as `IgG_concentration` and `age` variables. Note, I need to read in the data again b/c I removed the `IgG_concentration` and `age` variables.
+
+```{r echo=TRUE}
+df <- read.csv("data/serodata.csv")
+df_new <- read.csv("data/serodata_new.csv")
+```
+
+```{r echo=TRUE}
+df$time <- 1
+df_new$time <- 2
+```
+
+Now, lets merge. Note, "By default the data frames are merged on the columns with names they both have" therefore if I don't specify the by argument it will merge on all matching variables.
+```{r echo=TRUE}
+df_all_long <- merge(df, df_new, all.x=T, all.y=T) 
+str(df_all_long)
+```
+
+
+## What is wide/long data?
+
+Above, we actually created a wide and long version of the data.
+
+Wide: has many columns
+    -   Multiple columns per individual, values spread across multiple columns 
+    -   Easier for humans to read
+Long: column names become data
+    -   Multiple rows per observation, a single column contains the values
+    -   Easier for R to make plots & do analysis
+
+```{r, fig.alt="Wide versus long data rearanges the position of column names and row content.", out.width = "60%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/pivot.png")
+```
+
+## `reshape()` function 
+
+The `reshape()` function allows you to toggle between wide and long data
+
+```{r, echo = FALSE, results = "asis"}
+library(printr)
+?reshape
+```
+
+
+## long to wide data
+
+xxzane - help
+
+
+## wide to long data
+
+xxzane - help
+
+
+
+## Summary
+
+-   ...
+		
+
+## Acknowledgements
+
+These are the materials I looked through, modified, or extracted to complete this module's lecture.
+
+-   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
+

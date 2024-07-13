@@ -1,8 +1,9 @@
 ---
 title: "Module 7: Variable Creation, Classes, and Summaries"
-format: revealjs
-scrollable: true
-smaller: true
+format: 
+ revealjs
+  scrollable:true
+  smaller:true
 ---
 
 ## Learning Objectives
@@ -10,9 +11,9 @@ smaller: true
 After module 7, you should be able to...
 
 -   Create new variables
--		Characterize variable classes
--		Manipulate the classes of variables
--		Conduct 1 variable data summaries
+-   Characterize variable classes
+-   Manipulate the classes of variables
+-   Conduct 1 variable data summaries
 
 ## Import data for this module
 Let's first read in the data from the previous module and look at it briefly with a new function `head()`.
@@ -32,7 +33,7 @@ library(printr)
 
 You can add a new column, called `newcol` to `df`, using the `$` operator:
 ```{r echo=TRUE}
-df$log_IgG_concentration <- log(df$IgG_concentration)
+df$log_IgG <- log(df$IgG_concentration)
 head(df,3)
 ```
 
@@ -48,17 +49,20 @@ library(printr)
 
 ## `ifelse` example
 
-Reminder of the first three arguments in the `ifelse()` function are `ifelse(the test, what happens in TRUE, what happens if false)`...
+Reminder of the first three arguments in the `ifelse()` function are `ifelse(test, yes, no)`.
 
 ```{r echo=TRUE}
 df$age_group <- ifelse(df$age <= 5, "young", "old")
 head(df)
 ```
 
-What is we nest `ifelse()` statements?
+
+## Nesting `ifelse` statements example
+
 ```{r echo=TRUE}
 df$age_group <- ifelse(df$age <= 5, "young", 
-											 ifelse(df$age<=10 & df$age>5, "middle"), "old")
+                       ifelse(df$age<=10 & df$age>5, "middle", 
+                              ifelse(df$age>10, "old", NA)))
 head(df)
 ```
 
@@ -155,7 +159,7 @@ There are two useful functions associated with practically all R classes:
 ```{r echo=TRUE}
 is.numeric(df$IgG_concentration)
 is.character(df$age)
-is.charact(df$gender)
+is.character(df$gender)
 ```
 
 ## Examples `as.CLASS_NAME(x)`
@@ -310,26 +314,28 @@ Number of observations in each category
 ```{r echo=TRUE}
 table(df$gender)
 table(df$gender, useNA="always")
+table(df$age_group, useNA="always")
 ```
 
 Percent of observations in each category (xxzane - better way in base r?)
 
 ```{r echo=TRUE}
-table(df$gender)/nrow(df)
-table(df$gender)/nrow(df[!is.na(df$gender),]) #if there were NA values
-table(df$gender)/nrow(subset(df, !is.na(df$gender),)) #if there were NA values
+table(df$gender)/nrow(df) #if no NA values
+table(df$age_group)/nrow(df[!is.na(df$age_group),]) #if there are NA values
+table(df$age_group)/nrow(subset(df, !is.na(df$age_group),)) #if there are NA values
 ```
 
 
 
 ## Summary
 
--		Adding (or modifying) columns/variable to a data frame by using `$` 
--		There are two types of numeric class objects: integer and double
--		Logical class objects only have `TRUE` or `False` (without quotes)
--		is.CLASS_NAME(x) can be used to test the class of an object x
--		as.CLASS_NAME(x) can be used to change the class of an object x
--		Factors are a special character class that has levels 
+-   Adding (or modifying) columns/variable to a data frame by using `$` 
+-   There are two types of numeric class objects: integer and double
+-   Logical class objects only have `TRUE` or `False` (without quotes)
+-   `is.CLASS_NAME(x)` can be used to test the class of an object x
+-   `as.CLASS_NAME(x)` can be used to change the class of an object x
+-   Factors are a special character class that has levels 
+-   ...
 		
 
 ## Acknowledgements

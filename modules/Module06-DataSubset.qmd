@@ -34,18 +34,19 @@ ncol(df) # number of columns
 
 ## Quick summary of data
 
-The `summary()`function of Base R is another great function assess the data type and some summary statistics.  Note, if you have a very large dataset with 15+ variables, this is not so efficient.   
-
-```{r echo=T}
-summary(df)
-```
-
-Otherwise, try  `colnames()` to at least get a list of variable names.
+The `colnames()`, `str()` and `summary()`functions from Base R are great functions to assess the data type and some summary statistics.    
 
 ```{r echo=T}
 colnames(df)
+str(df)
+summary(df)
 ```
 
+Note, if you have a very large dataset with 15+ variables, `summary()` is not so efficient. 
+
+## Description of data
+
+This is data based on a simulated measles IgG serological survey.  The rows represent individuals.  Variables include measles-specific IgG concentrations based on EIA, age in years, gender, and residence based on slum characterization.  We will use this dataset for lectures throught the Workshop.
 
 ## View the data as a whole dataframe
 
