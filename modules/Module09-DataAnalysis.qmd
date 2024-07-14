@@ -33,7 +33,7 @@ df$age_group <- ifelse(df$age <= 5, "young",
 df$age_group <- factor(df$age_group, levels=c("young", "middle", "old"))
 ```
 
-Create `seropos` binary variable representing seropositivity if antibody concentrations are >10 mIUmL.
+Create `seropos` binary variable representing seropositivity if antibody concentrations are >10 IU/mL.
 ```{r echo=TRUE}
 df$seropos <- ifelse(df$IgG_concentration<10, 0, 
 										ifelse(df$IgG_concentration>=10, 1, NA))
@@ -118,7 +118,7 @@ IgG_old <- df$IgG_concentration[df$age_group=="old"]
 t.test(IgG_young, IgG_old)
 ```
 
-The mean IgG concenration of young and old is 45.05 and 129.35 mIU/mL, respectively. We reject null hypothesis that the difference in the mean IgG concentration of young and old is 0 mIU/mL.
+The mean IgG concenration of young and old is 45.05 and 129.35 IU/mL, respectively. We reject null hypothesis that the difference in the mean IgG concentration of young and old is 0 IU/mL.
 
 ## Linear regression fit in R
 

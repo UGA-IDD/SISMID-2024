@@ -31,11 +31,13 @@ library(printr)
 
 ## Adding new columns
 
-You can add a new column, called `newcol` to `df`, using the `$` operator:
+You can add a new column, called `log_IgG` to `df`, using the `$` operator:
 ```{r echo=TRUE}
 df$log_IgG <- log(df$IgG_concentration)
 head(df,3)
 ```
+
+Note, my use of the underscore in the variable name rather than a space.  This is good coding practice and make calling variables much less prone to error.
 
 ## Creating conditional variables
 
