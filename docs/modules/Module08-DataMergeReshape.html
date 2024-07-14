@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.353">
+
+  <meta name="author" content="Amy Winter">
+  <meta name="author" content="Zane Billings">
+  <title>SISMID Module NUMBER Materials (2025) - Module 8: Data Merging and Reshaping</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Module 8: Data Merging and Reshaping</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://publichealth.uga.edu/faculty-member/amy-k-winter/">Amy Winter</a> <a href="https://orcid.org/0000-0003-2737-7003" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://wzbillings.com/">Zane Billings</a> <a href="https://orcid.org/0000-0002-0184-6134" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+</div>
+</div>
+
+</section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
+<p>After module 8, you should be able to…</p>
+<ul>
+<li>Merge/join data together</li>
+<li>Reshape data from wide to long</li>
+<li>Reshape data from long to wide</li>
+</ul>
+</section>
+<section id="joining-types" class="slide level2">
+<h2>Joining types</h2>
+<p>Pay close attention to the number of rows in your data set before and after a join. This will help flag when an issue has arisen. This will depend on the type of merge:</p>
+<ul>
+<li>1:1 merge (one-to-one merge) – Simplest merge (sometimes things go wrong)</li>
+<li>1:m merge (one-to-many merge) – More complex (things often go wrong)
+<ul>
+<li>The “one” suggests that one dataset has the merging variable (e.g., id) each represented once and the “many” implies that one dataset has the merging variable represented multiple times</li>
+</ul></li>
+<li>m:m merge (many-to-many merge) – Danger zone (can be unpredictable)</li>
+</ul>
+</section>
+<section id="one-to-one-merge" class="slide level2">
+<h2>one-to-one merge</h2>
+<ul>
+<li>This means that each row of data represents a unique unit of analysis that exists in another dataset (e.g,. id variable)</li>
+<li>Will likely have variables that don’t exist in the current dataset (that’s why you are trying to merge it in)</li>
+<li>The merging variable (e.g., id) each represented a single time</li>
+<li>You should try to structure your data so that a 1:1 merge or 1:m merge is possible so that fewer things can go wrong.</li>
+</ul>
+</section>
+<section id="merge-function" class="slide level2">
+<h2><code>merge()</code> function</h2>
+<p>We will use the <code>merge()</code> function to conduct one-to-one merge</p>
+<pre><code>Registered S3 method overwritten by 'printr':
+  method                from     
+  knit_print.data.frame rmarkdown</code></pre>
+<p>Merge Two Data Frames</p>
+<p>Description:</p>
+<pre><code> Merge two data frames by common columns or row names, or do other
+ versions of database _join_ operations.</code></pre>
+<p>Usage:</p>
+<pre><code> merge(x, y, ...)
+ 
+ ## Default S3 method:
+ merge(x, y, ...)
+ 
+ ## S3 method for class 'data.frame'
+ merge(x, y, by = intersect(names(x), names(y)),
+       by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
+       sort = TRUE, suffixes = c(".x",".y"), no.dups = TRUE,
+       incomparables = NULL, ...)
+ </code></pre>
+<p>Arguments:</p>
+<pre><code>x, y: data frames, or objects to be coerced to one.</code></pre>
+<p>by, by.x, by.y: specifications of the columns used for merging. See ‘Details’.</p>
+<pre><code> all: logical; 'all = L' is shorthand for 'all.x = L' and 'all.y =
+      L', where 'L' is either 'TRUE' or 'FALSE'.</code></pre>
+<p>all.x: logical; if ‘TRUE’, then extra rows will be added to the output, one for each row in ‘x’ that has no matching row in ‘y’. These rows will have ‘NA’s in those columns that are usually filled with values from ’y’. The default is ‘FALSE’, so that only rows with data from both ‘x’ and ‘y’ are included in the output.</p>
+<p>all.y: logical; analogous to ‘all.x’.</p>
+<pre><code>sort: logical.  Should the result be sorted on the 'by' columns?</code></pre>
+<p>suffixes: a character vector of length 2 specifying the suffixes to be used for making unique the names of columns in the result which are not used for merging (appearing in ‘by’ etc).</p>
+<p>no.dups: logical indicating that ‘suffixes’ are appended in more cases to avoid duplicated column names in the result. This was implicitly false before R version 3.5.0.</p>
+<p>incomparables: values which cannot be matched. See ‘match’. This is intended to be used for merging on one column, so these are incomparable values of that column.</p>
+<pre><code> ...: arguments to be passed to or from methods.</code></pre>
+<p>Details:</p>
+<pre><code> 'merge' is a generic function whose principal method is for data
+ frames: the default method coerces its arguments to data frames
+ and calls the '"data.frame"' method.
+
+ By default the data frames are merged on the columns with names
+ they both have, but separate specifications of the columns can be
+ given by 'by.x' and 'by.y'.  The rows in the two data frames that
+ match on the specified columns are extracted, and joined together.
+ If there is more than one match, all possible matches contribute
+ one row each.  For the precise meaning of 'match', see 'match'.
+
+ Columns to merge on can be specified by name, number or by a
+ logical vector: the name '"row.names"' or the number '0' specifies
+ the row names.  If specified by name it must correspond uniquely
+ to a named column in the input.
+
+ If 'by' or both 'by.x' and 'by.y' are of length 0 (a length zero
+ vector or 'NULL'), the result, 'r', is the _Cartesian product_ of
+ 'x' and 'y', i.e., 'dim(r) = c(nrow(x)*nrow(y), ncol(x) +
+ ncol(y))'.
+
+ If 'all.x' is true, all the non matching cases of 'x' are appended
+ to the result as well, with 'NA' filled in the corresponding
+ columns of 'y'; analogously for 'all.y'.
+
+ If the columns in the data frames not used in merging have any
+ common names, these have 'suffixes' ('".x"' and '".y"' by default)
+ appended to try to make the names of the result unique.  If this
+ is not possible, an error is thrown.
+
+ If a 'by.x' column name matches one of 'y', and if 'no.dups' is
+ true (as by default), the y version gets suffixed as well,
+ avoiding duplicate column names in the result.
+
+ The complexity of the algorithm used is proportional to the length
+ of the answer.
+
+ In SQL database terminology, the default value of 'all = FALSE'
+ gives a _natural join_, a special case of an _inner join_.
+ Specifying 'all.x = TRUE' gives a _left (outer) join_, 'all.y =
+ TRUE' a _right (outer) join_, and both ('all = TRUE') a _(full)
+ outer join_.  DBMSes do not match 'NULL' records, equivalent to
+ 'incomparables = NA' in R.</code></pre>
+<p>Value:</p>
+<pre><code> A data frame.  The rows are by default lexicographically sorted on
+ the common columns, but for 'sort = FALSE' are in an unspecified
+ order.  The columns are the common columns followed by the
+ remaining columns in 'x' and then those in 'y'.  If the matching
+ involved row names, an extra character column called 'Row.names'
+ is added at the left, and in all cases the result has 'automatic'
+ row names.</code></pre>
+<p>Note:</p>
+<pre><code> This is intended to work with data frames with vector-like
+ columns: some aspects work with data frames containing matrices,
+ but not all.
+
+ Currently long vectors are not accepted for inputs, which are thus
+ restricted to less than 2^31 rows. That restriction also applies
+ to the result for 32-bit platforms.</code></pre>
+<p>See Also:</p>
+<pre><code> 'data.frame', 'by', 'cbind'.
+
+ 'dendrogram' for a class which has a 'merge' method.</code></pre>
+<p>Examples:</p>
+<pre><code> authors &lt;- data.frame(
+     ## I(*) : use character columns of names to get sensible sort order
+     surname = I(c("Tukey", "Venables", "Tierney", "Ripley", "McNeil")),
+     nationality = c("US", "Australia", "US", "UK", "Australia"),
+     deceased = c("yes", rep("no", 4)))
+ authorN &lt;- within(authors, { name &lt;- surname; rm(surname) })
+ books &lt;- data.frame(
+     name = I(c("Tukey", "Venables", "Tierney",
+              "Ripley", "Ripley", "McNeil", "R Core")),
+     title = c("Exploratory Data Analysis",
+               "Modern Applied Statistics ...",
+               "LISP-STAT",
+               "Spatial Statistics", "Stochastic Simulation",
+               "Interactive Data Analysis",
+               "An Introduction to R"),
+     other.author = c(NA, "Ripley", NA, NA, NA, NA,
+                      "Venables &amp; Smith"))
+ 
+ (m0 &lt;- merge(authorN, books))
+ (m1 &lt;- merge(authors, books, by.x = "surname", by.y = "name"))
+  m2 &lt;- merge(books, authors, by.x = "name", by.y = "surname")
+ stopifnot(exprs = {
+    identical(m0, m2[, names(m0)])
+    as.character(m1[, 1]) == as.character(m2[, 1])
+    all.equal(m1[, -1], m2[, -1][ names(m1)[-1] ])
+    identical(dim(merge(m1, m2, by = NULL)),
+              c(nrow(m1)*nrow(m2), ncol(m1)+ncol(m2)))
+ })
+ 
+ ## "R core" is missing from authors and appears only here :
+ merge(authors, books, by.x = "surname", by.y = "name", all = TRUE)
+ 
+ 
+ ## example of using 'incomparables'
+ x &lt;- data.frame(k1 = c(NA,NA,3,4,5), k2 = c(1,NA,NA,4,5), data = 1:5)
+ y &lt;- data.frame(k1 = c(NA,2,NA,4,5), k2 = c(NA,NA,3,4,5), data = 1:5)
+ merge(x, y, by = c("k1","k2")) # NA's match
+ merge(x, y, by = "k1") # NA's match, so 6 rows
+ merge(x, y, by = "k2", incomparables = NA) # 2 rows</code></pre>
+</section>
+<section id="lets-import-the-new-data-we-want-to-merge-and-take-a-look" class="slide level2">
+<h2>Lets import the new data we want to merge and take a look</h2>
+<p>The new data <code>serodata_new.csv</code> represents a follow-up serological survey four years later. At this follow-up individuals were retested for IgG antibody concentrations and their ages were collected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>df_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata_new.csv"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">str</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   636 obs. of  3 variables:
+ $ observation_id   : int  5772 8095 9784 9338 6369 6885 6252 8913 7332 6941 ...
+ $ IgG_concentration: num  0.261 2.981 0.282 136.638 0.381 ...
+ $ age              : int  6 8 8 8 5 8 8 NA 8 6 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">summary</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">observation_id</th>
+<th style="text-align: left;">IgG_concentration</th>
+<th style="text-align: left;">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Min. :5006</td>
+<td style="text-align: left;">Min. : 0.0051</td>
+<td style="text-align: left;">Min. : 5.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1st Qu.:6328</td>
+<td style="text-align: left;">1st Qu.: 0.2751</td>
+<td style="text-align: left;">1st Qu.: 7.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Median :7494</td>
+<td style="text-align: left;">Median : 1.5477</td>
+<td style="text-align: left;">Median :10.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mean :7490</td>
+<td style="text-align: left;">Mean : 82.7684</td>
+<td style="text-align: left;">Mean :10.63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">3rd Qu.:8736</td>
+<td style="text-align: left;">3rd Qu.:129.6389</td>
+<td style="text-align: left;">3rd Qu.:14.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Max. :9982</td>
+<td style="text-align: left;">Max. :950.6590</td>
+<td style="text-align: left;">Max. :19.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA’s :9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="merge-the-new-data-with-the-original-data" class="slide level2">
+<h2>Merge the new data with the original data</h2>
+<p>Lets load the old data as well and look for a variable, or variables, to merge by.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata.csv"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "observation_id"    "IgG_concentration" "age"              
+[4] "gender"            "slum"             </code></pre>
+</div>
+</div>
+<p>We notice that <code>observation_id</code> seems to be the obvious variable by which to merge. However, we also realize that <code>IgG_concentration</code> and <code>age</code> are the exact same names. If we merge now we see that</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">head</span>(<span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T, <span class="at">by=</span><span class="fu">c</span>(<span class="st">'observation_id'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 24%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 24%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration.x</th>
+<th style="text-align: right;">age.x</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">slum</th>
+<th style="text-align: right;">IgG_concentration.y</th>
+<th style="text-align: right;">age.y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5006</td>
+<td style="text-align: right;">164.2979452</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">155.5811325</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5024</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">0.2918605</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5026</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">0.2542945</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5030</td>
+<td style="text-align: right;">0.0555556</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">0.0533262</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5035</td>
+<td style="text-align: right;">26.2112514</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">22.0159300</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5054</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">0.2709671</td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="merge-the-new-data-with-the-original-data-1" class="slide level2">
+<h2>Merge the new data with the original data</h2>
+<p>The first option is to rename the <code>IgG_concentration</code> and <code>age</code> variables before the merge, so that it is clear which is time point 1 and time point 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>df<span class="sc">$</span>IgG_concentration_time1 <span class="ot">&lt;-</span> df<span class="sc">$</span>IgG_concentration</span>
+<span id="cb19-2"><a href="#cb19-2"></a>df<span class="sc">$</span>age_time1 <span class="ot">&lt;-</span> df<span class="sc">$</span>age</span>
+<span id="cb19-3"><a href="#cb19-3"></a>df<span class="sc">$</span>IgG_concentration <span class="ot">&lt;-</span> df<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#remove the original variables</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>df_new<span class="sc">$</span>IgG_concentration_time2 <span class="ot">&lt;-</span> df_new<span class="sc">$</span>IgG_concentration</span>
+<span id="cb19-6"><a href="#cb19-6"></a>df_new<span class="sc">$</span>age_time2 <span class="ot">&lt;-</span> df_new<span class="sc">$</span>age</span>
+<span id="cb19-7"><a href="#cb19-7"></a>df_new<span class="sc">$</span>IgG_concentration <span class="ot">&lt;-</span> df_new<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#remove the original variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, lets merge.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>df_all_wide <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T, <span class="at">by=</span><span class="fu">c</span>(<span class="st">'observation_id'</span>))</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">str</span>(df_all_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   651 obs. of  7 variables:
+ $ observation_id         : int  5006 5024 5026 5030 5035 5054 5057 5063 5064 5080 ...
+ $ gender                 : chr  "Male" "Female" "Female" "Female" ...
+ $ slum                   : chr  "Non slum" "Non slum" "Non slum" "Non slum" ...
+ $ IgG_concentration_time1: num  164.2979 0.3 0.3 0.0556 26.2113 ...
+ $ age_time1              : int  7 5 10 7 11 3 3 12 14 6 ...
+ $ IgG_concentration_time2: num  155.5811 0.2919 0.2543 0.0533 22.0159 ...
+ $ age_time2              : int  11 9 14 11 15 7 7 16 18 10 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="merge-the-new-data-with-the-original-data-2" class="slide level2">
+<h2>Merge the new data with the original data</h2>
+<p>The second option is to add a time variable to the two data sets and then merge by <code>observation_id</code>,<code>time</code>,<code>age</code>,<code>IgG_concentration</code>. Note, I need to read in the data again b/c I removed the <code>IgG_concentration</code> and <code>age</code> variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata.csv"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>df_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata_new.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co">#you can put in one number and it will repeat it</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>df_new<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">slum</th>
+<th style="text-align: right;">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5772</td>
+<td style="text-align: right;">0.3176895</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8095</td>
+<td style="text-align: right;">3.4368231</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9784</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9338</td>
+<td style="text-align: right;">143.2363014</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6369</td>
+<td style="text-align: right;">0.4476534</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6885</td>
+<td style="text-align: right;">0.0252708</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">head</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: right;">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5772</td>
+<td style="text-align: right;">0.2612388</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8095</td>
+<td style="text-align: right;">2.9809049</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9784</td>
+<td style="text-align: right;">0.2819489</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9338</td>
+<td style="text-align: right;">136.6382260</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6369</td>
+<td style="text-align: right;">0.3810119</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6885</td>
+<td style="text-align: right;">0.0245951</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now, lets merge. Note, “By default the data frames are merged on the columns with names they both have” therefore if I don’t specify the by argument it will merge on all matching variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df_all_long <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T) </span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">str</span>(df_all_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1287 obs. of  6 variables:
+ $ observation_id   : int  5006 5006 5024 5024 5026 5026 5030 5030 5035 5035 ...
+ $ IgG_concentration: num  155.581 164.298 0.292 0.3 0.254 ...
+ $ age              : int  11 7 9 5 14 10 11 7 15 11 ...
+ $ time             : num  2 1 2 1 2 1 2 1 2 1 ...
+ $ gender           : chr  NA "Male" NA "Female" ...
+ $ slum             : chr  NA "Non slum" NA "Non slum" ...</code></pre>
+</div>
+</div>
+<p>Note, there are 1287 rows, which is the sum of the number of rows of <code>df</code> (651 rows) and <code>df_new</code> (636 rows)</p>
+</section>
+<section id="what-is-widelong-data" class="slide level2">
+<h2>What is wide/long data?</h2>
+<p>Above, we actually created a wide and long version of the data.</p>
+<p>Wide: has many columns</p>
+<ul>
+<li>multiple columns per individual, values spread across multiple columns</li>
+<li>easier for humans to read</li>
+</ul>
+<p>Long: has many rows</p>
+<ul>
+<li>column names become data</li>
+<li>multiple rows per observation, a single column contains the values</li>
+<li>easier for R to make plots &amp; do analysis</li>
+</ul>
+</section>
+<section id="reshape-function" class="slide level2">
+<h2><code>reshape()</code> function</h2>
+<p>The <code>reshape()</code> function allows you to toggle between wide and long data</p>
+<p>Reshape Grouped Data</p>
+<p>Description:</p>
+<pre><code> This function reshapes a data frame between 'wide' format (with
+ repeated measurements in separate columns of the same row) and
+ 'long' format (with the repeated measurements in separate rows).</code></pre>
+<p>Usage:</p>
+<pre><code> reshape(data, varying = NULL, v.names = NULL, timevar = "time",
+         idvar = "id", ids = 1:NROW(data),
+         times = seq_along(varying[[1]]),
+         drop = NULL, direction, new.row.names = NULL,
+         sep = ".",
+         split = if (sep == "") {
+             list(regexp = "[A-Za-z][0-9]", include = TRUE)
+         } else {
+             list(regexp = sep, include = FALSE, fixed = TRUE)}
+         )
+ 
+ ### Typical usage for converting from long to wide format:
+ 
+ # reshape(data, direction = "wide",
+ #         idvar = "___", timevar = "___", # mandatory
+ #         v.names = c(___),    # time-varying variables
+ #         varying = list(___)) # auto-generated if missing
+ 
+ ### Typical usage for converting from wide to long format:
+ 
+ ### If names of wide-format variables are in a 'nice' format
+ 
+ # reshape(data, direction = "long",
+ #         varying = c(___), # vector 
+ #         sep)              # to help guess 'v.names' and 'times'
+ 
+ ### To specify long-format variable names explicitly
+ 
+ # reshape(data, direction = "long",
+ #         varying = ___,  # list / matrix / vector (use with care)
+ #         v.names = ___,  # vector of variable names in long format
+ #         timevar, times, # name / values of constructed time variable
+ #         idvar, ids)     # name / values of constructed id variable
+ </code></pre>
+<p>Arguments:</p>
+<pre><code>data: a data frame</code></pre>
+<p>varying: names of sets of variables in the wide format that correspond to single variables in long format (‘time-varying’). This is canonically a list of vectors of variable names, but it can optionally be a matrix of names, or a single vector of names. In each case, when ‘direction = “long”’, the names can be replaced by indices which are interpreted as referring to ‘names(data)’. See ‘Details’ for more details and options.</p>
+<p>v.names: names of variables in the long format that correspond to multiple variables in the wide format. See ‘Details’.</p>
+<p>timevar: the variable in long format that differentiates multiple records from the same group or individual. If more than one record matches, the first will be taken (with a warning).</p>
+<p>idvar: Names of one or more variables in long format that identify multiple records from the same group/individual. These variables may also be present in wide format.</p>
+<pre><code> ids: the values to use for a newly created 'idvar' variable in
+      long format.</code></pre>
+<p>times: the values to use for a newly created ‘timevar’ variable in long format. See ‘Details’.</p>
+<pre><code>drop: a vector of names of variables to drop before reshaping.</code></pre>
+<p>direction: character string, partially matched to either ‘“wide”’ to reshape to wide format, or ‘“long”’ to reshape to long format.</p>
+<p>new.row.names: character or ‘NULL’: a non-null value will be used for the row names of the result.</p>
+<pre><code> sep: A character vector of length 1, indicating a separating
+      character in the variable names in the wide format.  This is
+      used for guessing 'v.names' and 'times' arguments based on
+      the names in 'varying'.  If 'sep == ""', the split is just
+      before the first numeral that follows an alphabetic
+      character.  This is also used to create variable names when
+      reshaping to wide format.</code></pre>
+<p>split: A list with three components, ‘regexp’, ‘include’, and (optionally) ‘fixed’. This allows an extended interface to variable name splitting. See ‘Details’.</p>
+<p>Details:</p>
+<pre><code> Although 'reshape()' can be used in a variety of contexts, the
+ motivating application is data from longitudinal studies, and the
+ arguments of this function are named and described in those terms.
+ A longitudinal study is characterized by repeated measurements of
+ the same variable(s), e.g., height and weight, on each unit being
+ studied (e.g., individual persons) at different time points (which
+ are assumed to be the same for all units). These variables are
+ called time-varying variables. The study may include other
+ variables that are measured only once for each unit and do not
+ vary with time (e.g., gender and race); these are called
+ time-constant variables.
+
+ A 'wide' format representation of a longitudinal dataset will have
+ one record (row) for each unit, typically with some time-constant
+ variables that occupy single columns, and some time-varying
+ variables that occupy multiple columns (one column for each time
+ point).  A 'long' format representation of the same dataset will
+ have multiple records (rows) for each individual, with the
+ time-constant variables being constant across these records and
+ the time-varying variables varying across the records.  The 'long'
+ format dataset will have two additional variables: a 'time'
+ variable identifying which time point each record comes from, and
+ an 'id' variable showing which records refer to the same unit.
+
+ The type of conversion (long to wide or wide to long) is
+ determined by the 'direction' argument, which is mandatory unless
+ the 'data' argument is the result of a previous call to 'reshape'.
+ In that case, the operation can be reversed simply using
+ 'reshape(data)' (the other arguments are stored as attributes on
+ the data frame).
+
+ Conversion from long to wide format with 'direction = "wide"' is
+ the simpler operation, and is mainly useful in the context of
+ multivariate analysis where data is often expected as a
+ wide-format matrix. In this case, the time variable 'timevar' and
+ id variable 'idvar' must be specified. All other variables are
+ assumed to be time-varying, unless the time-varying variables are
+ explicitly specified via the 'v.names' argument.  A warning is
+ issued if time-constant variables are not actually constant.
+
+ Each time-varying variable is expanded into multiple variables in
+ the wide format.  The names of these expanded variables are
+ generated automatically, unless they are specified as the
+ 'varying' argument in the form of a list (or matrix) with one
+ component (or row) for each time-varying variable. If 'varying' is
+ a vector of names, it is implicitly converted into a matrix, with
+ one row for each time-varying variable. Use this option with care
+ if there are multiple time-varying variables, as the ordering (by
+ column, the default in the 'matrix' constructor) may be
+ unintuitive, whereas the explicit list or matrix form is
+ unambiguous.
+
+ Conversion from wide to long with 'direction = "long"' is the more
+ common operation as most (univariate) statistical modeling
+ functions expect data in the long format. In the simpler case
+ where there is only one time-varying variable, the corresponding
+ columns in the wide format input can be specified as the 'varying'
+ argument, which can be either a vector of column names or the
+ corresponding column indices. The name of the corresponding
+ variable in the long format output combining these columns can be
+ optionally specified as the 'v.names' argument, and the name of
+ the time variables as the 'timevar' argument. The values to use as
+ the time values corresponding to the different columns in the wide
+ format can be specified as the 'times' argument.  If 'v.names' is
+ unspecified, the function will attempt to guess 'v.names' and
+ 'times' from 'varying' (an explicitly specified 'times' argument
+ is unused in that case).  The default expects variable names like
+ 'x.1', 'x.2', where 'sep = "."' specifies to split at the dot and
+ drop it from the name.  To have alphabetic followed by numeric
+ times use 'sep = ""'.
+
+ Multiple time-varying variables can be specified in two ways,
+ either with 'varying' as an atomic vector as above, or as a list
+ (or a matrix). The first form is useful (and mandatory) if the
+ automatic variable name splitting as described above is used; this
+ requires the names of all time-varying variables to be suitably
+ formatted in the same manner, and 'v.names' to be unspecified. If
+ 'varying' is a list (with one component for each time-varying
+ variable) or a matrix (one row for each time-varying variable),
+ variable name splitting is not attempted, and 'v.names' and
+ 'times' will generally need to be specified, although they will
+ default to, respectively, the first variable name in each set, and
+ sequential times.
+
+ Also, guessing is not attempted if 'v.names' is given explicitly,
+ even if 'varying' is an atomic vector. In that case, the number of
+ time-varying variables is taken to be the length of 'v.names', and
+ 'varying' is implicitly converted into a matrix, with one row for
+ each time-varying variable. As in the case of long to wide
+ conversion, the matrix is filled up by column, so careful
+ attention needs to be paid to the order of variable names (or
+ indices) in 'varying', which is taken to be like 'x.1', 'y.1',
+ 'x.2', 'y.2' (i.e., variables corresponding to the same time point
+ need to be grouped together).
+
+ The 'split' argument should not usually be necessary.  The
+ 'split$regexp' component is passed to either 'strsplit' or
+ 'regexpr', where the latter is used if 'split$include' is 'TRUE',
+ in which case the splitting occurs after the first character of
+ the matched string.  In the 'strsplit' case, the separator is not
+ included in the result, and it is possible to specify fixed-string
+ matching using 'split$fixed'.</code></pre>
+<p>Value:</p>
+<pre><code> The reshaped data frame with added attributes to simplify
+ reshaping back to the original form.</code></pre>
+<p>See Also:</p>
+<pre><code> 'stack', 'aperm'; 'relist' for reshaping the result of 'unlist'.
+ 'xtabs' and 'as.data.frame.table' for creating contingency tables
+ and converting them back to data frames.</code></pre>
+<p>Examples:</p>
+<pre><code> summary(Indometh) # data in long format
+ 
+ ## long to wide (direction = "wide") requires idvar and timevar at a minimum
+ reshape(Indometh, direction = "wide", idvar = "Subject", timevar = "time")
+ 
+ ## can also explicitly specify name of combined variable
+ wide &lt;- reshape(Indometh, direction = "wide", idvar = "Subject",
+                 timevar = "time", v.names = "conc", sep= "_")
+ wide
+ 
+ ## reverse transformation
+ reshape(wide, direction = "long")
+ reshape(wide, idvar = "Subject", varying = list(2:12),
+         v.names = "conc", direction = "long")
+ 
+ ## times need not be numeric
+ df &lt;- data.frame(id = rep(1:4, rep(2,4)),
+                  visit = I(rep(c("Before","After"), 4)),
+                  x = rnorm(4), y = runif(4))
+ df
+ reshape(df, timevar = "visit", idvar = "id", direction = "wide")
+ ## warns that y is really varying
+ reshape(df, timevar = "visit", idvar = "id", direction = "wide", v.names = "x")
+ 
+ 
+ ##  unbalanced 'long' data leads to NA fill in 'wide' form
+ df2 &lt;- df[1:7, ]
+ df2
+ reshape(df2, timevar = "visit", idvar = "id", direction = "wide")
+ 
+ ## Alternative regular expressions for guessing names
+ df3 &lt;- data.frame(id = 1:4, age = c(40,50,60,50), dose1 = c(1,2,1,2),
+                   dose2 = c(2,1,2,1), dose4 = c(3,3,3,3))
+ reshape(df3, direction = "long", varying = 3:5, sep = "")
+ 
+ 
+ ## an example that isn't longitudinal data
+ state.x77 &lt;- as.data.frame(state.x77)
+ long &lt;- reshape(state.x77, idvar = "state", ids = row.names(state.x77),
+                 times = names(state.x77), timevar = "Characteristic",
+                 varying = list(names(state.x77)), direction = "long")
+ 
+ reshape(long, direction = "wide")
+ 
+ reshape(long, direction = "wide", new.row.names = unique(long$state))
+ 
+ ## multiple id variables
+ df3 &lt;- data.frame(school = rep(1:3, each = 4), class = rep(9:10, 6),
+                   time = rep(c(1,1,2,2), 3), score = rnorm(12))
+ wide &lt;- reshape(df3, idvar = c("school", "class"), direction = "wide")
+ wide
+ ## transform back
+ reshape(wide)</code></pre>
+</section>
+<section id="long-to-wide-data" class="slide level2">
+<h2>long to wide data</h2>
+<p>xxzane - help</p>
+</section>
+<section id="wide-to-long-data" class="slide level2">
+<h2>wide to long data</h2>
+<p>xxzane - help</p>
+</section>
+<section id="lets-get-real" class="slide level2">
+<h2>Let’s get real</h2>
+<p>Use the <code>pivot_wider()</code> and <code>pivot_longer()</code> from the tidyr package!</p>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>…</li>
+</ul>
+</section>
+<section id="acknowledgements" class="slide level2">
+<h2>Acknowledgements</h2>
+<p>These are the materials we looked through, modified, or extracted to complete this module’s lecture.</p>
+<ul>
+<li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
+</ul>
+
+<div class="footer footer-default">
+
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

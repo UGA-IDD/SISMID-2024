@@ -483,11 +483,11 @@
 </section>
 <section id="description-of-data" class="slide level2">
 <h2>Description of data</h2>
-<p>This is data based on a simulated pathogen X IgG antibody serological survey. The rows represent individuals. Variables include IgG concentrations in IU/mL, age in years, gender, and residence based on slum characterization. We will use this dataset for lectures throughout the Workshop.</p>
+<p>This is data based on a simulated pathogen X IgG antibody serological survey. The rows represent individuals. Variables include IgG concentrations in IU/mL, age in years, gender, and residence based on slum characterization. We will use this dataset for modules throughout the Workshop.</p>
 </section>
 <section id="view-the-data-as-a-whole-dataframe" class="slide level2">
 <h2>View the data as a whole dataframe</h2>
-<p>The <code>View()</code> function, one of the few Base R functions with a capital letter can be used to open a new tab in the Console and view the data as you would in excel.</p>
+<p>The <code>View()</code> function, one of the few Base R functions with a capital letter, and can be used to open a new tab in the Console and view the data as you would in excel.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">View</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -495,12 +495,13 @@
 <img data-src="images/ViewTab.png" style="width:100.0%" class="r-stretch"></section>
 <section id="view-the-data-as-a-whole-dataframe-1" class="slide level2">
 <h2>View the data as a whole dataframe</h2>
-<p>You can also open a new tab of the data by clicking on the data icon beside the object in the Environment window.</p>
+<p>You can also open a new tab of the data by clicking on the data icon beside the object in the Environment pane</p>
 
-<img data-src="images/View.png" style="width:90.0%" class="r-stretch"></section>
+<img data-src="images/View.png" style="width:90.0%" class="r-stretch"><p>You can also hold down <code>Cmd</code> or <code>CTRL</code> and click on the name of a data frame in your code.</p>
+</section>
 <section id="indexing" class="slide level2">
 <h2>Indexing</h2>
-<p>R contains several constructs which allow access to individual elements or subsets through indexing operations. Indexing can be used both to extract part of an object and to replace parts of an object (or to add parts). There are three basic indexing syntax: <code>[ ]</code>, <code>[[ ]]</code> and <code>$</code>.</p>
+<p>R contains several operators which allow access to individual elements or subsets through indexing. Indexing can be used both to extract part of an object and to replace parts of an object (or to add parts). There are three basic indexing operators: <code>[</code>, <code>[[</code> and <code>$</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>x[i] <span class="co">#if x is a vector</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>x[i, j] <span class="co">#if x is a matrix/data frame</span></span>
@@ -511,7 +512,7 @@
 </section>
 <section id="vectors-and-multi-dimensional-objects" class="slide level2">
 <h2>Vectors and multi-dimensional objects</h2>
-<p>To index a vector, <code>vector[i]</code> select the ith element. To index a multi-dimensional objects such as a matrix, <code>matrix[i, j]</code> selects the element in row i and column j, where as in a three dimensional <code>array[k, i, i, j]</code> selects the element in matrix k, row i, and column j.</p>
+<p>To index a vector, <code>vector[i]</code> select the ith element. To index a multi-dimensional objects such as a matrix, <code>matrix[i, j]</code> selects the element in row i and column j, where as in a three dimensional <code>array[k, i, j]</code> selects the element in matrix k, row i, and column j.</p>
 <p>Let’s practice by first creating the same objects as we did in Module 1.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -533,7 +534,7 @@
 [2,]    4    5</code></pre>
 </div>
 </div>
-<p>Finally, let’s use indexing to pull our elements of the objects.</p>
+<p>Finally, let’s use indexing to pull out elements of the objects.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>vector.object1[<span class="dv">2</span>] <span class="co">#pulling the second element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -574,158 +575,37 @@
 [2,]    4    5</code></pre>
 </div>
 </div>
-</section>
-<section id="for-indexing" class="slide level2">
-<h2>$ for indexing</h2>
-<p><code>$</code> allows only a literal character string or a symbol as the index.</p>
+<p>What happens if we use a single square bracket?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>df<span class="sc">$</span>IgG_concentration</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>list.object[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 3.176895e-01 3.436823e+00 3.000000e-01 1.432363e+02 4.476534e-01
-  [6] 2.527076e-02 6.101083e-01 3.000000e-01 2.916968e+00 1.649819e+00
- [11] 4.574007e+00 1.583904e+02           NA 1.065068e+02 1.113870e+02
- [16] 4.144893e+01 3.000000e-01 2.527076e-01 8.159247e+01 1.825342e+02
- [21] 4.244656e+01 1.193493e+02 3.000000e-01 3.000000e-01 9.025271e-01
- [26] 3.501805e-01 3.000000e-01 1.227437e+00 1.702055e+02 3.000000e-01
- [31] 4.801444e-01 2.527076e-02 3.000000e-01 5.776173e-02 4.801444e-01
- [36] 3.826715e-01 3.000000e-01 4.048558e+02 3.000000e-01 5.451264e-01
- [41] 3.000000e-01 5.590753e+01 2.202166e-01 1.709760e+02 1.227437e+00
- [46] 4.567527e+02 4.838480e+01 1.227437e-01 1.877256e-01 3.000000e-01
- [51] 3.501805e-01 3.339350e+00 3.000000e-01 5.451264e-01           NA
- [56] 2.104693e+00           NA 3.826715e-01 3.926366e+01 1.129964e+00
- [61] 3.501805e+00 7.542808e+01 4.800475e+01 1.000000e+00 4.068884e+01
- [66] 3.000000e-01 4.377672e+01 1.193493e+02 6.977740e+01 1.373288e+02
- [71] 1.642979e+02           NA 1.542808e+02 6.033058e-01 2.809917e-01
- [76] 1.966942e+00 2.041322e+00 2.115702e+00 4.663043e+02 3.000000e-01
- [81] 1.500796e+02 1.543790e+02 2.561983e-01 1.596338e+02 1.732484e+02
- [86] 4.641304e+02 3.736364e+01 1.572452e+02 3.000000e-01 3.000000e-01
- [91] 8.264463e-02 6.776859e-01 7.272727e-01 2.066116e-01 1.966942e+00
- [96] 3.000000e-01 3.000000e-01 2.809917e-01 8.016529e-01 1.818182e-01
-[101] 1.818182e-01 8.264463e-02 3.422727e+01 8.743506e+00 3.000000e-01
-[106] 1.641720e+02 4.049587e-01 1.001592e+02 4.489130e+02 1.101911e+02
-[111] 4.440909e+01 1.288217e+02 2.840909e+01 1.003981e+02 8.512397e-01
-[116] 1.322314e-01 1.297521e+00 1.570248e-01 1.966942e+00 1.536624e+02
-[121] 3.000000e-01 3.000000e-01 1.074380e+00 1.099174e+00 3.057851e-01
-[126] 3.000000e-01 5.785124e-02 4.391304e+02 6.130435e+02 1.074380e-01
-[131] 7.125796e+01 4.222727e+01 1.620223e+02 3.750000e+01 1.534236e+02
-[136] 6.239130e+02 5.521739e+02 5.785124e-02 6.547945e-01 8.767123e-02
-[141] 3.000000e-01 2.849315e+00 3.835616e-02 2.849315e-01 4.649315e+00
-[146] 1.369863e-01 3.589041e-01 1.049315e+00 4.668998e+01 1.473510e+02
-[151] 4.589744e+01 2.109589e-01 1.741722e+02 2.496503e+01 1.850993e+02
-[156] 1.863014e-01 1.863014e-01 4.589744e+01 1.942881e+02 5.079646e+02
-[161] 8.767123e-01 2.750685e+00 1.503311e+02 3.000000e-01 3.095890e-01
-[166] 3.000000e-01 6.371681e+02 6.054795e-01 1.955298e+02 1.786424e+02
-[171] 1.120861e+02 1.331954e+02 2.159292e+02 5.628319e+02 1.900662e+02
-[176] 6.547945e-01 1.665753e+00 1.739238e+02 9.991722e+01 9.321192e+01
-[181] 8.767123e-02           NA 6.794521e-01 5.808219e-01 1.369863e-01
-[186] 2.060274e+00 1.610099e+02 4.082192e-01 8.273973e-01 4.601770e+02
-[191] 1.389073e+02 3.867133e+01 9.260274e-01 5.918874e+01 1.870861e+02
-[196] 4.328767e-01 6.301370e-02 3.000000e-01 1.548013e+02 5.819536e+01
-[201] 1.724338e+02 1.932401e+01 2.164420e+00 9.757412e-01 1.509434e-01
-[206] 1.509434e-01 7.766571e+01 4.319563e+01 1.752022e-01 3.094775e+01
-[211] 1.266846e-01 2.919806e+01 9.545455e+00 2.735115e+01 1.314841e+02
-[216] 3.643985e+01 1.498559e+02 9.363636e+00 2.479784e-01 5.390836e-02
-[221] 8.787062e-01 1.994609e-01 3.000000e-01 3.000000e-01 5.390836e-03
-[226] 4.177898e-01 3.000000e-01 2.479784e-01 2.964960e-02 2.964960e-01
-[231] 5.148248e+00 1.994609e-01 3.000000e-01 1.779539e+02 3.290210e+02
-[236] 3.000000e-01 1.809798e+02 4.905660e-01 1.266846e-01 1.543948e+02
-[241] 1.379683e+02 6.153846e+02 1.474784e+02 3.000000e-01 1.024259e+00
-[246] 4.444056e+02 3.000000e-01 2.504043e+00 3.000000e-01 3.000000e-01
-[251] 7.816712e-02 3.000000e-01 5.390836e-02 1.494236e+02 5.972622e+01
-[256] 6.361186e-01 1.837896e+02 1.320809e+02 1.571906e-01 1.520231e+02
-[261] 3.000000e-01 3.000000e-01 1.823699e+02 3.000000e-01 2.173913e+00
-[266] 2.142202e+01 3.000000e-01 3.408027e+00 4.155963e+01 9.698997e-02
-[271] 1.238532e+01 9.528926e+00 1.916185e+02 1.060201e+00 3.679104e+02
-[276] 4.288991e+01 9.971098e+01 3.000000e-01 1.208092e+02 3.000000e-01
-[281] 6.688963e-03 2.505017e+00 1.481605e+00 3.000000e-01 5.183946e-01
-[286] 3.000000e-01 1.872910e-01 3.678930e-01 3.000000e-01 4.529851e+02
-[291] 3.169725e+01 3.000000e-01 4.922018e+01 2.548507e+02 1.661850e+02
-[296] 9.164179e+02 3.678930e-01 1.236994e+02 6.705202e+01 3.834862e+01
-[301] 1.963211e+00 3.000000e-01 2.474916e-01 3.000000e-01 2.173913e-01
-[306] 8.193980e-01 2.444816e+00 3.000000e-01 1.571906e-01 1.849711e+02
-[311] 6.119403e+02 3.000000e-01 4.280936e-01 9.698997e-02 3.678930e-02
-[316] 4.832090e+02 1.390173e+02 3.000000e-01 6.555970e+02 1.526012e+02
-[321] 3.000000e-01 7.222222e-01 7.724426e+01 3.000000e-01 6.111111e-01
-[326] 1.555556e+00 3.055556e-01 1.500000e+00 1.470772e+02 1.694444e+00
-[331] 3.138298e+02 1.414405e+02 1.990605e+02 4.212766e+02 3.000000e-01
-[336] 3.000000e-01 6.478723e+02 3.000000e-01 2.222222e+00 3.000000e-01
-[341] 2.055556e+00 2.777778e-02 8.333333e-02 1.032359e+02 1.611111e+00
-[346] 8.333333e-02 2.333333e+00 5.755319e+02 1.686848e+02 1.111111e-01
-[351] 3.000000e-01 8.372340e+02 3.000000e-01 3.784504e+01 3.819149e+02
-[356] 5.555556e-02 3.000000e+02 1.855950e+02 1.944444e-01 3.000000e-01
-[361] 5.555556e-02 1.138889e+00 4.254237e+01 3.000000e-01 3.000000e-01
-[366] 3.000000e-01 3.000000e-01 3.138298e+02 1.235908e+02 4.159574e+02
-[371] 3.009685e+01 1.567850e+02 1.367432e+02 3.731235e+01 9.164927e+01
-[376] 2.936170e+02 8.820459e+01 1.035491e+02 7.379958e+01 3.000000e-01
-[381] 1.718750e+02 2.128527e+00 1.253918e+00 2.382445e-01 4.639498e-01
-[386] 1.253918e-01 1.253918e-01 3.000000e-01 1.000000e+00 1.570043e+02
-[391] 4.344086e+02 2.184953e+00 1.507837e+00 3.228840e-01 4.588024e+01
-[396] 1.660560e+02 3.000000e-01 3.043011e+02 2.612903e+02 1.621767e+02
-[401] 3.228840e-01 4.639498e-01 2.495298e+00 3.257053e+00 3.793103e-01
-[406]           NA 6.896552e-02 3.000000e-01 1.423197e+00 3.000000e-01
-[411] 3.000000e-01 1.786638e+02 3.279570e+02           NA 1.903017e+02
-[416] 1.654095e+02 4.639498e-01 1.815733e+02 1.366771e+00 1.536050e-01
-[421] 1.306587e+01 2.129032e+02 1.925647e+02 3.000000e-01 1.028213e+00
-[426] 3.793103e-01 8.025078e-01 4.860215e+02 3.000000e-01 2.100313e-01
-[431] 2.767665e+01 1.592476e+00 9.717868e-02 1.028213e+00 3.793103e-01
-[436] 1.292026e+02 4.425150e+01 3.193548e+02 1.860991e+02 6.614420e-01
-[441] 5.203762e-01 1.330819e+02 1.673491e+02 3.000000e-01 1.117457e+02
-[446] 3.045509e+01 3.000000e-01 8.280255e-02 3.000000e-01 1.200637e+00
-[451] 1.687898e-01 7.367273e+02 8.280255e-02 5.127389e-01 1.974522e-01
-[456] 7.993631e-01 3.000000e-01 3.298182e+02 9.736842e+01 3.000000e-01
-[461] 3.000000e-01 4.214545e+02 3.000000e-01 2.578182e+02 2.261147e-01
-[466] 3.000000e-01 1.883901e+02 9.458204e+01 3.000000e-01 3.000000e-01
-[471] 7.707006e-01 5.032727e+02 1.544586e+00 1.431115e+02 3.000000e-01
-[476] 1.458599e+00 1.247678e+02           NA 4.334545e+02 3.000000e-01
-[481] 6.156364e+02 9.574303e+01 1.928019e+02 1.888545e+02 1.598297e+02
-[486] 5.127389e-01 1.171053e+02           NA 2.547771e-02 1.707430e+02
-[491] 3.000000e-01 1.869969e+02 4.731481e+01 1.988390e+02 3.000000e-01
-[496] 8.808050e+01 2.003185e+00 3.000000e-01 3.509259e+01 9.365325e+01
-[501] 3.000000e-01 3.736111e+01 1.674923e+02 8.808050e+01 1.656347e+02
-[506] 3.722222e+01 6.756364e+02 3.000000e-01 1.698142e+02 1.628483e+02
-[511] 5.985130e-01 1.903346e+00 3.000000e-01 3.000000e-01 8.996283e-01
-[516] 3.977695e-01 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01
-[521] 7.446809e+02 6.095745e+02 1.427445e+02 3.000000e-01 2.973978e-02
-[526] 3.977695e-01 4.095745e+02 4.595745e+02 3.000000e-01 1.976341e+02
-[531] 3.776596e+02 1.777603e+02 4.312268e-01 6.765957e+02 7.978723e+02
-[536] 9.665427e-02 1.879338e+02 4.358670e+01 3.000000e-01 3.000000e-01
-[541] 2.638955e+01 3.180523e+01 1.746845e+02 1.876972e+02 1.044164e+02
-[546] 1.202681e+02 1.630915e+02 1.276025e+02 8.880126e+01 3.563830e+02
-[551] 2.212766e+02 1.969121e+01 3.755319e+02 1.214511e+02 1.034700e+02
-[556] 3.000000e-01 3.643123e-01 6.319703e-02 3.000000e-01 3.000000e-01
-[561] 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01
-[566] 3.000000e-01 1.664038e+02 2.946809e+02 4.391924e+01 1.874606e+02
-[571] 1.143533e+02 1.600158e+02 1.635688e-01 8.809148e+01 1.337539e+02
-[576] 1.985804e+02 1.578864e+02 3.000000e-01 3.000000e-01 1.953642e-01
-[581] 1.119205e+00 2.523636e+02 3.000000e-01 4.844371e+00 3.000000e-01
-[586] 1.492553e+02 1.993617e+02 2.847682e-01 3.145695e-01 3.000000e-01
-[591] 3.406429e+01 6.595745e+01 3.000000e-01 2.174545e+02           NA
-[596] 5.957447e+01 7.236364e+02 3.000000e-01 3.000000e-01 3.000000e-01
-[601] 2.676364e+02 1.891489e+02 3.036364e+02 3.000000e-01 3.000000e-01
-[606] 3.000000e-01 3.000000e-01 3.000000e-01 1.447020e+00 2.130909e+02
-[611] 1.357616e-01 3.000000e-01 3.000000e-01 5.534545e+02 1.891489e+02
-[616] 7.202128e+01 3.250287e+01 1.655629e-02 3.123636e+02 3.000000e-01
-[621] 7.138298e+01 3.000000e-01 6.946809e+01 4.012629e+01 1.629787e+02
-[626] 1.508511e+02 1.655629e-02 3.000000e-01 4.635762e-02 3.000000e-01
-[631] 3.000000e-01 3.000000e-01 1.942553e+02 3.690909e+02 3.000000e-01
-[636] 3.000000e-01 2.847682e+00 1.435106e+02 3.000000e-01 4.752009e+01
-[641] 2.621125e+01 1.055319e+02 3.000000e-01 1.149007e+00 2.927273e+02
-[646] 3.000000e-01 3.000000e-01 4.839265e+01 3.000000e-01 3.000000e-01
-[651] 2.251656e-01</code></pre>
+<pre><code>[[1]]
+     [,1] [,2]
+[1,]    2    3
+[2,]    4    5</code></pre>
 </div>
 </div>
-<p>Note, if you have spaces in your variable name, you will need to use back ticks <code>variable name</code> after the <code>$</code>. This is a good reason to not create variables / column names with spaces.</p>
+<p>The <code>[[</code> operator is called the “extract” operator and gives us the element from the list. The <code>[</code> operator is called the “subset” operator and gives us a subset of the list, that is still a list.</p>
+</section>
+<section id="for-indexing-for-data-frame" class="slide level2">
+<h2>$ for indexing for data frame</h2>
+<p><code>$</code> allows only a literal character string or a symbol as the index. For a data frame it extracts a variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>df<span class="sc">$</span>IgG_concentration</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note, if you have spaces in your variable name, you will need to use back ticks ` after the <code>$</code>. This is a good reason to not create variables / column names with spaces.</p>
 </section>
 <section id="for-indexing-with-lists" class="slide level2">
 <h2>$ for indexing with lists</h2>
+<p><code>$</code> allows only a literal character string or a symbol as the index. For a list it extracts a named element.</p>
 <p>List elements can be named</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>list.object.named <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="at">emory =</span> number.object,</span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="at">uga =</span> vector.object2,</span>
-<span id="cb31-4"><a href="#cb31-4"></a>  <span class="at">gsu =</span> matrix.object</span>
-<span id="cb31-5"><a href="#cb31-5"></a>)</span>
-<span id="cb31-6"><a href="#cb31-6"></a>list.object.named</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>list.object.named <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="at">emory =</span> number.object,</span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="at">uga =</span> vector.object2,</span>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="at">gsu =</span> matrix.object</span>
+<span id="cb32-5"><a href="#cb32-5"></a>)</span>
+<span id="cb32-6"><a href="#cb32-6"></a>list.object.named</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$emory
 [1] 3
@@ -739,13 +619,13 @@ $gsu
 [2,]    4    5</code></pre>
 </div>
 </div>
-<p>If list elements are named, than you can reference data from list using <code>$</code> or using double square brackets, <code>[[ ]]</code></p>
+<p>If list elements are named, than you can reference data from list using <code>$</code> or using double square brackets, <code>[[</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>list.object.named<span class="sc">$</span>uga </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>list.object.named<span class="sc">$</span>uga </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "blue"   "red"    "yellow"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>list.object.named[[<span class="st">"uga"</span>]] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>list.object.named[[<span class="st">"uga"</span>]] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "blue"   "red"    "yellow"</code></pre>
 </div>
@@ -755,1633 +635,716 @@ $gsu
 <h2>Using indexing to rename columns</h2>
 <p>As mentioned above, indexing can be used both to extract part of an object and to replace parts of an object (or to add parts).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">colnames</span>(df) <span class="co"># just prints</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">colnames</span>(df) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "observation_id"    "IgG_concentration" "age"              
 [4] "gender"            "slum"             </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">colnames</span>(df)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"IgG_concentration_mIU/mL"</span>, <span class="st">"age_year"</span>) <span class="co"># reassigns</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">colnames</span>(df)[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"IgG_concentration_IU/mL"</span>, <span class="st">"age_year"</span>) <span class="co"># reassigns</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "IgG_concentration_mIU/mL" "age_year"                
-[3] "age"                      "gender"                  
-[5] "slum"                    </code></pre>
+<pre><code>[1] "observation_id"          "IgG_concentration_IU/mL"
+[3] "age_year"                "gender"                 
+[5] "slum"                   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">colnames</span>(df)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"IgG_concentration"</span>, <span class="st">"age"</span>) <span class="co">#reset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For the sake of the module, I am going to reassign them back to the original variable names</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">colnames</span>(df)[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"IgG_concentration"</span>, <span class="st">"age"</span>) <span class="co">#reset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-indexing-to-subset-by-columns" class="slide level2">
 <h2>Using indexing to subset by columns</h2>
-<p>We can also subset a data frames and matrices (2-dimensional objects) using the bracket <code>[ row , column ]</code>. We can subset by columns and pull the <code>x</code> column using the index of the column or the column name.</p>
-<p>For example, here I am pulling the 3nd column, which has the variable name <code>age</code></p>
+<p>We can also subset data frames and matrices (2-dimensional objects) using the bracket <code>[ row , column ]</code>. We can subset by columns and pull the <code>x</code> column using the index of the column or the column name. Leaving either row or column dimension blank means to select all of them.</p>
+<p>For example, here I am pulling the 3rd column, which has the variable name <code>age</code>, for all of rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>df[ , <span class="st">"age"</span>] <span class="co">#same as df[ , 3]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] 3.176895e-01 3.436823e+00 3.000000e-01 1.432363e+02 4.476534e-01
-  [6] 2.527076e-02 6.101083e-01 3.000000e-01 2.916968e+00 1.649819e+00
- [11] 4.574007e+00 1.583904e+02           NA 1.065068e+02 1.113870e+02
- [16] 4.144893e+01 3.000000e-01 2.527076e-01 8.159247e+01 1.825342e+02
- [21] 4.244656e+01 1.193493e+02 3.000000e-01 3.000000e-01 9.025271e-01
- [26] 3.501805e-01 3.000000e-01 1.227437e+00 1.702055e+02 3.000000e-01
- [31] 4.801444e-01 2.527076e-02 3.000000e-01 5.776173e-02 4.801444e-01
- [36] 3.826715e-01 3.000000e-01 4.048558e+02 3.000000e-01 5.451264e-01
- [41] 3.000000e-01 5.590753e+01 2.202166e-01 1.709760e+02 1.227437e+00
- [46] 4.567527e+02 4.838480e+01 1.227437e-01 1.877256e-01 3.000000e-01
- [51] 3.501805e-01 3.339350e+00 3.000000e-01 5.451264e-01           NA
- [56] 2.104693e+00           NA 3.826715e-01 3.926366e+01 1.129964e+00
- [61] 3.501805e+00 7.542808e+01 4.800475e+01 1.000000e+00 4.068884e+01
- [66] 3.000000e-01 4.377672e+01 1.193493e+02 6.977740e+01 1.373288e+02
- [71] 1.642979e+02           NA 1.542808e+02 6.033058e-01 2.809917e-01
- [76] 1.966942e+00 2.041322e+00 2.115702e+00 4.663043e+02 3.000000e-01
- [81] 1.500796e+02 1.543790e+02 2.561983e-01 1.596338e+02 1.732484e+02
- [86] 4.641304e+02 3.736364e+01 1.572452e+02 3.000000e-01 3.000000e-01
- [91] 8.264463e-02 6.776859e-01 7.272727e-01 2.066116e-01 1.966942e+00
- [96] 3.000000e-01 3.000000e-01 2.809917e-01 8.016529e-01 1.818182e-01
-[101] 1.818182e-01 8.264463e-02 3.422727e+01 8.743506e+00 3.000000e-01
-[106] 1.641720e+02 4.049587e-01 1.001592e+02 4.489130e+02 1.101911e+02
-[111] 4.440909e+01 1.288217e+02 2.840909e+01 1.003981e+02 8.512397e-01
-[116] 1.322314e-01 1.297521e+00 1.570248e-01 1.966942e+00 1.536624e+02
-[121] 3.000000e-01 3.000000e-01 1.074380e+00 1.099174e+00 3.057851e-01
-[126] 3.000000e-01 5.785124e-02 4.391304e+02 6.130435e+02 1.074380e-01
-[131] 7.125796e+01 4.222727e+01 1.620223e+02 3.750000e+01 1.534236e+02
-[136] 6.239130e+02 5.521739e+02 5.785124e-02 6.547945e-01 8.767123e-02
-[141] 3.000000e-01 2.849315e+00 3.835616e-02 2.849315e-01 4.649315e+00
-[146] 1.369863e-01 3.589041e-01 1.049315e+00 4.668998e+01 1.473510e+02
-[151] 4.589744e+01 2.109589e-01 1.741722e+02 2.496503e+01 1.850993e+02
-[156] 1.863014e-01 1.863014e-01 4.589744e+01 1.942881e+02 5.079646e+02
-[161] 8.767123e-01 2.750685e+00 1.503311e+02 3.000000e-01 3.095890e-01
-[166] 3.000000e-01 6.371681e+02 6.054795e-01 1.955298e+02 1.786424e+02
-[171] 1.120861e+02 1.331954e+02 2.159292e+02 5.628319e+02 1.900662e+02
-[176] 6.547945e-01 1.665753e+00 1.739238e+02 9.991722e+01 9.321192e+01
-[181] 8.767123e-02           NA 6.794521e-01 5.808219e-01 1.369863e-01
-[186] 2.060274e+00 1.610099e+02 4.082192e-01 8.273973e-01 4.601770e+02
-[191] 1.389073e+02 3.867133e+01 9.260274e-01 5.918874e+01 1.870861e+02
-[196] 4.328767e-01 6.301370e-02 3.000000e-01 1.548013e+02 5.819536e+01
-[201] 1.724338e+02 1.932401e+01 2.164420e+00 9.757412e-01 1.509434e-01
-[206] 1.509434e-01 7.766571e+01 4.319563e+01 1.752022e-01 3.094775e+01
-[211] 1.266846e-01 2.919806e+01 9.545455e+00 2.735115e+01 1.314841e+02
-[216] 3.643985e+01 1.498559e+02 9.363636e+00 2.479784e-01 5.390836e-02
-[221] 8.787062e-01 1.994609e-01 3.000000e-01 3.000000e-01 5.390836e-03
-[226] 4.177898e-01 3.000000e-01 2.479784e-01 2.964960e-02 2.964960e-01
-[231] 5.148248e+00 1.994609e-01 3.000000e-01 1.779539e+02 3.290210e+02
-[236] 3.000000e-01 1.809798e+02 4.905660e-01 1.266846e-01 1.543948e+02
-[241] 1.379683e+02 6.153846e+02 1.474784e+02 3.000000e-01 1.024259e+00
-[246] 4.444056e+02 3.000000e-01 2.504043e+00 3.000000e-01 3.000000e-01
-[251] 7.816712e-02 3.000000e-01 5.390836e-02 1.494236e+02 5.972622e+01
-[256] 6.361186e-01 1.837896e+02 1.320809e+02 1.571906e-01 1.520231e+02
-[261] 3.000000e-01 3.000000e-01 1.823699e+02 3.000000e-01 2.173913e+00
-[266] 2.142202e+01 3.000000e-01 3.408027e+00 4.155963e+01 9.698997e-02
-[271] 1.238532e+01 9.528926e+00 1.916185e+02 1.060201e+00 3.679104e+02
-[276] 4.288991e+01 9.971098e+01 3.000000e-01 1.208092e+02 3.000000e-01
-[281] 6.688963e-03 2.505017e+00 1.481605e+00 3.000000e-01 5.183946e-01
-[286] 3.000000e-01 1.872910e-01 3.678930e-01 3.000000e-01 4.529851e+02
-[291] 3.169725e+01 3.000000e-01 4.922018e+01 2.548507e+02 1.661850e+02
-[296] 9.164179e+02 3.678930e-01 1.236994e+02 6.705202e+01 3.834862e+01
-[301] 1.963211e+00 3.000000e-01 2.474916e-01 3.000000e-01 2.173913e-01
-[306] 8.193980e-01 2.444816e+00 3.000000e-01 1.571906e-01 1.849711e+02
-[311] 6.119403e+02 3.000000e-01 4.280936e-01 9.698997e-02 3.678930e-02
-[316] 4.832090e+02 1.390173e+02 3.000000e-01 6.555970e+02 1.526012e+02
-[321] 3.000000e-01 7.222222e-01 7.724426e+01 3.000000e-01 6.111111e-01
-[326] 1.555556e+00 3.055556e-01 1.500000e+00 1.470772e+02 1.694444e+00
-[331] 3.138298e+02 1.414405e+02 1.990605e+02 4.212766e+02 3.000000e-01
-[336] 3.000000e-01 6.478723e+02 3.000000e-01 2.222222e+00 3.000000e-01
-[341] 2.055556e+00 2.777778e-02 8.333333e-02 1.032359e+02 1.611111e+00
-[346] 8.333333e-02 2.333333e+00 5.755319e+02 1.686848e+02 1.111111e-01
-[351] 3.000000e-01 8.372340e+02 3.000000e-01 3.784504e+01 3.819149e+02
-[356] 5.555556e-02 3.000000e+02 1.855950e+02 1.944444e-01 3.000000e-01
-[361] 5.555556e-02 1.138889e+00 4.254237e+01 3.000000e-01 3.000000e-01
-[366] 3.000000e-01 3.000000e-01 3.138298e+02 1.235908e+02 4.159574e+02
-[371] 3.009685e+01 1.567850e+02 1.367432e+02 3.731235e+01 9.164927e+01
-[376] 2.936170e+02 8.820459e+01 1.035491e+02 7.379958e+01 3.000000e-01
-[381] 1.718750e+02 2.128527e+00 1.253918e+00 2.382445e-01 4.639498e-01
-[386] 1.253918e-01 1.253918e-01 3.000000e-01 1.000000e+00 1.570043e+02
-[391] 4.344086e+02 2.184953e+00 1.507837e+00 3.228840e-01 4.588024e+01
-[396] 1.660560e+02 3.000000e-01 3.043011e+02 2.612903e+02 1.621767e+02
-[401] 3.228840e-01 4.639498e-01 2.495298e+00 3.257053e+00 3.793103e-01
-[406]           NA 6.896552e-02 3.000000e-01 1.423197e+00 3.000000e-01
-[411] 3.000000e-01 1.786638e+02 3.279570e+02           NA 1.903017e+02
-[416] 1.654095e+02 4.639498e-01 1.815733e+02 1.366771e+00 1.536050e-01
-[421] 1.306587e+01 2.129032e+02 1.925647e+02 3.000000e-01 1.028213e+00
-[426] 3.793103e-01 8.025078e-01 4.860215e+02 3.000000e-01 2.100313e-01
-[431] 2.767665e+01 1.592476e+00 9.717868e-02 1.028213e+00 3.793103e-01
-[436] 1.292026e+02 4.425150e+01 3.193548e+02 1.860991e+02 6.614420e-01
-[441] 5.203762e-01 1.330819e+02 1.673491e+02 3.000000e-01 1.117457e+02
-[446] 3.045509e+01 3.000000e-01 8.280255e-02 3.000000e-01 1.200637e+00
-[451] 1.687898e-01 7.367273e+02 8.280255e-02 5.127389e-01 1.974522e-01
-[456] 7.993631e-01 3.000000e-01 3.298182e+02 9.736842e+01 3.000000e-01
-[461] 3.000000e-01 4.214545e+02 3.000000e-01 2.578182e+02 2.261147e-01
-[466] 3.000000e-01 1.883901e+02 9.458204e+01 3.000000e-01 3.000000e-01
-[471] 7.707006e-01 5.032727e+02 1.544586e+00 1.431115e+02 3.000000e-01
-[476] 1.458599e+00 1.247678e+02           NA 4.334545e+02 3.000000e-01
-[481] 6.156364e+02 9.574303e+01 1.928019e+02 1.888545e+02 1.598297e+02
-[486] 5.127389e-01 1.171053e+02           NA 2.547771e-02 1.707430e+02
-[491] 3.000000e-01 1.869969e+02 4.731481e+01 1.988390e+02 3.000000e-01
-[496] 8.808050e+01 2.003185e+00 3.000000e-01 3.509259e+01 9.365325e+01
-[501] 3.000000e-01 3.736111e+01 1.674923e+02 8.808050e+01 1.656347e+02
-[506] 3.722222e+01 6.756364e+02 3.000000e-01 1.698142e+02 1.628483e+02
-[511] 5.985130e-01 1.903346e+00 3.000000e-01 3.000000e-01 8.996283e-01
-[516] 3.977695e-01 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01
-[521] 7.446809e+02 6.095745e+02 1.427445e+02 3.000000e-01 2.973978e-02
-[526] 3.977695e-01 4.095745e+02 4.595745e+02 3.000000e-01 1.976341e+02
-[531] 3.776596e+02 1.777603e+02 4.312268e-01 6.765957e+02 7.978723e+02
-[536] 9.665427e-02 1.879338e+02 4.358670e+01 3.000000e-01 3.000000e-01
-[541] 2.638955e+01 3.180523e+01 1.746845e+02 1.876972e+02 1.044164e+02
-[546] 1.202681e+02 1.630915e+02 1.276025e+02 8.880126e+01 3.563830e+02
-[551] 2.212766e+02 1.969121e+01 3.755319e+02 1.214511e+02 1.034700e+02
-[556] 3.000000e-01 3.643123e-01 6.319703e-02 3.000000e-01 3.000000e-01
-[561] 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01
-[566] 3.000000e-01 1.664038e+02 2.946809e+02 4.391924e+01 1.874606e+02
-[571] 1.143533e+02 1.600158e+02 1.635688e-01 8.809148e+01 1.337539e+02
-[576] 1.985804e+02 1.578864e+02 3.000000e-01 3.000000e-01 1.953642e-01
-[581] 1.119205e+00 2.523636e+02 3.000000e-01 4.844371e+00 3.000000e-01
-[586] 1.492553e+02 1.993617e+02 2.847682e-01 3.145695e-01 3.000000e-01
-[591] 3.406429e+01 6.595745e+01 3.000000e-01 2.174545e+02           NA
-[596] 5.957447e+01 7.236364e+02 3.000000e-01 3.000000e-01 3.000000e-01
-[601] 2.676364e+02 1.891489e+02 3.036364e+02 3.000000e-01 3.000000e-01
-[606] 3.000000e-01 3.000000e-01 3.000000e-01 1.447020e+00 2.130909e+02
-[611] 1.357616e-01 3.000000e-01 3.000000e-01 5.534545e+02 1.891489e+02
-[616] 7.202128e+01 3.250287e+01 1.655629e-02 3.123636e+02 3.000000e-01
-[621] 7.138298e+01 3.000000e-01 6.946809e+01 4.012629e+01 1.629787e+02
-[626] 1.508511e+02 1.655629e-02 3.000000e-01 4.635762e-02 3.000000e-01
-[631] 3.000000e-01 3.000000e-01 1.942553e+02 3.690909e+02 3.000000e-01
-[636] 3.000000e-01 2.847682e+00 1.435106e+02 3.000000e-01 4.752009e+01
-[641] 2.621125e+01 1.055319e+02 3.000000e-01 1.149007e+00 2.927273e+02
-[646] 3.000000e-01 3.000000e-01 4.839265e+01 3.000000e-01 3.000000e-01
-[651] 2.251656e-01</code></pre>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>df[ , <span class="st">"age"</span>] <span class="co">#same as df[ , 3]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>We can select multiple columns using multiple column names:</p>
+<p>We can select multiple columns using multiple column names, again this is selecting these variables for all of the rows.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>df[, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"gender"</span>)] <span class="co">#same as df[ , c(3,4)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             age gender
-1   3.176895e-01 Female
-2   3.436823e+00 Female
-3   3.000000e-01   Male
-4   1.432363e+02   Male
-5   4.476534e-01   Male
-6   2.527076e-02   Male
-7   6.101083e-01 Female
-8   3.000000e-01 Female
-9   2.916968e+00   Male
-10  1.649819e+00   Male
-11  4.574007e+00   Male
-12  1.583904e+02 Female
-13            NA   Male
-14  1.065068e+02   Male
-15  1.113870e+02   Male
-16  4.144893e+01   Male
-17  3.000000e-01   Male
-18  2.527076e-01 Female
-19  8.159247e+01 Female
-20  1.825342e+02   Male
-21  4.244656e+01   Male
-22  1.193493e+02 Female
-23  3.000000e-01   Male
-24  3.000000e-01 Female
-25  9.025271e-01 Female
-26  3.501805e-01   Male
-27  3.000000e-01   Male
-28  1.227437e+00 Female
-29  1.702055e+02 Female
-30  3.000000e-01 Female
-31  4.801444e-01   Male
-32  2.527076e-02   Male
-33  3.000000e-01 Female
-34  5.776173e-02   Male
-35  4.801444e-01 Female
-36  3.826715e-01 Female
-37  3.000000e-01   Male
-38  4.048558e+02   Male
-39  3.000000e-01   Male
-40  5.451264e-01   Male
-41  3.000000e-01 Female
-42  5.590753e+01   Male
-43  2.202166e-01 Female
-44  1.709760e+02   Male
-45  1.227437e+00   Male
-46  4.567527e+02   Male
-47  4.838480e+01   Male
-48  1.227437e-01 Female
-49  1.877256e-01 Female
-50  3.000000e-01 Female
-51  3.501805e-01   Male
-52  3.339350e+00   Male
-53  3.000000e-01 Female
-54  5.451264e-01 Female
-55            NA   Male
-56  2.104693e+00   Male
-57            NA   Male
-58  3.826715e-01 Female
-59  3.926366e+01 Female
-60  1.129964e+00   Male
-61  3.501805e+00 Female
-62  7.542808e+01 Female
-63  4.800475e+01 Female
-64  1.000000e+00   Male
-65  4.068884e+01   Male
-66  3.000000e-01 Female
-67  4.377672e+01 Female
-68  1.193493e+02   Male
-69  6.977740e+01   Male
-70  1.373288e+02 Female
-71  1.642979e+02   Male
-72            NA Female
-73  1.542808e+02   Male
-74  6.033058e-01   Male
-75  2.809917e-01   Male
-76  1.966942e+00   Male
-77  2.041322e+00   Male
-78  2.115702e+00 Female
-79  4.663043e+02   Male
-80  3.000000e-01   Male
-81  1.500796e+02   Male
-82  1.543790e+02 Female
-83  2.561983e-01 Female
-84  1.596338e+02   Male
-85  1.732484e+02 Female
-86  4.641304e+02 Female
-87  3.736364e+01   Male
-88  1.572452e+02 Female
-89  3.000000e-01   Male
-90  3.000000e-01   Male
-91  8.264463e-02   Male
-92  6.776859e-01 Female
-93  7.272727e-01   Male
-94  2.066116e-01 Female
-95  1.966942e+00   Male
-96  3.000000e-01   Male
-97  3.000000e-01   Male
-98  2.809917e-01 Female
-99  8.016529e-01 Female
-100 1.818182e-01 Female
-101 1.818182e-01   Male
-102 8.264463e-02 Female
-103 3.422727e+01 Female
-104 8.743506e+00   Male
-105 3.000000e-01   Male
-106 1.641720e+02 Female
-107 4.049587e-01   Male
-108 1.001592e+02   Male
-109 4.489130e+02 Female
-110 1.101911e+02 Female
-111 4.440909e+01   Male
-112 1.288217e+02 Female
-113 2.840909e+01   Male
-114 1.003981e+02 Female
-115 8.512397e-01 Female
-116 1.322314e-01   Male
-117 1.297521e+00 Female
-118 1.570248e-01   Male
-119 1.966942e+00 Female
-120 1.536624e+02   Male
-121 3.000000e-01 Female
-122 3.000000e-01 Female
-123 1.074380e+00   Male
-124 1.099174e+00 Female
-125 3.057851e-01 Female
-126 3.000000e-01 Female
-127 5.785124e-02 Female
-128 4.391304e+02 Female
-129 6.130435e+02 Female
-130 1.074380e-01   Male
-131 7.125796e+01   Male
-132 4.222727e+01   Male
-133 1.620223e+02 Female
-134 3.750000e+01 Female
-135 1.534236e+02 Female
-136 6.239130e+02 Female
-137 5.521739e+02   Male
-138 5.785124e-02 Female
-139 6.547945e-01 Female
-140 8.767123e-02 Female
-141 3.000000e-01   Male
-142 2.849315e+00 Female
-143 3.835616e-02   Male
-144 2.849315e-01   Male
-145 4.649315e+00   Male
-146 1.369863e-01 Female
-147 3.589041e-01   Male
-148 1.049315e+00   Male
-149 4.668998e+01 Female
-150 1.473510e+02 Female
-151 4.589744e+01   Male
-152 2.109589e-01   Male
-153 1.741722e+02 Female
-154 2.496503e+01 Female
-155 1.850993e+02   Male
-156 1.863014e-01   Male
-157 1.863014e-01   Male
-158 4.589744e+01 Female
-159 1.942881e+02 Female
-160 5.079646e+02 Female
-161 8.767123e-01   Male
-162 2.750685e+00   Male
-163 1.503311e+02 Female
-164 3.000000e-01   Male
-165 3.095890e-01   Male
-166 3.000000e-01   Male
-167 6.371681e+02 Female
-168 6.054795e-01 Female
-169 1.955298e+02 Female
-170 1.786424e+02   Male
-171 1.120861e+02 Female
-172 1.331954e+02   Male
-173 2.159292e+02   Male
-174 5.628319e+02   Male
-175 1.900662e+02 Female
-176 6.547945e-01   Male
-177 1.665753e+00   Male
-178 1.739238e+02   Male
-179 9.991722e+01   Male
-180 9.321192e+01   Male
-181 8.767123e-02 Female
-182           NA   Male
-183 6.794521e-01 Female
-184 5.808219e-01   Male
-185 1.369863e-01 Female
-186 2.060274e+00 Female
-187 1.610099e+02   Male
-188 4.082192e-01 Female
-189 8.273973e-01   Male
-190 4.601770e+02 Female
-191 1.389073e+02 Female
-192 3.867133e+01 Female
-193 9.260274e-01 Female
-194 5.918874e+01 Female
-195 1.870861e+02 Female
-196 4.328767e-01   Male
-197 6.301370e-02   Male
-198 3.000000e-01 Female
-199 1.548013e+02   Male
-200 5.819536e+01 Female
-201 1.724338e+02 Female
-202 1.932401e+01 Female
-203 2.164420e+00 Female
-204 9.757412e-01 Female
-205 1.509434e-01   Male
-206 1.509434e-01 Female
-207 7.766571e+01   Male
-208 4.319563e+01 Female
-209 1.752022e-01   Male
-210 3.094775e+01 Female
-211 1.266846e-01   Male
-212 2.919806e+01   Male
-213 9.545455e+00 Female
-214 2.735115e+01 Female
-215 1.314841e+02 Female
-216 3.643985e+01   Male
-217 1.498559e+02 Female
-218 9.363636e+00 Female
-219 2.479784e-01   Male
-220 5.390836e-02 Female
-221 8.787062e-01 Female
-222 1.994609e-01   Male
-223 3.000000e-01 Female
-224 3.000000e-01   Male
-225 5.390836e-03 Female
-226 4.177898e-01 Female
-227 3.000000e-01 Female
-228 2.479784e-01   Male
-229 2.964960e-02   Male
-230 2.964960e-01   Male
-231 5.148248e+00 Female
-232 1.994609e-01   Male
-233 3.000000e-01   Male
-234 1.779539e+02   Male
-235 3.290210e+02 Female
-236 3.000000e-01   Male
-237 1.809798e+02 Female
-238 4.905660e-01   Male
-239 1.266846e-01   Male
-240 1.543948e+02 Female
-241 1.379683e+02 Female
-242 6.153846e+02   Male
-243 1.474784e+02   Male
-244 3.000000e-01 Female
-245 1.024259e+00   Male
-246 4.444056e+02 Female
-247 3.000000e-01   Male
-248 2.504043e+00 Female
-249 3.000000e-01 Female
-250 3.000000e-01 Female
-251 7.816712e-02 Female
-252 3.000000e-01 Female
-253 5.390836e-02   Male
-254 1.494236e+02 Female
-255 5.972622e+01   Male
-256 6.361186e-01 Female
-257 1.837896e+02 Female
-258 1.320809e+02 Female
-259 1.571906e-01   Male
-260 1.520231e+02   Male
-261 3.000000e-01 Female
-262 3.000000e-01 Female
-263 1.823699e+02   Male
-264 3.000000e-01   Male
-265 2.173913e+00   Male
-266 2.142202e+01   Male
-267 3.000000e-01 Female
-268 3.408027e+00   Male
-269 4.155963e+01   Male
-270 9.698997e-02   Male
-271 1.238532e+01 Female
-272 9.528926e+00   Male
-273 1.916185e+02 Female
-274 1.060201e+00   Male
-275 3.679104e+02 Female
-276 4.288991e+01   Male
-277 9.971098e+01   Male
-278 3.000000e-01   Male
-279 1.208092e+02   Male
-280 3.000000e-01   Male
-281 6.688963e-03 Female
-282 2.505017e+00 Female
-283 1.481605e+00   Male
-284 3.000000e-01 Female
-285 5.183946e-01 Female
-286 3.000000e-01 Female
-287 1.872910e-01   Male
-288 3.678930e-01 Female
-289 3.000000e-01   Male
-290 4.529851e+02 Female
-291 3.169725e+01 Female
-292 3.000000e-01   Male
-293 4.922018e+01   Male
-294 2.548507e+02   Male
-295 1.661850e+02   Male
-296 9.164179e+02   Male
-297 3.678930e-01 Female
-298 1.236994e+02   Male
-299 6.705202e+01   Male
-300 3.834862e+01   Male
-301 1.963211e+00 Female
-302 3.000000e-01   Male
-303 2.474916e-01   Male
-304 3.000000e-01 Female
-305 2.173913e-01   Male
-306 8.193980e-01   Male
-307 2.444816e+00 Female
-308 3.000000e-01   Male
-309 1.571906e-01 Female
-310 1.849711e+02   Male
-311 6.119403e+02 Female
-312 3.000000e-01 Female
-313 4.280936e-01 Female
-314 9.698997e-02   Male
-315 3.678930e-02 Female
-316 4.832090e+02   Male
-317 1.390173e+02 Female
-318 3.000000e-01   Male
-319 6.555970e+02 Female
-320 1.526012e+02 Female
-321 3.000000e-01 Female
-322 7.222222e-01   Male
-323 7.724426e+01   Male
-324 3.000000e-01   Male
-325 6.111111e-01 Female
-326 1.555556e+00 Female
-327 3.055556e-01   Male
-328 1.500000e+00   Male
-329 1.470772e+02   Male
-330 1.694444e+00 Female
-331 3.138298e+02 Female
-332 1.414405e+02 Female
-333 1.990605e+02 Female
-334 4.212766e+02   Male
-335 3.000000e-01   Male
-336 3.000000e-01   Male
-337 6.478723e+02   Male
-338 3.000000e-01   Male
-339 2.222222e+00 Female
-340 3.000000e-01   Male
-341 2.055556e+00   Male
-342 2.777778e-02 Female
-343 8.333333e-02   Male
-344 1.032359e+02 Female
-345 1.611111e+00 Female
-346 8.333333e-02 Female
-347 2.333333e+00 Female
-348 5.755319e+02   Male
-349 1.686848e+02 Female
-350 1.111111e-01   Male
-351 3.000000e-01   Male
-352 8.372340e+02 Female
-353 3.000000e-01   Male
-354 3.784504e+01   Male
-355 3.819149e+02   Male
-356 5.555556e-02 Female
-357 3.000000e+02 Female
-358 1.855950e+02   Male
-359 1.944444e-01 Female
-360 3.000000e-01   Male
-361 5.555556e-02 Female
-362 1.138889e+00   Male
-363 4.254237e+01 Female
-364 3.000000e-01   Male
-365 3.000000e-01   Male
-366 3.000000e-01 Female
-367 3.000000e-01 Female
-368 3.138298e+02 Female
-369 1.235908e+02   Male
-370 4.159574e+02   Male
-371 3.009685e+01 Female
-372 1.567850e+02 Female
-373 1.367432e+02 Female
-374 3.731235e+01 Female
-375 9.164927e+01   Male
-376 2.936170e+02 Female
-377 8.820459e+01 Female
-378 1.035491e+02   Male
-379 7.379958e+01 Female
-380 3.000000e-01   Male
-381 1.718750e+02   Male
-382 2.128527e+00   Male
-383 1.253918e+00 Female
-384 2.382445e-01   Male
-385 4.639498e-01 Female
-386 1.253918e-01   Male
-387 1.253918e-01   Male
-388 3.000000e-01 Female
-389 1.000000e+00   Male
-390 1.570043e+02   Male
-391 4.344086e+02 Female
-392 2.184953e+00   Male
-393 1.507837e+00 Female
-394 3.228840e-01 Female
-395 4.588024e+01   Male
-396 1.660560e+02   Male
-397 3.000000e-01   Male
-398 3.043011e+02   Male
-399 2.612903e+02 Female
-400 1.621767e+02   Male
-401 3.228840e-01   Male
-402 4.639498e-01 Female
-403 2.495298e+00 Female
-404 3.257053e+00 Female
-405 3.793103e-01 Female
-406           NA   Male
-407 6.896552e-02 Female
-408 3.000000e-01   Male
-409 1.423197e+00 Female
-410 3.000000e-01 Female
-411 3.000000e-01 Female
-412 1.786638e+02   Male
-413 3.279570e+02   Male
-414           NA Female
-415 1.903017e+02   Male
-416 1.654095e+02 Female
-417 4.639498e-01 Female
-418 1.815733e+02   Male
-419 1.366771e+00   Male
-420 1.536050e-01 Female
-421 1.306587e+01   Male
-422 2.129032e+02 Female
-423 1.925647e+02   Male
-424 3.000000e-01 Female
-425 1.028213e+00 Female
-426 3.793103e-01 Female
-427 8.025078e-01 Female
-428 4.860215e+02 Female
-429 3.000000e-01 Female
-430 2.100313e-01   Male
-431 2.767665e+01 Female
-432 1.592476e+00   Male
-433 9.717868e-02 Female
-434 1.028213e+00 Female
-435 3.793103e-01   Male
-436 1.292026e+02   Male
-437 4.425150e+01 Female
-438 3.193548e+02 Female
-439 1.860991e+02 Female
-440 6.614420e-01 Female
-441 5.203762e-01   Male
-442 1.330819e+02   Male
-443 1.673491e+02 Female
-444 3.000000e-01   Male
-445 1.117457e+02   Male
-446 3.045509e+01 Female
-447 3.000000e-01   Male
-448 8.280255e-02 Female
-449 3.000000e-01 Female
-450 1.200637e+00 Female
-451 1.687898e-01   Male
-452 7.367273e+02 Female
-453 8.280255e-02   Male
-454 5.127389e-01   Male
-455 1.974522e-01   Male
-456 7.993631e-01 Female
-457 3.000000e-01   Male
-458 3.298182e+02   Male
-459 9.736842e+01 Female
-460 3.000000e-01 Female
-461 3.000000e-01 Female
-462 4.214545e+02 Female
-463 3.000000e-01   Male
-464 2.578182e+02 Female
-465 2.261147e-01   Male
-466 3.000000e-01 Female
-467 1.883901e+02   Male
-468 9.458204e+01 Female
-469 3.000000e-01 Female
-470 3.000000e-01   Male
-471 7.707006e-01 Female
-472 5.032727e+02   Male
-473 1.544586e+00 Female
-474 1.431115e+02 Female
-475 3.000000e-01   Male
-476 1.458599e+00   Male
-477 1.247678e+02 Female
-478           NA Female
-479 4.334545e+02   Male
-480 3.000000e-01 Female
-481 6.156364e+02 Female
-482 9.574303e+01   Male
-483 1.928019e+02   Male
-484 1.888545e+02   Male
-485 1.598297e+02 Female
-486 5.127389e-01   Male
-487 1.171053e+02 Female
-488           NA   Male
-489 2.547771e-02 Female
-490 1.707430e+02 Female
-491 3.000000e-01   Male
-492 1.869969e+02   Male
-493 4.731481e+01   Male
-494 1.988390e+02 Female
-495 3.000000e-01   Male
-496 8.808050e+01   Male
-497 2.003185e+00 Female
-498 3.000000e-01   Male
-499 3.509259e+01 Female
-500 9.365325e+01 Female
-501 3.000000e-01   Male
-502 3.736111e+01 Female
-503 1.674923e+02 Female
-504 8.808050e+01   Male
-505 1.656347e+02 Female
-506 3.722222e+01 Female
-507 6.756364e+02 Female
-508 3.000000e-01   Male
-509 1.698142e+02   Male
-510 1.628483e+02 Female
-511 5.985130e-01   Male
-512 1.903346e+00 Female
-513 3.000000e-01   Male
-514 3.000000e-01   Male
-515 8.996283e-01   Male
-516 3.977695e-01 Female
-517 3.000000e-01   Male
-518 3.000000e-01   Male
-519 3.000000e-01   Male
-520 3.000000e-01 Female
-521 7.446809e+02   Male
-522 6.095745e+02 Female
-523 1.427445e+02   Male
-524 3.000000e-01 Female
-525 2.973978e-02   Male
-526 3.977695e-01 Female
-527 4.095745e+02 Female
-528 4.595745e+02   Male
-529 3.000000e-01 Female
-530 1.976341e+02 Female
-531 3.776596e+02 Female
-532 1.777603e+02 Female
-533 4.312268e-01   Male
-534 6.765957e+02 Female
-535 7.978723e+02   Male
-536 9.665427e-02   Male
-537 1.879338e+02   Male
-538 4.358670e+01 Female
-539 3.000000e-01 Female
-540 3.000000e-01   Male
-541 2.638955e+01   Male
-542 3.180523e+01 Female
-543 1.746845e+02   Male
-544 1.876972e+02   Male
-545 1.044164e+02   Male
-546 1.202681e+02   Male
-547 1.630915e+02 Female
-548 1.276025e+02 Female
-549 8.880126e+01   Male
-550 3.563830e+02   Male
-551 2.212766e+02   Male
-552 1.969121e+01 Female
-553 3.755319e+02 Female
-554 1.214511e+02   Male
-555 1.034700e+02 Female
-556 3.000000e-01 Female
-557 3.643123e-01 Female
-558 6.319703e-02 Female
-559 3.000000e-01   Male
-560 3.000000e-01   Male
-561 3.000000e-01 Female
-562 3.000000e-01 Female
-563 3.000000e-01   Male
-564 3.000000e-01   Male
-565 3.000000e-01 Female
-566 3.000000e-01   Male
-567 1.664038e+02 Female
-568 2.946809e+02 Female
-569 4.391924e+01   Male
-570 1.874606e+02 Female
-571 1.143533e+02   Male
-572 1.600158e+02   Male
-573 1.635688e-01   Male
-574 8.809148e+01 Female
-575 1.337539e+02   Male
-576 1.985804e+02   Male
-577 1.578864e+02 Female
-578 3.000000e-01 Female
-579 3.000000e-01   Male
-580 1.953642e-01 Female
-581 1.119205e+00   Male
-582 2.523636e+02   Male
-583 3.000000e-01   Male
-584 4.844371e+00 Female
-585 3.000000e-01   Male
-586 1.492553e+02 Female
-587 1.993617e+02   Male
-588 2.847682e-01 Female
-589 3.145695e-01 Female
-590 3.000000e-01   Male
-591 3.406429e+01 Female
-592 6.595745e+01   Male
-593 3.000000e-01   Male
-594 2.174545e+02   Male
-595           NA Female
-596 5.957447e+01 Female
-597 7.236364e+02 Female
-598 3.000000e-01   Male
-599 3.000000e-01 Female
-600 3.000000e-01   Male
-601 2.676364e+02   Male
-602 1.891489e+02   Male
-603 3.036364e+02 Female
-604 3.000000e-01 Female
-605 3.000000e-01   Male
-606 3.000000e-01   Male
-607 3.000000e-01 Female
-608 3.000000e-01   Male
-609 1.447020e+00   Male
-610 2.130909e+02 Female
-611 1.357616e-01 Female
-612 3.000000e-01 Female
-613 3.000000e-01 Female
-614 5.534545e+02 Female
-615 1.891489e+02 Female
-616 7.202128e+01 Female
-617 3.250287e+01   Male
-618 1.655629e-02   Male
-619 3.123636e+02   Male
-620 3.000000e-01   Male
-621 7.138298e+01   Male
-622 3.000000e-01 Female
-623 6.946809e+01 Female
-624 4.012629e+01   Male
-625 1.629787e+02 Female
-626 1.508511e+02 Female
-627 1.655629e-02   Male
-628 3.000000e-01   Male
-629 4.635762e-02   Male
-630 3.000000e-01 Female
-631 3.000000e-01 Female
-632 3.000000e-01   Male
-633 1.942553e+02   Male
-634 3.690909e+02   Male
-635 3.000000e-01 Female
-636 3.000000e-01 Female
-637 2.847682e+00   Male
-638 1.435106e+02 Female
-639 3.000000e-01   Male
-640 4.752009e+01 Female
-641 2.621125e+01 Female
-642 1.055319e+02 Female
-643 3.000000e-01 Female
-644 1.149007e+00   Male
-645 2.927273e+02 Female
-646 3.000000e-01 Female
-647 3.000000e-01 Female
-648 4.839265e+01   Male
-649 3.000000e-01   Male
-650 3.000000e-01 Female
-651 2.251656e-01 Female</code></pre>
+<pre><code>    age gender
+1     2 Female
+2     4 Female
+3     4   Male
+4     4   Male
+5     1   Male
+6     4   Male
+7     4 Female
+8    NA Female
+9     4   Male
+10    2   Male
+11    3   Male
+12   15 Female
+13    8   Male
+14   12   Male
+15   15   Male
+16    9   Male
+17    8   Male
+18    7 Female
+19   11 Female
+20   10   Male
+21    8   Male
+22   11 Female
+23    2   Male
+24    2 Female
+25    3 Female
+26    5   Male
+27    1   Male
+28    3 Female
+29    5 Female
+30    5 Female
+31    3   Male
+32    1   Male
+33    4 Female
+34    3   Male
+35    2 Female
+36   11 Female
+37    7   Male
+38    8   Male
+39    6   Male
+40    6   Male
+41   11 Female
+42   10   Male
+43    6 Female
+44   12   Male
+45   11   Male
+46   10   Male
+47   11   Male
+48   13 Female
+49    3 Female
+50    4 Female
+51    3   Male
+52    1   Male
+53    2 Female
+54    2 Female
+55    4   Male
+56    2   Male
+57    2   Male
+58    3 Female
+59    3 Female
+60    4   Male
+61    1 Female
+62   13 Female
+63   13 Female
+64    6   Male
+65   13   Male
+66    5 Female
+67   13 Female
+68   14   Male
+69   13   Male
+70    8 Female
+71    7   Male
+72    6 Female
+73   13   Male
+74    3   Male
+75    4   Male
+76    2   Male
+77   NA   Male
+78    5 Female
+79    3   Male
+80    3   Male
+81   14   Male
+82   11 Female
+83    7 Female
+84    7   Male
+85   11 Female
+86    9 Female
+87   14   Male
+88   13 Female
+89    1   Male
+90    1   Male
+91    4   Male
+92    1 Female
+93    2   Male
+94    3 Female
+95    2   Male
+96    1   Male
+97    2   Male
+98    2 Female
+99    4 Female
+100   5 Female
+101   5   Male
+102   6 Female
+103  14 Female
+104  14   Male
+105  10   Male
+106   6 Female
+107   6   Male
+108   8   Male
+109   6 Female
+110  12 Female
+111  12   Male
+112  14 Female
+113  15   Male
+114  12 Female
+115   4 Female
+116   4   Male
+117   3 Female
+118  NA   Male
+119   2 Female
+120   3   Male
+121  NA Female
+122   3 Female
+123   3   Male
+124   2 Female
+125   4 Female
+126  10 Female
+127   7 Female
+128  11 Female
+129   6 Female
+130  11   Male
+131   9   Male
+132   6   Male
+133  13 Female
+134  10 Female
+135   6 Female
+136  11 Female
+137   7   Male
+138   6 Female
+139   4 Female
+140   4 Female
+141   4   Male
+142   4 Female
+143   4   Male
+144   4   Male
+145   3   Male
+146   4 Female
+147   3   Male
+148   3   Male
+149  13 Female
+150   7 Female
+151  10   Male
+152   6   Male
+153  10 Female
+154  12 Female
+155  10   Male
+156  10   Male
+157  13   Male
+158  13 Female
+159   5 Female
+160   3 Female
+161   4   Male
+162   1   Male
+163   3 Female
+164   4   Male
+165   4   Male
+166   1   Male
+167   5 Female
+168   6 Female
+169  14 Female
+170   6   Male
+171  13 Female
+172   9   Male
+173  11   Male
+174  10   Male
+175   5 Female
+176  14   Male
+177   7   Male
+178  10   Male
+179   6   Male
+180   5   Male
+181   3 Female
+182   4   Male
+183   2 Female
+184   3   Male
+185   3 Female
+186   2 Female
+187   3   Male
+188   5 Female
+189   2   Male
+190   3 Female
+191  14 Female
+192   9 Female
+193  14 Female
+194   9 Female
+195   8 Female
+196   7   Male
+197  13   Male
+198   8 Female
+199   6   Male
+200  12 Female
+201  14 Female
+202  15 Female
+203   2 Female
+204   4 Female
+205   3   Male
+206   3 Female
+207   3   Male
+208   4 Female
+209   3   Male
+210  14 Female
+211   8   Male
+212   7   Male
+213  14 Female
+214  13 Female
+215  13 Female
+216   7   Male
+217   8 Female
+218  10 Female
+219   9   Male
+220   9 Female
+221   3 Female
+222   4   Male
+223   4 Female
+224   4   Male
+225   2 Female
+226   1 Female
+227   3 Female
+228   2   Male
+229   3   Male
+230   5   Male
+231   2 Female
+232   2   Male
+233   9   Male
+234  13   Male
+235  10 Female
+236   6   Male
+237  13 Female
+238  11   Male
+239  10   Male
+240   8 Female
+241   9 Female
+242  10   Male
+243  14   Male
+244   1 Female
+245   2   Male
+246   3 Female
+247   2   Male
+248   3 Female
+249   2 Female
+250   3 Female
+251   5 Female
+252  10 Female
+253   7   Male
+254  13 Female
+255  15   Male
+256  11 Female
+257  10 Female
+258   3 Female
+259   2   Male
+260   3   Male
+261   3 Female
+262   3 Female
+263   4   Male
+264   3   Male
+265   2   Male
+266   4   Male
+267   2 Female
+268   8   Male
+269  11   Male
+270   6   Male
+271  14 Female
+272  14   Male
+273   5 Female
+274   5   Male
+275  10 Female
+276  13   Male
+277   6   Male
+278   5   Male
+279  12   Male
+280   2   Male
+281   3 Female
+282   1 Female
+283   1   Male
+284   1 Female
+285   2 Female
+286   5 Female
+287   5   Male
+288   4 Female
+289   2   Male
+290  NA Female
+291   6 Female
+292   8   Male
+293  15   Male
+294  11   Male
+295  14   Male
+296   6   Male
+297  10 Female
+298  12   Male
+299  14   Male
+300  10   Male
+301   1 Female
+302   3   Male
+303   2   Male
+304   3 Female
+305   4   Male
+306   3   Male
+307   4 Female
+308   4   Male
+309   1 Female
+310   7   Male
+311  11 Female
+312   7 Female
+313   5 Female
+314  10   Male
+315   9 Female
+316  13   Male
+317  11 Female
+318  13   Male
+319   9 Female
+320  15 Female
+321   7 Female
+322   4   Male
+323   1   Male
+324   1   Male
+325   2 Female
+326   2 Female
+327   3   Male
+328   2   Male
+329   3   Male
+330   4 Female
+331   7 Female
+332  11 Female
+333  10 Female
+334   5   Male
+335   8   Male
+336  15   Male
+337  14   Male
+338   2   Male
+339   2 Female
+340   2   Male
+341   5   Male
+342   4 Female
+343   3   Male
+344   5 Female
+345   4 Female
+346   2 Female
+347   1 Female
+348   7   Male
+349   8 Female
+350  NA   Male
+351   9   Male
+352   8 Female
+353   5   Male
+354  14   Male
+355  14   Male
+356   7 Female
+357  13 Female
+358   2   Male
+359   1 Female
+360   1   Male
+361   4 Female
+362   3   Male
+363   4 Female
+364   3   Male
+365   1   Male
+366   5 Female
+367   4 Female
+368   4 Female
+369   4   Male
+370  11   Male
+371  15 Female
+372  12 Female
+373  11 Female
+374   8 Female
+375  13   Male
+376  10 Female
+377  10 Female
+378  15   Male
+379   8 Female
+380  14   Male
+381   4   Male
+382   1   Male
+383   5 Female
+384   2   Male
+385   2 Female
+386   4   Male
+387   4   Male
+388   2 Female
+389   3   Male
+390  11   Male
+391  10 Female
+392   6   Male
+393  12 Female
+394  10 Female
+395   8   Male
+396   8   Male
+397  13   Male
+398  10   Male
+399  13 Female
+400  10   Male
+401   2   Male
+402   4 Female
+403   3 Female
+404   2 Female
+405   1 Female
+406   3   Male
+407   3 Female
+408   4   Male
+409   5 Female
+410   5 Female
+411   1 Female
+412  11   Male
+413   6   Male
+414  14 Female
+415   8   Male
+416   8 Female
+417   9 Female
+418   7   Male
+419   6   Male
+420  12 Female
+421   8   Male
+422  11 Female
+423  14   Male
+424   3 Female
+425   1 Female
+426   5 Female
+427   2 Female
+428   3 Female
+429   4 Female
+430   2   Male
+431   3 Female
+432   4   Male
+433   1 Female
+434   7 Female
+435  10   Male
+436  11   Male
+437   7 Female
+438  10 Female
+439  14 Female
+440   7 Female
+441  11   Male
+442  12   Male
+443  10 Female
+444   6   Male
+445  13   Male
+446   8 Female
+447   2   Male
+448   3 Female
+449   1 Female
+450   2 Female
+451  NA   Male
+452  NA Female
+453   4   Male
+454   4   Male
+455   1   Male
+456   2 Female
+457   2   Male
+458  12   Male
+459  12 Female
+460   8 Female
+461  14 Female
+462  13 Female
+463   6   Male
+464  11 Female
+465  11   Male
+466  10 Female
+467  12   Male
+468  14 Female
+469  11 Female
+470   1   Male
+471   2 Female
+472   3   Male
+473   3 Female
+474   5 Female
+475   3   Male
+476   1   Male
+477   4 Female
+478   4 Female
+479   4   Male
+480   2 Female
+481   5 Female
+482   7   Male
+483   8   Male
+484  10   Male
+485   6 Female
+486   7   Male
+487  10 Female
+488   6   Male
+489   6 Female
+490  15 Female
+491   5   Male
+492   3   Male
+493   5   Male
+494   3 Female
+495   5   Male
+496   5   Male
+497   1 Female
+498   1   Male
+499   7 Female
+500  14 Female
+501   9   Male
+502  10 Female
+503  10 Female
+504  11   Male
+505  11 Female
+506  12 Female
+507  11 Female
+508  12   Male
+509  12   Male
+510  10 Female
+511   1   Male
+512   2 Female
+513   4   Male
+514   2   Male
+515   3   Male
+516   3 Female
+517   2   Male
+518   4   Male
+519   3   Male
+520   1 Female
+521   4   Male
+522  12 Female
+523   6   Male
+524   7 Female
+525   7   Male
+526  13 Female
+527   8 Female
+528   7   Male
+529   8 Female
+530   8 Female
+531  11 Female
+532  14 Female
+533   3   Male
+534   2 Female
+535   2   Male
+536   3   Male
+537   2   Male
+538   2 Female
+539   3 Female
+540   2   Male
+541   5   Male
+542  10 Female
+543  14   Male
+544   9   Male
+545   6   Male
+546   7   Male
+547  14 Female
+548   7 Female
+549   7   Male
+550   9   Male
+551  14   Male
+552  10 Female
+553  13 Female
+554   5   Male
+555   4 Female
+556   4 Female
+557   5 Female
+558   4 Female
+559   4   Male
+560   4   Male
+561   3 Female
+562   1 Female
+563   4   Male
+564   1   Male
+565   1 Female
+566   7   Male
+567  13 Female
+568  10 Female
+569  14   Male
+570  12 Female
+571  14   Male
+572   8   Male
+573   7   Male
+574  11 Female
+575   8   Male
+576  12   Male
+577   9 Female
+578   5 Female
+579   4   Male
+580   3 Female
+581   2   Male
+582   2   Male
+583   3   Male
+584   4 Female
+585   4   Male
+586   4 Female
+587   5   Male
+588   3 Female
+589   6 Female
+590   3   Male
+591  11 Female
+592  11   Male
+593   7   Male
+594   8   Male
+595   6 Female
+596  10 Female
+597   8 Female
+598   8   Male
+599   9 Female
+600   8   Male
+601  13   Male
+602  11   Male
+603   8 Female
+604   2 Female
+605   4   Male
+606   2   Male
+607   2 Female
+608   4   Male
+609   2   Male
+610   4 Female
+611   2 Female
+612   4 Female
+613   1 Female
+614   4 Female
+615  12 Female
+616   7 Female
+617  11   Male
+618   6   Male
+619   8   Male
+620  14   Male
+621  11   Male
+622   7 Female
+623  14 Female
+624   6   Male
+625  13 Female
+626  13 Female
+627   3   Male
+628   1   Male
+629   3   Male
+630   1 Female
+631   1 Female
+632   2   Male
+633   4   Male
+634   4   Male
+635   2 Female
+636   4 Female
+637   5   Male
+638   3 Female
+639   3   Male
+640   6 Female
+641  11 Female
+642   9 Female
+643   7 Female
+644   8   Male
+645  NA Female
+646   8 Female
+647  14 Female
+648  10   Male
+649  10   Male
+650  11 Female
+651  13 Female</code></pre>
 </div>
 </div>
 <p>We can remove select columns using indexing as well, OR by simply changing the column to <code>NULL</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>df[, <span class="sc">-</span><span class="dv">5</span>] <span class="co">#remove column 5, "slum" variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    IgG_concentration          age age.1 gender
-1                5772 3.176895e-01     2 Female
-2                8095 3.436823e+00     4 Female
-3                9784 3.000000e-01     4   Male
-4                9338 1.432363e+02     4   Male
-5                6369 4.476534e-01     1   Male
-6                6885 2.527076e-02     4   Male
-7                6252 6.101083e-01     4 Female
-8                8913 3.000000e-01    NA Female
-9                7332 2.916968e+00     4   Male
-10               6941 1.649819e+00     2   Male
-11               5104 4.574007e+00     3   Male
-12               9078 1.583904e+02    15 Female
-13               9960           NA     8   Male
-14               9651 1.065068e+02    12   Male
-15               9229 1.113870e+02    15   Male
-16               5210 4.144893e+01     9   Male
-17               5105 3.000000e-01     8   Male
-18               7607 2.527076e-01     7 Female
-19               7582 8.159247e+01    11 Female
-20               8179 1.825342e+02    10   Male
-21               5660 4.244656e+01     8   Male
-22               6696 1.193493e+02    11 Female
-23               7842 3.000000e-01     2   Male
-24               6578 3.000000e-01     2 Female
-25               9619 9.025271e-01     3 Female
-26               9838 3.501805e-01     5   Male
-27               6935 3.000000e-01     1   Male
-28               5885 1.227437e+00     3 Female
-29               9657 1.702055e+02     5 Female
-30               9146 3.000000e-01     5 Female
-31               7056 4.801444e-01     3   Male
-32               9144 2.527076e-02     1   Male
-33               8696 3.000000e-01     4 Female
-34               7042 5.776173e-02     3   Male
-35               5278 4.801444e-01     2 Female
-36               6541 3.826715e-01    11 Female
-37               6070 3.000000e-01     7   Male
-38               5490 4.048558e+02     8   Male
-39               6527 3.000000e-01     6   Male
-40               5389 5.451264e-01     6   Male
-41               9003 3.000000e-01    11 Female
-42               6682 5.590753e+01    10   Male
-43               7844 2.202166e-01     6 Female
-44               8257 1.709760e+02    12   Male
-45               7767 1.227437e+00    11   Male
-46               8391 4.567527e+02    10   Male
-47               8317 4.838480e+01    11   Male
-48               7397 1.227437e-01    13 Female
-49               8495 1.877256e-01     3 Female
-50               8093 3.000000e-01     4 Female
-51               7375 3.501805e-01     3   Male
-52               5255 3.339350e+00     1   Male
-53               8445 3.000000e-01     2 Female
-54               8959 5.451264e-01     2 Female
-55               8400           NA     4   Male
-56               7420 2.104693e+00     2   Male
-57               5206           NA     2   Male
-58               7431 3.826715e-01     3 Female
-59               7230 3.926366e+01     3 Female
-60               8208 1.129964e+00     4   Male
-61               8538 3.501805e+00     1 Female
-62               6125 7.542808e+01    13 Female
-63               5767 4.800475e+01    13 Female
-64               5487 1.000000e+00     6   Male
-65               5539 4.068884e+01    13   Male
-66               5759 3.000000e-01     5 Female
-67               6845 4.377672e+01    13 Female
-68               7170 1.193493e+02    14   Male
-69               6588 6.977740e+01    13   Male
-70               7939 1.373288e+02     8 Female
-71               5006 1.642979e+02     7   Male
-72               9180           NA     6 Female
-73               9638 1.542808e+02    13   Male
-74               7781 6.033058e-01     3   Male
-75               6932 2.809917e-01     4   Male
-76               8120 1.966942e+00     2   Male
-77               9292 2.041322e+00    NA   Male
-78               9228 2.115702e+00     5 Female
-79               8185 4.663043e+02     3   Male
-80               6797 3.000000e-01     3   Male
-81               5970 1.500796e+02    14   Male
-82               7219 1.543790e+02    11 Female
-83               6870 2.561983e-01     7 Female
-84               7653 1.596338e+02     7   Male
-85               8824 1.732484e+02    11 Female
-86               8311 4.641304e+02     9 Female
-87               9458 3.736364e+01    14   Male
-88               8275 1.572452e+02    13 Female
-89               6786 3.000000e-01     1   Male
-90               6595 3.000000e-01     1   Male
-91               5264 8.264463e-02     4   Male
-92               9188 6.776859e-01     1 Female
-93               6611 7.272727e-01     2   Male
-94               6840 2.066116e-01     3 Female
-95               5663 1.966942e+00     2   Male
-96               9611 3.000000e-01     1   Male
-97               7717 3.000000e-01     2   Male
-98               8374 2.809917e-01     2 Female
-99               5134 8.016529e-01     4 Female
-100              8122 1.818182e-01     5 Female
-101              6192 1.818182e-01     5   Male
-102              9668 8.264463e-02     6 Female
-103              9577 3.422727e+01    14 Female
-104              6403 8.743506e+00    14   Male
-105              9464 3.000000e-01    10   Male
-106              8157 1.641720e+02     6 Female
-107              9451 4.049587e-01     6   Male
-108              6615 1.001592e+02     8   Male
-109              9074 4.489130e+02     6 Female
-110              7479 1.101911e+02    12 Female
-111              8946 4.440909e+01    12   Male
-112              5296 1.288217e+02    14 Female
-113              6238 2.840909e+01    15   Male
-114              6303 1.003981e+02    12 Female
-115              6662 8.512397e-01     4 Female
-116              6251 1.322314e-01     4   Male
-117              9110 1.297521e+00     3 Female
-118              8480 1.570248e-01    NA   Male
-119              5229 1.966942e+00     2 Female
-120              9173 1.536624e+02     3   Male
-121              9896 3.000000e-01    NA Female
-122              5057 3.000000e-01     3 Female
-123              7732 1.074380e+00     3   Male
-124              6882 1.099174e+00     2 Female
-125              9587 3.057851e-01     4 Female
-126              9930 3.000000e-01    10 Female
-127              6960 5.785124e-02     7 Female
-128              6335 4.391304e+02    11 Female
-129              6286 6.130435e+02     6 Female
-130              9035 1.074380e-01    11   Male
-131              5720 7.125796e+01     9   Male
-132              7368 4.222727e+01     6   Male
-133              5170 1.620223e+02    13 Female
-134              6691 3.750000e+01    10 Female
-135              6173 1.534236e+02     6 Female
-136              8170 6.239130e+02    11 Female
-137              9637 5.521739e+02     7   Male
-138              9482 5.785124e-02     6 Female
-139              7880 6.547945e-01     4 Female
-140              6307 8.767123e-02     4 Female
-141              8822 3.000000e-01     4   Male
-142              8190 2.849315e+00     4 Female
-143              7554 3.835616e-02     4   Male
-144              6519 2.849315e-01     4   Male
-145              9764 4.649315e+00     3   Male
-146              8792 1.369863e-01     4 Female
-147              6721 3.589041e-01     3   Male
-148              9042 1.049315e+00     3   Male
-149              7407 4.668998e+01    13 Female
-150              7229 1.473510e+02     7 Female
-151              7532 4.589744e+01    10   Male
-152              6516 2.109589e-01     6   Male
-153              7941 1.741722e+02    10 Female
-154              8124 2.496503e+01    12 Female
-155              7869 1.850993e+02    10   Male
-156              5647 1.863014e-01    10   Male
-157              9120 1.863014e-01    13   Male
-158              6608 4.589744e+01    13 Female
-159              8635 1.942881e+02     5 Female
-160              9341 5.079646e+02     3 Female
-161              9982 8.767123e-01     4   Male
-162              6976 2.750685e+00     1   Male
-163              6008 1.503311e+02     3 Female
-164              5432 3.000000e-01     4   Male
-165              5749 3.095890e-01     4   Male
-166              6428 3.000000e-01     1   Male
-167              5947 6.371681e+02     5 Female
-168              6027 6.054795e-01     6 Female
-169              5064 1.955298e+02    14 Female
-170              5861 1.786424e+02     6   Male
-171              6702 1.120861e+02    13 Female
-172              7851 1.331954e+02     9   Male
-173              8310 2.159292e+02    11   Male
-174              5897 5.628319e+02    10   Male
-175              9249 1.900662e+02     5 Female
-176              9163 6.547945e-01    14   Male
-177              6550 1.665753e+00     7   Male
-178              5859 1.739238e+02    10   Male
-179              5607 9.991722e+01     6   Male
-180              8746 9.321192e+01     5   Male
-181              5274 8.767123e-02     3 Female
-182              9412           NA     4   Male
-183              5691 6.794521e-01     2 Female
-184              9016 5.808219e-01     3   Male
-185              9128 1.369863e-01     3 Female
-186              8539 2.060274e+00     2 Female
-187              5703 1.610099e+02     3   Male
-188              9573 4.082192e-01     5 Female
-189              5852 8.273973e-01     2   Male
-190              5971 4.601770e+02     3 Female
-191              7015 1.389073e+02    14 Female
-192              8221 3.867133e+01     9 Female
-193              6752 9.260274e-01    14 Female
-194              7436 5.918874e+01     9 Female
-195              6869 1.870861e+02     8 Female
-196              8947 4.328767e-01     7   Male
-197              7360 6.301370e-02    13   Male
-198              7494 3.000000e-01     8 Female
-199              8243 1.548013e+02     6   Male
-200              6176 5.819536e+01    12 Female
-201              6818 1.724338e+02    14 Female
-202              8083 1.932401e+01    15 Female
-203              6711 2.164420e+00     2 Female
-204              8890 9.757412e-01     4 Female
-205              5576 1.509434e-01     3   Male
-206              8396 1.509434e-01     3 Female
-207              5986 7.766571e+01     3   Male
-208              9758 4.319563e+01     4 Female
-209              5444 1.752022e-01     3   Male
-210              6394 3.094775e+01    14 Female
-211              5694 1.266846e-01     8   Male
-212              9604 2.919806e+01     7   Male
-213              7895 9.545455e+00    14 Female
-214              5141 2.735115e+01    13 Female
-215              8034 1.314841e+02    13 Female
-216              6566 3.643985e+01     7   Male
-217              6827 1.498559e+02     8 Female
-218              7400 9.363636e+00    10 Female
-219              9094 2.479784e-01     9   Male
-220              9474 5.390836e-02     9 Female
-221              7984 8.787062e-01     3 Female
-222              9524 1.994609e-01     4   Male
-223              9598 3.000000e-01     4 Female
-224              9664 3.000000e-01     4   Male
-225              9910 5.390836e-03     2 Female
-226              9216 4.177898e-01     1 Female
-227              9706 3.000000e-01     3 Female
-228              5320 2.479784e-01     2   Male
-229              5256 2.964960e-02     3   Male
-230              9006 2.964960e-01     5   Male
-231              6413 5.148248e+00     2 Female
-232              8717 1.994609e-01     2   Male
-233              9873 3.000000e-01     9   Male
-234              6699 1.779539e+02    13   Male
-235              8228 3.290210e+02    10 Female
-236              6494 3.000000e-01     6   Male
-237              9294 1.809798e+02    13 Female
-238              7680 4.905660e-01    11   Male
-239              7534 1.266846e-01    10   Male
-240              9920 1.543948e+02     8 Female
-241              9814 1.379683e+02     9 Female
-242              5363 6.153846e+02    10   Male
-243              5842 1.474784e+02    14   Male
-244              7992 3.000000e-01     1 Female
-245              5565 1.024259e+00     2   Male
-246              5258 4.444056e+02     3 Female
-247              8200 3.000000e-01     2   Male
-248              8795 2.504043e+00     3 Female
-249              7676 3.000000e-01     2 Female
-250              7029 3.000000e-01     3 Female
-251              7535 7.816712e-02     5 Female
-252              5026 3.000000e-01    10 Female
-253              8630 5.390836e-02     7   Male
-254              6989 1.494236e+02    13 Female
-255              8454 5.972622e+01    15   Male
-256              9741 6.361186e-01    11 Female
-257              6418 1.837896e+02    10 Female
-258              9922 1.320809e+02     3 Female
-259              8504 1.571906e-01     2   Male
-260              6491 1.520231e+02     3   Male
-261              6002 3.000000e-01     3 Female
-262              7127 3.000000e-01     3 Female
-263              8540 1.823699e+02     4   Male
-264              7115 3.000000e-01     3   Male
-265              7268 2.173913e+00     2   Male
-266              8279 2.142202e+01     4   Male
-267              8880 3.000000e-01     2 Female
-268              8076 3.408027e+00     8   Male
-269              6250 4.155963e+01    11   Male
-270              8542 9.698997e-02     6   Male
-271              5393 1.238532e+01    14 Female
-272              9197 9.528926e+00    14   Male
-273              6651 1.916185e+02     5 Female
-274              7473 1.060201e+00     5   Male
-275              6589 3.679104e+02    10 Female
-276              6867 4.288991e+01    13   Male
-277              5413 9.971098e+01     6   Male
-278              6765 3.000000e-01     5   Male
-279              8933 1.208092e+02    12   Male
-280              6294 3.000000e-01     2   Male
-281              8688 6.688963e-03     3 Female
-282              8108 2.505017e+00     1 Female
-283              6926 1.481605e+00     1   Male
-284              5880 3.000000e-01     1 Female
-285              5529 5.183946e-01     2 Female
-286              8963 3.000000e-01     5 Female
-287              9594 1.872910e-01     5   Male
-288              8075 3.678930e-01     4 Female
-289              5680 3.000000e-01     2   Male
-290              5617 4.529851e+02    NA Female
-291              5080 3.169725e+01     6 Female
-292              7719 3.000000e-01     8   Male
-293              6780 4.922018e+01    15   Male
-294              8768 2.548507e+02    11   Male
-295              7031 1.661850e+02    14   Male
-296              7740 9.164179e+02     6   Male
-297              8855 3.678930e-01    10 Female
-298              7241 1.236994e+02    12   Male
-299              8156 6.705202e+01    14   Male
-300              7333 3.834862e+01    10   Male
-301              6906 1.963211e+00     1 Female
-302              9511 3.000000e-01     3   Male
-303              9336 2.474916e-01     2   Male
-304              6644 3.000000e-01     3 Female
-305              5554 2.173913e-01     4   Male
-306              8094 8.193980e-01     3   Male
-307              8836 2.444816e+00     4 Female
-308              7147 3.000000e-01     4   Male
-309              7745 1.571906e-01     1 Female
-310              9345 1.849711e+02     7   Male
-311              5606 6.119403e+02    11 Female
-312              9766 3.000000e-01     7 Female
-313              6666 4.280936e-01     5 Female
-314              9965 9.698997e-02    10   Male
-315              7927 3.678930e-02     9 Female
-316              6266 4.832090e+02    13   Male
-317              9487 1.390173e+02    11 Female
-318              7089 3.000000e-01    13   Male
-319              5731 6.555970e+02     9 Female
-320              7962 1.526012e+02    15 Female
-321              9532 3.000000e-01     7 Female
-322              6687 7.222222e-01     4   Male
-323              6570 7.724426e+01     1   Male
-324              5781 3.000000e-01     1   Male
-325              8935 6.111111e-01     2 Female
-326              5780 1.555556e+00     2 Female
-327              9029 3.055556e-01     3   Male
-328              5668 1.500000e+00     2   Male
-329              8203 1.470772e+02     3   Male
-330              7381 1.694444e+00     4 Female
-331              7734 3.138298e+02     7 Female
-332              7257 1.414405e+02    11 Female
-333              8418 1.990605e+02    10 Female
-334              8259 4.212766e+02     5   Male
-335              5587 3.000000e-01     8   Male
-336              8499 3.000000e-01    15   Male
-337              7897 6.478723e+02    14   Male
-338              8300 3.000000e-01     2   Male
-339              9691 2.222222e+00     2 Female
-340              5873 3.000000e-01     2   Male
-341              6690 2.055556e+00     5   Male
-342              9970 2.777778e-02     4 Female
-343              8978 8.333333e-02     3   Male
-344              6181 1.032359e+02     5 Female
-345              8218 1.611111e+00     4 Female
-346              5387 8.333333e-02     2 Female
-347              7850 2.333333e+00     1 Female
-348              7326 5.755319e+02     7   Male
-349              8448 1.686848e+02     8 Female
-350              7264 1.111111e-01    NA   Male
-351              8361 3.000000e-01     9   Male
-352              7497 8.372340e+02     8 Female
-353              5559 3.000000e-01     5   Male
-354              7321 3.784504e+01    14   Male
-355              8372 3.819149e+02    14   Male
-356              5030 5.555556e-02     7 Female
-357              6936 3.000000e+02    13 Female
-358              9628 1.855950e+02     2   Male
-359              8558 1.944444e-01     1 Female
-360              7840 3.000000e-01     1   Male
-361              5100 5.555556e-02     4 Female
-362              8244 1.138889e+00     3   Male
-363              9115 4.254237e+01     4 Female
-364              5489 3.000000e-01     3   Male
-365              5766 3.000000e-01     1   Male
-366              5024 3.000000e-01     5 Female
-367              8599 3.000000e-01     4 Female
-368              8895 3.138298e+02     4 Female
-369              7708 1.235908e+02     4   Male
-370              7646 4.159574e+02    11   Male
-371              6640 3.009685e+01    15 Female
-372              8958 1.567850e+02    12 Female
-373              6477 1.367432e+02    11 Female
-374              7910 3.731235e+01     8 Female
-375              7829 9.164927e+01    13   Male
-376              7503 2.936170e+02    10 Female
-377              5209 8.820459e+01    10 Female
-378              6763 1.035491e+02    15   Male
-379              8976 7.379958e+01     8 Female
-380              9223 3.000000e-01    14   Male
-381              7692 1.718750e+02     4   Male
-382              7453 2.128527e+00     1   Male
-383              9775 1.253918e+00     5 Female
-384              9662 2.382445e-01     2   Male
-385              8733 4.639498e-01     2 Female
-386              5695 1.253918e-01     4   Male
-387              7714 1.253918e-01     4   Male
-388              9224 3.000000e-01     2 Female
-389              7635 1.000000e+00     3   Male
-390              7176 1.570043e+02    11   Male
-391              6102 4.344086e+02    10 Female
-392              7817 2.184953e+00     6   Male
-393              9719 1.507837e+00    12 Female
-394              9740 3.228840e-01    10 Female
-395              9528 4.588024e+01     8   Male
-396              7142 1.660560e+02     8   Male
-397              5689 3.000000e-01    13   Male
-398              5439 3.043011e+02    10   Male
-399              6718 2.612903e+02    13 Female
-400              6569 1.621767e+02    10   Male
-401              9444 3.228840e-01     2   Male
-402              6964 4.639498e-01     4 Female
-403              6420 2.495298e+00     3 Female
-404              9189 3.257053e+00     2 Female
-405              9368 3.793103e-01     1 Female
-406              6360           NA     3   Male
-407              8196 6.896552e-02     3 Female
-408              8297 3.000000e-01     4   Male
-409              6674 1.423197e+00     5 Female
-410              5269 3.000000e-01     5 Female
-411              6599 3.000000e-01     1 Female
-412              7713 1.786638e+02    11   Male
-413              8644 3.279570e+02     6   Male
-414              9680           NA    14 Female
-415              6305 1.903017e+02     8   Male
-416              8493 1.654095e+02     8 Female
-417              5297 4.639498e-01     9 Female
-418              7723 1.815733e+02     7   Male
-419              7510 1.366771e+00     6   Male
-420              5102 1.536050e-01    12 Female
-421              7816 1.306587e+01     8   Male
-422              5143 2.129032e+02    11 Female
-423              7414 1.925647e+02    14   Male
-424              5127 3.000000e-01     3 Female
-425              5830 1.028213e+00     1 Female
-426              8929 3.793103e-01     5 Female
-427              7993 8.025078e-01     2 Female
-428              8092 4.860215e+02     3 Female
-429              9750 3.000000e-01     4 Female
-430              6660 2.100313e-01     2   Male
-431              8054 2.767665e+01     3 Female
-432              6086 1.592476e+00     4   Male
-433              6878 9.717868e-02     1 Female
-434              8125 1.028213e+00     7 Female
-435              9500 3.793103e-01    10   Male
-436              8105 1.292026e+02    11   Male
-437              9593 4.425150e+01     7 Female
-438              5202 3.193548e+02    10 Female
-439              7207 1.860991e+02    14 Female
-440              5518 6.614420e-01     7 Female
-441              9820 5.203762e-01    11   Male
-442              6958 1.330819e+02    12   Male
-443              9445 1.673491e+02    10 Female
-444              8774 3.000000e-01     6   Male
-445              9614 1.117457e+02    13   Male
-446              9810 3.045509e+01     8 Female
-447              7271 3.000000e-01     2   Male
-448              8031 8.280255e-02     3 Female
-449              7232 3.000000e-01     1 Female
-450              7452 1.200637e+00     2 Female
-451              5921 1.687898e-01    NA   Male
-452              8136 7.367273e+02    NA Female
-453              6605 8.280255e-02     4   Male
-454              5125 5.127389e-01     4   Male
-455              5911 1.974522e-01     1   Male
-456              9644 7.993631e-01     2 Female
-457              5760 3.000000e-01     2   Male
-458              7055 3.298182e+02    12   Male
-459              9064 9.736842e+01    12 Female
-460              6925 3.000000e-01     8 Female
-461              7757 3.000000e-01    14 Female
-462              8527 4.214545e+02    13 Female
-463              8521 3.000000e-01     6   Male
-464              6260 2.578182e+02    11 Female
-465              9578 2.261147e-01    11   Male
-466              9570 3.000000e-01    10 Female
-467              6246 1.883901e+02    12   Male
-468              9622 9.458204e+01    14 Female
-469              7661 3.000000e-01    11 Female
-470              9374 3.000000e-01     1   Male
-471              8446 7.707006e-01     2 Female
-472              8332 5.032727e+02     3   Male
-473              8008 1.544586e+00     3 Female
-474              9365 1.431115e+02     5 Female
-475              9819 3.000000e-01     3   Male
-476              5173 1.458599e+00     1   Male
-477              6722 1.247678e+02     4 Female
-478              7668           NA     4 Female
-479              8980 4.334545e+02     4   Male
-480              5204 3.000000e-01     2 Female
-481              6412 6.156364e+02     5 Female
-482              6404 9.574303e+01     7   Male
-483              5693 1.928019e+02     8   Male
-484              8100 1.888545e+02    10   Male
-485              9760 1.598297e+02     6 Female
-486              6377 5.127389e-01     7   Male
-487              6012 1.171053e+02    10 Female
-488              6224           NA     6   Male
-489              6561 2.547771e-02     6 Female
-490              8475 1.707430e+02    15 Female
-491              6629 3.000000e-01     5   Male
-492              7200 1.869969e+02     3   Male
-493              9453 4.731481e+01     5   Male
-494              6449 1.988390e+02     3 Female
-495              9452 3.000000e-01     5   Male
-496              7162 8.808050e+01     5   Male
-497              8962 2.003185e+00     1 Female
-498              7328 3.000000e-01     1   Male
-499              9097 3.509259e+01     7 Female
-500              9131 9.365325e+01    14 Female
-501              7280 3.000000e-01     9   Male
-502              5783 3.736111e+01    10 Female
-503              9895 1.674923e+02    10 Female
-504              7986 8.808050e+01    11   Male
-505              7146 1.656347e+02    11 Female
-506              8671 3.722222e+01    12 Female
-507              5273 6.756364e+02    11 Female
-508              5063 3.000000e-01    12   Male
-509              6729 1.698142e+02    12   Male
-510              9085 1.628483e+02    10 Female
-511              9929 5.985130e-01     1   Male
-512              8479 1.903346e+00     2 Female
-513              7395 3.000000e-01     4   Male
-514              6374 3.000000e-01     2   Male
-515              7878 8.996283e-01     3   Male
-516              9603 3.977695e-01     3 Female
-517              7994 3.000000e-01     2   Male
-518              5277 3.000000e-01     4   Male
-519              5054 3.000000e-01     3   Male
-520              5440 3.000000e-01     1 Female
-521              6551 7.446809e+02     4   Male
-522              5281 6.095745e+02    12 Female
-523              7145 1.427445e+02     6   Male
-524              5275 3.000000e-01     7 Female
-525              9542 2.973978e-02     7   Male
-526              9371 3.977695e-01    13 Female
-527              5598 4.095745e+02     8 Female
-528              7148 4.595745e+02     7   Male
-529              5624 3.000000e-01     8 Female
-530              6998 1.976341e+02     8 Female
-531              9286 3.776596e+02    11 Female
-532              7589 1.777603e+02    14 Female
-533              7095 4.312268e-01     3   Male
-534              5455 6.765957e+02     2 Female
-535              6257 7.978723e+02     2   Male
-536              8627 9.665427e-02     3   Male
-537              9786 1.879338e+02     2   Male
-538              8176 4.358670e+01     2 Female
-539              9198 3.000000e-01     3 Female
-540              6586 3.000000e-01     2   Male
-541              8850 2.638955e+01     5   Male
-542              9560 3.180523e+01    10 Female
-543              7144 1.746845e+02    14   Male
-544              8230 1.876972e+02     9   Male
-545              7559 1.044164e+02     6   Male
-546              5312 1.202681e+02     7   Male
-547              6560 1.630915e+02    14 Female
-548              6091 1.276025e+02     7 Female
-549              5578 8.880126e+01     7   Male
-550              5837 3.563830e+02     9   Male
-551              8347 2.212766e+02    14   Male
-552              6453 1.969121e+01    10 Female
-553              5758 3.755319e+02    13 Female
-554              5569 1.214511e+02     5   Male
-555              8766 1.034700e+02     4 Female
-556              8002 3.000000e-01     4 Female
-557              7839 3.643123e-01     5 Female
-558              5434 6.319703e-02     4 Female
-559              7636 3.000000e-01     4   Male
-560              6164 3.000000e-01     4   Male
-561              9243 3.000000e-01     3 Female
-562              5872 3.000000e-01     1 Female
-563              8079 3.000000e-01     4   Male
-564              9762 3.000000e-01     1   Male
-565              9476 3.000000e-01     1 Female
-566              8345 3.000000e-01     7   Male
-567              8128 1.664038e+02    13 Female
-568              7956 2.946809e+02    10 Female
-569              8677 4.391924e+01    14   Male
-570              5881 1.874606e+02    12 Female
-571              7498 1.143533e+02    14   Male
-572              8134 1.600158e+02     8   Male
-573              7748 1.635688e-01     7   Male
-574              7990 8.809148e+01    11 Female
-575              6184 1.337539e+02     8   Male
-576              6339 1.985804e+02    12   Male
-577              5113 1.578864e+02     9 Female
-578              9449 3.000000e-01     5 Female
-579              8110 3.000000e-01     4   Male
-580              9307 1.953642e-01     3 Female
-581              5555 1.119205e+00     2   Male
-582              9152 2.523636e+02     2   Male
-583              7969 3.000000e-01     3   Male
-584              6116 4.844371e+00     4 Female
-585              8294 3.000000e-01     4   Male
-586              8938 1.492553e+02     4 Female
-587              9539 1.993617e+02     5   Male
-588              9470 2.847682e-01     3 Female
-589              6677 3.145695e-01     6 Female
-590              8752 3.000000e-01     3   Male
-591              5574 3.406429e+01    11 Female
-592              5989 6.595745e+01    11   Male
-593              9813 3.000000e-01     7   Male
-594              6150 2.174545e+02     8   Male
-595              5730           NA     6 Female
-596              8038 5.957447e+01    10 Female
-597              5964 7.236364e+02     8 Female
-598              9043 3.000000e-01     8   Male
-599              5095 3.000000e-01     9 Female
-600              8922 3.000000e-01     8   Male
-601              5469 2.676364e+02    13   Male
-602              6726 1.891489e+02    11   Male
-603              7495 3.036364e+02     8 Female
-604              8159 3.000000e-01     2 Female
-605              6709 3.000000e-01     4   Male
-606              5855 3.000000e-01     2   Male
-607              6058 3.000000e-01     2 Female
-608              7292 3.000000e-01     4   Male
-609              6437 1.447020e+00     2   Male
-610              9326 2.130909e+02     4 Female
-611              8222 1.357616e-01     2 Female
-612              6789 3.000000e-01     4 Female
-613              6348 3.000000e-01     1 Female
-614              5958 5.534545e+02     4 Female
-615              9211 1.891489e+02    12 Female
-616              9450 7.202128e+01     7 Female
-617              6540 3.250287e+01    11   Male
-618              8796 1.655629e-02     6   Male
-619              7971 3.123636e+02     8   Male
-620              7549 3.000000e-01    14   Male
-621              9799 7.138298e+01    11   Male
-622              7013 3.000000e-01     7 Female
-623              5599 6.946809e+01    14 Female
-624              8601 4.012629e+01     6   Male
-625              7383 1.629787e+02    13 Female
-626              6656 1.508511e+02    13 Female
-627              5641 1.655629e-02     3   Male
-628              6222 3.000000e-01     1   Male
-629              7674 4.635762e-02     3   Male
-630              5293 3.000000e-01     1 Female
-631              6715 3.000000e-01     1 Female
-632              7057 3.000000e-01     2   Male
-633              7072 1.942553e+02     4   Male
-634              6380 3.690909e+02     4   Male
-635              6762 3.000000e-01     2 Female
-636              5799 3.000000e-01     4 Female
-637              6681 2.847682e+00     5   Male
-638              8755 1.435106e+02     3 Female
-639              6896 3.000000e-01     3   Male
-640              5945 4.752009e+01     6 Female
-641              5035 2.621125e+01    11 Female
-642              6776 1.055319e+02     9 Female
-643              7863 3.000000e-01     7 Female
-644              9836 1.149007e+00     8   Male
-645              7860 2.927273e+02    NA Female
-646              5248 3.000000e-01     8 Female
-647              5677 3.000000e-01    14 Female
-648              9576 4.839265e+01    10   Male
-649              5824 3.000000e-01    10   Male
-650              9184 3.000000e-01    11 Female
-651              5397 2.251656e-01    13 Female</code></pre>
-</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>df<span class="sc">$</span>slum <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># this is the same as above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>df<span class="sc">$</span>slum <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># this is the same as above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can also grab the <code>age</code> column using the <code>$</code> operator.</p>
+<p>We can also grab the <code>age</code> column using the <code>$</code> operator, again this is selecting the variable for all of the rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>df<span class="sc">$</span>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] 3.176895e-01 3.436823e+00 3.000000e-01 1.432363e+02 4.476534e-01
-  [6] 2.527076e-02 6.101083e-01 3.000000e-01 2.916968e+00 1.649819e+00
- [11] 4.574007e+00 1.583904e+02           NA 1.065068e+02 1.113870e+02
- [16] 4.144893e+01 3.000000e-01 2.527076e-01 8.159247e+01 1.825342e+02
- [21] 4.244656e+01 1.193493e+02 3.000000e-01 3.000000e-01 9.025271e-01
- [26] 3.501805e-01 3.000000e-01 1.227437e+00 1.702055e+02 3.000000e-01
- [31] 4.801444e-01 2.527076e-02 3.000000e-01 5.776173e-02 4.801444e-01
- [36] 3.826715e-01 3.000000e-01 4.048558e+02 3.000000e-01 5.451264e-01
- [41] 3.000000e-01 5.590753e+01 2.202166e-01 1.709760e+02 1.227437e+00
- [46] 4.567527e+02 4.838480e+01 1.227437e-01 1.877256e-01 3.000000e-01
- [51] 3.501805e-01 3.339350e+00 3.000000e-01 5.451264e-01           NA
- [56] 2.104693e+00           NA 3.826715e-01 3.926366e+01 1.129964e+00
- [61] 3.501805e+00 7.542808e+01 4.800475e+01 1.000000e+00 4.068884e+01
- [66] 3.000000e-01 4.377672e+01 1.193493e+02 6.977740e+01 1.373288e+02
- [71] 1.642979e+02           NA 1.542808e+02 6.033058e-01 2.809917e-01
- [76] 1.966942e+00 2.041322e+00 2.115702e+00 4.663043e+02 3.000000e-01
- [81] 1.500796e+02 1.543790e+02 2.561983e-01 1.596338e+02 1.732484e+02
- [86] 4.641304e+02 3.736364e+01 1.572452e+02 3.000000e-01 3.000000e-01
- [91] 8.264463e-02 6.776859e-01 7.272727e-01 2.066116e-01 1.966942e+00
- [96] 3.000000e-01 3.000000e-01 2.809917e-01 8.016529e-01 1.818182e-01
-[101] 1.818182e-01 8.264463e-02 3.422727e+01 8.743506e+00 3.000000e-01
-[106] 1.641720e+02 4.049587e-01 1.001592e+02 4.489130e+02 1.101911e+02
-[111] 4.440909e+01 1.288217e+02 2.840909e+01 1.003981e+02 8.512397e-01
-[116] 1.322314e-01 1.297521e+00 1.570248e-01 1.966942e+00 1.536624e+02
-[121] 3.000000e-01 3.000000e-01 1.074380e+00 1.099174e+00 3.057851e-01
-[126] 3.000000e-01 5.785124e-02 4.391304e+02 6.130435e+02 1.074380e-01
-[131] 7.125796e+01 4.222727e+01 1.620223e+02 3.750000e+01 1.534236e+02
-[136] 6.239130e+02 5.521739e+02 5.785124e-02 6.547945e-01 8.767123e-02
-[141] 3.000000e-01 2.849315e+00 3.835616e-02 2.849315e-01 4.649315e+00
-[146] 1.369863e-01 3.589041e-01 1.049315e+00 4.668998e+01 1.473510e+02
-[151] 4.589744e+01 2.109589e-01 1.741722e+02 2.496503e+01 1.850993e+02
-[156] 1.863014e-01 1.863014e-01 4.589744e+01 1.942881e+02 5.079646e+02
-[161] 8.767123e-01 2.750685e+00 1.503311e+02 3.000000e-01 3.095890e-01
-[166] 3.000000e-01 6.371681e+02 6.054795e-01 1.955298e+02 1.786424e+02
-[171] 1.120861e+02 1.331954e+02 2.159292e+02 5.628319e+02 1.900662e+02
-[176] 6.547945e-01 1.665753e+00 1.739238e+02 9.991722e+01 9.321192e+01
-[181] 8.767123e-02           NA 6.794521e-01 5.808219e-01 1.369863e-01
-[186] 2.060274e+00 1.610099e+02 4.082192e-01 8.273973e-01 4.601770e+02
-[191] 1.389073e+02 3.867133e+01 9.260274e-01 5.918874e+01 1.870861e+02
-[196] 4.328767e-01 6.301370e-02 3.000000e-01 1.548013e+02 5.819536e+01
-[201] 1.724338e+02 1.932401e+01 2.164420e+00 9.757412e-01 1.509434e-01
-[206] 1.509434e-01 7.766571e+01 4.319563e+01 1.752022e-01 3.094775e+01
-[211] 1.266846e-01 2.919806e+01 9.545455e+00 2.735115e+01 1.314841e+02
-[216] 3.643985e+01 1.498559e+02 9.363636e+00 2.479784e-01 5.390836e-02
-[221] 8.787062e-01 1.994609e-01 3.000000e-01 3.000000e-01 5.390836e-03
-[226] 4.177898e-01 3.000000e-01 2.479784e-01 2.964960e-02 2.964960e-01
-[231] 5.148248e+00 1.994609e-01 3.000000e-01 1.779539e+02 3.290210e+02
-[236] 3.000000e-01 1.809798e+02 4.905660e-01 1.266846e-01 1.543948e+02
-[241] 1.379683e+02 6.153846e+02 1.474784e+02 3.000000e-01 1.024259e+00
-[246] 4.444056e+02 3.000000e-01 2.504043e+00 3.000000e-01 3.000000e-01
-[251] 7.816712e-02 3.000000e-01 5.390836e-02 1.494236e+02 5.972622e+01
-[256] 6.361186e-01 1.837896e+02 1.320809e+02 1.571906e-01 1.520231e+02
-[261] 3.000000e-01 3.000000e-01 1.823699e+02 3.000000e-01 2.173913e+00
-[266] 2.142202e+01 3.000000e-01 3.408027e+00 4.155963e+01 9.698997e-02
-[271] 1.238532e+01 9.528926e+00 1.916185e+02 1.060201e+00 3.679104e+02
-[276] 4.288991e+01 9.971098e+01 3.000000e-01 1.208092e+02 3.000000e-01
-[281] 6.688963e-03 2.505017e+00 1.481605e+00 3.000000e-01 5.183946e-01
-[286] 3.000000e-01 1.872910e-01 3.678930e-01 3.000000e-01 4.529851e+02
-[291] 3.169725e+01 3.000000e-01 4.922018e+01 2.548507e+02 1.661850e+02
-[296] 9.164179e+02 3.678930e-01 1.236994e+02 6.705202e+01 3.834862e+01
-[301] 1.963211e+00 3.000000e-01 2.474916e-01 3.000000e-01 2.173913e-01
-[306] 8.193980e-01 2.444816e+00 3.000000e-01 1.571906e-01 1.849711e+02
-[311] 6.119403e+02 3.000000e-01 4.280936e-01 9.698997e-02 3.678930e-02
-[316] 4.832090e+02 1.390173e+02 3.000000e-01 6.555970e+02 1.526012e+02
-[321] 3.000000e-01 7.222222e-01 7.724426e+01 3.000000e-01 6.111111e-01
-[326] 1.555556e+00 3.055556e-01 1.500000e+00 1.470772e+02 1.694444e+00
-[331] 3.138298e+02 1.414405e+02 1.990605e+02 4.212766e+02 3.000000e-01
-[336] 3.000000e-01 6.478723e+02 3.000000e-01 2.222222e+00 3.000000e-01
-[341] 2.055556e+00 2.777778e-02 8.333333e-02 1.032359e+02 1.611111e+00
-[346] 8.333333e-02 2.333333e+00 5.755319e+02 1.686848e+02 1.111111e-01
-[351] 3.000000e-01 8.372340e+02 3.000000e-01 3.784504e+01 3.819149e+02
-[356] 5.555556e-02 3.000000e+02 1.855950e+02 1.944444e-01 3.000000e-01
-[361] 5.555556e-02 1.138889e+00 4.254237e+01 3.000000e-01 3.000000e-01
-[366] 3.000000e-01 3.000000e-01 3.138298e+02 1.235908e+02 4.159574e+02
-[371] 3.009685e+01 1.567850e+02 1.367432e+02 3.731235e+01 9.164927e+01
-[376] 2.936170e+02 8.820459e+01 1.035491e+02 7.379958e+01 3.000000e-01
-[381] 1.718750e+02 2.128527e+00 1.253918e+00 2.382445e-01 4.639498e-01
-[386] 1.253918e-01 1.253918e-01 3.000000e-01 1.000000e+00 1.570043e+02
-[391] 4.344086e+02 2.184953e+00 1.507837e+00 3.228840e-01 4.588024e+01
-[396] 1.660560e+02 3.000000e-01 3.043011e+02 2.612903e+02 1.621767e+02
-[401] 3.228840e-01 4.639498e-01 2.495298e+00 3.257053e+00 3.793103e-01
-[406]           NA 6.896552e-02 3.000000e-01 1.423197e+00 3.000000e-01
-[411] 3.000000e-01 1.786638e+02 3.279570e+02           NA 1.903017e+02
-[416] 1.654095e+02 4.639498e-01 1.815733e+02 1.366771e+00 1.536050e-01
-[421] 1.306587e+01 2.129032e+02 1.925647e+02 3.000000e-01 1.028213e+00
-[426] 3.793103e-01 8.025078e-01 4.860215e+02 3.000000e-01 2.100313e-01
-[431] 2.767665e+01 1.592476e+00 9.717868e-02 1.028213e+00 3.793103e-01
-[436] 1.292026e+02 4.425150e+01 3.193548e+02 1.860991e+02 6.614420e-01
-[441] 5.203762e-01 1.330819e+02 1.673491e+02 3.000000e-01 1.117457e+02
-[446] 3.045509e+01 3.000000e-01 8.280255e-02 3.000000e-01 1.200637e+00
-[451] 1.687898e-01 7.367273e+02 8.280255e-02 5.127389e-01 1.974522e-01
-[456] 7.993631e-01 3.000000e-01 3.298182e+02 9.736842e+01 3.000000e-01
-[461] 3.000000e-01 4.214545e+02 3.000000e-01 2.578182e+02 2.261147e-01
-[466] 3.000000e-01 1.883901e+02 9.458204e+01 3.000000e-01 3.000000e-01
-[471] 7.707006e-01 5.032727e+02 1.544586e+00 1.431115e+02 3.000000e-01
-[476] 1.458599e+00 1.247678e+02           NA 4.334545e+02 3.000000e-01
-[481] 6.156364e+02 9.574303e+01 1.928019e+02 1.888545e+02 1.598297e+02
-[486] 5.127389e-01 1.171053e+02           NA 2.547771e-02 1.707430e+02
-[491] 3.000000e-01 1.869969e+02 4.731481e+01 1.988390e+02 3.000000e-01
-[496] 8.808050e+01 2.003185e+00 3.000000e-01 3.509259e+01 9.365325e+01
-[501] 3.000000e-01 3.736111e+01 1.674923e+02 8.808050e+01 1.656347e+02
-[506] 3.722222e+01 6.756364e+02 3.000000e-01 1.698142e+02 1.628483e+02
-[511] 5.985130e-01 1.903346e+00 3.000000e-01 3.000000e-01 8.996283e-01
-[516] 3.977695e-01 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01
-[521] 7.446809e+02 6.095745e+02 1.427445e+02 3.000000e-01 2.973978e-02
-[526] 3.977695e-01 4.095745e+02 4.595745e+02 3.000000e-01 1.976341e+02
-[531] 3.776596e+02 1.777603e+02 4.312268e-01 6.765957e+02 7.978723e+02
-[536] 9.665427e-02 1.879338e+02 4.358670e+01 3.000000e-01 3.000000e-01
-[541] 2.638955e+01 3.180523e+01 1.746845e+02 1.876972e+02 1.044164e+02
-[546] 1.202681e+02 1.630915e+02 1.276025e+02 8.880126e+01 3.563830e+02
-[551] 2.212766e+02 1.969121e+01 3.755319e+02 1.214511e+02 1.034700e+02
-[556] 3.000000e-01 3.643123e-01 6.319703e-02 3.000000e-01 3.000000e-01
-[561] 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01 3.000000e-01
-[566] 3.000000e-01 1.664038e+02 2.946809e+02 4.391924e+01 1.874606e+02
-[571] 1.143533e+02 1.600158e+02 1.635688e-01 8.809148e+01 1.337539e+02
-[576] 1.985804e+02 1.578864e+02 3.000000e-01 3.000000e-01 1.953642e-01
-[581] 1.119205e+00 2.523636e+02 3.000000e-01 4.844371e+00 3.000000e-01
-[586] 1.492553e+02 1.993617e+02 2.847682e-01 3.145695e-01 3.000000e-01
-[591] 3.406429e+01 6.595745e+01 3.000000e-01 2.174545e+02           NA
-[596] 5.957447e+01 7.236364e+02 3.000000e-01 3.000000e-01 3.000000e-01
-[601] 2.676364e+02 1.891489e+02 3.036364e+02 3.000000e-01 3.000000e-01
-[606] 3.000000e-01 3.000000e-01 3.000000e-01 1.447020e+00 2.130909e+02
-[611] 1.357616e-01 3.000000e-01 3.000000e-01 5.534545e+02 1.891489e+02
-[616] 7.202128e+01 3.250287e+01 1.655629e-02 3.123636e+02 3.000000e-01
-[621] 7.138298e+01 3.000000e-01 6.946809e+01 4.012629e+01 1.629787e+02
-[626] 1.508511e+02 1.655629e-02 3.000000e-01 4.635762e-02 3.000000e-01
-[631] 3.000000e-01 3.000000e-01 1.942553e+02 3.690909e+02 3.000000e-01
-[636] 3.000000e-01 2.847682e+00 1.435106e+02 3.000000e-01 4.752009e+01
-[641] 2.621125e+01 1.055319e+02 3.000000e-01 1.149007e+00 2.927273e+02
-[646] 3.000000e-01 3.000000e-01 4.839265e+01 3.000000e-01 3.000000e-01
-[651] 2.251656e-01</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>df<span class="sc">$</span>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-indexing-to-subset-by-rows" class="slide level2">
 <h2>Using indexing to subset by rows</h2>
 <p>We can use indexing to also subset by rows. For example, here we pull the 100th observation/row.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>df[<span class="dv">100</span>,] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>df[<span class="dv">100</span>,] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    IgG_concentration       age age gender     slum
-100              8122 0.1818182   5 Female Non slum</code></pre>
+<pre><code>    observation_id IgG_concentration age gender     slum
+100           8122         0.1818182   5 Female Non slum</code></pre>
 </div>
 </div>
 <p>And, here we pull the <code>age</code> of the 100th observation/row.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>df[<span class="dv">100</span>,<span class="st">"age"</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>df[<span class="dv">100</span>,<span class="st">"age"</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1818182</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 </div>
 </section>
@@ -2424,8 +1387,8 @@ $gsu
 </tr>
 <tr class="even">
 <td><code>!=</code></td>
-<td>not equal to</td>
-<td style="text-align: right;"></td>
+<td></td>
+<td style="text-align: right;">not equal to</td>
 </tr>
 <tr class="odd">
 <td><code>x&amp;y</code></td>
@@ -2454,26 +1417,26 @@ $gsu
 <h2>Logical operators examples</h2>
 <p>Let’s practice. First, here is a reminder of what the number.object contains.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>number.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>number.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <p>Now, we will use logical operators to evaluate the object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>number.object<span class="sc">&lt;</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>number.object<span class="sc">&lt;</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>number.object<span class="sc">&gt;=</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>number.object<span class="sc">&gt;=</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>number.object<span class="sc">!=</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>number.object<span class="sc">!=</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>number.object <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>number.object <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2485,41 +1448,54 @@ $gsu
 <li>We can assign the column names from data frame <code>df</code> to an object <code>cn</code>, then we can modify <code>cn</code> directly using indexing and logical operators, finally we reassign the column names, <code>cn</code>, back to the data frame <code>df</code>:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df)</span>
-<span id="cb65-2"><a href="#cb65-2"></a>cn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>cn <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df)</span>
+<span id="cb63-2"><a href="#cb63-2"></a>cn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "IgG_concentration" "age"               "age"              
+<pre><code>[1] "observation_id"    "IgG_concentration" "age"              
 [4] "gender"            "slum"             </code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>cn<span class="sc">==</span><span class="st">"IgG_concentration"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE FALSE FALSE</code></pre>
+</div>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>cn[cn<span class="sc">==</span><span class="st">"IgG_concentration"</span>] <span class="ot">&lt;-</span><span class="st">"IgG_concentration_mIU"</span> <span class="co">#rename cn to "IgG_concentration_mIU" when cn is "IgG_concentration"</span></span>
-<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> cn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> cn</span>
+<span id="cb67-3"><a href="#cb67-3"></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "observation_id"        "IgG_concentration_mIU" "age"                  
+[4] "gender"                "slum"                 </code></pre>
+</div>
 </div>
 <p>Note, I am resetting the column name back to the original name for the sake of the rest of the module.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">colnames</span>(df)[<span class="fu">colnames</span>(df)<span class="sc">==</span><span class="st">"IgG_concentration_mIU"</span>] <span class="ot">&lt;-</span> <span class="st">"IgG_concentration"</span> <span class="co">#reset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">colnames</span>(df)[<span class="fu">colnames</span>(df)<span class="sc">==</span><span class="st">"IgG_concentration_mIU"</span>] <span class="ot">&lt;-</span> <span class="st">"IgG_concentration"</span> <span class="co">#reset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-indexing-and-logical-operators-to-subset-data" class="slide level2">
 <h2>Using indexing and logical operators to subset data</h2>
 <p>In this example, we subset by rows and pull only observations with an age of less than or equal to 10 and then saved the subset data to <code>df_lt10</code>. Note that the logical operators <code>df$age&lt;=10</code> is before the comma because I want to subset by rows (the first dimension).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>df_lte10 <span class="ot">&lt;-</span> df[df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In this example, we subset by rows and pull only observations with an age of less than or equal to 5 OR greater than 10.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>df_lte5_gt10 <span class="ot">&lt;-</span> df[df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">5</span> <span class="sc">|</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>df_lte10 <span class="ot">&lt;-</span> df[df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lets check that my subsets worked using the <code>summary()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">summary</span>(df_lte10<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
-0.005391 0.300000 0.300000 0.724742 0.640788 9.545455       10 </code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+    1.0     3.0     4.0     4.8     7.0    10.0       9 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="fu">summary</span>(df_lte5_gt10<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p>In the next example, we subset by rows and pull only observations with an age of less than or equal to 5 OR greater than 10.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>df_lte5_gt10 <span class="ot">&lt;-</span> df[df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">5</span> <span class="sc">|</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Lets check that my subsets worked using the <code>summary()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">summary</span>(df_lte5_gt10<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
-  0.0054   0.3000   1.6018  87.9886 142.8362 916.4179       10 </code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   1.00    2.50    4.00    6.08   11.00   15.00       9 </code></pre>
 </div>
 </div>
 </section>
@@ -2528,10 +1504,12 @@ $gsu
 <p>Missing data need to be carefully described and dealt with in data analysis. Understanding the different types of missing data and how you can identify them, is the first step to data cleaning.</p>
 <p>Types of “missing” values:</p>
 <ul>
-<li><code>NA</code> - general missing data</li>
+<li><code>NA</code> - <strong>N</strong>ot <strong>A</strong>pplicable general missing data</li>
 <li><code>NaN</code> - stands for “<strong>N</strong>ot <strong>a</strong> <strong>N</strong>umber”, happens when you do 0/0.</li>
 <li><code>Inf</code> and <code>-Inf</code> - Infinity, happens when you divide a positive number (or negative number) by 0.</li>
 <li>blank space - sometimes when data is read it, there is a blank space left</li>
+<li>an empty string (e.g., <code>""</code>)</li>
+<li><code>NULL</code>- undefined value that represents something that does not exist</li>
 </ul>
 </section>
 <section id="logical-operators-to-help-identify-and-missing-data" class="slide level2">
@@ -2540,45 +1518,50 @@ $gsu
 <thead>
 <tr class="header">
 <th>operator</th>
-<th>operator option</th>
-<th style="text-align: right;">description</th>
+<th>description</th>
+<th style="text-align: right;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>is.na</code></td>
-<td></td>
-<td style="text-align: right;">is NAN or NA</td>
+<td>is NAN or NA</td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
 <td><code>is.nan</code></td>
-<td></td>
-<td style="text-align: right;">is NAN</td>
+<td>is NAN</td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="odd">
 <td><code>!is.na</code></td>
-<td></td>
-<td style="text-align: right;">is not NAN or NA</td>
+<td>is not NAN or NA</td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
 <td><code>!is.nan</code></td>
-<td></td>
-<td style="text-align: right;">is not NAN</td>
+<td>is not NAN</td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="odd">
 <td><code>is.infinite</code></td>
-<td></td>
-<td style="text-align: right;">is infinite</td>
+<td>is infinite</td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="even">
 <td><code>any</code></td>
-<td></td>
-<td style="text-align: right;">are any TRUE</td>
+<td>are any TRUE</td>
+<td style="text-align: right;"></td>
 </tr>
 <tr class="odd">
+<td><code>all</code></td>
+<td>all are TRUE</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
 <td><code>which</code></td>
-<td></td>
-<td style="text-align: right;">which are TRUE</td>
+<td>which are TRUE</td>
+<td style="text-align: right;"></td>
 </tr>
 </tbody>
 </table>
@@ -2586,20 +1569,20 @@ $gsu
 <section id="more-logical-operators-examples" class="slide level2">
 <h2>More logical operators examples</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">NA</span>, <span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">0</span></span>
-<span id="cb75-2"><a href="#cb75-2"></a>test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">NA</span>, <span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">0</span></span>
+<span id="cb76-2"><a href="#cb76-2"></a>test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  NaN   NA -Inf</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">is.na</span>(test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">is.na</span>(test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE  TRUE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">is.nan</span>(test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="fu">is.nan</span>(test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="fu">is.infinite</span>(test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="fu">is.infinite</span>(test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE  TRUE</code></pre>
 </div>
@@ -2609,22 +1592,22 @@ $gsu
 <h2>More logical operators examples</h2>
 <p><code>any(is.na(x))</code> means do we have any <code>NA</code>’s in the object <code>x</code>?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>IgG_concentration)) <span class="co"># are there any NAs - YES/TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>IgG_concentration)) <span class="co"># are there any NAs - YES/TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
+<pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>slum)) <span class="co"># are there any NAs- NO/FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>slum)) <span class="co"># are there any NAs- NO/FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 <p><code>which(is.na(x))</code> means which of the elements in object <code>x</code> are <code>NA</code>’s?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>IgG_concentration)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>IgG_concentration)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>integer(0)</code></pre>
+<pre><code> [1]  13  55  57  72 182 406 414 478 488 595</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>slum)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>slum)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>integer(0)</code></pre>
 </div>
@@ -2634,7 +1617,7 @@ $gsu
 <h2><code>subset()</code> function</h2>
 <p>The Base R <code>subset()</code> function is a slightly easier way to select variables and observations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a>?subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a>?subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>Registered S3 method overwritten by 'printr':
   method                from     
@@ -2720,15 +1703,15 @@ $gsu
 <h2>Subsetting use the <code>subset()</code> function</h2>
 <p>Here are a few examples using the <code>subset()</code> function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a>df_lte10_v2 <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span>, <span class="at">select=</span><span class="fu">c</span>(IgG_concentration, age))</span>
-<span id="cb103-2"><a href="#cb103-2"></a>df_lt5_f <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">5</span> <span class="sc">&amp;</span> gender<span class="sc">==</span><span class="st">"Female"</span>, <span class="at">select=</span><span class="fu">c</span>(IgG_concentration, slum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a>df_lte10_v2 <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span>, <span class="at">select=</span><span class="fu">c</span>(IgG_concentration, age))</span>
+<span id="cb104-2"><a href="#cb104-2"></a>df_lt5_f <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">5</span> <span class="sc">&amp;</span> gender<span class="sc">==</span><span class="st">"Female"</span>, <span class="at">select=</span><span class="fu">c</span>(IgG_concentration, slum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="subset-function-vs-logical-operators" class="slide level2">
 <h2><code>subset()</code> function vs logical operators</h2>
 <p><code>subset()</code> automatically removes NAs, which is a different behavior from doing logical operations on NAs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="fu">summary</span>(df_lte10<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="fu">summary</span>(df_lte10<span class="sc">$</span>age) <span class="co">#created with indexing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -2744,18 +1727,18 @@ $gsu
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.0053908</td>
-<td style="text-align: right;">0.3</td>
-<td style="text-align: right;">0.3</td>
-<td style="text-align: right;">0.7247421</td>
-<td style="text-align: right;">0.6407876</td>
-<td style="text-align: right;">9.545454</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">7</td>
 <td style="text-align: right;">10</td>
+<td style="text-align: right;">9</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="fu">summary</span>(df_lte10_v2<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="fu">summary</span>(df_lte10_v2<span class="sc">$</span>age) <span class="co">#created with the subset function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -2770,12 +1753,12 @@ $gsu
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.0053908</td>
-<td style="text-align: right;">0.3</td>
-<td style="text-align: right;">0.3</td>
-<td style="text-align: right;">0.7247421</td>
-<td style="text-align: right;">0.6407876</td>
-<td style="text-align: right;">9.545454</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">10</td>
 </tr>
 </tbody>
 </table>
@@ -2783,24 +1766,24 @@ $gsu
 </div>
 <p>We can also see this by looking at the number or rows in each dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="fu">nrow</span>(df_lte10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a><span class="fu">nrow</span>(df_lte10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 370</code></pre>
+<pre><code>[1] 504</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="fu">nrow</span>(df_lte10_v2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a><span class="fu">nrow</span>(df_lte10_v2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 360</code></pre>
+<pre><code>[1] 495</code></pre>
 </div>
 </div>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
-<li><code>colnames()</code>, <code>str()</code> and <code>summary()</code>functions from Base R are great functions to assess the data type and some summary statistics</li>
-<li>There are three basic indexing syntax: <code>[ ]</code>, <code>[[ ]]</code> and <code>$</code></li>
+<li><code>colnames()</code>, <code>str()</code> and <code>summary()</code>functions from Base R are functions to assess the data type and some summary statistics</li>
+<li>There are three basic indexing syntax: <code>[</code>, <code>[[</code> and <code>$</code></li>
 <li>Indexing can be used to extract part of an object (e.g., subset data) and to replace parts of an object (e.g., rename variables / columns)</li>
 <li>Logical operators can be evaluated on object(s) in order to return a binary response of TRUE/FALSE, and are useful for decision rules for indexing</li>
-<li>There are 5 “types” of missing values, the most common being “NA”</li>
+<li>There are 7 “types” of missing values, the most common being “NA”</li>
 <li>Logical operators meant to determine missing values are very helpful for data cleaning</li>
 <li>The Base R <code>subset()</code> function is a slightly easier way to select variables and observations.</li>
 </ul>

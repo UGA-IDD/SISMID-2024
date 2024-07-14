@@ -4,6 +4,7 @@ format:
   revealjs:
     smaller: true
     scrollable: true
+    toc: false
 ---
 
 ## Learning Objectives
@@ -39,6 +40,23 @@ head(df,3)
 
 Note, my use of the underscore in the variable name rather than a space.  This is good coding practice and make calling variables much less prone to error.
 
+## Adding new columns
+
+We can also add a new column using the `transform()` function:
+
+```{r, echo = FALSE}
+library(printr)
+?transform
+```
+
+For example, adding a binary column for seropositivity called `seropos`:
+
+```{r}
+df <- transform(df, seropos = IgG_concentration >= 10)
+head(df)
+```
+
+
 ## Creating conditional variables
 
 One frequently-used tool is creating variables with conditions. A general function for creating new variables based on existing variables is the Base R `ifelse()` function, which "returns a value depending on whether the element of test is `TRUE` or `FALSE`."
@@ -58,16 +76,22 @@ df$age_group <- ifelse(df$age <= 5, "young", "old")
 head(df)
 ```
 
+Let's delve into what is actually happening, with a focus on the NA values in `age` variable.
+
+```{r echo=TRUE}
+df$age <= 5
+table(df$age, df$age_group, useNA="always", dnn=list("age", ""))
+```
 
 ## Nesting `ifelse` statements example
 
 ```{r echo=TRUE}
 df$age_group <- ifelse(df$age <= 5, "young", 
-                       ifelse(df$age<=10 & df$age>5, "middle", 
-                              ifelse(df$age>10, "old", NA)))
-head(df)
+                       ifelse(df$age<=10 & df$age>5, "middle", "old"))
+table(df$age, df$age_group, useNA="always", dnn=list("age", ""))
 ```
 
+Note, it puts the variable levels in alphabetical order, we will show how to change this later.
 
 # Data Classes
 
@@ -87,11 +111,6 @@ The `class()` function allows you to evaluate the class of an object.
 class(df$IgG_concentration)
 class(df$age)
 class(df$gender)
-```
-
-```{r, echo = FALSE, results = "asis"}
-library(printr)
-?head
 ```
 
 
@@ -118,7 +137,7 @@ Here because integers are in quotations, it is read as a character class by R.
 class(c("1", "4", "7")) 
 ```
 
-Note, this is the first time we have shown you nested functions.  Here, instead of creating a new vector object (e.g., `x <- c("1", "4", "7")`) and then feeding the vector object `x` into the first argument of the `class()` function (e.g., `class(x)`), we combined the two steps and directly fed a vector object into the class function.
+Note, instead of creating a new vector object (e.g., `x <- c("1", "4", "7")`) and then feeding the vector object `x` into the first argument of the `class()` function (e.g., `class(x)`), we combined the two steps and directly fed a vector object into the class function.
 
 ## Numeric Subclasses
 
@@ -140,13 +159,13 @@ typeof(df$age)
 
 ## Logical
 
-Reminder `logical` is a type that only has two possible elements: `TRUE` and `FALSE`. 
+Reminder `logical` is a type that only has three possible elements: `TRUE` and `FALSE` and `NA`
 
 ```{r echo=TRUE}
 class(c(TRUE, FALSE, TRUE, TRUE, FALSE))
 ```
 
-Note that `logical` elements are NOT in quotes. Putting R special classes (e.g., `NA` or `FALSE`) in quotations turns them into character value. 
+Note that when creating `logical` object the `TRUE` and `FALSE` are NOT in quotes. Putting R special classes (e.g., `NA` or `FALSE`) in quotations turns them into character value. 
 
 
 ## Other useful functions for evaluating/setting classes
@@ -154,7 +173,7 @@ Note that `logical` elements are NOT in quotes. Putting R special classes (e.g.,
 There are two useful functions associated with practically all R classes: 
 
 - `is.CLASS_NAME(x)` to **logically check** whether or not `x` is of certain  class.  For example,  `is.integer` or `is.character` or `is.numeric`
-- `as.CLASS_NAME(x)` to **coerce between classes** `x` from current `x` class into a certain class. For example, `as.integer` or `as.character` or `as.numeric`.  This is particularly useful is maybe integer variable was read in as a character variable, or when you need to change a character variable to a factor variable (more on this later).
+- `as.CLASS_NAME(x)` to **coerce between classes** `x` from current `x` class into a another class. For example, `as.integer` or `as.character` or `as.numeric`.  This is particularly useful is maybe integer variable was read in as a character variable, or when you need to change a character variable to a factor variable (more on this later).
 
 ## Examples `is.CLASS_NAME(x)`
 
@@ -173,7 +192,7 @@ as.numeric(c("1", "4", "7"))
 as.logical(c("TRUE", "FALSE", "FALSE"))
 ```
 
-In some cases the coercing is not possible; if executed, will return `NA` (an R constant representing "**N**ot **A**vailable" i.e. missing value)
+In some cases the coercing is not possible; if executed, will return `NA`
 ```{r echo=TRUE}
 as.numeric(c("1", "4", "7a"))
 as.logical(c("TRUE", "FALSE", "UNKNOWN"))
@@ -191,7 +210,9 @@ class(df$age_group_factor)
 levels(df$age_group_factor)
 ```
 
-Note that levels are, by default, set to **alphanumerical** order! And, the first is always the "reference" group. However, we often prefer a different reference group.
+Note 1, that levels are, by default, set to **alphanumerical** order! And, the first is always the "reference" group. However, we often prefer a different reference group.
+
+Note 2, we can also make ordered factors using `factor(... ordered=TRUE)`, but we won't talk more about that.
 
 ## Reference Groups 
 
@@ -204,15 +225,20 @@ By default `middle` is the reference group therefore we will only generate beta 
 ## Changing factor reference 
 
 Changing the reference group of a factor variable.
+
 - If the object is already a factor then use `relevel()` function and the `ref` argument to specify the reference.
 - If the object is a character then use `factor()` function and `levels` argument to specify the order of the values, the first being the reference.
 
 
+Let's look at the `relevel()` help file
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
 ?relevel
 ```
 
+</br>
+
+Let's look at the `factor()` help file
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
 ?factor
@@ -253,15 +279,15 @@ Matrices, like data frames are also composed of rows and columns. Matrices, unli
 You can also create a matrix from scratch using `matrix()` Use `?matrix` to see the arguments.  
 
 ```{r echo=TRUE}
-matrix(1:6, ncol = 2) 
-matrix(1:6, ncol=2, byrow=TRUE) 
+matrix(data=1:6, ncol = 2) 
+matrix(data=1:6, ncol=2, byrow=TRUE) 
 ```
 
-Notice, the first matrix filled in numbers 1-6 by columns first and then rows because default `byrow` argument is FALSE. In the second matrix, we changed the argument `byrow` to `TRUE`, and now numbers 1-6 are filled by rows first and then columns.
+Note, the first matrix filled in numbers 1-6 by columns first and then rows because default `byrow` argument is FALSE. In the second matrix, we changed the argument `byrow` to `TRUE`, and now numbers 1-6 are filled by rows first and then columns.
 
 ## Data frame 
 
-You can transform an existing matrix into data frames and tibble using `as.data.frame()`.  
+You can transform an existing matrix into data frames using `as.data.frame()`  
 
 ```{r echo=TRUE}
 as.data.frame(matrix(1:6, ncol = 2) ) 
@@ -271,16 +297,17 @@ as.data.frame(matrix(1:6, ncol = 2) )
 ## Numeric variable data summary
 
 Data summarization on numeric vectors/variables:
--		`mean()`: takes the mean of x
--		`sd()`: takes the standard deviation of x
--		`median()`: takes the median of x
--		`quantile()`: displays sample quantiles of x. Default is min, IQR, max
--		`range()`: displays the range. Same as `c(min(), max())`
--		`sum()`: sum of x
--		`max()`: maximum value in x
--		`min()`: minimum value in x
 
-Note, **all have the ** `na.rm =` **argument for missing data**
+-	`mean()`: takes the mean of x
+-	`sd()`: takes the standard deviation of x
+-	`median()`: takes the median of x
+-	`quantile()`: displays sample quantiles of x. Default is min, IQR, max
+-	`range()`: displays the range. Same as `c(min(), max())`
+-	`sum()`: sum of x
+-	`max()`: maximum value in x
+-	`min()`: minimum value in x
+
+Note, **all have the ** `na.rm` **argument for missing data**
 
 ```{r, echo = FALSE, results = "asis"}
 library(printr)

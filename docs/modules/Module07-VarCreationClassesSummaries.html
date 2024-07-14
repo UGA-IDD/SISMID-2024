@@ -8,7 +8,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.433">
+  <meta name="generator" content="quarto-1.3.353">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
@@ -407,43 +407,6 @@
 </div>
 </div>
 
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Page Items</h2>
-<ul>
-<li><a href="#/learning-objectives" id="/toc-learning-objectives">Learning Objectives</a></li>
-<li><a href="#/import-data-for-this-module" id="/toc-import-data-for-this-module">Import data for this module</a></li>
-<li><a href="#/adding-new-columns" id="/toc-adding-new-columns">Adding new columns</a></li>
-<li><a href="#/creating-conditional-variables" id="/toc-creating-conditional-variables">Creating conditional variables</a></li>
-<li><a href="#/ifelse-example" id="/toc-ifelse-example"><code>ifelse</code> example</a></li>
-<li><a href="#/nesting-ifelse-statements-example" id="/toc-nesting-ifelse-statements-example">Nesting <code>ifelse</code> statements example</a></li>
-<li><a href="#/data-classes" id="/toc-data-classes">Data Classes</a>
-<ul>
-<li><a href="#/overview---data-classes" id="/toc-overview---data-classes">Overview - Data Classes</a></li>
-<li><a href="#/class-function" id="/toc-class-function"><code>class()</code> function</a></li>
-<li><a href="#/one-dimensional-data-types" id="/toc-one-dimensional-data-types">One dimensional data types</a></li>
-<li><a href="#/character-and-numeric" id="/toc-character-and-numeric">Character and numeric</a></li>
-<li><a href="#/numeric-subclasses" id="/toc-numeric-subclasses">Numeric Subclasses</a></li>
-<li><a href="#/logical" id="/toc-logical">Logical</a></li>
-<li><a href="#/other-useful-functions-for-evaluatingsetting-classes" id="/toc-other-useful-functions-for-evaluatingsetting-classes">Other useful functions for evaluating/setting classes</a></li>
-<li><a href="#/examples-is.class_namex" id="/toc-examples-is.class_namex">Examples <code>is.CLASS_NAME(x)</code></a></li>
-<li><a href="#/examples-as.class_namex" id="/toc-examples-as.class_namex">Examples <code>as.CLASS_NAME(x)</code></a></li>
-<li><a href="#/factors" id="/toc-factors">Factors</a></li>
-<li><a href="#/reference-groups" id="/toc-reference-groups">Reference Groups</a></li>
-<li><a href="#/changing-factor-reference" id="/toc-changing-factor-reference">Changing factor reference</a></li>
-<li><a href="#/changing-factor-reference-examples" id="/toc-changing-factor-reference-examples">Changing factor reference examples</a></li>
-<li><a href="#/two-dimensional-data-classes" id="/toc-two-dimensional-data-classes">Two-dimensional data classes</a></li>
-<li><a href="#/matrices" id="/toc-matrices">Matrices</a></li>
-<li><a href="#/data-frame" id="/toc-data-frame">Data Frame</a></li>
-<li><a href="#/numeric-variable-data-summary" id="/toc-numeric-variable-data-summary">Numeric variable data summary</a></li>
-<li><a href="#/numeric-variable-data-summary-examples" id="/toc-numeric-variable-data-summary-examples">Numeric variable data summary examples</a></li>
-<li><a href="#/character-variable-data-summaries" id="/toc-character-variable-data-summaries">Character Variable Data Summaries</a></li>
-<li><a href="#/character-variable-data-summary-examples" id="/toc-character-variable-data-summary-examples">Character variable data summary examples</a></li>
-<li><a href="#/summary" id="/toc-summary">Summary</a></li>
-<li><a href="#/acknowledgements" id="/toc-acknowledgements">Acknowledgements</a></li>
-</ul></li>
-</ul>
-</nav>
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
@@ -628,7 +591,7 @@
 </section>
 <section id="adding-new-columns" class="slide level2">
 <h2>Adding new columns</h2>
-<p>You can add a new column, called <code>newcol</code> to <code>df</code>, using the <code>$</code> operator:</p>
+<p>You can add a new column, called <code>log_IgG</code> to <code>df</code>, using the <code>$</code> operator:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>df<span class="sc">$</span>log_IgG <span class="ot">&lt;-</span> <span class="fu">log</span>(df<span class="sc">$</span>IgG_concentration)</span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="fu">head</span>(df,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -668,6 +631,161 @@
 <td style="text-align: left;">Male</td>
 <td style="text-align: left;">Non slum</td>
 <td style="text-align: right;">-1.203973</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Note, my use of the underscore in the variable name rather than a space. This is good coding practice and make calling variables much less prone to error.</p>
+</section>
+<section id="adding-new-columns-1" class="slide level2">
+<h2>Adding new columns</h2>
+<p>We can also add a new column using the <code>transform()</code> function:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Transform an Object, for Example a Data Frame
+
+Description:
+
+     'transform' is a generic function, which-at least currently-only
+     does anything useful with data frames.  'transform.default'
+     converts its first argument to a data frame if possible and calls
+     'transform.data.frame'.
+
+Usage:
+
+     transform(`_data`, ...)
+     
+Arguments:
+
+   _data: The object to be transformed
+
+     ...: Further arguments of the form 'tag=value'
+
+Details:
+
+     The '...' arguments to 'transform.data.frame' are tagged vector
+     expressions, which are evaluated in the data frame '_data'.  The
+     tags are matched against 'names(_data)', and for those that match,
+     the value replace the corresponding variable in '_data', and the
+     others are appended to '_data'.
+
+Value:
+
+     The modified value of '_data'.
+
+Warning:
+
+     This is a convenience function intended for use interactively.
+     For programming it is better to use the standard subsetting
+     arithmetic functions, and in particular the non-standard
+     evaluation of argument 'transform' can have unanticipated
+     consequences.
+
+Note:
+
+     If some of the values are not vectors of the appropriate length,
+     you deserve whatever you get!
+
+Author(s):
+
+     Peter Dalgaard
+
+See Also:
+
+     'within' for a more flexible approach, 'subset', 'list',
+     'data.frame'
+
+Examples:
+
+     transform(airquality, Ozone = -Ozone)
+     transform(airquality, new = -Ozone, Temp = (Temp-32)/1.8)
+     
+     attach(airquality)
+     transform(Ozone, logOzone = log(Ozone)) # marginally interesting ...
+     detach(airquality)</code></pre>
+</div>
+</div>
+<p>For example, adding a binary column for seropositivity called <code>seropos</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="ot">&lt;-</span> <span class="fu">transform</span>(df, <span class="at">seropos =</span> IgG_concentration <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">slum</th>
+<th style="text-align: right;">log_IgG</th>
+<th style="text-align: left;">seropos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5772</td>
+<td style="text-align: right;">0.3176895</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">-1.1466807</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8095</td>
+<td style="text-align: right;">3.4368231</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1.2345475</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9784</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">-1.2039728</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9338</td>
+<td style="text-align: right;">143.2363014</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">4.9644957</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6369</td>
+<td style="text-align: right;">0.4476534</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">-0.8037359</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6885</td>
+<td style="text-align: right;">0.0252708</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">-3.6781074</td>
+<td style="text-align: left;">FALSE</td>
 </tr>
 </tbody>
 </table>
@@ -768,18 +886,19 @@
 <h2><code>ifelse</code> example</h2>
 <p>Reminder of the first three arguments in the <code>ifelse()</code> function are <code>ifelse(test, yes, no)</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, <span class="st">"old"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, <span class="st">"old"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <colgroup>
-<col style="width: 20%">
-<col style="width: 24%">
-<col style="width: 5%">
+<col style="width: 18%">
+<col style="width: 21%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 13%">
 <col style="width: 9%">
 <col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 13%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -789,6 +908,7 @@
 <th style="text-align: left;">gender</th>
 <th style="text-align: left;">slum</th>
 <th style="text-align: right;">log_IgG</th>
+<th style="text-align: left;">seropos</th>
 <th style="text-align: left;">age_group</th>
 </tr>
 </thead>
@@ -800,6 +920,7 @@
 <td style="text-align: left;">Female</td>
 <td style="text-align: left;">Non slum</td>
 <td style="text-align: right;">-1.1466807</td>
+<td style="text-align: left;">FALSE</td>
 <td style="text-align: left;">young</td>
 </tr>
 <tr class="even">
@@ -809,6 +930,7 @@
 <td style="text-align: left;">Female</td>
 <td style="text-align: left;">Non slum</td>
 <td style="text-align: right;">1.2345475</td>
+<td style="text-align: left;">FALSE</td>
 <td style="text-align: left;">young</td>
 </tr>
 <tr class="odd">
@@ -818,6 +940,7 @@
 <td style="text-align: left;">Male</td>
 <td style="text-align: left;">Non slum</td>
 <td style="text-align: right;">-1.2039728</td>
+<td style="text-align: left;">FALSE</td>
 <td style="text-align: left;">young</td>
 </tr>
 <tr class="even">
@@ -827,6 +950,7 @@
 <td style="text-align: left;">Male</td>
 <td style="text-align: left;">Non slum</td>
 <td style="text-align: right;">4.9644957</td>
+<td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">young</td>
 </tr>
 <tr class="odd">
@@ -836,6 +960,7 @@
 <td style="text-align: left;">Male</td>
 <td style="text-align: left;">Non slum</td>
 <td style="text-align: right;">-0.8037359</td>
+<td style="text-align: left;">FALSE</td>
 <td style="text-align: left;">young</td>
 </tr>
 <tr class="even">
@@ -845,7 +970,180 @@
 <td style="text-align: left;">Male</td>
 <td style="text-align: left;">Non slum</td>
 <td style="text-align: right;">-3.6781074</td>
+<td style="text-align: left;">FALSE</td>
 <td style="text-align: left;">young</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let’s delve into what is actually happening, with a focus on the NA values in <code>age</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE    NA  TRUE  TRUE  TRUE FALSE
+ [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+ [25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+ [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [61]  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+ [73] FALSE  TRUE  TRUE  TRUE    NA  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
+ [85] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [97]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[109] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE    NA  TRUE  TRUE
+[121]    NA  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[133] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[145]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[157] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+[169] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE
+[181]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+[193] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+[205]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[217] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[229]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[241] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+[253] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[265]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
+[277] FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[289]  TRUE    NA FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[301]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+[313]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+[325]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE
+[337] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+[349] FALSE    NA FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+[361]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+[373] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+[385]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[397] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[409]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[421] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[433]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[445] FALSE FALSE  TRUE  TRUE  TRUE  TRUE    NA    NA  TRUE  TRUE  TRUE  TRUE
+[457]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[469] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[481]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+[493]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[505] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[517]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[529] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[541]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[553] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[565]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[577] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[589] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[601] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[613]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[625] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[637]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE    NA FALSE FALSE FALSE
+[649] FALSE FALSE FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">table</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>age_group, <span class="at">useNA=</span><span class="st">"always"</span>, <span class="at">dnn=</span><span class="fu">list</span>(<span class="st">"age"</span>, <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">age/</th>
+<th style="text-align: right;">old</th>
+<th style="text-align: right;">young</th>
+<th style="text-align: right;">NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
 </tr>
 </tbody>
 </table>
@@ -855,91 +1153,138 @@
 <section id="nesting-ifelse-statements-example" class="slide level2">
 <h2>Nesting <code>ifelse</code> statements example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, </span>
-<span id="cb24-2"><a href="#cb24-2"></a>                       <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">5</span>, <span class="st">"middle"</span>, </span>
-<span id="cb24-3"><a href="#cb24-3"></a>                              <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">10</span>, <span class="st">"old"</span>, <span class="cn">NA</span>)))</span>
-<span id="cb24-4"><a href="#cb24-4"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, </span>
+<span id="cb29-2"><a href="#cb29-2"></a>                       <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">5</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="fu">table</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>age_group, <span class="at">useNA=</span><span class="st">"always"</span>, <span class="at">dnn=</span><span class="fu">list</span>(<span class="st">"age"</span>, <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
-<colgroup>
-<col style="width: 20%">
-<col style="width: 24%">
-<col style="width: 5%">
-<col style="width: 9%">
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 13%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">observation_id</th>
-<th style="text-align: right;">IgG_concentration</th>
-<th style="text-align: right;">age</th>
-<th style="text-align: left;">gender</th>
-<th style="text-align: left;">slum</th>
-<th style="text-align: right;">log_IgG</th>
-<th style="text-align: left;">age_group</th>
+<th style="text-align: left;">age/</th>
+<th style="text-align: right;">middle</th>
+<th style="text-align: right;">old</th>
+<th style="text-align: right;">young</th>
+<th style="text-align: right;">NA</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">5772</td>
-<td style="text-align: right;">0.3176895</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">Non slum</td>
-<td style="text-align: right;">-1.1466807</td>
-<td style="text-align: left;">young</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">8095</td>
-<td style="text-align: right;">3.4368231</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">Non slum</td>
-<td style="text-align: right;">1.2345475</td>
-<td style="text-align: left;">young</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">9784</td>
-<td style="text-align: right;">0.3000000</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">Non slum</td>
-<td style="text-align: right;">-1.2039728</td>
-<td style="text-align: left;">young</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">9338</td>
-<td style="text-align: right;">143.2363014</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">Non slum</td>
-<td style="text-align: right;">4.9644957</td>
-<td style="text-align: left;">young</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">6369</td>
-<td style="text-align: right;">0.4476534</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">Non slum</td>
-<td style="text-align: right;">-0.8037359</td>
-<td style="text-align: left;">young</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">6885</td>
-<td style="text-align: right;">0.0252708</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">Non slum</td>
-<td style="text-align: right;">-3.6781074</td>
-<td style="text-align: left;">young</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<p>Note, it puts the variable levels in alphabetical order, we will show how to change this later.</p>
 </section>
 <section>
 <section id="data-classes" class="title-slide slide level1 center">
@@ -958,173 +1303,19 @@
 <h2><code>class()</code> function</h2>
 <p>The <code>class()</code> function allows you to evaluate the class of an object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">class</span>(df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">class</span>(df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">class</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">class</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">class</span>(df<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">class</span>(df<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
-<p>Return the First or Last Parts of an Object</p>
-<p>Description:</p>
-<pre><code> Returns the first or last parts of a vector, matrix, table, data
- frame or function.  Since 'head()' and 'tail()' are generic
- functions, they may also have been extended to other classes.</code></pre>
-<p>Usage:</p>
-<pre><code> head(x, ...)
- ## Default S3 method:
- head(x, n = 6L, ...)
- 
- ## S3 method for class 'matrix'
- head(x, n = 6L, ...) # is exported as head.matrix()
- ## NB: The methods for 'data.frame' and 'array'  are identical to the 'matrix' one
- 
- ## S3 method for class 'ftable'
- head(x, n = 6L, ...)
- ## S3 method for class 'function'
- head(x, n = 6L, ...)
- 
- 
- tail(x, ...)
- ## Default S3 method:
- tail(x, n = 6L, keepnums = FALSE, addrownums, ...)
- ## S3 method for class 'matrix'
- tail(x, n = 6L, keepnums = TRUE, addrownums, ...) # exported as tail.matrix()
- ## NB: The methods for 'data.frame', 'array', and 'table'
- ##     are identical to the  'matrix'  one
- 
- ## S3 method for class 'ftable'
- tail(x, n = 6L, keepnums = FALSE, addrownums, ...)
- ## S3 method for class 'function'
- tail(x, n = 6L, ...)
- </code></pre>
-<p>Arguments:</p>
-<pre><code>   x: an object
-
-   n: an integer vector of length up to 'dim(x)' (or 1, for
-      non-dimensioned objects).  A 'logical' is silently coerced to
-      integer.  Values specify the indices to be selected in the
-      corresponding dimension (or along the length) of the object.
-      A positive value of 'n[i]' includes the first/last 'n[i]'
-      indices in that dimension, while a negative value excludes
-      the last/first 'abs(n[i])', including all remaining indices.
-      'NA' or non-specified values (when 'length(n) &lt;
-      length(dim(x))') select all indices in that dimension. Must
-      contain at least one non-missing value.</code></pre>
-<p>keepnums: in each dimension, if no names in that dimension are present, create them using the indices included in that dimension. Ignored if ‘dim(x)’ is ‘NULL’ or its length 1.</p>
-<p>addrownums: deprecated - ‘keepnums’ should be used instead. Taken as the value of ‘keepnums’ if it is explicitly set when ‘keepnums’ is not.</p>
-<pre><code> ...: arguments to be passed to or from other methods.</code></pre>
-<p>Details:</p>
-<pre><code> For vector/array based objects, 'head()' ('tail()') returns a
- subset of the same dimensionality as 'x', usually of the same
- class. For historical reasons, by default they select the first
- (last) 6 indices in the first dimension ("rows") or along the
- length of a non-dimensioned vector, and the full extent (all
- indices) in any remaining dimensions. 'head.matrix()' and
- 'tail.matrix()' are exported.
-
- The default and array(/matrix) methods for 'head()' and 'tail()'
- are quite general. They will work as is for any class which has a
- 'dim()' method, a 'length()' method (only required if 'dim()'
- returns 'NULL'), and a '[' method (that accepts the 'drop'
- argument and can subset in all dimensions in the dimensioned
- case).
-
- For functions, the lines of the deparsed function are returned as
- character strings.
-
- When 'x' is an array(/matrix) of dimensionality two and more,
- 'tail()' will add dimnames similar to how they would appear in a
- full printing of 'x' for all dimensions 'k' where 'n[k]' is
- specified and non-missing and 'dimnames(x)[[k]]' (or 'dimnames(x)'
- itself) is 'NULL'.  Specifically, the form of the added dimnames
- will vary for different dimensions as follows:
-
- 'k=1' (rows): '"[n,]"' (right justified with whitespace padding)
-
- 'k=2' (columns): '"[,n]"' (with _no_ whitespace padding)
-
- 'k&gt;2' (higher dims): '"n"', i.e., the indices as _character_
-      values
-
- Setting 'keepnums = FALSE' suppresses this behaviour.
-
- As 'data.frame' subsetting ('indexing') keeps 'attributes', so do
- the 'head()' and 'tail()' methods for data frames.</code></pre>
-<p>Value:</p>
-<pre><code> An object (usually) like 'x' but generally smaller.  Hence, for
- 'array's, the result corresponds to 'x[.., drop=FALSE]'.  For
- 'ftable' objects 'x', a transformed 'format(x)'.</code></pre>
-<p>Note:</p>
-<pre><code> For array inputs the output of 'tail' when 'keepnums' is 'TRUE',
- any dimnames vectors added for dimensions '&gt;2' are the original
- numeric indices in that dimension _as character vectors_.  This
- means that, e.g., for 3-dimensional array 'arr', 'tail(arr,
- c(2,2,-1))[ , , 2]' and 'tail(arr, c(2,2,-1))[ , , "2"]' may both
- be valid but have completely different meanings.</code></pre>
-<p>Author(s):</p>
-<pre><code> Patrick Burns, improved and corrected by R-Core. Negative argument
- added by Vincent Goulet.  Multi-dimension support added by Gabriel
- Becker.</code></pre>
-<p>Examples:</p>
-<pre><code> head(letters)
- head(letters, n = -6L)
- 
- head(freeny.x, n = 10L)
- head(freeny.y)
- 
- head(iris3)
- head(iris3, c(6L, 2L))
- head(iris3, c(6L, -1L, 2L))
- 
- tail(letters)
- tail(letters, n = -6L)
- 
- tail(freeny.x)
- ## the bottom-right "corner" :
- tail(freeny.x, n = c(4, 2))
- tail(freeny.y)
- 
- tail(iris3)
- tail(iris3, c(6L, 2L))
- tail(iris3, c(6L, -1L, 2L))
- 
- ## iris with dimnames stripped
- a3d &lt;- iris3 ; dimnames(a3d) &lt;- NULL
- tail(a3d, c(6, -1, 2)) # keepnums = TRUE is default here!
- tail(a3d, c(6, -1, 2), keepnums = FALSE)
- 
- ## data frame w/ a (non-standard) attribute:
- treeS &lt;- structure(trees, foo = "bar")
- (n &lt;- nrow(treeS))
- stopifnot(exprs = { # attribute is kept
-     identical(htS &lt;- head(treeS), treeS[1:6, ])
-     identical(attr(htS, "foo") , "bar")
-     identical(tlS &lt;- tail(treeS), treeS[(n-5):n, ])
-     ## BUT if I use "useAttrib(.)", this is *not* ok, when n is of length 2:
-     ## --- because [i,j]-indexing of data frames *also* drops "other" attributes ..
-     identical(tail(treeS, 3:2), treeS[(n-2):n, 2:3] )
- })
- 
- tail(library) # last lines of function
- 
- head(stats::ftable(Titanic))
- 
- ## 1d-array (with named dim) :
- a1 &lt;- array(1:7, 7); names(dim(a1)) &lt;- "O2"
- stopifnot(exprs = {
-   identical( tail(a1, 10), a1)
-   identical( head(a1, 10), a1)
-   identical( head(a1, 1), a1 [1 , drop=FALSE] ) # was a1[1] in R &lt;= 3.6.x
-   identical( tail(a1, 2), a1[6:7])
-   identical( tail(a1, 1), a1 [7 , drop=FALSE] ) # was a1[7] in R &lt;= 3.6.x
- })</code></pre>
 </section>
 <section id="one-dimensional-data-types" class="slide level2">
 <h2>One dimensional data types</h2>
@@ -1144,19 +1335,19 @@
 <p>This can also be a bit tricky.</p>
 <p>If only one character in the whole vector, the class is assumed to be character</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">"tree"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">"tree"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
 <p>Here because integers are in quotations, it is read as a character class by R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"4"</span>, <span class="st">"7"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"4"</span>, <span class="st">"7"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
-<p>Note, this is the first time we have shown you nested functions. Here, instead of creating a new vector object (e.g., <code>x &lt;- c("1", "4", "7")</code>) and then feeding the vector object <code>x</code> into the first argument of the <code>class()</code> function (e.g., <code>class(x)</code>), we combined the two steps and directly fed a vector object into the class function.</p>
+<p>Note, instead of creating a new vector object (e.g., <code>x &lt;- c("1", "4", "7")</code>) and then feeding the vector object <code>x</code> into the first argument of the <code>class()</code> function (e.g., <code>class(x)</code>), we combined the two steps and directly fed a vector object into the class function.</p>
 </section>
 <section id="numeric-subclasses" class="slide level2">
 <h2>Numeric Subclasses</h2>
@@ -1167,19 +1358,19 @@
 </ol>
 <p><code>typeof()</code> identifies the vector type (double, integer, logical, or character), whereas <code>class()</code> identifies the root class. The difference between the two will be more clear when we look at two dimensional classes below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">class</span>(df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">class</span>(df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">class</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">class</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">typeof</span>(df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">typeof</span>(df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "double"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">typeof</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">typeof</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
@@ -1187,35 +1378,35 @@
 </section>
 <section id="logical" class="slide level2">
 <h2>Logical</h2>
-<p>Reminder <code>logical</code> is a type that only has two possible elements: <code>TRUE</code> and <code>FALSE</code>.</p>
+<p>Reminder <code>logical</code> is a type that only has three possible elements: <code>TRUE</code> and <code>FALSE</code> and <code>NA</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">class</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
 </div>
-<p>Note that <code>logical</code> elements are NOT in quotes. Putting R special classes (e.g., <code>NA</code> or <code>FALSE</code>) in quotations turns them into character value.</p>
+<p>Note that when creating <code>logical</code> object the <code>TRUE</code> and <code>FALSE</code> are NOT in quotes. Putting R special classes (e.g., <code>NA</code> or <code>FALSE</code>) in quotations turns them into character value.</p>
 </section>
 <section id="other-useful-functions-for-evaluatingsetting-classes" class="slide level2">
 <h2>Other useful functions for evaluating/setting classes</h2>
 <p>There are two useful functions associated with practically all R classes:</p>
 <ul>
 <li><code>is.CLASS_NAME(x)</code> to <strong>logically check</strong> whether or not <code>x</code> is of certain class. For example, <code>is.integer</code> or <code>is.character</code> or <code>is.numeric</code></li>
-<li><code>as.CLASS_NAME(x)</code> to <strong>coerce between classes</strong> <code>x</code> from current <code>x</code> class into a certain class. For example, <code>as.integer</code> or <code>as.character</code> or <code>as.numeric</code>. This is particularly useful is maybe integer variable was read in as a character variable, or when you need to change a character variable to a factor variable (more on this later).</li>
+<li><code>as.CLASS_NAME(x)</code> to <strong>coerce between classes</strong> <code>x</code> from current <code>x</code> class into a another class. For example, <code>as.integer</code> or <code>as.character</code> or <code>as.numeric</code>. This is particularly useful is maybe integer variable was read in as a character variable, or when you need to change a character variable to a factor variable (more on this later).</li>
 </ul>
 </section>
 <section id="examples-is.class_namex" class="slide level2">
 <h2>Examples <code>is.CLASS_NAME(x)</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">is.numeric</span>(df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">is.numeric</span>(df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">is.character</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">is.character</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">is.character</span>(df<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">is.character</span>(df<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -1225,29 +1416,29 @@
 <h2>Examples <code>as.CLASS_NAME(x)</code></h2>
 <p>In some cases, coercing is seamless</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1" "4" "7"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"4"</span>, <span class="st">"7"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"4"</span>, <span class="st">"7"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 4 7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">as.logical</span>(<span class="fu">c</span>(<span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>, <span class="st">"FALSE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">as.logical</span>(<span class="fu">c</span>(<span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>, <span class="st">"FALSE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE FALSE</code></pre>
 </div>
 </div>
-<p>In some cases the coercing is not possible; if executed, will return <code>NA</code> (an R constant representing “<strong>N</strong>ot <strong>A</strong>vailable” i.e.&nbsp;missing value)</p>
+<p>In some cases the coercing is not possible; if executed, will return <code>NA</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"4"</span>, <span class="st">"7a"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"4"</span>, <span class="st">"7a"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  4 NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">as.logical</span>(<span class="fu">c</span>(<span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>, <span class="st">"UNKNOWN"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">as.logical</span>(<span class="fu">c</span>(<span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>, <span class="st">"UNKNOWN"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE    NA</code></pre>
 </div>
@@ -1257,21 +1448,22 @@
 <h2>Factors</h2>
 <p>A <code>factor</code> is a special <code>character</code> vector where the elements have pre-defined groups or ‘levels’. You can think of these as qualitative or categorical variables. Use the <code>factor()</code> function to create factors from character values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">class</span>(df<span class="sc">$</span>age_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="fu">class</span>(df<span class="sc">$</span>age_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>df<span class="sc">$</span>age_group_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group)</span>
-<span id="cb73-2"><a href="#cb73-2"></a><span class="fu">class</span>(df<span class="sc">$</span>age_group_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>df<span class="sc">$</span>age_group_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group)</span>
+<span id="cb69-2"><a href="#cb69-2"></a><span class="fu">class</span>(df<span class="sc">$</span>age_group_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="fu">levels</span>(df<span class="sc">$</span>age_group_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">levels</span>(df<span class="sc">$</span>age_group_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "middle" "old"    "young" </code></pre>
 </div>
 </div>
-<p>Note that levels are, by default, set to <strong>alphanumerical</strong> order! And, the first is always the “reference” group. However, we often prefer a different reference group.</p>
+<p>Note 1, that levels are, by default, set to <strong>alphanumerical</strong> order! And, the first is always the “reference” group. However, we often prefer a different reference group.</p>
+<p>Note 2, we can also make ordered factors using <code>factor(... ordered=TRUE)</code>, but we won’t talk more about that.</p>
 </section>
 <section id="reference-groups" class="slide level2">
 <h2>Reference Groups</h2>
@@ -1281,7 +1473,12 @@
 </section>
 <section id="changing-factor-reference" class="slide level2">
 <h2>Changing factor reference</h2>
-<p>Changing the reference group of a factor variable. - If the object is already a factor then use <code>relevel()</code> function and the <code>ref</code> argument to specify the reference. - If the object is a character then use <code>factor()</code> function and <code>levels</code> argument to specify the order of the values, the first being the reference.</p>
+<p>Changing the reference group of a factor variable.</p>
+<ul>
+<li>If the object is already a factor then use <code>relevel()</code> function and the <code>ref</code> argument to specify the reference.</li>
+<li>If the object is a character then use <code>factor()</code> function and <code>levels</code> argument to specify the order of the values, the first being the reference.</li>
+</ul>
+<p>Let’s look at the <code>relevel()</code> help file</p>
 <p>Reorder Levels of Factor</p>
 <p>Description:</p>
 <pre><code> The levels of a factor are re-ordered so that the level specified
@@ -1307,6 +1504,8 @@
 <p>Examples:</p>
 <pre><code> warpbreaks$tension &lt;- relevel(warpbreaks$tension, ref = "M")
  summary(lm(breaks ~ wool + tension, data = warpbreaks))</code></pre>
+<p><br></p>
+<p>Let’s look at the <code>factor()</code> help file</p>
 <p>Factors</p>
 <p>Description:</p>
 <pre><code> The function 'factor' is used to encode a vector as a factor (the
@@ -1529,16 +1728,16 @@
 <section id="changing-factor-reference-examples" class="slide level2">
 <h2>Changing factor reference examples</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a>df<span class="sc">$</span>age_group_factor <span class="ot">&lt;-</span> <span class="fu">relevel</span>(df<span class="sc">$</span>age_group_factor, <span class="at">ref=</span><span class="st">"young"</span>)</span>
-<span id="cb96-2"><a href="#cb96-2"></a><span class="fu">levels</span>(df<span class="sc">$</span>age_group_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a>df<span class="sc">$</span>age_group_factor <span class="ot">&lt;-</span> <span class="fu">relevel</span>(df<span class="sc">$</span>age_group_factor, <span class="at">ref=</span><span class="st">"young"</span>)</span>
+<span id="cb92-2"><a href="#cb92-2"></a><span class="fu">levels</span>(df<span class="sc">$</span>age_group_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "young"  "middle" "old"   </code></pre>
 </div>
 </div>
 <p>OR</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a>df<span class="sc">$</span>age_group_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span>
-<span id="cb98-2"><a href="#cb98-2"></a><span class="fu">levels</span>(df<span class="sc">$</span>age_group_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>df<span class="sc">$</span>age_group_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span>
+<span id="cb94-2"><a href="#cb94-2"></a><span class="fu">levels</span>(df<span class="sc">$</span>age_group_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "young"  "middle" "old"   </code></pre>
 </div>
@@ -1559,7 +1758,7 @@
 <p><code>as.matrix()</code> creates a matrix from a data frame (where all values are the same class).</p>
 <p>You can also create a matrix from scratch using <code>matrix()</code> Use <code>?matrix</code> to see the arguments.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="fu">matrix</span>(<span class="at">data=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <tbody>
@@ -1578,7 +1777,7 @@
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="fu">matrix</span>(<span class="at">data=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <tbody>
@@ -1598,13 +1797,13 @@
 </table>
 </div>
 </div>
-<p>Notice, the first matrix filled in numbers 1-6 by columns first and then rows because default <code>byrow</code> argument is FALSE. In the second matrix, we changed the argument <code>byrow</code> to <code>TRUE</code>, and now numbers 1-6 are filled by rows first and then columns.</p>
+<p>Note, the first matrix filled in numbers 1-6 by columns first and then rows because default <code>byrow</code> argument is FALSE. In the second matrix, we changed the argument <code>byrow</code> to <code>TRUE</code>, and now numbers 1-6 are filled by rows first and then columns.</p>
 </section>
 <section id="data-frame" class="slide level2">
-<h2>Data Frame</h2>
-<p>You can transform an existing matrix into data frames and tibble using <code>as.data.frame()</code>.</p>
+<h2>Data frame</h2>
+<p>You can transform an existing matrix into data frames using <code>as.data.frame()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="fu">as.data.frame</span>(<span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>) ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="fu">as.data.frame</span>(<span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>) ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1633,8 +1832,18 @@
 </section>
 <section id="numeric-variable-data-summary" class="slide level2">
 <h2>Numeric variable data summary</h2>
-<p>Data summarization on numeric vectors/variables: - <code>mean()</code>: takes the mean of x - <code>sd()</code>: takes the standard deviation of x - <code>median()</code>: takes the median of x - <code>quantile()</code>: displays sample quantiles of x. Default is min, IQR, max - <code>range()</code>: displays the range. Same as <code>c(min(), max())</code> - <code>sum()</code>: sum of x - <code>max()</code>: maximum value in x - <code>min()</code>: minimum value in x</p>
-<p>Note, <strong>all have the </strong> <code>na.rm =</code> <strong>argument for missing data</strong></p>
+<p>Data summarization on numeric vectors/variables:</p>
+<ul>
+<li><code>mean()</code>: takes the mean of x</li>
+<li><code>sd()</code>: takes the standard deviation of x</li>
+<li><code>median()</code>: takes the median of x</li>
+<li><code>quantile()</code>: displays sample quantiles of x. Default is min, IQR, max</li>
+<li><code>range()</code>: displays the range. Same as <code>c(min(), max())</code></li>
+<li><code>sum()</code>: sum of x</li>
+<li><code>max()</code>: maximum value in x</li>
+<li><code>min()</code>: minimum value in x</li>
+</ul>
+<p>Note, <strong>all have the </strong> <code>na.rm</code> <strong>argument for missing data</strong></p>
 <p>Arithmetic Mean</p>
 <p>Description:</p>
 <pre><code> Generic function for the (trimmed) arithmetic mean.</code></pre>
@@ -1677,19 +1886,20 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <section id="numeric-variable-data-summary-examples" class="slide level2">
 <h2>Numeric variable data summary examples</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table style="width:100%;">
 <colgroup>
 <col style="width: 2%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 10%">
 <col style="width: 11%">
-<col style="width: 13%">
 <col style="width: 11%">
-<col style="width: 12%">
-<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 9%">
 <col style="width: 11%">
-<col style="width: 12%">
-<col style="width: 12%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1700,6 +1910,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <th style="text-align: left;">gender</th>
 <th style="text-align: left;">slum</th>
 <th style="text-align: left;">log_IgG</th>
+<th style="text-align: left;">seropos</th>
 <th style="text-align: left;">age_group</th>
 <th style="text-align: left;">age_group_factor</th>
 </tr>
@@ -1713,6 +1924,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <td style="text-align: left;">Length:651</td>
 <td style="text-align: left;">Length:651</td>
 <td style="text-align: left;">Min. :-5.2231</td>
+<td style="text-align: left;">Mode :logical</td>
 <td style="text-align: left;">Length:651</td>
 <td style="text-align: left;">young :316</td>
 </tr>
@@ -1724,6 +1936,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <td style="text-align: left;">Class :character</td>
 <td style="text-align: left;">Class :character</td>
 <td style="text-align: left;">1st Qu.:-1.2040</td>
+<td style="text-align: left;">FALSE:360</td>
 <td style="text-align: left;">Class :character</td>
 <td style="text-align: left;">middle:179</td>
 </tr>
@@ -1735,6 +1948,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <td style="text-align: left;">Mode :character</td>
 <td style="text-align: left;">Mode :character</td>
 <td style="text-align: left;">Median : 0.5103</td>
+<td style="text-align: left;">TRUE :281</td>
 <td style="text-align: left;">Mode :character</td>
 <td style="text-align: left;">old :147</td>
 </tr>
@@ -1746,6 +1960,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">Mean : 1.6074</td>
+<td style="text-align: left;">NA’s :10</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA’s : 9</td>
 </tr>
@@ -1759,6 +1974,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <td style="text-align: left;">3rd Qu.: 4.9519</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
@@ -1768,6 +1984,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">Max. : 6.8205</td>
+<td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 </tr>
@@ -1781,27 +1998,28 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <td style="text-align: left;">NA’s :10</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="fu">range</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="fu">range</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="fu">range</span>(df<span class="sc">$</span>age, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a><span class="fu">range</span>(df<span class="sc">$</span>age, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="fu">median</span>(df<span class="sc">$</span>IgG_concentration, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="fu">median</span>(df<span class="sc">$</span>IgG_concentration, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.665753</code></pre>
 </div>
 </div>
 </section>
 <section id="character-variable-data-summaries" class="slide level2">
-<h2>Character Variable Data Summaries</h2>
-<p>Data summarization on character or factor vectors/variables * <code>table()</code></p>
+<h2>Character variable data summaries</h2>
+<p>Data summarization on character or factor vectors/variables using <code>table()</code></p>
 <p>Cross Tabulation and Table Creation</p>
 <p>Description:</p>
 <pre><code> 'table' uses cross-classifying factors to build a contingency
@@ -1965,7 +2183,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <h2>Character variable data summary examples</h2>
 <p>Number of observations in each category</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a><span class="fu">table</span>(df<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a><span class="fu">table</span>(df<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -1982,7 +2200,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a><span class="fu">table</span>(df<span class="sc">$</span>gender, <span class="at">useNA=</span><span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a><span class="fu">table</span>(df<span class="sc">$</span>gender, <span class="at">useNA=</span><span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -2001,7 +2219,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a><span class="fu">table</span>(df<span class="sc">$</span>age_group, <span class="at">useNA=</span><span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a><span class="fu">table</span>(df<span class="sc">$</span>age_group, <span class="at">useNA=</span><span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -2023,9 +2241,8 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 </table>
 </div>
 </div>
-<p>Percent of observations in each category (xxzane - better way in base r?)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a><span class="fu">table</span>(df<span class="sc">$</span>gender)<span class="sc">/</span><span class="fu">nrow</span>(df) <span class="co">#if no NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a><span class="fu">table</span>(df<span class="sc">$</span>gender)<span class="sc">/</span><span class="fu">nrow</span>(df) <span class="co">#if no NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -2042,7 +2259,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1"></a><span class="fu">table</span>(df<span class="sc">$</span>age_group)<span class="sc">/</span><span class="fu">nrow</span>(df[<span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>age_group),]) <span class="co">#if there are NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a><span class="fu">table</span>(df<span class="sc">$</span>age_group)<span class="sc">/</span><span class="fu">nrow</span>(df[<span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>age_group),]) <span class="co">#if there are NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -2061,7 +2278,7 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1"></a><span class="fu">table</span>(df<span class="sc">$</span>age_group)<span class="sc">/</span><span class="fu">nrow</span>(<span class="fu">subset</span>(df, <span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>age_group),)) <span class="co">#if there are NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a><span class="fu">table</span>(df<span class="sc">$</span>age_group)<span class="sc">/</span><span class="fu">nrow</span>(<span class="fu">subset</span>(df, <span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>age_group),)) <span class="co">#if there are NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table>
 <thead>
@@ -2091,12 +2308,12 @@ trim: the fraction (0 to 0.5) of observations to be trimmed from
 <li><code>is.CLASS_NAME(x)</code> can be used to test the class of an object x</li>
 <li><code>as.CLASS_NAME(x)</code> can be used to change the class of an object x</li>
 <li>Factors are a special character class that has levels</li>
-<li>…</li>
+<li>…xxamy complete</li>
 </ul>
 </section>
 <section id="acknowledgements" class="slide level2">
 <h2>Acknowledgements</h2>
-<p>These are the materials I looked through, modified, or extracted to complete this module’s lecture.</p>
+<p>These are the materials we looked through, modified, or extracted to complete this module’s lecture.</p>
 <ul>
 <li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
 </ul>

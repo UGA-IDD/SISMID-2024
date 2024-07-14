@@ -1,0 +1,652 @@
+observation_id,IgG_concentration,age,gender,slum
+5772,0.317689531,2,Female,Non slum
+8095,3.436823105,4,Female,Non slum
+9784,0.3,4,Male,Non slum
+9338,143.2363014,4,Male,Non slum
+6369,0.44765343,1,Male,Non slum
+6885,0.025270758,4,Male,Non slum
+6252,0.610108303,4,Female,Non slum
+8913,0.3,NA,Female,Non slum
+7332,2.916967509,4,Male,Non slum
+6941,1.649819495,2,Male,Non slum
+5104,4.57400722,3,Male,Non slum
+9078,158.390411,15,Female,Non slum
+9960,NA,8,Male,Non slum
+9651,106.5068493,12,Male,Non slum
+9229,111.3869863,15,Male,Non slum
+5210,41.44893112,9,Male,Non slum
+5105,0.3,8,Male,Non slum
+7607,0.252707581,7,Female,Non slum
+7582,81.59246575,11,Female,Non slum
+8179,182.5342466,10,Male,Non slum
+5660,42.44655582,8,Male,Non slum
+6696,119.3493151,11,Female,Non slum
+7842,0.3,2,Male,Mixed
+6578,0.3,2,Female,Mixed
+9619,0.902527076,3,Female,Mixed
+9838,0.350180505,5,Male,Mixed
+6935,0.3,1,Male,Mixed
+5885,1.227436823,3,Female,Mixed
+9657,170.2054795,5,Female,Mixed
+9146,0.3,5,Female,Mixed
+7056,0.480144404,3,Male,Mixed
+9144,0.025270758,1,Male,Mixed
+8696,0.3,4,Female,Mixed
+7042,0.057761733,3,Male,Mixed
+5278,0.480144404,2,Female,Mixed
+6541,0.38267148,11,Female,Mixed
+6070,0.3,7,Male,Mixed
+5490,404.8558422,8,Male,Mixed
+6527,0.3,6,Male,Mixed
+5389,0.545126354,6,Male,Mixed
+9003,0.3,11,Female,Mixed
+6682,55.90753425,10,Male,Mixed
+7844,0.220216607,6,Female,Mixed
+8257,170.9760274,12,Male,Mixed
+7767,1.227436823,11,Male,Mixed
+8391,456.7526555,10,Male,Mixed
+8317,48.3847981,11,Male,Mixed
+7397,0.122743682,13,Female,Mixed
+8495,0.187725632,3,Female,Non slum
+8093,0.3,4,Female,Non slum
+7375,0.350180505,3,Male,Non slum
+5255,3.339350181,1,Male,Non slum
+8445,0.3,2,Female,Non slum
+8959,0.545126354,2,Female,Non slum
+8400,NA,4,Male,Non slum
+7420,2.104693141,2,Male,Non slum
+5206,NA,2,Male,Non slum
+7431,0.38267148,3,Female,Non slum
+7230,39.26365796,3,Female,Non slum
+8208,1.129963899,4,Male,Non slum
+8538,3.501805054,1,Female,Non slum
+6125,75.42808219,13,Female,Non slum
+5767,48.00475059,13,Female,Non slum
+5487,1,6,Male,Non slum
+5539,40.68883611,13,Male,Non slum
+5759,0.3,5,Female,Non slum
+6845,43.77672209,13,Female,Non slum
+7170,119.3493151,14,Male,Non slum
+6588,69.77739726,13,Male,Non slum
+7939,137.3287671,8,Female,Non slum
+5006,164.2979452,7,Male,Non slum
+9180,NA,6,Female,Non slum
+9638,154.2808219,13,Male,Non slum
+7781,0.603305785,3,Male,Non slum
+6932,0.280991736,4,Male,Non slum
+8120,1.966942149,2,Male,Non slum
+9292,2.041322314,NA,Male,Non slum
+9228,2.115702479,5,Female,Non slum
+8185,466.3043478,3,Male,Non slum
+6797,0.3,3,Male,Non slum
+5970,150.0796178,14,Male,Non slum
+7219,154.3789809,11,Female,Non slum
+6870,0.256198347,7,Female,Non slum
+7653,159.633758,7,Male,Non slum
+8824,173.2484076,11,Female,Non slum
+8311,464.1304348,9,Female,Non slum
+9458,37.36363636,14,Male,Non slum
+8275,157.2452229,13,Female,Non slum
+6786,0.3,1,Male,Non slum
+6595,0.3,1,Male,Non slum
+5264,0.082644628,4,Male,Non slum
+9188,0.67768595,1,Female,Non slum
+6611,0.727272727,2,Male,Non slum
+6840,0.20661157,3,Female,Non slum
+5663,1.966942149,2,Male,Non slum
+9611,0.3,1,Male,Non slum
+7717,0.3,2,Male,Non slum
+8374,0.280991736,2,Female,Non slum
+5134,0.801652893,4,Female,Non slum
+8122,0.181818182,5,Female,Non slum
+6192,0.181818182,5,Male,Non slum
+9668,0.082644628,6,Female,Non slum
+9577,34.22727273,14,Female,Non slum
+6403,8.743506494,14,Male,Non slum
+9464,0.3,10,Male,Non slum
+8157,164.1719745,6,Female,Non slum
+9451,0.404958678,6,Male,Non slum
+6615,100.1592357,8,Male,Non slum
+9074,448.9130435,6,Female,Non slum
+7479,110.1910828,12,Female,Non slum
+8946,44.40909091,12,Male,Non slum
+5296,128.8216561,14,Female,Non slum
+6238,28.40909091,15,Male,Non slum
+6303,100.3980892,12,Female,Non slum
+6662,0.851239669,4,Female,Non slum
+6251,0.132231405,4,Male,Non slum
+9110,1.297520661,3,Female,Non slum
+8480,0.157024793,NA,Male,Non slum
+5229,1.966942149,2,Female,Non slum
+9173,153.6624204,3,Male,Non slum
+9896,0.3,NA,Female,Non slum
+5057,0.3,3,Female,Non slum
+7732,1.074380165,3,Male,Non slum
+6882,1.099173554,2,Female,Non slum
+9587,0.305785124,4,Female,Non slum
+9930,0.3,10,Female,Non slum
+6960,0.05785124,7,Female,Non slum
+6335,439.1304348,11,Female,Non slum
+6286,613.0434783,6,Female,Non slum
+9035,0.107438017,11,Male,Non slum
+5720,71.25796178,9,Male,Non slum
+7368,42.22727273,6,Male,Non slum
+5170,162.022293,13,Female,Non slum
+6691,37.5,10,Female,Non slum
+6173,153.4235669,6,Female,Non slum
+8170,623.9130435,11,Female,Non slum
+9637,552.173913,7,Male,Non slum
+9482,0.05785124,6,Female,Non slum
+7880,0.654794521,4,Female,Non slum
+6307,0.087671233,4,Female,Non slum
+8822,0.3,4,Male,Non slum
+8190,2.849315069,4,Female,Non slum
+7554,0.038356164,4,Male,Non slum
+6519,0.284931507,4,Male,Non slum
+9764,4.649315069,3,Male,Non slum
+8792,0.136986301,4,Female,Non slum
+6721,0.35890411,3,Male,Non slum
+9042,1.049315069,3,Male,Non slum
+7407,46.68997669,13,Female,Non slum
+7229,147.3509934,7,Female,Non slum
+7532,45.8974359,10,Male,Non slum
+6516,0.210958904,6,Male,Non slum
+7941,174.1721854,10,Female,Non slum
+8124,24.96503497,12,Female,Non slum
+7869,185.0993378,10,Male,Non slum
+5647,0.18630137,10,Male,Non slum
+9120,0.18630137,13,Male,Non slum
+6608,45.8974359,13,Female,Non slum
+8635,194.2880795,5,Female,Mixed
+9341,507.9646018,3,Female,Mixed
+9982,0.876712329,4,Male,Mixed
+6976,2.750684932,1,Male,Mixed
+6008,150.3311258,3,Female,Mixed
+5432,0.3,4,Male,Mixed
+5749,0.309589041,4,Male,Mixed
+6428,0.3,1,Male,Mixed
+5947,637.1681416,5,Female,Mixed
+6027,0.605479452,6,Female,Mixed
+5064,195.5298013,14,Female,Mixed
+5861,178.6423841,6,Male,Mixed
+6702,112.0860927,13,Female,Mixed
+7851,133.1953642,9,Male,Mixed
+8310,215.9292035,11,Male,Mixed
+5897,562.8318584,10,Male,Mixed
+9249,190.0662252,5,Female,Mixed
+9163,0.654794521,14,Male,Mixed
+6550,1.665753425,7,Male,Mixed
+5859,173.9238411,10,Male,Mixed
+5607,99.91721854,6,Male,Mixed
+8746,93.21192053,5,Male,Mixed
+5274,0.087671233,3,Female,Mixed
+9412,NA,4,Male,Mixed
+5691,0.679452055,2,Female,Mixed
+9016,0.580821918,3,Male,Mixed
+9128,0.136986301,3,Female,Mixed
+8539,2.060273973,2,Female,Mixed
+5703,161.0099338,3,Male,Mixed
+9573,0.408219178,5,Female,Mixed
+5852,0.82739726,2,Male,Mixed
+5971,460.1769912,3,Female,Mixed
+7015,138.9072848,14,Female,Mixed
+8221,38.67132867,9,Female,Mixed
+6752,0.926027397,14,Female,Mixed
+7436,59.18874172,9,Female,Mixed
+6869,187.0860927,8,Female,Mixed
+8947,0.432876712,7,Male,Mixed
+7360,0.063013699,13,Male,Mixed
+7494,0.3,8,Female,Mixed
+8243,154.8013245,6,Male,Mixed
+6176,58.19536424,12,Female,Mixed
+6818,172.4337748,14,Female,Mixed
+8083,19.32400932,15,Female,Mixed
+6711,2.164420485,2,Female,Non slum
+8890,0.97574124,4,Female,Non slum
+5576,0.150943396,3,Male,Non slum
+8396,0.150943396,3,Female,Non slum
+5986,77.66570605,3,Male,Non slum
+9758,43.19562576,4,Female,Non slum
+5444,0.175202156,3,Male,Non slum
+6394,30.94775213,14,Female,Non slum
+5694,0.126684636,8,Male,Non slum
+9604,29.19805589,7,Male,Non slum
+7895,9.545454546,14,Female,Non slum
+5141,27.35115431,13,Female,Non slum
+8034,131.4841499,13,Female,Non slum
+6566,36.43985419,7,Male,Non slum
+6827,149.8559078,8,Female,Non slum
+7400,9.363636364,10,Female,Non slum
+9094,0.247978437,9,Male,Non slum
+9474,0.053908356,9,Female,Non slum
+7984,0.8787062,3,Female,Slum
+9524,0.199460916,4,Male,Slum
+9598,0.3,4,Female,Slum
+9664,0.3,4,Male,Slum
+9910,0.005390836,2,Female,Slum
+9216,0.417789757,1,Female,Slum
+9706,0.3,3,Female,Slum
+5320,0.247978437,2,Male,Slum
+5256,0.029649596,3,Male,Slum
+9006,0.296495957,5,Male,Slum
+6413,5.148247978,2,Female,Slum
+8717,0.199460916,2,Male,Slum
+9873,0.3,9,Male,Slum
+6699,177.9538905,13,Male,Slum
+8228,329.020979,10,Female,Slum
+6494,0.3,6,Male,Slum
+9294,180.9798271,13,Female,Slum
+7680,0.490566038,11,Male,Slum
+7534,0.126684636,10,Male,Slum
+9920,154.3948127,8,Female,Slum
+9814,137.9682997,9,Female,Slum
+5363,615.3846154,10,Male,Slum
+5842,147.4783862,14,Male,Slum
+7992,0.3,1,Female,Non slum
+5565,1.02425876,2,Male,Non slum
+5258,444.4055944,3,Female,Non slum
+8200,0.3,2,Male,Non slum
+8795,2.504043127,3,Female,Non slum
+7676,0.3,2,Female,Non slum
+7029,0.3,3,Female,Non slum
+7535,0.078167116,5,Female,Non slum
+5026,0.3,10,Female,Non slum
+8630,0.053908356,7,Male,Non slum
+6989,149.4236311,13,Female,Non slum
+8454,59.72622478,15,Male,Non slum
+9741,0.636118598,11,Female,Non slum
+6418,183.7896254,10,Female,Non slum
+9922,132.0809249,3,Female,Slum
+8504,0.157190636,2,Male,Slum
+6491,152.0231214,3,Male,Slum
+6002,0.3,3,Female,Slum
+7127,0.3,3,Female,Slum
+8540,182.3699422,4,Male,Slum
+7115,0.3,3,Male,Slum
+7268,2.173913044,2,Male,Slum
+8279,21.42201835,4,Male,Slum
+8880,0.3,2,Female,Slum
+8076,3.408026756,8,Male,Slum
+6250,41.55963303,11,Male,Slum
+8542,0.096989967,6,Male,Slum
+5393,12.3853211,14,Female,Slum
+9197,9.52892562,14,Male,Slum
+6651,191.6184971,5,Female,Slum
+7473,1.060200669,5,Male,Slum
+6589,367.9104478,10,Female,Slum
+6867,42.88990826,13,Male,Slum
+5413,99.71098266,6,Male,Slum
+6765,0.3,5,Male,Slum
+8933,120.8092486,12,Male,Slum
+6294,0.3,2,Male,Non slum
+8688,0.006688963,3,Female,Non slum
+8108,2.505016722,1,Female,Non slum
+6926,1.481605351,1,Male,Non slum
+5880,0.3,1,Female,Non slum
+5529,0.518394649,2,Female,Non slum
+8963,0.3,5,Female,Non slum
+9594,0.18729097,5,Male,Non slum
+8075,0.367892977,4,Female,Non slum
+5680,0.3,2,Male,Non slum
+5617,452.9850746,NA,Female,Non slum
+5080,31.69724771,6,Female,Non slum
+7719,0.3,8,Male,Non slum
+6780,49.22018349,15,Male,Non slum
+8768,254.8507463,11,Male,Non slum
+7031,166.1849711,14,Male,Non slum
+7740,916.4179105,6,Male,Non slum
+8855,0.367892977,10,Female,Non slum
+7241,123.699422,12,Male,Non slum
+8156,67.05202312,14,Male,Non slum
+7333,38.34862385,10,Male,Non slum
+6906,1.963210702,1,Female,Mixed
+9511,0.3,3,Male,Mixed
+9336,0.247491639,2,Male,Mixed
+6644,0.3,3,Female,Mixed
+5554,0.217391304,4,Male,Mixed
+8094,0.819397993,3,Male,Mixed
+8836,2.444816054,4,Female,Mixed
+7147,0.3,4,Male,Mixed
+7745,0.157190636,1,Female,Mixed
+9345,184.9710983,7,Male,Mixed
+5606,611.9402985,11,Female,Mixed
+9766,0.3,7,Female,Mixed
+6666,0.428093646,5,Female,Mixed
+9965,0.096989967,10,Male,Mixed
+7927,0.036789298,9,Female,Mixed
+6266,483.2089552,13,Male,Mixed
+9487,139.017341,11,Female,Mixed
+7089,0.3,13,Male,Mixed
+5731,655.5970149,9,Female,Mixed
+7962,152.6011561,15,Female,Mixed
+9532,0.3,7,Female,Mixed
+6687,0.722222222,4,Male,Non slum
+6570,77.24425887,1,Male,Non slum
+5781,0.3,1,Male,Non slum
+8935,0.611111111,2,Female,Non slum
+5780,1.555555556,2,Female,Non slum
+9029,0.305555556,3,Male,Non slum
+5668,1.5,2,Male,Non slum
+8203,147.0772443,3,Male,Non slum
+7381,1.694444444,4,Female,Non slum
+7734,313.8297872,7,Female,Non slum
+7257,141.440501,11,Female,Non slum
+8418,199.0605428,10,Female,Non slum
+8259,421.2765957,5,Male,Non slum
+5587,0.3,8,Male,Non slum
+8499,0.3,15,Male,Non slum
+7897,647.8723404,14,Male,Non slum
+8300,0.3,2,Male,Non slum
+9691,2.222222222,2,Female,Non slum
+5873,0.3,2,Male,Non slum
+6690,2.055555556,5,Male,Non slum
+9970,0.027777778,4,Female,Non slum
+8978,0.083333333,3,Male,Non slum
+6181,103.2359081,5,Female,Non slum
+8218,1.611111111,4,Female,Non slum
+5387,0.083333333,2,Female,Non slum
+7850,2.333333333,1,Female,Non slum
+7326,575.5319149,7,Male,Non slum
+8448,168.6847599,8,Female,Non slum
+7264,0.111111111,NA,Male,Non slum
+8361,0.3,9,Male,Non slum
+7497,837.2340426,8,Female,Non slum
+5559,0.3,5,Male,Non slum
+7321,37.84503632,14,Male,Non slum
+8372,381.9148936,14,Male,Non slum
+5030,0.055555556,7,Female,Non slum
+6936,300,13,Female,Non slum
+9628,185.5949896,2,Male,Non slum
+8558,0.194444444,1,Female,Non slum
+7840,0.3,1,Male,Non slum
+5100,0.055555556,4,Female,Non slum
+8244,1.138888889,3,Male,Non slum
+9115,42.54237288,4,Female,Non slum
+5489,0.3,3,Male,Non slum
+5766,0.3,1,Male,Non slum
+5024,0.3,5,Female,Non slum
+8599,0.3,4,Female,Non slum
+8895,313.8297872,4,Female,Non slum
+7708,123.5908142,4,Male,Non slum
+7646,415.9574468,11,Male,Non slum
+6640,30.0968523,15,Female,Non slum
+8958,156.7849687,12,Female,Non slum
+6477,136.743215,11,Female,Non slum
+7910,37.31234867,8,Female,Non slum
+7829,91.64926931,13,Male,Non slum
+7503,293.6170213,10,Female,Non slum
+5209,88.2045929,10,Female,Non slum
+6763,103.5490605,15,Male,Non slum
+8976,73.79958246,8,Female,Non slum
+9223,0.3,14,Male,Non slum
+7692,171.875,4,Male,Non slum
+7453,2.128526646,1,Male,Non slum
+9775,1.253918495,5,Female,Non slum
+9662,0.238244514,2,Male,Non slum
+8733,0.463949843,2,Female,Non slum
+5695,0.12539185,4,Male,Non slum
+7714,0.12539185,4,Male,Non slum
+9224,0.3,2,Female,Non slum
+7635,1,3,Male,Non slum
+7176,157.0043103,11,Male,Non slum
+6102,434.4086022,10,Female,Non slum
+7817,2.184952978,6,Male,Non slum
+9719,1.507836991,12,Female,Non slum
+9740,0.322884013,10,Female,Non slum
+9528,45.88023952,8,Male,Non slum
+7142,166.0560345,8,Male,Non slum
+5689,0.3,13,Male,Non slum
+5439,304.3010753,10,Male,Non slum
+6718,261.2903226,13,Female,Non slum
+6569,162.1767241,10,Male,Non slum
+9444,0.322884013,2,Male,Mixed
+6964,0.463949843,4,Female,Mixed
+6420,2.495297806,3,Female,Mixed
+9189,3.257053292,2,Female,Mixed
+9368,0.379310345,1,Female,Mixed
+6360,NA,3,Male,Mixed
+8196,0.068965517,3,Female,Mixed
+8297,0.3,4,Male,Mixed
+6674,1.423197492,5,Female,Mixed
+5269,0.3,5,Female,Mixed
+6599,0.3,1,Female,Mixed
+7713,178.6637931,11,Male,Mixed
+8644,327.9569893,6,Male,Mixed
+9680,NA,14,Female,Mixed
+6305,190.3017241,8,Male,Mixed
+8493,165.4094828,8,Female,Mixed
+5297,0.463949843,9,Female,Mixed
+7723,181.5732759,7,Male,Mixed
+7510,1.36677116,6,Male,Mixed
+5102,0.153605016,12,Female,Mixed
+7816,13.06586826,8,Male,Mixed
+5143,212.9032258,11,Female,Mixed
+7414,192.5646552,14,Male,Mixed
+5127,0.3,3,Female,Non slum
+5830,1.028213166,1,Female,Non slum
+8929,0.379310345,5,Female,Non slum
+7993,0.802507837,2,Female,Non slum
+8092,486.0215054,3,Female,Non slum
+9750,0.3,4,Female,Non slum
+6660,0.210031348,2,Male,Non slum
+8054,27.67664671,3,Female,Non slum
+6086,1.592476489,4,Male,Non slum
+6878,0.097178683,1,Female,Non slum
+8125,1.028213166,7,Female,Non slum
+9500,0.379310345,10,Male,Non slum
+8105,129.2025862,11,Male,Non slum
+9593,44.25149701,7,Female,Non slum
+5202,319.3548387,10,Female,Non slum
+7207,186.0991379,14,Female,Non slum
+5518,0.661442006,7,Female,Non slum
+9820,0.520376176,11,Male,Non slum
+6958,133.0818966,12,Male,Non slum
+9445,167.3491379,10,Female,Non slum
+8774,0.3,6,Male,Non slum
+9614,111.7456897,13,Male,Non slum
+9810,30.45508982,8,Female,Non slum
+7271,0.3,2,Male,Non slum
+8031,0.082802548,3,Female,Non slum
+7232,0.3,1,Female,Non slum
+7452,1.200636943,2,Female,Non slum
+5921,0.168789809,NA,Male,Non slum
+8136,736.7272727,NA,Female,Non slum
+6605,0.082802548,4,Male,Non slum
+5125,0.512738854,4,Male,Non slum
+5911,0.197452229,1,Male,Non slum
+9644,0.799363057,2,Female,Non slum
+5760,0.3,2,Male,Non slum
+7055,329.8181818,12,Male,Non slum
+9064,97.36842105,12,Female,Non slum
+6925,0.3,8,Female,Non slum
+7757,0.3,14,Female,Non slum
+8527,421.4545455,13,Female,Non slum
+8521,0.3,6,Male,Non slum
+6260,257.8181818,11,Female,Non slum
+9578,0.22611465,11,Male,Non slum
+9570,0.3,10,Female,Non slum
+6246,188.3900929,12,Male,Non slum
+9622,94.58204334,14,Female,Non slum
+7661,0.3,11,Female,Non slum
+9374,0.3,1,Male,Non slum
+8446,0.770700637,2,Female,Non slum
+8332,503.2727273,3,Male,Non slum
+8008,1.544585987,3,Female,Non slum
+9365,143.1114551,5,Female,Non slum
+9819,0.3,3,Male,Non slum
+5173,1.458598726,1,Male,Non slum
+6722,124.7678019,4,Female,Non slum
+7668,NA,4,Female,Non slum
+8980,433.4545455,4,Male,Non slum
+5204,0.3,2,Female,Non slum
+6412,615.6363636,5,Female,Non slum
+6404,95.74303406,7,Male,Non slum
+5693,192.8018576,8,Male,Non slum
+8100,188.8544892,10,Male,Non slum
+9760,159.8297214,6,Female,Non slum
+6377,0.512738854,7,Male,Non slum
+6012,117.1052632,10,Female,Non slum
+6224,NA,6,Male,Non slum
+6561,0.025477707,6,Female,Non slum
+8475,170.7430341,15,Female,Non slum
+6629,0.3,5,Male,Non slum
+7200,186.996904,3,Male,Non slum
+9453,47.31481482,5,Male,Non slum
+6449,198.8390093,3,Female,Non slum
+9452,0.3,5,Male,Non slum
+7162,88.08049536,5,Male,Non slum
+8962,2.003184713,1,Female,Non slum
+7328,0.3,1,Male,Non slum
+9097,35.09259259,7,Female,Non slum
+9131,93.65325077,14,Female,Non slum
+7280,0.3,9,Male,Non slum
+5783,37.36111111,10,Female,Non slum
+9895,167.4922601,10,Female,Non slum
+7986,88.08049536,11,Male,Non slum
+7146,165.6346749,11,Female,Non slum
+8671,37.22222222,12,Female,Non slum
+5273,675.6363636,11,Female,Non slum
+5063,0.3,12,Male,Non slum
+6729,169.8142415,12,Male,Non slum
+9085,162.8482972,10,Female,Non slum
+9929,0.598513011,1,Male,Non slum
+8479,1.903345725,2,Female,Non slum
+7395,0.3,4,Male,Non slum
+6374,0.3,2,Male,Non slum
+7878,0.899628253,3,Male,Non slum
+9603,0.397769517,3,Female,Non slum
+7994,0.3,2,Male,Non slum
+5277,0.3,4,Male,Non slum
+5054,0.3,3,Male,Non slum
+5440,0.3,1,Female,Non slum
+6551,744.6808511,4,Male,Non slum
+5281,609.5744681,12,Female,Non slum
+7145,142.7444795,6,Male,Non slum
+5275,0.3,7,Female,Non slum
+9542,0.029739777,7,Male,Non slum
+9371,0.397769517,13,Female,Non slum
+5598,409.5744681,8,Female,Non slum
+7148,459.5744681,7,Male,Non slum
+5624,0.3,8,Female,Non slum
+6998,197.6340694,8,Female,Non slum
+9286,377.6595745,11,Female,Non slum
+7589,177.7602524,14,Female,Non slum
+7095,0.431226766,3,Male,Mixed
+5455,676.5957447,2,Female,Mixed
+6257,797.8723404,2,Male,Mixed
+8627,0.096654275,3,Male,Mixed
+9786,187.9337539,2,Male,Mixed
+8176,43.58669834,2,Female,Mixed
+9198,0.3,3,Female,Mixed
+6586,0.3,2,Male,Mixed
+8850,26.38954869,5,Male,Mixed
+9560,31.80522565,10,Female,Mixed
+7144,174.6845426,14,Male,Mixed
+8230,187.6971609,9,Male,Mixed
+7559,104.4164038,6,Male,Mixed
+5312,120.2681388,7,Male,Mixed
+6560,163.0914827,14,Female,Mixed
+6091,127.6025237,7,Female,Mixed
+5578,88.80126183,7,Male,Mixed
+5837,356.3829787,9,Male,Mixed
+8347,221.2765957,14,Male,Mixed
+6453,19.6912114,10,Female,Mixed
+5758,375.5319149,13,Female,Mixed
+5569,121.4511041,5,Male,Non slum
+8766,103.4700316,4,Female,Non slum
+8002,0.3,4,Female,Non slum
+7839,0.364312268,5,Female,Non slum
+5434,0.063197026,4,Female,Non slum
+7636,0.3,4,Male,Non slum
+6164,0.3,4,Male,Non slum
+9243,0.3,3,Female,Non slum
+5872,0.3,1,Female,Non slum
+8079,0.3,4,Male,Non slum
+9762,0.3,1,Male,Non slum
+9476,0.3,1,Female,Non slum
+8345,0.3,7,Male,Non slum
+8128,166.4037855,13,Female,Non slum
+7956,294.6808511,10,Female,Non slum
+8677,43.91923991,14,Male,Non slum
+5881,187.4605678,12,Female,Non slum
+7498,114.3533123,14,Male,Non slum
+8134,160.0157729,8,Male,Non slum
+7748,0.163568773,7,Male,Non slum
+7990,88.09148265,11,Female,Non slum
+6184,133.7539432,8,Male,Non slum
+6339,198.5804416,12,Male,Non slum
+5113,157.8864353,9,Female,Non slum
+9449,0.3,5,Female,Non slum
+8110,0.3,4,Male,Non slum
+9307,0.195364238,3,Female,Non slum
+5555,1.119205298,2,Male,Non slum
+9152,252.3636364,2,Male,Non slum
+7969,0.3,3,Male,Non slum
+6116,4.844370861,4,Female,Non slum
+8294,0.3,4,Male,Non slum
+8938,149.2553192,4,Female,Non slum
+9539,199.3617021,5,Male,Non slum
+9470,0.284768212,3,Female,Non slum
+6677,0.314569536,6,Female,Non slum
+8752,0.3,3,Male,Non slum
+5574,34.06429392,11,Female,Non slum
+5989,65.95744681,11,Male,Non slum
+9813,0.3,7,Male,Non slum
+6150,217.4545455,8,Male,Non slum
+5730,NA,6,Female,Non slum
+8038,59.57446809,10,Female,Non slum
+5964,723.6363636,8,Female,Non slum
+9043,0.3,8,Male,Non slum
+5095,0.3,9,Female,Non slum
+8922,0.3,8,Male,Non slum
+5469,267.6363636,13,Male,Non slum
+6726,189.1489362,11,Male,Non slum
+7495,303.6363636,8,Female,Non slum
+8159,0.3,2,Female,Non slum
+6709,0.3,4,Male,Non slum
+5855,0.3,2,Male,Non slum
+6058,0.3,2,Female,Non slum
+7292,0.3,4,Male,Non slum
+6437,1.447019868,2,Male,Non slum
+9326,213.0909091,4,Female,Non slum
+8222,0.135761589,2,Female,Non slum
+6789,0.3,4,Female,Non slum
+6348,0.3,1,Female,Non slum
+5958,553.4545455,4,Female,Non slum
+9211,189.1489362,12,Female,Non slum
+9450,72.0212766,7,Female,Non slum
+6540,32.50287026,11,Male,Non slum
+8796,0.016556291,6,Male,Non slum
+7971,312.3636364,8,Male,Non slum
+7549,0.3,14,Male,Non slum
+9799,71.38297872,11,Male,Non slum
+7013,0.3,7,Female,Non slum
+5599,69.46808511,14,Female,Non slum
+8601,40.12629162,6,Male,Non slum
+7383,162.9787234,13,Female,Non slum
+6656,150.8510638,13,Female,Non slum
+5641,0.016556291,3,Male,Non slum
+6222,0.3,1,Male,Non slum
+7674,0.046357616,3,Male,Non slum
+5293,0.3,1,Female,Non slum
+6715,0.3,1,Female,Non slum
+7057,0.3,2,Male,Non slum
+7072,194.2553192,4,Male,Non slum
+6380,369.0909091,4,Male,Non slum
+6762,0.3,2,Female,Non slum
+5799,0.3,4,Female,Non slum
+6681,2.847682119,5,Male,Non slum
+8755,143.5106383,3,Female,Non slum
+6896,0.3,3,Male,Non slum
+5945,47.52009185,6,Female,Non slum
+5035,26.21125144,11,Female,Non slum
+6776,105.5319149,9,Female,Non slum
+7863,0.3,7,Female,Non slum
+9836,1.149006623,8,Male,Non slum
+7860,292.7272727,NA,Female,Non slum
+5248,0.3,8,Female,Non slum
+5677,0.3,14,Female,Non slum
+9576,48.39265212,10,Male,Non slum
+5824,0.3,10,Male,Non slum
+9184,0.3,11,Female,Non slum
+5397,0.225165563,13,Female,Non slum

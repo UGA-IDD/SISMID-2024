@@ -4,6 +4,7 @@ format:
   revealjs:
     scrollable: true
     smaller: true
+    toc: false
 ---
 
 ## Learning Objectives
@@ -26,7 +27,7 @@ Pay close attention to the number of rows in your data set before and after a jo
 
 ## one-to-one merge
 
--   This means that each row of data represents a unique unit of analysis that exists in another dataset
+-   This means that each row of data represents a unique unit of analysis that exists in another dataset (e.g,. id variable)
 -   Will likely have variables that don’t exist in the current dataset (that’s why you are trying to merge it in)
 -   The merging variable (e.g., id) each represented a single time
 -   You should try to structure your data so that a 1:1 merge or 1:m merge is possible so that fewer things can go wrong.
@@ -88,7 +89,7 @@ str(df_all_wide)
 
 ## Merge the new data with the original data
 
-The second option is to add a time variable to the two data sets and then merge by `observation_id`, `time` as well as `IgG_concentration` and `age` variables. Note, I need to read in the data again b/c I removed the `IgG_concentration` and `age` variables.
+The second option is to add a time variable to the two data sets and then merge by `observation_id`,`time`,`age`,`IgG_concentration`. Note, I need to read in the data again b/c I removed the `IgG_concentration` and `age` variables.
 
 ```{r echo=TRUE}
 df <- read.csv("data/serodata.csv")
@@ -96,8 +97,10 @@ df_new <- read.csv("data/serodata_new.csv")
 ```
 
 ```{r echo=TRUE}
-df$time <- 1
+df$time <- 1 #you can put in one number and it will repeat it
 df_new$time <- 2
+head(df)
+head(df_new)
 ```
 
 Now, lets merge. Note, "By default the data frames are merged on the columns with names they both have" therefore if I don't specify the by argument it will merge on all matching variables.
@@ -105,6 +108,7 @@ Now, lets merge. Note, "By default the data frames are merged on the columns wit
 df_all_long <- merge(df, df_new, all.x=T, all.y=T) 
 str(df_all_long)
 ```
+Note, there are 1287 rows, which is the sum of the number of rows of `df` (651 rows) and `df_new` (636 rows)
 
 
 ## What is wide/long data?
@@ -112,15 +116,15 @@ str(df_all_long)
 Above, we actually created a wide and long version of the data.
 
 Wide: has many columns
-    -   Multiple columns per individual, values spread across multiple columns 
-    -   Easier for humans to read
-Long: column names become data
-    -   Multiple rows per observation, a single column contains the values
-    -   Easier for R to make plots & do analysis
 
-```{r, fig.alt="Wide versus long data rearanges the position of column names and row content.", out.width = "60%", echo = FALSE, fig.align='center'}
-knitr::include_graphics("images/pivot.png")
-```
+- multiple columns per individual, values spread across multiple columns 
+- easier for humans to read
+    
+Long: has many rows
+
+- column names become data
+- multiple rows per observation, a single column contains the values
+- easier for R to make plots & do analysis
 
 ## `reshape()` function 
 
@@ -140,6 +144,11 @@ xxzane - help
 ## wide to long data
 
 xxzane - help
+
+
+## Let's get real
+
+Use the `pivot_wider()` and `pivot_longer()` from the tidyr package!
 
 
 

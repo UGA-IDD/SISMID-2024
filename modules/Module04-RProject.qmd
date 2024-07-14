@@ -4,6 +4,7 @@ format:
   revealjs:
     scrollable: true
     smaller: true
+    toc: false
 ---
 
 ## Learning Objectives
@@ -12,7 +13,7 @@ After module 4, you should be able to...
 
 -   Create an R Project
 -   Check you are in the desired R Project
--   Reference the Files window in RStudio
+-   Reference the Files pane in RStudio
 -   Describe "good" R Project organization
 
 ## RStudio Project
@@ -27,9 +28,9 @@ RStudio "Project" is one highly recommended strategy to build organized and repr
 
 Let's create a new RStudio Project.
 
-Go to File --\> New Project --\> New Directory --\> New Project
+Find the File Menu in the Menu Bar --\> New Project --\> New Directory --\> New Project
 
-Call your Project "IntroToR_RProject"
+Name your Project "IntroToR_RProject"
 
 ## RStudio Project Organization
 
@@ -42,27 +43,27 @@ Create 4 sub-directories with the following names within your "SISMID_IntroToR_R
 -   output
 -   figures
 
-We will be working from this directory for the remainder of the Workshop. Take a moment to move any R scripts you have already created to the 'code' sub-directories. 
+We will be working from this directory for the remainder of the Workshop. Take a moment to move any R scripts you have already created to the 'code' sub-directory. 
 
 
 ## Some things to notice in an R Project
 
-1. The name of the R Project will be shown at the top of the RStudio application
+1. The name of the R Project will be shown at the top of the RStudio Window
 2. If you check the working directory using `getwd()` you will find the working directory is set to the location where the R Project was saved.
-3. The Files window in RStudio is also set to the location where the R Project was saved, making it easy to navigate to sub-directories directly from RStudio.
+3. The Files pane in RStudio is also set to the location where the R Project was saved, making it easy to navigate to sub-directories directly from RStudio.
 
 
 ## R Project - Common issues
 
 If you simply open RStudio, it will not automatically open your R Project.  As a result, when you say run a function to import data using the relative path based on your working directory, it won't be able to find the data.
 
-To open a previously created R Project, you need to open the R Project (i.e., SISMID_IntroToR_RProject.RProj)
+To open a previously created R Project, you need to open the R Project (i.e., double click on SISMID_IntroToR_RProject.RProj)
 
 ## Summary
 
--   R Projects are really helpful for lots of reasons, including to improve the reproducibility of your work
--   Consistently set up your R Project's sub-directories so that you can easily navigate the project
--		If you get an error that a file can't be found, make sure you correctly opened the R Project by looking for the Project name at the top of the RStudio application window.
+- R Projects are really helpful for lots of reasons, including to improve the reproducibility of your work
+- Consistently set up your R Project's sub-directories so that you can easily navigate the project
+- If you get an error that a file can't be found, make sure you correctly opened the R Project by looking for the Project name at the top of the RStudio application window.
 
 
 ## Mini Exercise

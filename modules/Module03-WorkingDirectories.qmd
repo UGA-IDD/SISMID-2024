@@ -4,26 +4,64 @@ format:
   revealjs:
     scrollable: true
     smaller: true
+    toc: false
 ---
 
 ## Learning Objectives
 
 After module 3, you should be able to...
 
--   Understand your own systems file structure and the purpose of the working directory
+-   Understand your own systems' file structure and the purpose of the working directory
 -   Determine the working directory
 -   Change the working directory
 
 ## File Structure
 
-xxzane slide(s)
+**The internal file structure of the computer is completely nested!**
+
+```{r}
+knitr::include_graphics(here::here("images", "presentation4.webp"))
+```
+
+Computer scientists call this the "file tree".
 
 ## Working Directory -- Basic term
 
 -   R "looks" for files on your computer relative to the "working" directory
--   For example, if you want to load data into R or save a figure, you will need to tell R where/store the file
+-   For example, if you want to load data into R or save a figure, you will need to tell R where to look for or store the file
 -   Many people recommend not setting a directory in the scripts, rather assume you're in the directory the script is in
 
+## Understanding the working directory
+
+```{r}
+#| echo: false
+#| fig-align: "center"
+knitr::include_graphics(here::here("images", "map.png"))
+```
+
+## Understanding the working directory
+
+```{r}
+#| echo: false
+#| fig-align: "center"
+knitr::include_graphics(here::here("images", "map-floorplan.png"))
+```
+
+## Understanding the working directory
+
+```{r}
+#| echo: false
+#| fig-align: "center"
+knitr::include_graphics(here::here("images", "map-floor-room.png"))
+```
+
+## Understanding the working directory
+
+```{r}
+#| echo: false
+#| fig-align: "center"
+knitr::include_graphics(here::here("images", "map-wd.png"))
+```
 
 ## Getting and setting the working directory using code
 
@@ -70,9 +108,9 @@ setwd("~/Dropbox/Git/SISMID-2024")
 
 ## Setting the Working Directory
 
-If you have not yet saved a "source" file, it will set working directory to the default location. See RStudio -\> Preferences -\> General for default location.
+If you have not yet saved a "source" file, it will set working directory to the default location.Find the Tool Menu in the Menu Bar -\> Global Opsions -\> General for default location.
 
-To change the working directory to another location, go to Session --\> Set Working Directory --\> Choose Directory`
+To change the working directory to another location, find Session Menu in the Menu Bar --\> Set Working Directory --\> Choose Directory`
 
 Again, RStudio will show the code in the Console for the action you took with your cursor.
 
@@ -82,7 +120,7 @@ Again, RStudio will show the code in the Console for the action you took with yo
 -   R "looks" for files on your computer relative to the "working" directory
 -   Absolute path points to the same location in a file system - it is specific to your system and your system alone
 -   Relative path points is based on the current working directory 
--   Two functions, `setwd()` and `getwd()`, are your new best friends.
+-   Two functions, `setwd()` and `getwd()` are useful for identifying and manipulating the working directory.
 
 
 ## Acknowledgements

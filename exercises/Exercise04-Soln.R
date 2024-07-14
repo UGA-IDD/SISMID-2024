@@ -80,7 +80,7 @@ prev_vac_by_decade <-
 # Part H: install the package "tinytable". Then use the function
 # tinytable::tt() on the result of Part G. This will give you a nice looking
 # table that's almost ready for publication!
-# install.packages(tinytable)
+#install.packages("tinytable")
 tinytable::tt(prev_vac_by_decade)
 
 # If you want to read more about tinytable, you can see the documentation here
@@ -138,7 +138,7 @@ crude_or <- o_v / o_u
 # package and look at the documentation/google to figure out how to calculate
 # an odds ratio using this package.
 # This also calculates the confidence interval for us!
-# install.packages("epitools")
+install.packages("epitools")
 epitools::epitab(
 	x = diph$DP_vacc,
 	y = diph$DP_infection,
@@ -177,7 +177,7 @@ model_ie <- glm(
 )
 summary(model_ie)
 
-anova(model_ie, model_me)
+anova(model_ie, model_me, test = "LRT")
 
 # Part G: for this question, choose the correct logistic regression model to
 # use based on the results of the likelihood ratio test you just performed.
@@ -199,7 +199,7 @@ exp(5.94)
 # epidemiology tasks for us!
 # (Note that the default CI method for confint is slightly different, so your
 # results might not be exactly the same. That's ok!)
-# install.packages(epiDisplay)
+install.packages("epiDisplay")
 epiDisplay::logistic.display(model_ie)
 
 # Part I: Final question for this model! Good job so far! Next we want to

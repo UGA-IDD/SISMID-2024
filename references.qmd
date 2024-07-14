@@ -3,7 +3,23 @@ bibliography: SISMID-Module.bib
 nocite: "@*"
 ---
 
-# **References** {.unnumbered}
+# Data and Exercise downloads
+
+* Download all datasets here: [click to download](./downloads/data.zip).
+* Download all exercises and solution files here:
+* Download all slide decks here:
+* Course GitHub where all materials can be found: [https://github.com/UGA-IDD/SISMID-2024](https://github.com/UGA-IDD/SISMID-2024).
+
+# Need help?
+
+- Various "Cheat Sheets": [https://github.com/rstudio/cheatsheets/](https://github.com/rstudio/cheatsheets/)
+- R reference card: [http://cran.r-project.org/doc/contrib/Short-refcard.pdf](http://cran.r-project.org/doc/contrib/Short-refcard.pdf)  
+- R jargon: [https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf](https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf)
+- R vs Stata: [https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf](https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf)
+- R terminology: [https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf](https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf)
+
+
+# Other references {.unnumbered}
 
 ::: {#refs}
 :::
