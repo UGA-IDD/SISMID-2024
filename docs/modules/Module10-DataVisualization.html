@@ -416,6 +416,24 @@
 <li><a href="#/import-data-for-this-module" id="/toc-import-data-for-this-module">Import data for this module</a></li>
 <li><a href="#/prep-data" id="/toc-prep-data">Prep data</a></li>
 <li><a href="#/base-r-data-visualizattion-functions" id="/toc-base-r-data-visualizattion-functions">Base R data visualizattion functions</a></li>
+<li><a href="#/base-r-plotting" id="/toc-base-r-plotting">Base R Plotting</a></li>
+<li><a href="#/parameters" id="/toc-parameters">1. Parameters</a></li>
+<li><a href="#/lots-of-parameters-options" id="/toc-lots-of-parameters-options">Lots of parameters options</a></li>
+<li><a href="#/common-parameter-options" id="/toc-common-parameter-options">Common parameter options</a></li>
+<li><a href="#/common-parameter-options-1" id="/toc-common-parameter-options-1">Common parameter options</a></li>
+<li><a href="#/plot-attributes" id="/toc-plot-attributes">2. Plot Attributes</a></li>
+<li><a href="#/histogram-help-file" id="/toc-histogram-help-file"><code>histogram()</code> Help File</a></li>
+<li><a href="#/histogram-example" id="/toc-histogram-example"><code>histogram()</code> example</a></li>
+<li><a href="#/plot-help-file" id="/toc-plot-help-file"><code>plot()</code> Help File</a></li>
+<li><a href="#/plot-example" id="/toc-plot-example"><code>plot()</code> example</a></li>
+<li><a href="#/boxplot-help-file" id="/toc-boxplot-help-file"><code>boxplot()</code> Help File</a></li>
+<li><a href="#/boxplot-example" id="/toc-boxplot-example"><code>boxplot()</code> example</a></li>
+<li><a href="#/barplot-help-file" id="/toc-barplot-help-file"><code>barplot()</code> Help File</a></li>
+<li><a href="#/barplot-example" id="/toc-barplot-example"><code>barplot()</code> example</a></li>
+<li><a href="#/legend" id="/toc-legend">3. Legend!</a></li>
+<li><a href="#/add-legend-to-the-plot" id="/toc-add-legend-to-the-plot">Add legend to the plot</a></li>
+<li><a href="#/barplot-example-1" id="/toc-barplot-example-1"><code>barplot()</code> example</a></li>
+<li><a href="#/barplot-example-2" id="/toc-barplot-example-2"><code>barplot()</code> example</a></li>
 <li><a href="#/summary" id="/toc-summary">Summary</a></li>
 <li><a href="#/acknowledgements" id="/toc-acknowledgements">Acknowledgements</a></li>
 </ul>
@@ -423,17 +441,17 @@
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
-<p>After module 10, you should be able to…</p>
+<p>After module 10, you should be able to:</p>
 <ul>
-<li><pre><code>  Create Base R plots</code></pre></li>
+<li>Create Base R plots</li>
 </ul>
 </section>
 <section id="import-data-for-this-module" class="slide level2">
 <h2>Import data for this module</h2>
 <p>Let’s read in our data (again) and take a quick look.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span>
-<span id="cb2-2"><a></a><span class="fu">head</span>(<span class="at">x=</span>df, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span>
+<span id="cb1-2"><a></a><span class="fu">head</span>(<span class="at">x=</span>df, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  observation_id IgG_concentration age gender     slum
 1           5772         0.3176895   2 Female Non slum
@@ -446,48 +464,2018 @@
 <h2>Prep data</h2>
 <p>Create <code>age_group</code> three level factor variable</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, </span>
-<span id="cb4-2"><a></a>                       <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">5</span>, <span class="st">"middle"</span>, </span>
-<span id="cb4-3"><a></a>                              <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">10</span>, <span class="st">"old"</span>, <span class="cn">NA</span>)))</span>
-<span id="cb4-4"><a></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, </span>
+<span id="cb3-2"><a></a>                       <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">5</span>, <span class="st">"middle"</span>, </span>
+<span id="cb3-3"><a></a>                              <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">10</span>, <span class="st">"old"</span>, <span class="cn">NA</span>)))</span>
+<span id="cb3-4"><a></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create <code>seropos</code> binary variable representing seropositivity if antibody concentrations are &gt;10 mIUmL.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>df<span class="sc">$</span>seropos <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>IgG_concentration<span class="sc">&lt;</span><span class="dv">10</span>, <span class="dv">0</span>, </span>
-<span id="cb5-2"><a></a>                                        <span class="fu">ifelse</span>(df<span class="sc">$</span>IgG_concentration<span class="sc">&gt;=</span><span class="dv">10</span>, <span class="dv">1</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>df<span class="sc">$</span>seropos <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>IgG_concentration<span class="sc">&lt;</span><span class="dv">10</span>, <span class="dv">0</span>, </span>
+<span id="cb4-2"><a></a>                                        <span class="fu">ifelse</span>(df<span class="sc">$</span>IgG_concentration<span class="sc">&gt;=</span><span class="dv">10</span>, <span class="dv">1</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="base-r-data-visualizattion-functions" class="slide level2">
 <h2>Base R data visualizattion functions</h2>
 <p>The Base R ‘graphics’ package has a ton of graphics options.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(<span class="at">help =</span> <span class="st">"graphics"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
 <pre><code>Registered S3 method overwritten by 'printr':
   method                from     
   knit_print.data.frame rmarkdown</code></pre>
-<p>The R Graphics Package</p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Information on package 'graphics'
+
+Description:
+
+Package:            graphics
+Version:            4.3.1
+Priority:           base
+Title:              The R Graphics Package
+Author:             R Core Team and contributors worldwide
+Maintainer:         R Core Team &lt;do-use-Contact-address@r-project.org&gt;
+Contact:            R-help mailing list &lt;r-help@r-project.org&gt;
+Description:        R functions for base graphics.
+Imports:            grDevices
+License:            Part of R 4.3.1
+NeedsCompilation:   yes
+Built:              R 4.3.1; aarch64-apple-darwin20; 2023-06-16
+                    21:53:01 UTC; unix
+
+Index:
+
+Axis                    Generic Function to Add an Axis to a Plot
+abline                  Add Straight Lines to a Plot
+arrows                  Add Arrows to a Plot
+assocplot               Association Plots
+axTicks                 Compute Axis Tickmark Locations
+axis                    Add an Axis to a Plot
+axis.POSIXct            Date and Date-time Plotting Functions
+barplot                 Bar Plots
+box                     Draw a Box around a Plot
+boxplot                 Box Plots
+boxplot.matrix          Draw a Boxplot for each Column (Row) of a
+                        Matrix
+bxp                     Draw Box Plots from Summaries
+cdplot                  Conditional Density Plots
+clip                    Set Clipping Region
+contour                 Display Contours
+coplot                  Conditioning Plots
+curve                   Draw Function Plots
+dotchart                Cleveland's Dot Plots
+filled.contour          Level (Contour) Plots
+fourfoldplot            Fourfold Plots
+frame                   Create / Start a New Plot Frame
+graphics-package        The R Graphics Package
+grconvertX              Convert between Graphics Coordinate Systems
+grid                    Add Grid to a Plot
+hist                    Histograms
+hist.POSIXt             Histogram of a Date or Date-Time Object
+identify                Identify Points in a Scatter Plot
+image                   Display a Color Image
+layout                  Specifying Complex Plot Arrangements
+legend                  Add Legends to Plots
+lines                   Add Connected Line Segments to a Plot
+locator                 Graphical Input
+matplot                 Plot Columns of Matrices
+mosaicplot              Mosaic Plots
+mtext                   Write Text into the Margins of a Plot
+pairs                   Scatterplot Matrices
+panel.smooth            Simple Panel Plot
+par                     Set or Query Graphical Parameters
+persp                   Perspective Plots
+pie                     Pie Charts
+plot.data.frame         Plot Method for Data Frames
+plot.default            The Default Scatterplot Function
+plot.design             Plot Univariate Effects of a Design or Model
+plot.factor             Plotting Factor Variables
+plot.formula            Formula Notation for Scatterplots
+plot.histogram          Plot Histograms
+plot.raster             Plotting Raster Images
+plot.table              Plot Methods for 'table' Objects
+plot.window             Set up World Coordinates for Graphics Window
+plot.xy                 Basic Internal Plot Function
+points                  Add Points to a Plot
+polygon                 Polygon Drawing
+polypath                Path Drawing
+rasterImage             Draw One or More Raster Images
+rect                    Draw One or More Rectangles
+rug                     Add a Rug to a Plot
+screen                  Creating and Controlling Multiple Screens on a
+                        Single Device
+segments                Add Line Segments to a Plot
+smoothScatter           Scatterplots with Smoothed Densities Color
+                        Representation
+spineplot               Spine Plots and Spinograms
+stars                   Star (Spider/Radar) Plots and Segment Diagrams
+stem                    Stem-and-Leaf Plots
+stripchart              1-D Scatter Plots
+strwidth                Plotting Dimensions of Character Strings and
+                        Math Expressions
+sunflowerplot           Produce a Sunflower Scatter Plot
+symbols                 Draw Symbols (Circles, Squares, Stars,
+                        Thermometers, Boxplots)
+text                    Add Text to a Plot
+title                   Plot Annotation
+xinch                   Graphical Units
+xspline                 Draw an X-spline</code></pre>
+</div>
+</div>
+</section>
+<section id="base-r-plotting" class="slide level2 scrollable">
+<h2>Base R Plotting</h2>
+<p>To make a plot you often need to specify the following features:</p>
+<ol type="1">
+<li>Parameters</li>
+<li>Plot attributes</li>
+<li>The legend</li>
+</ol>
+</section>
+<section id="parameters" class="slide level2">
+<h2>1. Parameters</h2>
+<p>The parameter section fixes the settings for all your plots, basically the plot options. Adding attributes via <code>par()</code> before you call the plot creates ‘global’ settings for your plot.</p>
+<p>In the example below, we have set two commonly used optional attributes in the global plot settings. - The <code>mfrow</code> specifies that we have one row and two columns of plots — that is, two plots side by side. - The <code>mar</code> attribute is a vector of our margin widths, with the first value indicating the margin below the plot (5), the second indicating the margin to the left of the plot (5), the third, the top of the plot(4), and the fourth to the left (1).</p>
+<pre><code>par(mfrow = c(1,2), mar = c(5,5,4,1))</code></pre>
+
+<img data-src="images/par.png" style="width:70.0%" class="r-stretch"></section>
+<section id="lots-of-parameters-options" class="slide level2">
+<h2>Lots of parameters options</h2>
+<p>However, there are many more parameter options that can be specified in the ‘global’ settings or specific to a certain plot option.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>?par</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Set or Query Graphical Parameters</p>
 <p>Description:</p>
-<pre><code> R functions for base graphics</code></pre>
+<pre><code> 'par' can be used to set or query graphical parameters.
+ Parameters can be set by specifying them as arguments to 'par' in
+ 'tag = value' form, or by passing them as a list of tagged values.</code></pre>
+<p>Usage:</p>
+<pre><code> par(..., no.readonly = FALSE)
+ 
+ &lt;highlevel plot&gt; (...., &lt;tag&gt; = &lt;value&gt;)
+ </code></pre>
+<p>Arguments:</p>
+<pre><code> ...: arguments in 'tag = value' form, a single list of tagged
+      values, or character vectors of parameter names. Supported
+      parameters are described in the 'Graphical Parameters'
+      section.</code></pre>
+<p>no.readonly: logical; if ‘TRUE’ and there are no other arguments, only parameters are returned which can be set by a subsequent ‘par()’ call <em>on the same device</em>.</p>
 <p>Details:</p>
-<pre><code> This package contains functions for 'base' graphics.  Base
- graphics are traditional S-like graphics, as opposed to the more
- recent grid graphics.
+<pre><code> Each device has its own set of graphical parameters.  If the
+ current device is the null device, 'par' will open a new device
+ before querying/setting parameters.  (What device is controlled by
+ 'options("device")'.)
 
- For a complete list of functions with individual help pages, use
- 'library(help = "graphics")'.</code></pre>
-<p>Author(s):</p>
-<pre><code> R Core Team and contributors worldwide
+ Parameters are queried by giving one or more character vectors of
+ parameter names to 'par'.
 
- Maintainer: R Core Team &lt;mailto:R-core@r-project.org&gt;</code></pre>
+ 'par()' (no arguments) or 'par(no.readonly = TRUE)' is used to get
+ _all_ the graphical parameters (as a named list).  Their names are
+ currently taken from the unexported variable 'graphics:::.Pars'.
+
+ _*R.O.*_ indicates _*read-only arguments*_: These may only be used
+ in queries and cannot be set.  ('"cin"', '"cra"', '"csi"',
+ '"cxy"', '"din"' and '"page"' are always read-only.)
+
+ Several parameters can only be set by a call to 'par()':
+
+    • '"ask"',
+
+    • '"fig"', '"fin"',
+
+    • '"lheight"',
+
+    • '"mai"', '"mar"', '"mex"', '"mfcol"', '"mfrow"', '"mfg"',
+
+    • '"new"',
+
+    • '"oma"', '"omd"', '"omi"',
+
+    • '"pin"', '"plt"', '"ps"', '"pty"',
+
+    • '"usr"',
+
+    • '"xlog"', '"ylog"',
+
+    • '"ylbias"'
+
+ The remaining parameters can also be set as arguments (often via
+ '...') to high-level plot functions such as 'plot.default',
+ 'plot.window', 'points', 'lines', 'abline', 'axis', 'title',
+ 'text', 'mtext', 'segments', 'symbols', 'arrows', 'polygon',
+ 'rect', 'box', 'contour', 'filled.contour' and 'image'.  Such
+ settings will be active during the execution of the function,
+ only.  However, see the comments on 'bg', 'cex', 'col', 'lty',
+ 'lwd' and 'pch' which may be taken as _arguments_ to certain plot
+ functions rather than as graphical parameters.
+
+ The meaning of 'character size' is not well-defined: this is set
+ up for the device taking 'pointsize' into account but often not
+ the actual font family in use.  Internally the corresponding pars
+ ('cra', 'cin', 'cxy' and 'csi') are used only to set the
+ inter-line spacing used to convert 'mar' and 'oma' to physical
+ margins.  (The same inter-line spacing multiplied by 'lheight' is
+ used for multi-line strings in 'text' and 'strheight'.)
+
+ Note that graphical parameters are suggestions: plotting functions
+ and devices need not make use of them (and this is particularly
+ true of non-default methods for e.g. 'plot').</code></pre>
+<p>Value:</p>
+<pre><code> When parameters are set, their previous values are returned in an
+ invisible named list.  Such a list can be passed as an argument to
+ 'par' to restore the parameter values.  Use 'par(no.readonly =
+ TRUE)' for the full list of parameters that can be restored.
+ However, restoring all of these is not wise: see the 'Note'
+ section.
+
+ When just one parameter is queried, the value of that parameter is
+ returned as (atomic) vector.  When two or more parameters are
+ queried, their values are returned in a list, with the list names
+ giving the parameters.
+
+ Note the inconsistency: setting one parameter returns a list, but
+ querying one parameter returns a vector.</code></pre>
+<p>Graphical Parameters:</p>
+<pre><code> 'adj' The value of 'adj' determines the way in which text strings
+      are justified in 'text', 'mtext' and 'title'.  A value of '0'
+      produces left-justified text, '0.5' (the default) centered
+      text and '1' right-justified text.  (Any value in [0, 1] is
+      allowed, and on most devices values outside that interval
+      will also work.)
+
+      Note that the 'adj' _argument_ of 'text' also allows 'adj =
+      c(x, y)' for different adjustment in x- and y- directions.
+      Note that whereas for 'text' it refers to positioning of text
+      about a point, for 'mtext' and 'title' it controls placement
+      within the plot or device region.
+
+ 'ann' If set to 'FALSE', high-level plotting functions calling
+      'plot.default' do not annotate the plots they produce with
+      axis titles and overall titles.  The default is to do
+      annotation.
+
+ 'ask' logical.  If 'TRUE' (and the R session is interactive) the
+      user is asked for input, before a new figure is drawn.  As
+      this applies to the device, it also affects output by
+      packages 'grid' and 'lattice'.  It can be set even on
+      non-screen devices but may have no effect there.
+
+      This not really a graphics parameter, and its use is
+      deprecated in favour of 'devAskNewPage'.
+
+ 'bg' The color to be used for the background of the device region.
+      When called from 'par()' it also sets 'new = FALSE'. See
+      section 'Color Specification' for suitable values.  For many
+      devices the initial value is set from the 'bg' argument of
+      the device, and for the rest it is normally '"white"'.
+
+      Note that some graphics functions such as 'plot.default' and
+      'points' have an _argument_ of this name with a different
+      meaning.
+
+ 'bty' A character string which determined the type of 'box' which
+      is drawn about plots.  If 'bty' is one of '"o"' (the
+      default), '"l"', '"7"', '"c"', '"u"', or '"]"' the resulting
+      box resembles the corresponding upper case letter.  A value
+      of '"n"' suppresses the box.
+
+ 'cex' A numerical value giving the amount by which plotting text
+      and symbols should be magnified relative to the default.
+      This starts as '1' when a device is opened, and is reset when
+      the layout is changed, e.g. by setting 'mfrow'.
+
+      Note that some graphics functions such as 'plot.default' have
+      an _argument_ of this name which _multiplies_ this graphical
+      parameter, and some functions such as 'points' and 'text'
+      accept a vector of values which are recycled.
+
+ 'cex.axis' The magnification to be used for axis annotation
+      relative to the current setting of 'cex'.
+
+ 'cex.lab' The magnification to be used for x and y labels relative
+      to the current setting of 'cex'.
+
+ 'cex.main' The magnification to be used for main titles relative
+      to the current setting of 'cex'.
+
+ 'cex.sub' The magnification to be used for sub-titles relative to
+      the current setting of 'cex'.
+
+ 'cin' _*R.O.*_; character size '(width, height)' in inches.  These
+      are the same measurements as 'cra', expressed in different
+      units.
+
+ 'col' A specification for the default plotting color.  See section
+      'Color Specification'.
+
+      Some functions such as 'lines' and 'text' accept a vector of
+      values which are recycled and may be interpreted slightly
+      differently.
+
+ 'col.axis' The color to be used for axis annotation.  Defaults to
+      '"black"'.
+
+ 'col.lab' The color to be used for x and y labels.  Defaults to
+      '"black"'.
+
+ 'col.main' The color to be used for plot main titles.  Defaults to
+      '"black"'.
+
+ 'col.sub' The color to be used for plot sub-titles.  Defaults to
+      '"black"'.
+
+ 'cra' _*R.O.*_; size of default character '(width, height)' in
+      'rasters' (pixels).  Some devices have no concept of pixels
+      and so assume an arbitrary pixel size, usually 1/72 inch.
+      These are the same measurements as 'cin', expressed in
+      different units.
+
+ 'crt' A numerical value specifying (in degrees) how single
+      characters should be rotated.  It is unwise to expect values
+      other than multiples of 90 to work.  Compare with 'srt' which
+      does string rotation.
+
+ 'csi' _*R.O.*_; height of (default-sized) characters in inches.
+      The same as 'par("cin")[2]'.
+
+ 'cxy' _*R.O.*_; size of default character '(width, height)' in
+      user coordinate units.  'par("cxy")' is
+      'par("cin")/par("pin")' scaled to user coordinates.  Note
+      that 'c(strwidth(ch), strheight(ch))' for a given string 'ch'
+      is usually much more precise.
+
+ 'din' _*R.O.*_; the device dimensions, '(width, height)', in
+      inches.  See also 'dev.size', which is updated immediately
+      when an on-screen device windows is re-sized.
+
+ 'err' (_Unimplemented_; R is silent when points outside the plot
+      region are _not_ plotted.)  The degree of error reporting
+      desired.
+
+ 'family' The name of a font family for drawing text.  The maximum
+      allowed length is 200 bytes.  This name gets mapped by each
+      graphics device to a device-specific font description.  The
+      default value is '""' which means that the default device
+      fonts will be used (and what those are should be listed on
+      the help page for the device).  Standard values are
+      '"serif"', '"sans"' and '"mono"', and the Hershey font
+      families are also available.  (Devices may define others, and
+      some devices will ignore this setting completely.  Names
+      starting with '"Hershey"' are treated specially and should
+      only be used for the built-in Hershey font families.)  This
+      can be specified inline for 'text'.
+
+ 'fg' The color to be used for the foreground of plots.  This is
+      the default color used for things like axes and boxes around
+      plots.  When called from 'par()' this also sets parameter
+      'col' to the same value.  See section 'Color Specification'.
+      A few devices have an argument to set the initial value,
+      which is otherwise '"black"'.
+
+ 'fig' A numerical vector of the form 'c(x1, x2, y1, y2)' which
+      gives the (NDC) coordinates of the figure region in the
+      display region of the device. If you set this, unlike S, you
+      start a new plot, so to add to an existing plot use 'new =
+      TRUE' as well.
+
+ 'fin' The figure region dimensions, '(width, height)', in inches.
+      If you set this, unlike S, you start a new plot.
+
+ 'font' An integer which specifies which font to use for text.  If
+      possible, device drivers arrange so that 1 corresponds to
+      plain text (the default), 2 to bold face, 3 to italic and 4
+      to bold italic.  Also, font 5 is expected to be the symbol
+      font, in Adobe symbol encoding.  On some devices font
+      families can be selected by 'family' to choose different sets
+      of 5 fonts.
+
+ 'font.axis' The font to be used for axis annotation.
+
+ 'font.lab' The font to be used for x and y labels.
+
+ 'font.main' The font to be used for plot main titles.
+
+ 'font.sub' The font to be used for plot sub-titles.
+
+ 'lab' A numerical vector of the form 'c(x, y, len)' which modifies
+      the default way that axes are annotated.  The values of 'x'
+      and 'y' give the (approximate) number of tickmarks on the x
+      and y axes and 'len' specifies the label length.  The default
+      is 'c(5, 5, 7)'.  'len' _is unimplemented_ in R.
+
+ 'las' numeric in {0,1,2,3}; the style of axis labels.
+
+      0: always parallel to the axis [_default_],
+
+      1: always horizontal,
+
+      2: always perpendicular to the axis,
+
+      3: always vertical.
+
+      Also supported by 'mtext'.  Note that string/character
+      rotation _via_ argument 'srt' to 'par' does _not_ affect the
+      axis labels.
+
+ 'lend' The line end style.  This can be specified as an integer or
+      string:
+
+      '0' and '"round"' mean rounded line caps [_default_];
+
+      '1' and '"butt"' mean butt line caps;
+
+      '2' and '"square"' mean square line caps.
+
+ 'lheight' The line height multiplier.  The height of a line of
+      text (used to vertically space multi-line text) is found by
+      multiplying the character height both by the current
+      character expansion and by the line height multiplier.
+      Default value is 1.  Used in 'text' and 'strheight'.
+
+ 'ljoin' The line join style.  This can be specified as an integer
+      or string:
+
+      '0' and '"round"' mean rounded line joins [_default_];
+
+      '1' and '"mitre"' mean mitred line joins;
+
+      '2' and '"bevel"' mean bevelled line joins.
+
+ 'lmitre' The line mitre limit.  This controls when mitred line
+      joins are automatically converted into bevelled line joins.
+      The value must be larger than 1 and the default is 10.  Not
+      all devices will honour this setting.
+
+ 'lty' The line type.  Line types can either be specified as an
+      integer (0=blank, 1=solid (default), 2=dashed, 3=dotted,
+      4=dotdash, 5=longdash, 6=twodash) or as one of the character
+      strings '"blank"', '"solid"', '"dashed"', '"dotted"',
+      '"dotdash"', '"longdash"', or '"twodash"', where '"blank"'
+      uses 'invisible lines' (i.e., does not draw them).
+
+      Alternatively, a string of up to 8 characters (from 'c(1:9,
+      "A":"F")') may be given, giving the length of line segments
+      which are alternatively drawn and skipped.  See section 'Line
+      Type Specification'.
+
+      Functions such as 'lines' and 'segments' accept a vector of
+      values which are recycled.
+
+ 'lwd' The line width, a _positive_ number, defaulting to '1'.  The
+      interpretation is device-specific, and some devices do not
+      implement line widths less than one.  (See the help on the
+      device for details of the interpretation.)
+
+      Functions such as 'lines' and 'segments' accept a vector of
+      values which are recycled: in such uses lines corresponding
+      to values 'NA' or 'NaN' are omitted.  The interpretation of
+      '0' is device-specific.
+
+ 'mai' A numerical vector of the form 'c(bottom, left, top, right)'
+      which gives the margin size specified in inches.
+
+ 'mar' A numerical vector of the form 'c(bottom, left, top, right)'
+      which gives the number of lines of margin to be specified on
+      the four sides of the plot.  The default is 'c(5, 4, 4, 2) +
+      0.1'.
+
+ 'mex' 'mex' is a character size expansion factor which is used to
+      describe coordinates in the margins of plots. Note that this
+      does not change the font size, rather specifies the size of
+      font (as a multiple of 'csi') used to convert between 'mar'
+      and 'mai', and between 'oma' and 'omi'.
+
+      This starts as '1' when the device is opened, and is reset
+      when the layout is changed (alongside resetting 'cex').
+
+ 'mfcol, mfrow' A vector of the form 'c(nr, nc)'.  Subsequent
+      figures will be drawn in an 'nr'-by-'nc' array on the device
+      by _columns_ ('mfcol'), or _rows_ ('mfrow'), respectively.
+
+      In a layout with exactly two rows and columns the base value
+      of '"cex"' is reduced by a factor of 0.83: if there are three
+      or more of either rows or columns, the reduction factor is
+      0.66.
+
+      Setting a layout resets the base value of 'cex' and that of
+      'mex' to '1'.
+
+      If either of these is queried it will give the current
+      layout, so querying cannot tell you the order in which the
+      array will be filled.
+
+      Consider the alternatives, 'layout' and 'split.screen'.
+
+ 'mfg' A numerical vector of the form 'c(i, j)' where 'i' and 'j'
+      indicate which figure in an array of figures is to be drawn
+      next (if setting) or is being drawn (if enquiring).  The
+      array must already have been set by 'mfcol' or 'mfrow'.
+
+      For compatibility with S, the form 'c(i, j, nr, nc)' is also
+      accepted, when 'nr' and 'nc' should be the current number of
+      rows and number of columns.  Mismatches will be ignored, with
+      a warning.
+
+ 'mgp' The margin line (in 'mex' units) for the axis title, axis
+      labels and axis line.  Note that 'mgp[1]' affects 'title'
+      whereas 'mgp[2:3]' affect 'axis'.  The default is 'c(3, 1,
+      0)'.
+
+ 'mkh' The height in inches of symbols to be drawn when the value
+      of 'pch' is an integer. _Completely ignored in R_.
+
+ 'new' logical, defaulting to 'FALSE'.  If set to 'TRUE', the next
+      high-level plotting command (actually 'plot.new') should _not
+      clean_ the frame before drawing _as if it were on a *_new_*
+      device_.  It is an error (ignored with a warning) to try to
+      use 'new = TRUE' on a device that does not currently contain
+      a high-level plot.
+
+ 'oma' A vector of the form 'c(bottom, left, top, right)' giving
+      the size of the outer margins in lines of text.
+
+ 'omd' A vector of the form 'c(x1, x2, y1, y2)' giving the region
+      _inside_ outer margins in NDC (= normalized device
+      coordinates), i.e., as a fraction (in [0, 1]) of the device
+      region.
+
+ 'omi' A vector of the form 'c(bottom, left, top, right)' giving
+      the size of the outer margins in inches.
+
+ 'page' _*R.O.*_; A boolean value indicating whether the next call
+      to 'plot.new' is going to start a new page.  This value may
+      be 'FALSE' if there are multiple figures on the page.
+
+ 'pch' Either an integer specifying a symbol or a single character
+      to be used as the default in plotting points.  See 'points'
+      for possible values and their interpretation.  Note that only
+      integers and single-character strings can be set as a
+      graphics parameter (and not 'NA' nor 'NULL').
+
+      Some functions such as 'points' accept a vector of values
+      which are recycled.
+
+ 'pin' The current plot dimensions, '(width, height)', in inches.
+
+ 'plt' A vector of the form 'c(x1, x2, y1, y2)' giving the
+      coordinates of the plot region as fractions of the current
+      figure region.
+
+ 'ps' integer; the point size of text (but not symbols).  Unlike
+      the 'pointsize' argument of most devices, this does not
+      change the relationship between 'mar' and 'mai' (nor 'oma'
+      and 'omi').
+
+      What is meant by 'point size' is device-specific, but most
+      devices mean a multiple of 1bp, that is 1/72 of an inch.
+
+ 'pty' A character specifying the type of plot region to be used;
+      '"s"' generates a square plotting region and '"m"' generates
+      the maximal plotting region.
+
+ 'smo' (_Unimplemented_) a value which indicates how smooth circles
+      and circular arcs should be.
+
+ 'srt' The string rotation in degrees.  See the comment about
+      'crt'.  Only supported by 'text'.
+
+ 'tck' The length of tick marks as a fraction of the smaller of the
+      width or height of the plotting region.  If 'tck &gt;= 0.5' it
+      is interpreted as a fraction of the relevant side, so if 'tck
+      = 1' grid lines are drawn.  The default setting ('tck = NA')
+      is to use 'tcl = -0.5'.
+
+ 'tcl' The length of tick marks as a fraction of the height of a
+      line of text.  The default value is '-0.5'; setting 'tcl =
+      NA' sets 'tck = -0.01' which is S' default.
+
+ 'usr' A vector of the form 'c(x1, x2, y1, y2)' giving the extremes
+      of the user coordinates of the plotting region.  When a
+      logarithmic scale is in use (i.e., 'par("xlog")' is true, see
+      below), then the x-limits will be '10 ^ par("usr")[1:2]'.
+      Similarly for the y-axis.
+
+ 'xaxp' A vector of the form 'c(x1, x2, n)' giving the coordinates
+      of the extreme tick marks and the number of intervals between
+      tick-marks when 'par("xlog")' is false.  Otherwise, when
+      _log_ coordinates are active, the three values have a
+      different meaning: For a small range, 'n' is _negative_, and
+      the ticks are as in the linear case, otherwise, 'n' is in
+      '1:3', specifying a case number, and 'x1' and 'x2' are the
+      lowest and highest power of 10 inside the user coordinates,
+      '10 ^ par("usr")[1:2]'. (The '"usr"' coordinates are
+      log10-transformed here!)
+
+      n = 1 will produce tick marks at 10^j for integer j,
+
+      n = 2 gives marks k 10^j with k in {1,5},
+
+      n = 3 gives marks k 10^j with k in {1,2,5}.
+
+      See 'axTicks()' for a pure R implementation of this.
+
+      This parameter is reset when a user coordinate system is set
+      up, for example by starting a new page or by calling
+      'plot.window' or setting 'par("usr")': 'n' is taken from
+      'par("lab")'.  It affects the default behaviour of subsequent
+      calls to 'axis' for sides 1 or 3.
+
+      It is only relevant to default numeric axis systems, and not
+      for example to dates.
+
+ 'xaxs' The style of axis interval calculation to be used for the
+      x-axis.  Possible values are '"r"', '"i"', '"e"', '"s"',
+      '"d"'.  The styles are generally controlled by the range of
+      data or 'xlim', if given.
+      Style '"r"' (regular) first extends the data range by 4
+      percent at each end and then finds an axis with pretty labels
+      that fits within the extended range.
+      Style '"i"' (internal) just finds an axis with pretty labels
+      that fits within the original data range.
+      Style '"s"' (standard) finds an axis with pretty labels
+      within which the original data range fits.
+      Style '"e"' (extended) is like style '"s"', except that it is
+      also ensures that there is room for plotting symbols within
+      the bounding box.
+      Style '"d"' (direct) specifies that the current axis should
+      be used on subsequent plots.
+      (_Only '"r"' and '"i"' styles have been implemented in R._)
+
+ 'xaxt' A character which specifies the x axis type.  Specifying
+      '"n"' suppresses plotting of the axis.  The standard value is
+      '"s"': for compatibility with S values '"l"' and '"t"' are
+      accepted but are equivalent to '"s"': any value other than
+      '"n"' implies plotting.
+
+ 'xlog' A logical value (see 'log' in 'plot.default').  If 'TRUE',
+      a logarithmic scale is in use (e.g., after 'plot(*, log =
+      "x")').  For a new device, it defaults to 'FALSE', i.e.,
+      linear scale.
+
+ 'xpd' A logical value or 'NA'.  If 'FALSE', all plotting is
+      clipped to the plot region, if 'TRUE', all plotting is
+      clipped to the figure region, and if 'NA', all plotting is
+      clipped to the device region.  See also 'clip'.
+
+ 'yaxp' A vector of the form 'c(y1, y2, n)' giving the coordinates
+      of the extreme tick marks and the number of intervals between
+      tick-marks unless for log coordinates, see 'xaxp' above.
+
+ 'yaxs' The style of axis interval calculation to be used for the
+      y-axis.  See 'xaxs' above.
+
+ 'yaxt' A character which specifies the y axis type.  Specifying
+      '"n"' suppresses plotting.
+
+ 'ylbias' A positive real value used in the positioning of text in
+      the margins by 'axis' and 'mtext'.  The default is in
+      principle device-specific, but currently '0.2' for all of R's
+      own devices.  Set this to '0.2' for compatibility with R &lt;
+      2.14.0 on 'x11' and 'windows()' devices.
+
+ 'ylog' A logical value; see 'xlog' above.</code></pre>
+<p>Color Specification:</p>
+<pre><code> Colors can be specified in several different ways. The simplest
+ way is with a character string giving the color name (e.g.,
+ '"red"').  A list of the possible colors can be obtained with the
+ function 'colors'.  Alternatively, colors can be specified
+ directly in terms of their RGB components with a string of the
+ form '"#RRGGBB"' where each of the pairs 'RR', 'GG', 'BB' consist
+ of two hexadecimal digits giving a value in the range '00' to
+ 'FF'.  Colors can also be specified by giving an index into a
+ small table of colors, the 'palette': indices wrap round so with
+ the default palette of size 8, '10' is the same as '2'.  This
+ provides compatibility with S.  Index '0' corresponds to the
+ background color.  Note that the palette (apart from '0' which is
+ per-device) is a per-session setting.
+
+ Negative integer colours are errors.
+
+ Additionally, '"transparent"' is _transparent_, useful for filled
+ areas (such as the background!), and just invisible for things
+ like lines or text.  In most circumstances (integer) 'NA' is
+ equivalent to '"transparent"' (but not for 'text' and 'mtext').
+
+ Semi-transparent colors are available for use on devices that
+ support them.
+
+ The functions 'rgb', 'hsv', 'hcl', 'gray' and 'rainbow' provide
+ additional ways of generating colors.</code></pre>
+<p>Line Type Specification:</p>
+<pre><code> Line types can either be specified by giving an index into a small
+ built-in table of line types (1 = solid, 2 = dashed, etc, see
+ 'lty' above) or directly as the lengths of on/off stretches of
+ line.  This is done with a string of an even number (up to eight)
+ of characters, namely _non-zero_ (hexadecimal) digits which give
+ the lengths in consecutive positions in the string.  For example,
+ the string '"33"' specifies three units on followed by three off
+ and '"3313"' specifies three units on followed by three off
+ followed by one on and finally three off.  The 'units' here are
+ (on most devices) proportional to 'lwd', and with 'lwd = 1' are in
+ pixels or points or 1/96 inch.
+
+ The five standard dash-dot line types ('lty = 2:6') correspond to
+ 'c("44", "13", "1343", "73", "2262")'.
+
+ Note that 'NA' is not a valid value for 'lty'.</code></pre>
+<p>Note:</p>
+<pre><code> The effect of restoring all the (settable) graphics parameters as
+ in the examples is hard to predict if the device has been resized.
+ Several of them are attempting to set the same things in different
+ ways, and those last in the alphabet will win.  In particular, the
+ settings of 'mai', 'mar', 'pin', 'plt' and 'pty' interact, as do
+ the outer margin settings, the figure layout and figure region
+ size.</code></pre>
 <p>References:</p>
 <pre><code> Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
  Language_.  Wadsworth &amp; Brooks/Cole.
 
- Murrell, P. (2005) _R Graphics_. Chapman &amp; Hall/CRC Press.     Information on package 'graphics'</code></pre>
-<p>Description:</p>
-<p>Package: graphics Version: 4.3.1 Priority: base Title: The R Graphics Package Author: R Core Team and contributors worldwide Maintainer: R Core Team <a href="mailto:do-use-Contact-address@r-project.org" class="email">do-use-Contact-address@r-project.org</a> Contact: R-help mailing list <a href="mailto:r-help@r-project.org" class="email">r-help@r-project.org</a> Description: R functions for base graphics. Imports: grDevices License: Part of R 4.3.1 NeedsCompilation: yes Built: R 4.3.1; aarch64-apple-darwin20; 2023-06-16 21:53:01 UTC; unix</p>
-<p>Index:</p>
-<p>Axis Generic Function to Add an Axis to a Plot abline Add Straight Lines to a Plot arrows Add Arrows to a Plot assocplot Association Plots axTicks Compute Axis Tickmark Locations axis Add an Axis to a Plot axis.POSIXct Date and Date-time Plotting Functions barplot Bar Plots box Draw a Box around a Plot boxplot Box Plots boxplot.matrix Draw a Boxplot for each Column (Row) of a Matrix bxp Draw Box Plots from Summaries cdplot Conditional Density Plots clip Set Clipping Region contour Display Contours coplot Conditioning Plots curve Draw Function Plots dotchart Cleveland’s Dot Plots filled.contour Level (Contour) Plots fourfoldplot Fourfold Plots frame Create / Start a New Plot Frame graphics-package The R Graphics Package grconvertX Convert between Graphics Coordinate Systems grid Add Grid to a Plot hist Histograms hist.POSIXt Histogram of a Date or Date-Time Object identify Identify Points in a Scatter Plot image Display a Color Image layout Specifying Complex Plot Arrangements legend Add Legends to Plots lines Add Connected Line Segments to a Plot locator Graphical Input matplot Plot Columns of Matrices mosaicplot Mosaic Plots mtext Write Text into the Margins of a Plot pairs Scatterplot Matrices panel.smooth Simple Panel Plot par Set or Query Graphical Parameters persp Perspective Plots pie Pie Charts plot.data.frame Plot Method for Data Frames plot.default The Default Scatterplot Function plot.design Plot Univariate Effects of a Design or Model plot.factor Plotting Factor Variables plot.formula Formula Notation for Scatterplots plot.histogram Plot Histograms plot.raster Plotting Raster Images plot.table Plot Methods for ‘table’ Objects plot.window Set up World Coordinates for Graphics Window plot.xy Basic Internal Plot Function points Add Points to a Plot polygon Polygon Drawing polypath Path Drawing rasterImage Draw One or More Raster Images rect Draw One or More Rectangles rug Add a Rug to a Plot screen Creating and Controlling Multiple Screens on a Single Device segments Add Line Segments to a Plot smoothScatter Scatterplots with Smoothed Densities Color Representation spineplot Spine Plots and Spinograms stars Star (Spider/Radar) Plots and Segment Diagrams stem Stem-and-Leaf Plots stripchart 1-D Scatter Plots strwidth Plotting Dimensions of Character Strings and Math Expressions sunflowerplot Produce a Sunflower Scatter Plot symbols Draw Symbols (Circles, Squares, Stars, Thermometers, Boxplots) text Add Text to a Plot title Plot Annotation xinch Graphical Units xspline Draw an X-spline</p>
-<p><code>hist()</code> displays histogram of one variable <code>plot()</code> displays x-y plot of two variables</p>
+ Murrell, P. (2005) _R Graphics_. Chapman &amp; Hall/CRC Press.</code></pre>
+<p>See Also:</p>
+<pre><code> 'plot.default' for some high-level plotting parameters; 'colors';
+ 'clip'; 'options' for other setup parameters; graphic devices
+ 'x11', 'postscript' and setting up device regions by 'layout' and
+ 'split.screen'.</code></pre>
+<p>Examples:</p>
+<pre><code> op &lt;- par(mfrow = c(2, 2), # 2 x 2 pictures on one plot
+           pty = "s")       # square plotting region,
+                            # independent of device size
+ 
+ ## At end of plotting, reset to previous settings:
+ par(op)
+ 
+ ## Alternatively,
+ op &lt;- par(no.readonly = TRUE) # the whole list of settable par's.
+ ## do lots of plotting and par(.) calls, then reset:
+ par(op)
+ ## Note this is not in general good practice
+ 
+ par("ylog") # FALSE
+ plot(1 : 12, log = "y")
+ par("ylog") # TRUE
+ 
+ plot(1:2, xaxs = "i") # 'inner axis' w/o extra space
+ par(c("usr", "xaxp"))
+ 
+ ( nr.prof &lt;-
+ c(prof.pilots = 16, lawyers = 11, farmers = 10, salesmen = 9, physicians = 9,
+   mechanics = 6, policemen = 6, managers = 6, engineers = 5, teachers = 4,
+   housewives = 3, students = 3, armed.forces = 1))
+ par(las = 3)
+ barplot(rbind(nr.prof)) # R 0.63.2: shows alignment problem
+ par(las = 0)  # reset to default
+ 
+ require(grDevices) # for gray
+ ## 'fg' use:
+ plot(1:12, type = "b", main = "'fg' : axes, ticks and box in gray",
+      fg = gray(0.7), bty = "7" , sub = R.version.string)
+ 
+ ex &lt;- function() {
+    old.par &lt;- par(no.readonly = TRUE) # all par settings which
+                                       # could be changed.
+    on.exit(par(old.par))
+    ## ...
+    ## ... do lots of par() settings and plots
+    ## ...
+    invisible() #-- now,  par(old.par)  will be executed
+ }
+ ex()
+ 
+ ## Line types
+ showLty &lt;- function(ltys, xoff = 0, ...) {
+    stopifnot((n &lt;- length(ltys)) &gt;= 1)
+    op &lt;- par(mar = rep(.5,4)); on.exit(par(op))
+    plot(0:1, 0:1, type = "n", axes = FALSE, ann = FALSE)
+    y &lt;- (n:1)/(n+1)
+    clty &lt;- as.character(ltys)
+    mytext &lt;- function(x, y, txt)
+       text(x, y, txt, adj = c(0, -.3), cex = 0.8, ...)
+    abline(h = y, lty = ltys, ...); mytext(xoff, y, clty)
+    y &lt;- y - 1/(3*(n+1))
+    abline(h = y, lty = ltys, lwd = 2, ...)
+    mytext(1/8+xoff, y, paste(clty," lwd = 2"))
+ }
+ showLty(c("solid", "dashed", "dotted", "dotdash", "longdash", "twodash"))
+ par(new = TRUE)  # the same:
+ showLty(c("solid", "44", "13", "1343", "73", "2262"), xoff = .2, col = 2)
+ showLty(c("11", "22", "33", "44",   "12", "13", "14",   "21", "31"))</code></pre>
 </section>
+<section id="common-parameter-options" class="slide level2">
+<h2>Common parameter options</h2>
+<p>Six useful parameter arguments help improve the readability of the plot:</p>
+<ul>
+<li><code>xlab</code>: specifies the x-axis label of the plot</li>
+<li><code>ylab</code>: specifies the y-axis label</li>
+<li><code>main</code>: titles your graph</li>
+<li><code>pch</code>: specifies the symbology of your graph</li>
+<li><code>lty</code>: specifies the line type of your graph</li>
+<li><code>lwd</code>: specifies line thickness</li>
+<li><code>cex</code> : specifies size</li>
+<li><code>col</code>: specifies the colors for your graph.</li>
+</ul>
+<p>We will explore use of these arguments below.</p>
+</section>
+<section id="common-parameter-options-1" class="slide level2">
+<h2>Common parameter options</h2>
+
+<img data-src="images/atrributes.png" style="width:200.0%" class="r-stretch"></section>
+<section id="plot-attributes" class="slide level2">
+<h2>2. Plot Attributes</h2>
+<p>Plot attributes are those that map your data to the plot. This mean this is where you specify what variables in the data frame you want to plot.</p>
+<p>We will only look at four types of plots today:</p>
+<ul>
+<li><code>hist()</code> displays histogram of one variable</li>
+<li><code>plot()</code> displays x-y plot of two variables</li>
+<li><code>boxplot()</code> displays boxplot</li>
+<li><code>barplot()</code> displays barplot</li>
+</ul>
+</section>
+<section id="histogram-help-file" class="slide level2">
+<h2><code>histogram()</code> Help File</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>?hist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Histograms</p>
+<p>Description:</p>
+<pre><code> The generic function 'hist' computes a histogram of the given data
+ values.  If 'plot = TRUE', the resulting object of class
+ '"histogram"' is plotted by 'plot.histogram', before it is
+ returned.</code></pre>
+<p>Usage:</p>
+<pre><code> hist(x, ...)
+ 
+ ## Default S3 method:
+ hist(x, breaks = "Sturges",
+      freq = NULL, probability = !freq,
+      include.lowest = TRUE, right = TRUE, fuzz = 1e-7,
+      density = NULL, angle = 45, col = "lightgray", border = NULL,
+      main = paste("Histogram of" , xname),
+      xlim = range(breaks), ylim = NULL,
+      xlab = xname, ylab,
+      axes = TRUE, plot = TRUE, labels = FALSE,
+      nclass = NULL, warn.unused = TRUE, ...)
+ </code></pre>
+<p>Arguments:</p>
+<pre><code>   x: a vector of values for which the histogram is desired.</code></pre>
+<p>breaks: one of:</p>
+<pre><code>        • a vector giving the breakpoints between histogram cells,
+
+        • a function to compute the vector of breakpoints,
+
+        • a single number giving the number of cells for the
+          histogram,
+
+        • a character string naming an algorithm to compute the
+          number of cells (see 'Details'),
+
+        • a function to compute the number of cells.
+
+      In the last three cases the number is a suggestion only; as
+      the breakpoints will be set to 'pretty' values, the number is
+      limited to '1e6' (with a warning if it was larger).  If
+      'breaks' is a function, the 'x' vector is supplied to it as
+      the only argument (and the number of breaks is only limited
+      by the amount of available memory).
+
+freq: logical; if 'TRUE', the histogram graphic is a representation
+      of frequencies, the 'counts' component of the result; if
+      'FALSE', probability densities, component 'density', are
+      plotted (so that the histogram has a total area of one).
+      Defaults to 'TRUE' _if and only if_ 'breaks' are equidistant
+      (and 'probability' is not specified).</code></pre>
+<p>probability: an <em>alias</em> for ‘!freq’, for S compatibility.</p>
+<p>include.lowest: logical; if ‘TRUE’, an ‘x[i]’ equal to the ‘breaks’ value will be included in the first (or last, for ‘right = FALSE’) bar. This will be ignored (with a warning) unless ‘breaks’ is a vector.</p>
+<p>right: logical; if ‘TRUE’, the histogram cells are right-closed (left open) intervals.</p>
+<pre><code>fuzz: non-negative number, for the case when the data is "pretty"
+      and some observations 'x[.]' are close but not exactly on a
+      'break'.  For counting fuzzy breaks proportional to 'fuzz'
+      are used.  The default is occasionally suboptimal.</code></pre>
+<p>density: the density of shading lines, in lines per inch. The default value of ‘NULL’ means that no shading lines are drawn. Non-positive values of ‘density’ also inhibit the drawing of shading lines.</p>
+<p>angle: the slope of shading lines, given as an angle in degrees (counter-clockwise).</p>
+<pre><code> col: a colour to be used to fill the bars.</code></pre>
+<p>border: the color of the border around the bars. The default is to use the standard foreground color.</p>
+<p>main, xlab, ylab: main title and axis labels: these arguments to ‘title()’ get “smart” defaults here, e.g., the default ‘ylab’ is ‘“Frequency”’ iff ‘freq’ is true.</p>
+<p>xlim, ylim: the range of x and y values with sensible defaults. Note that ‘xlim’ is <em>not</em> used to define the histogram (breaks), but only for plotting (when ‘plot = TRUE’).</p>
+<pre><code>axes: logical.  If 'TRUE' (default), axes are draw if the plot is
+      drawn.
+
+plot: logical.  If 'TRUE' (default), a histogram is plotted,
+      otherwise a list of breaks and counts is returned.  In the
+      latter case, a warning is used if (typically graphical)
+      arguments are specified that only apply to the 'plot = TRUE'
+      case.</code></pre>
+<p>labels: logical or character string. Additionally draw labels on top of bars, if not ‘FALSE’; see ‘plot.histogram’.</p>
+<p>nclass: numeric (integer). For S(-PLUS) compatibility only, ‘nclass’ is equivalent to ‘breaks’ for a scalar or character argument.</p>
+<p>warn.unused: logical. If ‘plot = FALSE’ and ‘warn.unused = TRUE’, a warning will be issued when graphical parameters are passed to ‘hist.default()’.</p>
+<pre><code> ...: further arguments and graphical parameters passed to
+      'plot.histogram' and thence to 'title' and 'axis' (if 'plot =
+      TRUE').</code></pre>
+<p>Details:</p>
+<pre><code> The definition of _histogram_ differs by source (with
+ country-specific biases).  R's default with equi-spaced breaks
+ (also the default) is to plot the counts in the cells defined by
+ 'breaks'.  Thus the height of a rectangle is proportional to the
+ number of points falling into the cell, as is the area _provided_
+ the breaks are equally-spaced.
+
+ The default with non-equi-spaced breaks is to give a plot of area
+ one, in which the _area_ of the rectangles is the fraction of the
+ data points falling in the cells.
+
+ If 'right = TRUE' (default), the histogram cells are intervals of
+ the form (a, b], i.e., they include their right-hand endpoint, but
+ not their left one, with the exception of the first cell when
+ 'include.lowest' is 'TRUE'.
+
+ For 'right = FALSE', the intervals are of the form [a, b), and
+ 'include.lowest' means '_include highest_'.
+
+ A numerical tolerance of 1e-7 times the median bin size (for more
+ than four bins, otherwise the median is substituted) is applied
+ when counting entries on the edges of bins.  This is not included
+ in the reported 'breaks' nor in the calculation of 'density'.
+
+ The default for 'breaks' is '"Sturges"': see 'nclass.Sturges'.
+ Other names for which algorithms are supplied are '"Scott"' and
+ '"FD"' / '"Freedman-Diaconis"' (with corresponding functions
+ 'nclass.scott' and 'nclass.FD').  Case is ignored and partial
+ matching is used.  Alternatively, a function can be supplied which
+ will compute the intended number of breaks or the actual
+ breakpoints as a function of 'x'.</code></pre>
+<p>Value:</p>
+<pre><code> an object of class '"histogram"' which is a list with components:</code></pre>
+<p>breaks: the n+1 cell boundaries (= ‘breaks’ if that was a vector). These are the nominal breaks, not with the boundary fuzz.</p>
+<p>counts: n integers; for each cell, the number of ‘x[]’ inside.</p>
+<p>density: values f^(x[i]), as estimated density values. If ‘all(diff(breaks) == 1)’, they are the relative frequencies ‘counts/n’ and in general satisfy sum[i; f^(x[i]) (b[i+1]-b[i])] = 1, where b[i] = ‘breaks[i]’.</p>
+<pre><code>mids: the n cell midpoints.</code></pre>
+<p>xname: a character string with the actual ‘x’ argument name.</p>
+<p>equidist: logical, indicating if the distances between ‘breaks’ are all the same.</p>
+<p>References:</p>
+<pre><code> Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+ Language_.  Wadsworth &amp; Brooks/Cole.
+
+ Venables, W. N. and Ripley. B. D. (2002) _Modern Applied
+ Statistics with S_.  Springer.</code></pre>
+<p>See Also:</p>
+<pre><code> 'nclass.Sturges', 'stem', 'density', 'truehist' in package 'MASS'.
+
+ Typical plots with vertical bars are _not_ histograms.  Consider
+ 'barplot' or 'plot(*, type = "h")' for such bar plots.</code></pre>
+<p>Examples:</p>
+<pre><code> op &lt;- par(mfrow = c(2, 2))
+ hist(islands)
+ utils::str(hist(islands, col = "gray", labels = TRUE))
+ 
+ hist(sqrt(islands), breaks = 12, col = "lightblue", border = "pink")
+ ##-- For non-equidistant breaks, counts should NOT be graphed unscaled:
+ r &lt;- hist(sqrt(islands), breaks = c(4*0:5, 10*3:5, 70, 100, 140),
+           col = "blue1")
+ text(r$mids, r$density, r$counts, adj = c(.5, -.5), col = "blue3")
+ sapply(r[2:3], sum)
+ sum(r$density * diff(r$breaks)) # == 1
+ lines(r, lty = 3, border = "purple") # -&gt; lines.histogram(*)
+ par(op)
+ 
+ require(utils) # for str
+ str(hist(islands, breaks = 12, plot =  FALSE)) #-&gt; 10 (~= 12) breaks
+ str(hist(islands, breaks = c(12,20,36,80,200,1000,17000), plot = FALSE))
+ 
+ hist(islands, breaks = c(12,20,36,80,200,1000,17000), freq = TRUE,
+      main = "WRONG histogram") # and warning
+ 
+ ## Extreme outliers; the "FD" rule would take very large number of 'breaks':
+ XXL &lt;- c(1:9, c(-1,1)*1e300)
+ hh &lt;- hist(XXL, "FD") # did not work in R &lt;= 3.4.1; now gives warning
+ ## pretty() determines how many counts are used (platform dependently!):
+ length(hh$breaks) ## typically 1 million -- though 1e6 was "a suggestion only"
+ 
+ ## R &gt;= 4.2.0: no "*.5" labels on y-axis:
+ hist(c(2,3,3,5,5,6,6,6,7))
+ 
+ require(stats)
+ set.seed(14)
+ x &lt;- rchisq(100, df = 4)
+ 
+ ## Histogram with custom x-axis:
+ hist(x, xaxt = "n")
+ axis(1, at = 0:17)
+ 
+ 
+ ## Comparing data with a model distribution should be done with qqplot()!
+ qqplot(x, qchisq(ppoints(x), df = 4)); abline(0, 1, col = 2, lty = 2)
+ 
+ ## if you really insist on using hist() ... :
+ hist(x, freq = FALSE, ylim = c(0, 0.2))
+ curve(dchisq(x, df = 4), col = 2, lty = 2, lwd = 2, add = TRUE)</code></pre>
+</section>
+<section id="histogram-example" class="slide level2">
+<h2><code>histogram()</code> example</h2>
+<p>Reminder</p>
+<pre><code>hist(x, breaks = "Sturges",
+     freq = NULL, probability = !freq,
+     include.lowest = TRUE, right = TRUE, fuzz = 1e-7,
+     density = NULL, angle = 45, col = "lightgray", border = NULL,
+     main = paste("Histogram of" , xname),
+     xlim = range(breaks), ylim = NULL,
+     xlab = xname, ylab,
+     axes = TRUE, plot = TRUE, labels = FALSE,
+     nclass = NULL, warn.unused = TRUE, ...)</code></pre>
+<p>Let’s practice</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">hist</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">hist</span>(</span>
+<span id="cb39-2"><a></a>    df<span class="sc">$</span>age, </span>
+<span id="cb39-3"><a></a>    <span class="at">freq=</span><span class="cn">FALSE</span>, </span>
+<span id="cb39-4"><a></a>    <span class="at">main=</span><span class="st">"Histogram"</span>, </span>
+<span id="cb39-5"><a></a>    <span class="at">xlab=</span><span class="st">"Age (years)"</span></span>
+<span id="cb39-6"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-12-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-help-file" class="slide level2">
+<h2><code>plot()</code> Help File</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>?plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Generic X-Y Plotting</p>
+<p>Description:</p>
+<pre><code> Generic function for plotting of R objects.
+
+ For simple scatter plots, 'plot.default' will be used.  However,
+ there are 'plot' methods for many R objects, including
+ 'function's, 'data.frame's, 'density' objects, etc.  Use
+ 'methods(plot)' and the documentation for these. Most of these
+ methods are implemented using traditional graphics (the 'graphics'
+ package), but this is not mandatory.
+
+ For more details about graphical parameter arguments used by
+ traditional graphics, see 'par'.</code></pre>
+<p>Usage:</p>
+<pre><code> plot(x, y, ...)
+ </code></pre>
+<p>Arguments:</p>
+<pre><code>   x: the coordinates of points in the plot. Alternatively, a
+      single plotting structure, function or _any R object with a
+      'plot' method_ can be provided.
+
+   y: the y coordinates of points in the plot, _optional_ if 'x' is
+      an appropriate structure.
+
+ ...: Arguments to be passed to methods, such as graphical
+      parameters (see 'par').  Many methods will accept the
+      following arguments:
+
+      'type' what type of plot should be drawn.  Possible types are
+
+            • '"p"' for *p*oints,
+
+            • '"l"' for *l*ines,
+
+            • '"b"' for *b*oth,
+
+            • '"c"' for the lines part alone of '"b"',
+
+            • '"o"' for both '*o*verplotted',
+
+            • '"h"' for '*h*istogram' like (or 'high-density')
+              vertical lines,
+
+            • '"s"' for stair *s*teps,
+
+            • '"S"' for other *s*teps, see 'Details' below,
+
+            • '"n"' for no plotting.
+
+          All other 'type's give a warning or an error; using,
+          e.g., 'type = "punkte"' being equivalent to 'type = "p"'
+          for S compatibility.  Note that some methods, e.g.
+          'plot.factor', do not accept this.
+
+      'main' an overall title for the plot: see 'title'.
+
+      'sub' a subtitle for the plot: see 'title'.
+
+      'xlab' a title for the x axis: see 'title'.
+
+      'ylab' a title for the y axis: see 'title'.
+
+      'asp' the y/x aspect ratio, see 'plot.window'.</code></pre>
+<p>Details:</p>
+<pre><code> The two step types differ in their x-y preference: Going from
+ (x1,y1) to (x2,y2) with x1 &lt; x2, 'type = "s"' moves first
+ horizontal, then vertical, whereas 'type = "S"' moves the other
+ way around.</code></pre>
+<p>Note:</p>
+<pre><code> The 'plot' generic was moved from the 'graphics' package to the
+ 'base' package in R 4.0.0. It is currently re-exported from the
+ 'graphics' namespace to allow packages importing it from there to
+ continue working, but this may change in future versions of R.</code></pre>
+<p>See Also:</p>
+<pre><code> 'plot.default', 'plot.formula' and other methods; 'points',
+ 'lines', 'par'.  For thousands of points, consider using
+ 'smoothScatter()' instead of 'plot()'.
+
+ For X-Y-Z plotting see 'contour', 'persp' and 'image'.</code></pre>
+<p>Examples:</p>
+<pre><code> require(stats) # for lowess, rpois, rnorm
+ require(graphics) # for plot methods
+ plot(cars)
+ lines(lowess(cars))
+ 
+ plot(sin, -pi, 2*pi) # see ?plot.function
+ 
+ ## Discrete Distribution Plot:
+ plot(table(rpois(100, 5)), type = "h", col = "red", lwd = 10,
+      main = "rpois(100, lambda = 5)")
+ 
+ ## Simple quantiles/ECDF, see ecdf() {library(stats)} for a better one:
+ plot(x &lt;- sort(rnorm(47)), type = "s", main = "plot(x, type = \"s\")")
+ points(x, cex = .5, col = "dark red")</code></pre>
+</section>
+<section id="plot-example" class="slide level2">
+<h2><code>plot()</code> example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">plot</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">plot</span>(</span>
+<span id="cb49-2"><a></a>    df<span class="sc">$</span>age, </span>
+<span id="cb49-3"><a></a>    df<span class="sc">$</span>IgG_concentration, </span>
+<span id="cb49-4"><a></a>    <span class="at">type=</span><span class="st">"p"</span>, </span>
+<span id="cb49-5"><a></a>    <span class="at">main=</span><span class="st">"Age by IgG Concentrations"</span>, </span>
+<span id="cb49-6"><a></a>    <span class="at">xlab=</span><span class="st">"Age (years)"</span>, </span>
+<span id="cb49-7"><a></a>    <span class="at">ylab=</span><span class="st">"IgG Concentration (mIU/mL)"</span>, </span>
+<span id="cb49-8"><a></a>    <span class="at">pch=</span><span class="dv">16</span>, </span>
+<span id="cb49-9"><a></a>    <span class="at">cex=</span><span class="fl">0.9</span>,</span>
+<span id="cb49-10"><a></a>    <span class="at">col=</span><span class="st">"lightblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-15-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplot-help-file" class="slide level2">
+<h2><code>boxplot()</code> Help File</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>?boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Box Plots</p>
+<p>Description:</p>
+<pre><code> Produce box-and-whisker plot(s) of the given (grouped) values.</code></pre>
+<p>Usage:</p>
+<pre><code> boxplot(x, ...)
+ 
+ ## S3 method for class 'formula'
+ boxplot(formula, data = NULL, ..., subset, na.action = NULL,
+         xlab = mklab(y_var = horizontal),
+         ylab = mklab(y_var =!horizontal),
+         add = FALSE, ann = !add, horizontal = FALSE,
+         drop = FALSE, sep = ".", lex.order = FALSE)
+ 
+ ## Default S3 method:
+ boxplot(x, ..., range = 1.5, width = NULL, varwidth = FALSE,
+         notch = FALSE, outline = TRUE, names, plot = TRUE,
+         border = par("fg"), col = "lightgray", log = "",
+         pars = list(boxwex = 0.8, staplewex = 0.5, outwex = 0.5),
+          ann = !add, horizontal = FALSE, add = FALSE, at = NULL)
+ </code></pre>
+<p>Arguments:</p>
+<p>formula: a formula, such as ‘y ~ grp’, where ‘y’ is a numeric vector of data values to be split into groups according to the grouping variable ‘grp’ (usually a factor). Note that ‘~ g1 + g2’ is equivalent to ‘g1:g2’.</p>
+<pre><code>data: a data.frame (or list) from which the variables in 'formula'
+      should be taken.</code></pre>
+<p>subset: an optional vector specifying a subset of observations to be used for plotting.</p>
+<p>na.action: a function which indicates what should happen when the data contain ’NA’s. The default is to ignore missing values in either the response or the group.</p>
+<p>xlab, ylab: x- and y-axis annotation, since R 3.6.0 with a non-empty default. Can be suppressed by ‘ann=FALSE’.</p>
+<pre><code> ann: 'logical' indicating if axes should be annotated (by 'xlab'
+      and 'ylab').</code></pre>
+<p>drop, sep, lex.order: passed to ‘split.default’, see there.</p>
+<pre><code>   x: for specifying data from which the boxplots are to be
+      produced. Either a numeric vector, or a single list
+      containing such vectors. Additional unnamed arguments specify
+      further data as separate vectors (each corresponding to a
+      component boxplot).  'NA's are allowed in the data.
+
+ ...: For the 'formula' method, named arguments to be passed to the
+      default method.
+
+      For the default method, unnamed arguments are additional data
+      vectors (unless 'x' is a list when they are ignored), and
+      named arguments are arguments and graphical parameters to be
+      passed to 'bxp' in addition to the ones given by argument
+      'pars' (and override those in 'pars'). Note that 'bxp' may or
+      may not make use of graphical parameters it is passed: see
+      its documentation.</code></pre>
+<p>range: this determines how far the plot whiskers extend out from the box. If ‘range’ is positive, the whiskers extend to the most extreme data point which is no more than ‘range’ times the interquartile range from the box. A value of zero causes the whiskers to extend to the data extremes.</p>
+<p>width: a vector giving the relative widths of the boxes making up the plot.</p>
+<p>varwidth: if ‘varwidth’ is ‘TRUE’, the boxes are drawn with widths proportional to the square-roots of the number of observations in the groups.</p>
+<p>notch: if ‘notch’ is ‘TRUE’, a notch is drawn in each side of the boxes. If the notches of two plots do not overlap this is ‘strong evidence’ that the two medians differ (Chambers <em>et al</em>, 1983, p.&nbsp;62). See ‘boxplot.stats’ for the calculations used.</p>
+<p>outline: if ‘outline’ is not true, the outliers are not drawn (as points whereas S+ uses lines).</p>
+<p>names: group labels which will be printed under each boxplot. Can be a character vector or an expression (see plotmath).</p>
+<p>boxwex: a scale factor to be applied to all boxes. When there are only a few groups, the appearance of the plot can be improved by making the boxes narrower.</p>
+<p>staplewex: staple line width expansion, proportional to box width.</p>
+<p>outwex: outlier line width expansion, proportional to box width.</p>
+<pre><code>plot: if 'TRUE' (the default) then a boxplot is produced.  If not,
+      the summaries which the boxplots are based on are returned.</code></pre>
+<p>border: an optional vector of colors for the outlines of the boxplots. The values in ‘border’ are recycled if the length of ‘border’ is less than the number of plots.</p>
+<pre><code> col: if 'col' is non-null it is assumed to contain colors to be
+      used to colour the bodies of the box plots. By default they
+      are in the background colour.
+
+ log: character indicating if x or y or both coordinates should be
+      plotted in log scale.
+
+pars: a list of (potentially many) more graphical parameters, e.g.,
+      'boxwex' or 'outpch'; these are passed to 'bxp' (if 'plot' is
+      true); for details, see there.</code></pre>
+<p>horizontal: logical indicating if the boxplots should be horizontal; default ‘FALSE’ means vertical boxes.</p>
+<pre><code> add: logical, if true _add_ boxplot to current plot.
+
+  at: numeric vector giving the locations where the boxplots should
+      be drawn, particularly when 'add = TRUE'; defaults to '1:n'
+      where 'n' is the number of boxes.</code></pre>
+<p>Details:</p>
+<pre><code> The generic function 'boxplot' currently has a default method
+ ('boxplot.default') and a formula interface ('boxplot.formula').
+
+ If multiple groups are supplied either as multiple arguments or
+ via a formula, parallel boxplots will be plotted, in the order of
+ the arguments or the order of the levels of the factor (see
+ 'factor').
+
+ Missing values are ignored when forming boxplots.</code></pre>
+<p>Value:</p>
+<pre><code> List with the following components:</code></pre>
+<p>stats: a matrix, each column contains the extreme of the lower whisker, the lower hinge, the median, the upper hinge and the extreme of the upper whisker for one group/plot. If all the inputs have the same class attribute, so will this component.</p>
+<pre><code>   n: a vector with the number of (non-'NA') observations in each
+      group.
+
+conf: a matrix where each column contains the lower and upper
+      extremes of the notch.
+
+ out: the values of any data points which lie beyond the extremes
+      of the whiskers.</code></pre>
+<p>group: a vector of the same length as ‘out’ whose elements indicate to which group the outlier belongs.</p>
+<p>names: a vector of names for the groups.</p>
+<p>References:</p>
+<pre><code> Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988).  _The New
+ S Language_.  Wadsworth &amp; Brooks/Cole.
+
+ Chambers, J. M., Cleveland, W. S., Kleiner, B. and Tukey, P. A.
+ (1983).  _Graphical Methods for Data Analysis_.  Wadsworth &amp;
+ Brooks/Cole.
+
+ Murrell, P. (2005).  _R Graphics_.  Chapman &amp; Hall/CRC Press.
+
+ See also 'boxplot.stats'.</code></pre>
+<p>See Also:</p>
+<pre><code> 'boxplot.stats' which does the computation, 'bxp' for the plotting
+ and more examples; and 'stripchart' for an alternative (with small
+ data sets).</code></pre>
+<p>Examples:</p>
+<pre><code> ## boxplot on a formula:
+ boxplot(count ~ spray, data = InsectSprays, col = "lightgray")
+ # *add* notches (somewhat funny here &lt;--&gt; warning "notches .. outside hinges"):
+ boxplot(count ~ spray, data = InsectSprays,
+         notch = TRUE, add = TRUE, col = "blue")
+ 
+ boxplot(decrease ~ treatment, data = OrchardSprays, col = "bisque",
+         log = "y")
+ ## horizontal=TRUE, switching  y &lt;--&gt; x :
+ boxplot(decrease ~ treatment, data = OrchardSprays, col = "bisque",
+         log = "x", horizontal=TRUE)
+ 
+ rb &lt;- boxplot(decrease ~ treatment, data = OrchardSprays, col = "bisque")
+ title("Comparing boxplot()s and non-robust mean +/- SD")
+ mn.t &lt;- tapply(OrchardSprays$decrease, OrchardSprays$treatment, mean)
+ sd.t &lt;- tapply(OrchardSprays$decrease, OrchardSprays$treatment, sd)
+ xi &lt;- 0.3 + seq(rb$n)
+ points(xi, mn.t, col = "orange", pch = 18)
+ arrows(xi, mn.t - sd.t, xi, mn.t + sd.t,
+        code = 3, col = "pink", angle = 75, length = .1)
+ 
+ ## boxplot on a matrix:
+ mat &lt;- cbind(Uni05 = (1:100)/21, Norm = rnorm(100),
+              `5T` = rt(100, df = 5), Gam2 = rgamma(100, shape = 2))
+ boxplot(mat) # directly, calling boxplot.matrix()
+ 
+ ## boxplot on a data frame:
+ df. &lt;- as.data.frame(mat)
+ par(las = 1) # all axis labels horizontal
+ boxplot(df., main = "boxplot(*, horizontal = TRUE)", horizontal = TRUE)
+ 
+ ## Using 'at = ' and adding boxplots -- example idea by Roger Bivand :
+ boxplot(len ~ dose, data = ToothGrowth,
+         boxwex = 0.25, at = 1:3 - 0.2,
+         subset = supp == "VC", col = "yellow",
+         main = "Guinea Pigs' Tooth Growth",
+         xlab = "Vitamin C dose mg",
+         ylab = "tooth length",
+         xlim = c(0.5, 3.5), ylim = c(0, 35), yaxs = "i")
+ boxplot(len ~ dose, data = ToothGrowth, add = TRUE,
+         boxwex = 0.25, at = 1:3 + 0.2,
+         subset = supp == "OJ", col = "orange")
+ legend(2, 9, c("Ascorbic acid", "Orange juice"),
+        fill = c("yellow", "orange"))
+ 
+ ## With less effort (slightly different) using factor *interaction*:
+ boxplot(len ~ dose:supp, data = ToothGrowth,
+         boxwex = 0.5, col = c("orange", "yellow"),
+         main = "Guinea Pigs' Tooth Growth",
+         xlab = "Vitamin C dose mg", ylab = "tooth length",
+         sep = ":", lex.order = TRUE, ylim = c(0, 35), yaxs = "i")
+ 
+ ## more examples in  help(bxp)</code></pre>
+</section>
+<section id="boxplot-example" class="slide level2">
+<h2><code>boxplot()</code> example</h2>
+<p>Reminder</p>
+<pre><code>boxplot(formula, data = NULL, ..., subset, na.action = NULL,
+        xlab = mklab(y_var = horizontal),
+        ylab = mklab(y_var =!horizontal),
+        add = FALSE, ann = !add, horizontal = FALSE,
+        drop = FALSE, sep = ".", lex.order = FALSE)</code></pre>
+<p>Let’s practice</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a><span class="fu">boxplot</span>(IgG_concentration<span class="sc">~</span>age_group, <span class="at">data=</span>df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">boxplot</span>(</span>
+<span id="cb67-2"><a></a>    <span class="fu">log</span>(df<span class="sc">$</span>IgG_concentration)<span class="sc">~</span>df<span class="sc">$</span>age_group, </span>
+<span id="cb67-3"><a></a>    <span class="at">main=</span><span class="st">"Age by IgG Concentrations"</span>, </span>
+<span id="cb67-4"><a></a>    <span class="at">xlab=</span><span class="st">"Age Group (years)"</span>, </span>
+<span id="cb67-5"><a></a>    <span class="at">ylab=</span><span class="st">"log IgG Concentration (mIU/mL)"</span>, </span>
+<span id="cb67-6"><a></a>    <span class="at">names=</span><span class="fu">c</span>(<span class="st">"1-5"</span>,<span class="st">"6-10"</span>, <span class="st">"11-15"</span>), </span>
+<span id="cb67-7"><a></a>    <span class="at">varwidth=</span>T</span>
+<span id="cb67-8"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-18-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="barplot-help-file" class="slide level2">
+<h2><code>barplot()</code> Help File</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>?barplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Box Plots</p>
+<p>Description:</p>
+<pre><code> Produce box-and-whisker plot(s) of the given (grouped) values.</code></pre>
+<p>Usage:</p>
+<pre><code> boxplot(x, ...)
+ 
+ ## S3 method for class 'formula'
+ boxplot(formula, data = NULL, ..., subset, na.action = NULL,
+         xlab = mklab(y_var = horizontal),
+         ylab = mklab(y_var =!horizontal),
+         add = FALSE, ann = !add, horizontal = FALSE,
+         drop = FALSE, sep = ".", lex.order = FALSE)
+ 
+ ## Default S3 method:
+ boxplot(x, ..., range = 1.5, width = NULL, varwidth = FALSE,
+         notch = FALSE, outline = TRUE, names, plot = TRUE,
+         border = par("fg"), col = "lightgray", log = "",
+         pars = list(boxwex = 0.8, staplewex = 0.5, outwex = 0.5),
+          ann = !add, horizontal = FALSE, add = FALSE, at = NULL)
+ </code></pre>
+<p>Arguments:</p>
+<p>formula: a formula, such as ‘y ~ grp’, where ‘y’ is a numeric vector of data values to be split into groups according to the grouping variable ‘grp’ (usually a factor). Note that ‘~ g1 + g2’ is equivalent to ‘g1:g2’.</p>
+<pre><code>data: a data.frame (or list) from which the variables in 'formula'
+      should be taken.</code></pre>
+<p>subset: an optional vector specifying a subset of observations to be used for plotting.</p>
+<p>na.action: a function which indicates what should happen when the data contain ’NA’s. The default is to ignore missing values in either the response or the group.</p>
+<p>xlab, ylab: x- and y-axis annotation, since R 3.6.0 with a non-empty default. Can be suppressed by ‘ann=FALSE’.</p>
+<pre><code> ann: 'logical' indicating if axes should be annotated (by 'xlab'
+      and 'ylab').</code></pre>
+<p>drop, sep, lex.order: passed to ‘split.default’, see there.</p>
+<pre><code>   x: for specifying data from which the boxplots are to be
+      produced. Either a numeric vector, or a single list
+      containing such vectors. Additional unnamed arguments specify
+      further data as separate vectors (each corresponding to a
+      component boxplot).  'NA's are allowed in the data.
+
+ ...: For the 'formula' method, named arguments to be passed to the
+      default method.
+
+      For the default method, unnamed arguments are additional data
+      vectors (unless 'x' is a list when they are ignored), and
+      named arguments are arguments and graphical parameters to be
+      passed to 'bxp' in addition to the ones given by argument
+      'pars' (and override those in 'pars'). Note that 'bxp' may or
+      may not make use of graphical parameters it is passed: see
+      its documentation.</code></pre>
+<p>range: this determines how far the plot whiskers extend out from the box. If ‘range’ is positive, the whiskers extend to the most extreme data point which is no more than ‘range’ times the interquartile range from the box. A value of zero causes the whiskers to extend to the data extremes.</p>
+<p>width: a vector giving the relative widths of the boxes making up the plot.</p>
+<p>varwidth: if ‘varwidth’ is ‘TRUE’, the boxes are drawn with widths proportional to the square-roots of the number of observations in the groups.</p>
+<p>notch: if ‘notch’ is ‘TRUE’, a notch is drawn in each side of the boxes. If the notches of two plots do not overlap this is ‘strong evidence’ that the two medians differ (Chambers <em>et al</em>, 1983, p.&nbsp;62). See ‘boxplot.stats’ for the calculations used.</p>
+<p>outline: if ‘outline’ is not true, the outliers are not drawn (as points whereas S+ uses lines).</p>
+<p>names: group labels which will be printed under each boxplot. Can be a character vector or an expression (see plotmath).</p>
+<p>boxwex: a scale factor to be applied to all boxes. When there are only a few groups, the appearance of the plot can be improved by making the boxes narrower.</p>
+<p>staplewex: staple line width expansion, proportional to box width.</p>
+<p>outwex: outlier line width expansion, proportional to box width.</p>
+<pre><code>plot: if 'TRUE' (the default) then a boxplot is produced.  If not,
+      the summaries which the boxplots are based on are returned.</code></pre>
+<p>border: an optional vector of colors for the outlines of the boxplots. The values in ‘border’ are recycled if the length of ‘border’ is less than the number of plots.</p>
+<pre><code> col: if 'col' is non-null it is assumed to contain colors to be
+      used to colour the bodies of the box plots. By default they
+      are in the background colour.
+
+ log: character indicating if x or y or both coordinates should be
+      plotted in log scale.
+
+pars: a list of (potentially many) more graphical parameters, e.g.,
+      'boxwex' or 'outpch'; these are passed to 'bxp' (if 'plot' is
+      true); for details, see there.</code></pre>
+<p>horizontal: logical indicating if the boxplots should be horizontal; default ‘FALSE’ means vertical boxes.</p>
+<pre><code> add: logical, if true _add_ boxplot to current plot.
+
+  at: numeric vector giving the locations where the boxplots should
+      be drawn, particularly when 'add = TRUE'; defaults to '1:n'
+      where 'n' is the number of boxes.</code></pre>
+<p>Details:</p>
+<pre><code> The generic function 'boxplot' currently has a default method
+ ('boxplot.default') and a formula interface ('boxplot.formula').
+
+ If multiple groups are supplied either as multiple arguments or
+ via a formula, parallel boxplots will be plotted, in the order of
+ the arguments or the order of the levels of the factor (see
+ 'factor').
+
+ Missing values are ignored when forming boxplots.</code></pre>
+<p>Value:</p>
+<pre><code> List with the following components:</code></pre>
+<p>stats: a matrix, each column contains the extreme of the lower whisker, the lower hinge, the median, the upper hinge and the extreme of the upper whisker for one group/plot. If all the inputs have the same class attribute, so will this component.</p>
+<pre><code>   n: a vector with the number of (non-'NA') observations in each
+      group.
+
+conf: a matrix where each column contains the lower and upper
+      extremes of the notch.
+
+ out: the values of any data points which lie beyond the extremes
+      of the whiskers.</code></pre>
+<p>group: a vector of the same length as ‘out’ whose elements indicate to which group the outlier belongs.</p>
+<p>names: a vector of names for the groups.</p>
+<p>References:</p>
+<pre><code> Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988).  _The New
+ S Language_.  Wadsworth &amp; Brooks/Cole.
+
+ Chambers, J. M., Cleveland, W. S., Kleiner, B. and Tukey, P. A.
+ (1983).  _Graphical Methods for Data Analysis_.  Wadsworth &amp;
+ Brooks/Cole.
+
+ Murrell, P. (2005).  _R Graphics_.  Chapman &amp; Hall/CRC Press.
+
+ See also 'boxplot.stats'.</code></pre>
+<p>See Also:</p>
+<pre><code> 'boxplot.stats' which does the computation, 'bxp' for the plotting
+ and more examples; and 'stripchart' for an alternative (with small
+ data sets).</code></pre>
+<p>Examples:</p>
+<pre><code> ## boxplot on a formula:
+ boxplot(count ~ spray, data = InsectSprays, col = "lightgray")
+ # *add* notches (somewhat funny here &lt;--&gt; warning "notches .. outside hinges"):
+ boxplot(count ~ spray, data = InsectSprays,
+         notch = TRUE, add = TRUE, col = "blue")
+ 
+ boxplot(decrease ~ treatment, data = OrchardSprays, col = "bisque",
+         log = "y")
+ ## horizontal=TRUE, switching  y &lt;--&gt; x :
+ boxplot(decrease ~ treatment, data = OrchardSprays, col = "bisque",
+         log = "x", horizontal=TRUE)
+ 
+ rb &lt;- boxplot(decrease ~ treatment, data = OrchardSprays, col = "bisque")
+ title("Comparing boxplot()s and non-robust mean +/- SD")
+ mn.t &lt;- tapply(OrchardSprays$decrease, OrchardSprays$treatment, mean)
+ sd.t &lt;- tapply(OrchardSprays$decrease, OrchardSprays$treatment, sd)
+ xi &lt;- 0.3 + seq(rb$n)
+ points(xi, mn.t, col = "orange", pch = 18)
+ arrows(xi, mn.t - sd.t, xi, mn.t + sd.t,
+        code = 3, col = "pink", angle = 75, length = .1)
+ 
+ ## boxplot on a matrix:
+ mat &lt;- cbind(Uni05 = (1:100)/21, Norm = rnorm(100),
+              `5T` = rt(100, df = 5), Gam2 = rgamma(100, shape = 2))
+ boxplot(mat) # directly, calling boxplot.matrix()
+ 
+ ## boxplot on a data frame:
+ df. &lt;- as.data.frame(mat)
+ par(las = 1) # all axis labels horizontal
+ boxplot(df., main = "boxplot(*, horizontal = TRUE)", horizontal = TRUE)
+ 
+ ## Using 'at = ' and adding boxplots -- example idea by Roger Bivand :
+ boxplot(len ~ dose, data = ToothGrowth,
+         boxwex = 0.25, at = 1:3 - 0.2,
+         subset = supp == "VC", col = "yellow",
+         main = "Guinea Pigs' Tooth Growth",
+         xlab = "Vitamin C dose mg",
+         ylab = "tooth length",
+         xlim = c(0.5, 3.5), ylim = c(0, 35), yaxs = "i")
+ boxplot(len ~ dose, data = ToothGrowth, add = TRUE,
+         boxwex = 0.25, at = 1:3 + 0.2,
+         subset = supp == "OJ", col = "orange")
+ legend(2, 9, c("Ascorbic acid", "Orange juice"),
+        fill = c("yellow", "orange"))
+ 
+ ## With less effort (slightly different) using factor *interaction*:
+ boxplot(len ~ dose:supp, data = ToothGrowth,
+         boxwex = 0.5, col = c("orange", "yellow"),
+         main = "Guinea Pigs' Tooth Growth",
+         xlab = "Vitamin C dose mg", ylab = "tooth length",
+         sep = ":", lex.order = TRUE, ylim = c(0, 35), yaxs = "i")
+ 
+ ## more examples in  help(bxp)</code></pre>
+</section>
+<section id="barplot-example" class="slide level2">
+<h2><code>barplot()</code> example</h2>
+<p>The function takes the a lot of arguments to control the way the way our data is plotted.</p>
+<p>Reminder</p>
+<pre><code>barplot(height, width = 1, space = NULL,
+        names.arg = NULL, legend.text = NULL, beside = FALSE,
+        horiz = FALSE, density = NULL, angle = 45,
+        col = NULL, border = par("fg"),
+        main = NULL, sub = NULL, xlab = NULL, ylab = NULL,
+        xlim = NULL, ylim = NULL, xpd = TRUE, log = "",
+        axes = TRUE, axisnames = TRUE,
+        cex.axis = par("cex.axis"), cex.names = par("cex.axis"),
+        inside = TRUE, plot = TRUE, axis.lty = 0, offset = 0,
+        add = FALSE, ann = !add &amp;&amp; par("ann"), args.legend = NULL, ...)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>seropos, df<span class="sc">$</span>age_group)</span>
+<span id="cb84-2"><a></a><span class="fu">barplot</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a>prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq)</span>
+<span id="cb85-2"><a></a><span class="fu">barplot</span>(prop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-21-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="legend" class="slide level2">
+<h2>3. Legend!</h2>
+<p>In Base R plotting the legend is not automatically generated. This is nice because it gives you a huge amount of control over how your legend looks, but it is also easy to mislabel your colors, symbols, line types, etc. So, basically be careful.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a>?legend</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Add Legends to Plots
+
+Description:
+
+     This function can be used to add legends to plots.  Note that a
+     call to the function 'locator(1)' can be used in place of the 'x'
+     and 'y' arguments.
+
+Usage:
+
+     legend(x, y = NULL, legend, fill = NULL, col = par("col"),
+            border = "black", lty, lwd, pch,
+            angle = 45, density = NULL, bty = "o", bg = par("bg"),
+            box.lwd = par("lwd"), box.lty = par("lty"), box.col = par("fg"),
+            pt.bg = NA, cex = 1, pt.cex = cex, pt.lwd = lwd,
+            xjust = 0, yjust = 1, x.intersp = 1, y.intersp = 1,
+            adj = c(0, 0.5), text.width = NULL, text.col = par("col"),
+            text.font = NULL, merge = do.lines &amp;&amp; has.pch, trace = FALSE,
+            plot = TRUE, ncol = 1, horiz = FALSE, title = NULL,
+            inset = 0, xpd, title.col = text.col[1], title.adj = 0.5,
+            title.cex = cex[1], title.font = text.font[1],
+            seg.len = 2)
+     
+Arguments:
+
+    x, y: the x and y co-ordinates to be used to position the legend.
+          They can be specified by keyword or in any way which is
+          accepted by 'xy.coords': See 'Details'.
+
+  legend: a character or expression vector of length &gt;= 1 to appear in
+          the legend.  Other objects will be coerced by
+          'as.graphicsAnnot'.
+
+    fill: if specified, this argument will cause boxes filled with the
+          specified colors (or shaded in the specified colors) to
+          appear beside the legend text.
+
+     col: the color of points or lines appearing in the legend.
+
+  border: the border color for the boxes (used only if 'fill' is
+          specified).
+
+lty, lwd: the line types and widths for lines appearing in the legend.
+          One of these two _must_ be specified for line drawing.
+
+     pch: the plotting symbols appearing in the legend, as numeric
+          vector or a vector of 1-character strings (see 'points').
+          Unlike 'points', this can all be specified as a single
+          multi-character string.  _Must_ be specified for symbol
+          drawing.
+
+   angle: angle of shading lines.
+
+ density: the density of shading lines, if numeric and positive. If
+          'NULL' or negative or 'NA' color filling is assumed.
+
+     bty: the type of box to be drawn around the legend.  The allowed
+          values are '"o"' (the default) and '"n"'.
+
+      bg: the background color for the legend box.  (Note that this is
+          only used if 'bty != "n"'.)
+
+box.lty, box.lwd, box.col: the line type, width and color for the
+          legend box (if 'bty = "o"').
+
+   pt.bg: the background color for the 'points', corresponding to its
+          argument 'bg'.
+
+     cex: character expansion factor *relative* to current
+          'par("cex")'.  Used for text, and provides the default for
+          'pt.cex'.
+
+  pt.cex: expansion factor(s) for the points.
+
+  pt.lwd: line width for the points, defaults to the one for lines, or
+          if that is not set, to 'par("lwd")'.
+
+   xjust: how the legend is to be justified relative to the legend x
+          location.  A value of 0 means left justified, 0.5 means
+          centered and 1 means right justified.
+
+   yjust: the same as 'xjust' for the legend y location.
+
+x.intersp: character interspacing factor for horizontal (x) spacing
+          between symbol and legend text.
+
+y.intersp: vertical (y) distances (in lines of text shared above/below
+          each legend entry).  A vector with one element for each row
+          of the legend can be used.
+
+     adj: numeric of length 1 or 2; the string adjustment for legend
+          text.  Useful for y-adjustment when 'labels' are plotmath
+          expressions.
+
+text.width: the width of the legend text in x ('"user"') coordinates.
+          (Should be positive even for a reversed x axis.)  Can be a
+          single positive numeric value (same width for each column of
+          the legend), a vector (one element for each column of the
+          legend), 'NULL' (default) for computing a proper maximum
+          value of 'strwidth(legend)'), or 'NA' for computing a proper
+          column wise maximum value of 'strwidth(legend)').
+
+text.col: the color used for the legend text.
+
+text.font: the font used for the legend text, see 'text'.
+
+   merge: logical; if 'TRUE', merge points and lines but not filled
+          boxes.  Defaults to 'TRUE' if there are points and lines.
+
+   trace: logical; if 'TRUE', shows how 'legend' does all its magical
+          computations.
+
+    plot: logical.  If 'FALSE', nothing is plotted but the sizes are
+          returned.
+
+    ncol: the number of columns in which to set the legend items
+          (default is 1, a vertical legend).
+
+   horiz: logical; if 'TRUE', set the legend horizontally rather than
+          vertically (specifying 'horiz' overrides the 'ncol'
+          specification).
+
+   title: a character string or length-one expression giving a title to
+          be placed at the top of the legend.  Other objects will be
+          coerced by 'as.graphicsAnnot'.
+
+   inset: inset distance(s) from the margins as a fraction of the plot
+          region when legend is placed by keyword.
+
+     xpd: if supplied, a value of the graphical parameter 'xpd' to be
+          used while the legend is being drawn.
+
+title.col: color for 'title', defaults to 'text.col[1]'.
+
+title.adj: horizontal adjustment for 'title': see the help for
+          'par("adj")'.
+
+title.cex: expansion factor(s) for the title, defaults to 'cex[1]'.
+
+title.font: the font used for the legend title, defaults to
+          'text.font[1]', see 'text'.
+
+ seg.len: the length of lines drawn to illustrate 'lty' and/or 'lwd'
+          (in units of character widths).
+
+Details:
+
+     Arguments 'x', 'y', 'legend' are interpreted in a non-standard way
+     to allow the coordinates to be specified _via_ one or two
+     arguments.  If 'legend' is missing and 'y' is not numeric, it is
+     assumed that the second argument is intended to be 'legend' and
+     that the first argument specifies the coordinates.
+
+     The coordinates can be specified in any way which is accepted by
+     'xy.coords'.  If this gives the coordinates of one point, it is
+     used as the top-left coordinate of the rectangle containing the
+     legend.  If it gives the coordinates of two points, these specify
+     opposite corners of the rectangle (either pair of corners, in any
+     order).
+
+     The location may also be specified by setting 'x' to a single
+     keyword from the list '"bottomright"', '"bottom"', '"bottomleft"',
+     '"left"', '"topleft"', '"top"', '"topright"', '"right"' and
+     '"center"'. This places the legend on the inside of the plot frame
+     at the given location. Partial argument matching is used.  The
+     optional 'inset' argument specifies how far the legend is inset
+     from the plot margins.  If a single value is given, it is used for
+     both margins; if two values are given, the first is used for 'x'-
+     distance, the second for 'y'-distance.
+
+     Attribute arguments such as 'col', 'pch', 'lty', etc, are recycled
+     if necessary: 'merge' is not.  Set entries of 'lty' to '0' or set
+     entries of 'lwd' to 'NA' to suppress lines in corresponding legend
+     entries; set 'pch' values to 'NA' to suppress points.
+
+     Points are drawn _after_ lines in order that they can cover the
+     line with their background color 'pt.bg', if applicable.
+
+     See the examples for how to right-justify labels.
+
+     Since they are not used for Unicode code points, values '-31:-1'
+     are silently omitted, as are 'NA' and '""' values.
+
+Value:
+
+     A list with list components
+
+    rect: a list with components
+
+          'w', 'h' positive numbers giving *w*idth and *h*eight of the
+              legend's box.
+
+          'left', 'top' x and y coordinates of upper left corner of the
+              box.
+
+    text: a list with components
+
+          'x, y' numeric vectors of length 'length(legend)', giving the
+              x and y coordinates of the legend's text(s).
+
+     returned invisibly.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth &amp; Brooks/Cole.
+
+     Murrell, P. (2005) _R Graphics_. Chapman &amp; Hall/CRC Press.
+
+See Also:
+
+     'plot', 'barplot' which uses 'legend()', and 'text' for more
+     examples of math expressions.
+
+Examples:
+
+     ## Run the example in '?matplot' or the following:
+     leg.txt &lt;- c("Setosa     Petals", "Setosa     Sepals",
+                  "Versicolor Petals", "Versicolor Sepals")
+     y.leg &lt;- c(4.5, 3, 2.1, 1.4, .7)
+     cexv  &lt;- c(1.2, 1, 4/5, 2/3, 1/2)
+     matplot(c(1, 8), c(0, 4.5), type = "n", xlab = "Length", ylab = "Width",
+             main = "Petal and Sepal Dimensions in Iris Blossoms")
+     for (i in seq(cexv)) {
+       text  (1, y.leg[i] - 0.1, paste("cex=", formatC(cexv[i])), cex = 0.8, adj = 0)
+       legend(3, y.leg[i], leg.txt, pch = "sSvV", col = c(1, 3), cex = cexv[i])
+     }
+     ## cex *vector* [in R &lt;= 3.5.1 has 'if(xc &lt; 0)' w/ length(xc) == 2]
+     legend("right", leg.txt, pch = "sSvV", col = c(1, 3),
+            cex = 1+(-1:2)/8, trace = TRUE)# trace: show computed lengths &amp; coords
+     
+     ## 'merge = TRUE' for merging lines &amp; points:
+     x &lt;- seq(-pi, pi, length.out = 65)
+     for(reverse in c(FALSE, TRUE)) {  ## normal *and* reverse axes:
+       F &lt;- if(reverse) rev else identity
+       plot(x, sin(x), type = "l", col = 3, lty = 2,
+            xlim = F(range(x)), ylim = F(c(-1.2, 1.8)))
+       points(x, cos(x), pch = 3, col = 4)
+       lines(x, tan(x), type = "b", lty = 1, pch = 4, col = 6)
+       title("legend('top', lty = c(2, -1, 1), pch = c(NA, 3, 4), merge = TRUE)",
+             cex.main = 1.1)
+       legend("top", c("sin", "cos", "tan"), col = c(3, 4, 6),
+            text.col = "green4", lty = c(2, -1, 1), pch = c(NA, 3, 4),
+            merge = TRUE, bg = "gray90", trace=TRUE)
+       
+     } # for(..)
+     
+     ## right-justifying a set of labels: thanks to Uwe Ligges
+     x &lt;- 1:5; y1 &lt;- 1/x; y2 &lt;- 2/x
+     plot(rep(x, 2), c(y1, y2), type = "n", xlab = "x", ylab = "y")
+     lines(x, y1); lines(x, y2, lty = 2)
+     temp &lt;- legend("topright", legend = c(" ", " "),
+                    text.width = strwidth("1,000,000"),
+                    lty = 1:2, xjust = 1, yjust = 1, inset = 1/10,
+                    title = "Line Types", title.cex = 0.5, trace=TRUE)
+     text(temp$rect$left + temp$rect$w, temp$text$y,
+          c("1,000", "1,000,000"), pos = 2)
+     
+     
+     ##--- log scaled Examples ------------------------------
+     leg.txt &lt;- c("a one", "a two")
+     
+     par(mfrow = c(2, 2))
+     for(ll in c("","x","y","xy")) {
+       plot(2:10, log = ll, main = paste0("log = '", ll, "'"))
+       abline(1, 1)
+       lines(2:3, 3:4, col = 2)
+       points(2, 2, col = 3)
+       rect(2, 3, 3, 2, col = 4)
+       text(c(3,3), 2:3, c("rect(2,3,3,2, col=4)",
+                           "text(c(3,3),2:3,\"c(rect(...)\")"), adj = c(0, 0.3))
+       legend(list(x = 2,y = 8), legend = leg.txt, col = 2:3, pch = 1:2,
+              lty = 1)  #, trace = TRUE)
+     } #      ^^^^^^^ to force lines -&gt; automatic merge=TRUE
+     par(mfrow = c(1,1))
+     
+     ##-- Math expressions:  ------------------------------
+     x &lt;- seq(-pi, pi, length.out = 65)
+     plot(x, sin(x), type = "l", col = 2, xlab = expression(phi),
+          ylab = expression(f(phi)))
+     abline(h = -1:1, v = pi/2*(-6:6), col = "gray90")
+     lines(x, cos(x), col = 3, lty = 2)
+     ex.cs1 &lt;- expression(plain(sin) * phi,  paste("cos", phi))  # 2 ways
+     utils::str(legend(-3, .9, ex.cs1, lty = 1:2, plot = FALSE,
+                adj = c(0, 0.6)))  # adj y !
+     legend(-3, 0.9, ex.cs1, lty = 1:2, col = 2:3,  adj = c(0, 0.6))
+     
+     require(stats)
+     x &lt;- rexp(100, rate = .5)
+     hist(x, main = "Mean and Median of a Skewed Distribution")
+     abline(v = mean(x),   col = 2, lty = 2, lwd = 2)
+     abline(v = median(x), col = 3, lty = 3, lwd = 2)
+     ex12 &lt;- expression(bar(x) == sum(over(x[i], n), i == 1, n),
+                        hat(x) == median(x[i], i == 1, n))
+     utils::str(legend(4.1, 30, ex12, col = 2:3, lty = 2:3, lwd = 2))
+     
+     ## 'Filled' boxes -- see also example(barplot) which may call legend(*, fill=)
+     barplot(VADeaths)
+     legend("topright", rownames(VADeaths), fill = gray.colors(nrow(VADeaths)))
+     
+     ## Using 'ncol'
+     x &lt;- 0:64/64
+     for(R in c(identity, rev)) { # normal *and* reverse x-axis works fine:
+       xl &lt;- R(range(x)); x1 &lt;- xl[1]
+     matplot(x, outer(x, 1:7, function(x, k) sin(k * pi * x)), xlim=xl,
+             type = "o", col = 1:7, ylim = c(-1, 1.5), pch = "*")
+     op &lt;- par(bg = "antiquewhite1")
+     legend(x1, 1.5, paste("sin(", 1:7, "pi * x)"), col = 1:7, lty = 1:7,
+            pch = "*", ncol = 4, cex = 0.8)
+     legend("bottomright", paste("sin(", 1:7, "pi * x)"), col = 1:7, lty = 1:7,
+            pch = "*", cex = 0.8)
+     legend(x1, -.1, paste("sin(", 1:4, "pi * x)"), col = 1:4, lty = 1:4,
+            ncol = 2, cex = 0.8)
+     legend(x1, -.4, paste("sin(", 5:7, "pi * x)"), col = 4:6,  pch = 24,
+            ncol = 2, cex = 1.5, lwd = 2, pt.bg = "pink", pt.cex = 1:3)
+     par(op)
+       
+     } # for(..)
+     
+     ## point covering line :
+     y &lt;- sin(3*pi*x)
+     plot(x, y, type = "l", col = "blue",
+         main = "points with bg &amp; legend(*, pt.bg)")
+     points(x, y, pch = 21, bg = "white")
+     legend(.4,1, "sin(c x)", pch = 21, pt.bg = "white", lty = 1, col = "blue")
+     
+     ## legends with titles at different locations
+     plot(x, y, type = "n")
+     legend("bottomright", "(x,y)", pch=1, title= "bottomright")
+     legend("bottom",      "(x,y)", pch=1, title= "bottom")
+     legend("bottomleft",  "(x,y)", pch=1, title= "bottomleft")
+     legend("left",        "(x,y)", pch=1, title= "left")
+     legend("topleft",     "(x,y)", pch=1, title= "topleft, inset = .05", inset = .05)
+     legend("top",         "(x,y)", pch=1, title= "top")
+     legend("topright",    "(x,y)", pch=1, title= "topright, inset = .02",inset = .02)
+     legend("right",       "(x,y)", pch=1, title= "right")
+     legend("center",      "(x,y)", pch=1, title= "center")
+     
+     # using text.font (and text.col):
+     op &lt;- par(mfrow = c(2, 2), mar = rep(2.1, 4))
+     c6 &lt;- terrain.colors(10)[1:6]
+     for(i in 1:4) {
+        plot(1, type = "n", axes = FALSE, ann = FALSE); title(paste("text.font =",i))
+        legend("top", legend = LETTERS[1:6], col = c6,
+               ncol = 2, cex = 2, lwd = 3, text.font = i, text.col = c6)
+     }
+     par(op)
+     
+     # using text.width for several columns
+     plot(1, type="n")
+     legend("topleft", c("This legend", "has", "equally sized", "columns."),
+            pch = 1:4, ncol = 4)
+     legend("bottomleft", c("This legend", "has", "optimally sized", "columns."),
+            pch = 1:4, ncol = 4, text.width = NA)
+     legend("right", letters[1:4], pch = 1:4, ncol = 4,
+            text.width = 1:4 / 50)</code></pre>
+</div>
+</div>
+</section>
+<section id="add-legend-to-the-plot" class="slide level2">
+<h2>Add legend to the plot</h2>
+<p>Reminder</p>
+<pre><code>legend(x, y = NULL, legend, fill = NULL, col = par("col"),
+       border = "black", lty, lwd, pch,
+       angle = 45, density = NULL, bty = "o", bg = par("bg"),
+       box.lwd = par("lwd"), box.lty = par("lty"), box.col = par("fg"),
+       pt.bg = NA, cex = 1, pt.cex = cex, pt.lwd = lwd,
+       xjust = 0, yjust = 1, x.intersp = 1, y.intersp = 1,
+       adj = c(0, 0.5), text.width = NULL, text.col = par("col"),
+       text.font = NULL, merge = do.lines &amp;&amp; has.pch, trace = FALSE,
+       plot = TRUE, ncol = 1, horiz = FALSE, title = NULL,
+       inset = 0, xpd, title.col = text.col[1], title.adj = 0.5,
+       title.cex = cex[1], title.font = text.font[1],
+       seg.len = 2)</code></pre>
+<p>Let’s practice</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a><span class="fu">barplot</span>(prop, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.7</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
+<span id="cb89-2"><a></a><span class="fu">legend</span>(<span class="at">x=</span><span class="fl">2.5</span>, <span class="at">y=</span><span class="fl">0.7</span>,</span>
+<span id="cb89-3"><a></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
+<span id="cb89-4"><a></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<section id="barplot-example-1" class="slide level2">
+<h2><code>barplot()</code> example</h2>
+<p>Getting closer, but what I really want is column proportions (i.e., the proportions should sum to one for each age group). Also, the age groups need more meaningful names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>seropos, df<span class="sc">$</span>age_group)</span>
+<span id="cb90-2"><a></a>tot.per.age.group <span class="ot">&lt;-</span> <span class="fu">colSums</span>(freq)</span>
+<span id="cb90-3"><a></a>age.seropos.matrix <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">t</span>(freq)<span class="sc">/</span>tot.per.age.group)</span>
+<span id="cb90-4"><a></a><span class="fu">colnames</span>(age.seropos.matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1-5 yo"</span>, <span class="st">"6-10 yo"</span>, <span class="st">"11-15 yo"</span>)</span>
+<span id="cb90-5"><a></a></span>
+<span id="cb90-6"><a></a><span class="fu">barplot</span>(age.seropos.matrix, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
+<span id="cb90-7"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb90-8"><a></a><span class="fu">legend</span>(<span class="at">x=</span><span class="fl">2.8</span>, <span class="at">y=</span><span class="fl">1.35</span>,</span>
+<span id="cb90-9"><a></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
+<span id="cb90-10"><a></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
+<section id="barplot-example-2" class="slide level2">
+<h2><code>barplot()</code> example</h2>
+<p>Now, let look at seropositivity by two individual level characteristics in the same plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb91-2"><a></a><span class="fu">barplot</span>(age.seropos.matrix, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
+<span id="cb91-3"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb91-4"><a></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="fl">1.35</span>, <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
+<span id="cb91-5"><a></a></span>
+<span id="cb91-6"><a></a><span class="fu">barplot</span>(slum.seropos.matrix, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Residence"</span>)</span>
+<span id="cb91-7"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb91-8"><a></a><span class="fu">legend</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="fl">1.35</span>, <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>),  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
@@ -498,7 +2486,8 @@
 <h2>Acknowledgements</h2>
 <p>These are the materials I looked through, modified, or extracted to complete this module’s lecture.</p>
 <ul>
-<li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
+<li><a href="https://towardsdatascience.com/base-plotting-in-r-eb365da06b22">“Base Plotting in R” by Medium</a></li>
+<li><pre><code>  ["Base R margins: a cheatsheet"](https://r-graph-gallery.com/74-margin-and-oma-cheatsheet.html)</code></pre></li>
 </ul>
 
 <div class="quarto-auto-generated-content">

@@ -45,7 +45,7 @@ df$seropos <- ifelse(df$IgG_concentration<10, 0,
 We use `table()` prior to look at one variable, now we can generate frequency tables for 2 plus variables.  To get cell percentages, the `prop.table()` is useful.  
 
 ```{r echo=TRUE}
-freq <- table(df$age_group, df$seropo)
+freq <- table(df$age_group, df$seropos)
 prop <- prop.table(freq)
 freq
 prop
