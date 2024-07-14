@@ -44,7 +44,7 @@ setwd("~/")
     -   "\~" - is your "home" directory
 
 
-## Absoluate vs. relative paths
+## Absolute vs. relative paths
 
 From Wiki
 
@@ -87,6 +87,6 @@ Again, RStudio will show the code in the Console for the action you took with yo
 
 ## Acknowledgements
 
-These are the materials I looked through, modified, or extracted to complete this module's lecture.
+These are the materials we looked through, modified, or extracted to complete this module's lecture.
 
 -   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)

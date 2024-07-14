@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.54">
+
+  <meta name="author" content="Amy Winter">
+  <meta name="author" content="Zane Billings">
+  <title>SISMID Module NUMBER Materials (2025) – Module 5: Data Import and Export</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Module 5: Data Import and Export</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://publichealth.uga.edu/faculty-member/amy-k-winter/">Amy Winter</a> <a href="https://orcid.org/0000-0003-2737-7003" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://wzbillings.com/">Zane Billings</a> <a href="https://orcid.org/0000-0002-0184-6134" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+</div>
+</div>
+
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Page Items</h2>
+<ul>
+<li><a href="#/learning-objectives" id="/toc-learning-objectives">Learning Objectives</a></li>
+<li><a href="#/import-read-data" id="/toc-import-read-data">Import (read) Data</a></li>
+<li><a href="#/mini-exercise" id="/toc-mini-exercise">Mini exercise</a></li>
+<li><a href="#/import-delimited-data" id="/toc-import-delimited-data">Import delimited data</a></li>
+<li><a href="#/import-.csv-files" id="/toc-import-.csv-files">Import .csv files</a></li>
+<li><a href="#/mini-exercise-1" id="/toc-mini-exercise-1">Mini Exercise</a></li>
+<li><a href="#/import-.csv-files-1" id="/toc-import-.csv-files-1">Import .csv files</a></li>
+<li><a href="#/import-.txt-files" id="/toc-import-.txt-files">Import .txt files</a></li>
+<li><a href="#/import-.txt-files-1" id="/toc-import-.txt-files-1">Import .txt files</a></li>
+<li><a href="#/what-if-we-have-a-.xlsx-file---what-do-we-do" id="/toc-what-if-we-have-a-.xlsx-file---what-do-we-do">What if we have a .xlsx file - what do we do?</a></li>
+<li><a href="#/internet-search" id="/toc-internet-search">1. Internet Search</a></li>
+<li><a href="#/find-and-vet-function-and-package-you-want" id="/toc-find-and-vet-function-and-package-you-want">2. Find and vet function and package you want</a></li>
+<li><a href="#/install-package" id="/toc-install-package">3. Install Package</a></li>
+<li><a href="#/call-package" id="/toc-call-package">4. Call Package</a></li>
+<li><a href="#/use-function" id="/toc-use-function">5. Use Function</a></li>
+<li><a href="#/use-function-1" id="/toc-use-function-1">5. Use Function</a></li>
+<li><a href="#/mini-exercise-2" id="/toc-mini-exercise-2">Mini exercise</a></li>
+<li><a href="#/installing-and-calling-packages---common-confusion" id="/toc-installing-and-calling-packages---common-confusion">Installing and calling packages - Common confusion</a></li>
+<li><a href="#/common-error" id="/toc-common-error">Common Error</a></li>
+<li><a href="#/export-write-data" id="/toc-export-write-data">Export (write) Data</a></li>
+<li><a href="#/export-delimited-data" id="/toc-export-delimited-data">Export delimited data</a></li>
+<li><a href="#/export-delimited-data-1" id="/toc-export-delimited-data-1">Export delimited data</a></li>
+<li><a href="#/r-.rds-and-.rdardata-files" id="/toc-r-.rds-and-.rdardata-files">R .rds and .rda/RData files</a></li>
+<li><a href="#/rds-binary-file" id="/toc-rds-binary-file">.rds binary file</a></li>
+<li><a href="#/rdardata-files" id="/toc-rdardata-files">.rda/RData files</a></li>
+<li><a href="#/summary" id="/toc-summary">Summary</a></li>
+<li><a href="#/acknowledgements" id="/toc-acknowledgements">Acknowledgements</a></li>
+</ul>
+</nav>
+</section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
+<p>After module 5, you should be able to…</p>
+<ul>
+<li>Use Base R functions to load data</li>
+<li>Install and call external R Packages to extend R’s functionality</li>
+<li>Install any type of data into R</li>
+<li>Find loaded data in the Global Environment window of RStudio</li>
+<li>Reading and writing R .Rds and .Rda/.RData files</li>
+</ul>
+</section>
+<section id="import-read-data" class="slide level2">
+<h2>Import (read) Data</h2>
+<ul>
+<li>Importing or ‘Reading in’ data is the first step of any real project/analysis</li>
+<li>R can read almost any file format, especially with external, non-Base R, packages</li>
+<li>We are going to focus on simple delimited files first.
+<ul>
+<li>comma separated (e.g.&nbsp;‘.csv’)</li>
+<li>tab delimited (e.g.&nbsp;‘.txt’)</li>
+</ul></li>
+</ul>
+<p>A delimited file is a sequential file with column delimiters. Each delimited file is a stream of records, which consists of fields that are ordered by column. Each record contains fields for one row. Within each row, individual fields are separated by column <strong>delimiters</strong> (IBM.com definition)</p>
+</section>
+<section id="mini-exercise" class="slide level2 scrollable">
+<h2>Mini exercise</h2>
+<ol type="1">
+<li><p>Download Module 5 data from the website and save the data to your data subdirectory – specifically <code>SISMID_IntroToR_RProject/data</code></p></li>
+<li><p>Open the data files in a text editor application and familiarize you self with the data.</p></li>
+<li><p>Determine the delminiter of the two ‘.txt’ files</p></li>
+</ol>
+</section>
+<section id="import-delimited-data" class="slide level2">
+<h2>Import delimited data</h2>
+<p>Within the Base R ‘util’ package we can find a handful of useful functions including <code>read.csv()</code> and <code>read.delim()</code> to importing data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>?read.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'printr':
+  method                from     
+  knit_print.data.frame rmarkdown</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Data Input
+
+Description:
+
+     Reads a file in table format and creates a data frame from it,
+     with cases corresponding to lines and variables to fields in the
+     file.
+
+Usage:
+
+     read.table(file, header = FALSE, sep = "", quote = "\"'",
+                dec = ".", numerals = c("allow.loss", "warn.loss", "no.loss"),
+                row.names, col.names, as.is = !stringsAsFactors, tryLogical = TRUE,
+                na.strings = "NA", colClasses = NA, nrows = -1,
+                skip = 0, check.names = TRUE, fill = !blank.lines.skip,
+                strip.white = FALSE, blank.lines.skip = TRUE,
+                comment.char = "#",
+                allowEscapes = FALSE, flush = FALSE,
+                stringsAsFactors = FALSE,
+                fileEncoding = "", encoding = "unknown", text, skipNul = FALSE)
+     
+     read.csv(file, header = TRUE, sep = ",", quote = "\"",
+              dec = ".", fill = TRUE, comment.char = "", ...)
+     
+     read.csv2(file, header = TRUE, sep = ";", quote = "\"",
+               dec = ",", fill = TRUE, comment.char = "", ...)
+     
+     read.delim(file, header = TRUE, sep = "\t", quote = "\"",
+                dec = ".", fill = TRUE, comment.char = "", ...)
+     
+     read.delim2(file, header = TRUE, sep = "\t", quote = "\"",
+                 dec = ",", fill = TRUE, comment.char = "", ...)
+     
+Arguments:
+
+    file: the name of the file which the data are to be read from.
+          Each row of the table appears as one line of the file.  If it
+          does not contain an _absolute_ path, the file name is
+          _relative_ to the current working directory, 'getwd()'.
+          Tilde-expansion is performed where supported.  This can be a
+          compressed file (see 'file').
+
+          Alternatively, 'file' can be a readable text-mode connection
+          (which will be opened for reading if necessary, and if so
+          'close'd (and hence destroyed) at the end of the function
+          call).  (If 'stdin()' is used, the prompts for lines may be
+          somewhat confusing.  Terminate input with a blank line or an
+          EOF signal, 'Ctrl-D' on Unix and 'Ctrl-Z' on Windows.  Any
+          pushback on 'stdin()' will be cleared before return.)
+
+          'file' can also be a complete URL.  (For the supported URL
+          schemes, see the 'URLs' section of the help for 'url'.)
+
+  header: a logical value indicating whether the file contains the
+          names of the variables as its first line.  If missing, the
+          value is determined from the file format: 'header' is set to
+          'TRUE' if and only if the first row contains one fewer field
+          than the number of columns.
+
+     sep: the field separator character.  Values on each line of the
+          file are separated by this character.  If 'sep = ""' (the
+          default for 'read.table') the separator is 'white space',
+          that is one or more spaces, tabs, newlines or carriage
+          returns.
+
+   quote: the set of quoting characters. To disable quoting altogether,
+          use 'quote = ""'.  See 'scan' for the behaviour on quotes
+          embedded in quotes.  Quoting is only considered for columns
+          read as character, which is all of them unless 'colClasses'
+          is specified.
+
+     dec: the character used in the file for decimal points.
+
+numerals: string indicating how to convert numbers whose conversion to
+          double precision would lose accuracy, see 'type.convert'.
+          Can be abbreviated.  (Applies also to complex-number inputs.)
+
+row.names: a vector of row names.  This can be a vector giving the
+          actual row names, or a single number giving the column of the
+          table which contains the row names, or character string
+          giving the name of the table column containing the row names.
+
+          If there is a header and the first row contains one fewer
+          field than the number of columns, the first column in the
+          input is used for the row names.  Otherwise if 'row.names' is
+          missing, the rows are numbered.
+
+          Using 'row.names = NULL' forces row numbering. Missing or
+          'NULL' 'row.names' generate row names that are considered to
+          be 'automatic' (and not preserved by 'as.matrix').
+
+col.names: a vector of optional names for the variables.  The default
+          is to use '"V"' followed by the column number.
+
+   as.is: controls conversion of character variables (insofar as they
+          are not converted to logical, numeric or complex) to factors,
+          if not otherwise specified by 'colClasses'.  Its value is
+          either a vector of logicals (values are recycled if
+          necessary), or a vector of numeric or character indices which
+          specify which columns should not be converted to factors.
+
+          Note: to suppress all conversions including those of numeric
+          columns, set 'colClasses = "character"'.
+
+          Note that 'as.is' is specified per column (not per variable)
+          and so includes the column of row names (if any) and any
+          columns to be skipped.
+
+tryLogical: a 'logical' determining if columns consisting entirely of
+          '"F"', '"T"', '"FALSE"', and '"TRUE"' should be converted to
+          'logical'; passed to 'type.convert', true by default.
+
+na.strings: a character vector of strings which are to be interpreted
+          as 'NA' values.  Blank fields are also considered to be
+          missing values in logical, integer, numeric and complex
+          fields.  Note that the test happens _after_ white space is
+          stripped from the input, so 'na.strings' values may need
+          their own white space stripped in advance.
+
+colClasses: character.  A vector of classes to be assumed for the
+          columns.  If unnamed, recycled as necessary.  If named, names
+          are matched with unspecified values being taken to be 'NA'.
+
+          Possible values are 'NA' (the default, when 'type.convert' is
+          used), '"NULL"' (when the column is skipped), one of the
+          atomic vector classes (logical, integer, numeric, complex,
+          character, raw), or '"factor"', '"Date"' or '"POSIXct"'.
+          Otherwise there needs to be an 'as' method (from package
+          'methods') for conversion from '"character"' to the specified
+          formal class.
+
+          Note that 'colClasses' is specified per column (not per
+          variable) and so includes the column of row names (if any).
+
+   nrows: integer: the maximum number of rows to read in.  Negative and
+          other invalid values are ignored.
+
+    skip: integer: the number of lines of the data file to skip before
+          beginning to read data.
+
+check.names: logical.  If 'TRUE' then the names of the variables in the
+          data frame are checked to ensure that they are syntactically
+          valid variable names.  If necessary they are adjusted (by
+          'make.names') so that they are, and also to ensure that there
+          are no duplicates.
+
+    fill: logical. If 'TRUE' then in case the rows have unequal length,
+          blank fields are implicitly added.  See 'Details'.
+
+strip.white: logical. Used only when 'sep' has been specified, and
+          allows the stripping of leading and trailing white space from
+          unquoted 'character' fields ('numeric' fields are always
+          stripped).  See 'scan' for further details (including the
+          exact meaning of 'white space'), remembering that the columns
+          may include the row names.
+
+blank.lines.skip: logical: if 'TRUE' blank lines in the input are
+          ignored.
+
+comment.char: character: a character vector of length one containing a
+          single character or an empty string.  Use '""' to turn off
+          the interpretation of comments altogether.
+
+allowEscapes: logical.  Should C-style escapes such as '\n' be
+          processed or read verbatim (the default)?  Note that if not
+          within quotes these could be interpreted as a delimiter (but
+          not as a comment character).  For more details see 'scan'.
+
+   flush: logical: if 'TRUE', 'scan' will flush to the end of the line
+          after reading the last of the fields requested.  This allows
+          putting comments after the last field.
+
+stringsAsFactors: logical: should character vectors be converted to
+          factors?  Note that this is overridden by 'as.is' and
+          'colClasses', both of which allow finer control.
+
+fileEncoding: character string: if non-empty declares the encoding used
+          on a file (not a connection) so the character data can be
+          re-encoded.  See the 'Encoding' section of the help for
+          'file', the 'R Data Import/Export' manual and 'Note'.
+
+encoding: encoding to be assumed for input strings.  It is used to mark
+          character strings as known to be in Latin-1 or UTF-8 (see
+          'Encoding'): it is not used to re-encode the input, but
+          allows R to handle encoded strings in their native encoding
+          (if one of those two).  See 'Value' and 'Note'.
+
+    text: character string: if 'file' is not supplied and this is, then
+          data are read from the value of 'text' via a text connection.
+          Notice that a literal string can be used to include (small)
+          data sets within R code.
+
+ skipNul: logical: should nuls be skipped?
+
+     ...: Further arguments to be passed to 'read.table'.
+
+Details:
+
+     This function is the principal means of reading tabular data into
+     R.
+
+     Unless 'colClasses' is specified, all columns are read as
+     character columns and then converted using 'type.convert' to
+     logical, integer, numeric, complex or (depending on 'as.is')
+     factor as appropriate.  Quotes are (by default) interpreted in all
+     fields, so a column of values like '"42"' will result in an
+     integer column.
+
+     A field or line is 'blank' if it contains nothing (except
+     whitespace if no separator is specified) before a comment
+     character or the end of the field or line.
+
+     If 'row.names' is not specified and the header line has one less
+     entry than the number of columns, the first column is taken to be
+     the row names.  This allows data frames to be read in from the
+     format in which they are printed.  If 'row.names' is specified and
+     does not refer to the first column, that column is discarded from
+     such files.
+
+     The number of data columns is determined by looking at the first
+     five lines of input (or the whole input if it has less than five
+     lines), or from the length of 'col.names' if it is specified and
+     is longer.  This could conceivably be wrong if 'fill' or
+     'blank.lines.skip' are true, so specify 'col.names' if necessary
+     (as in the 'Examples').
+
+     'read.csv' and 'read.csv2' are identical to 'read.table' except
+     for the defaults.  They are intended for reading 'comma separated
+     value' files ('.csv') or ('read.csv2') the variant used in
+     countries that use a comma as decimal point and a semicolon as
+     field separator.  Similarly, 'read.delim' and 'read.delim2' are
+     for reading delimited files, defaulting to the TAB character for
+     the delimiter.  Notice that 'header = TRUE' and 'fill = TRUE' in
+     these variants, and that the comment character is disabled.
+
+     The rest of the line after a comment character is skipped; quotes
+     are not processed in comments.  Complete comment lines are allowed
+     provided 'blank.lines.skip = TRUE'; however, comment lines prior
+     to the header must have the comment character in the first
+     non-blank column.
+
+     Quoted fields with embedded newlines are supported except after a
+     comment character.  Embedded nuls are unsupported: skipping them
+     (with 'skipNul = TRUE') may work.
+
+Value:
+
+     A data frame ('data.frame') containing a representation of the
+     data in the file.
+
+     Empty input is an error unless 'col.names' is specified, when a
+     0-row data frame is returned: similarly giving just a header line
+     if 'header = TRUE' results in a 0-row data frame.  Note that in
+     either case the columns will be logical unless 'colClasses' was
+     supplied.
+
+     Character strings in the result (including factor levels) will
+     have a declared encoding if 'encoding' is '"latin1"' or '"UTF-8"'.
+
+CSV files:
+
+     See the help on 'write.csv' for the various conventions for '.csv'
+     files.  The commonest form of CSV file with row names needs to be
+     read with 'read.csv(..., row.names = 1)' to use the names in the
+     first column of the file as row names.
+
+Memory usage:
+
+     These functions can use a surprising amount of memory when reading
+     large files.  There is extensive discussion in the 'R Data
+     Import/Export' manual, supplementing the notes here.
+
+     Less memory will be used if 'colClasses' is specified as one of
+     the six atomic vector classes.  This can be particularly so when
+     reading a column that takes many distinct numeric values, as
+     storing each distinct value as a character string can take up to
+     14 times as much memory as storing it as an integer.
+
+     Using 'nrows', even as a mild over-estimate, will help memory
+     usage.
+
+     Using 'comment.char = ""' will be appreciably faster than the
+     'read.table' default.
+
+     'read.table' is not the right tool for reading large matrices,
+     especially those with many columns: it is designed to read _data
+     frames_ which may have columns of very different classes.  Use
+     'scan' instead for matrices.
+
+Note:
+
+     The columns referred to in 'as.is' and 'colClasses' include the
+     column of row names (if any).
+
+     There are two approaches for reading input that is not in the
+     local encoding.  If the input is known to be UTF-8 or Latin1, use
+     the 'encoding' argument to declare that.  If the input is in some
+     other encoding, then it may be translated on input.  The
+     'fileEncoding' argument achieves this by setting up a connection
+     to do the re-encoding into the current locale.  Note that on
+     Windows or other systems not running in a UTF-8 locale, this may
+     not be possible.
+
+References:
+
+     Chambers, J. M. (1992) _Data for models._ Chapter 3 of
+     _Statistical Models in S_ eds J. M. Chambers and T. J. Hastie,
+     Wadsworth &amp; Brooks/Cole.
+
+See Also:
+
+     The 'R Data Import/Export' manual.
+
+     'scan', 'type.convert', 'read.fwf' for reading _f_ixed _w_idth
+     _f_ormatted input; 'write.table'; 'data.frame'.
+
+     'count.fields' can be useful to determine problems with reading
+     files which result in reports of incorrect record lengths (see the
+     'Examples' below).
+
+     &lt;https://www.rfc-editor.org/rfc/rfc4180&gt; for the IANA definition
+     of CSV files (which requires comma as separator and CRLF line
+     endings).
+
+Examples:
+
+     ## using count.fields to handle unknown maximum number of fields
+     ## when fill = TRUE
+     test1 &lt;- c(1:5, "6,7", "8,9,10")
+     tf &lt;- tempfile()
+     writeLines(test1, tf)
+     
+     read.csv(tf, fill = TRUE) # 1 column
+     ncol &lt;- max(count.fields(tf, sep = ","))
+     read.csv(tf, fill = TRUE, header = FALSE,
+              col.names = paste0("V", seq_len(ncol)))
+     unlink(tf)
+     
+     ## "Inline" data set, using text=
+     ## Notice that leading and trailing empty lines are auto-trimmed
+     
+     read.table(header = TRUE, text = "
+     a b
+     1 2
+     3 4
+     ")</code></pre>
+</div>
+</div>
+</section>
+<section id="import-.csv-files" class="slide level2">
+<h2>Import .csv files</h2>
+<p>Reminder</p>
+<pre><code>read.csv(file, header = TRUE, sep = ",", quote = "\"",
+         dec = ".", fill = TRUE, comment.char = "", ...)</code></pre>
+<p><code>file</code> is the first argument and is the path to your file, in quotes</p>
+<pre><code>-       can be path in your local computer -- absolute file path or relative file path 
+-       can be path to a file on a website</code></pre>
+</section>
+<section id="mini-exercise-1" class="slide level2">
+<h2>Mini Exercise</h2>
+<p>If your R Project is not already open, open it so we take advantage of it setting a useful working directory for us in order to import data.</p>
+</section>
+<section id="import-.csv-files-1" class="slide level2">
+<h2>Import .csv files</h2>
+<p>Lets import a new data file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="do">## Examples</span></span>
+<span id="cb6-2"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span>
+<span id="cb6-3"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"~/Dropbox/Git/SISMID-2024/modules/data/serodata.csv"</span>) <span class="co">#absolute path starting from my home directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note #1, I assigned the data frame to an object called <code>df</code>. I could have called the data anything, but in order to use the data (i.e., as an object we can find in the Environment), I need to assign it as an object.</p>
+<p>Note #2, Look to the Environment window, you will see the <code>df</code> object ready to be used.</p>
+</section>
+<section id="import-.txt-files" class="slide level2">
+<h2>Import .txt files</h2>
+<p><code>read.csv()</code> is a special case of <code>read.delim()</code> – a general function to read a delimited file into a data frame</p>
+<pre><code>read.delim(file, header = TRUE, sep = "\t", quote = "\"",
+           dec = ".", fill = TRUE, comment.char = "", ...)</code></pre>
+<ul>
+<li><code>file</code> is the path to your file, in quotes</li>
+<li><code>delim</code> is what separates the fields within a record. The default for csv is comma</li>
+</ul>
+</section>
+<section id="import-.txt-files-1" class="slide level2">
+<h2>Import .txt files</h2>
+<p>Lets first import ‘serodata1.txt’ which uses a tab delminiter and ‘serodata2.txt’ which uses a semicolon delminiter.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="do">## Examples</span></span>
+<span id="cb8-2"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"data/serodata.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb8-3"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"data/serodata.txt"</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data is now successfully read into your R workspace, <strong>many times actually.</strong> Notice, that each time we imported the data we assigned the data to the <code>df</code> object, meaning we replaced it each time we reassinged the <code>df</code> object.</p>
+</section>
+<section id="what-if-we-have-a-.xlsx-file---what-do-we-do" class="slide level2 scrollable">
+<h2>What if we have a .xlsx file - what do we do?</h2>
+<ol type="1">
+<li>Google / Ask ChatGPT</li>
+<li>Find and vet function and package you want</li>
+<li>Install package</li>
+<li>Call package</li>
+<li>Use function</li>
+</ol>
+</section>
+<section id="internet-search" class="slide level2">
+<h2>1. Internet Search</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/ChatGPT.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/GoogleSearch.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/StackOverflow.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="find-and-vet-function-and-package-you-want" class="slide level2">
+<h2>2. Find and vet function and package you want</h2>
+<p>I am getting consistent message to use the the <code>read_excel()</code> function found in the <code>readxl</code> package. This package was developed by Hadley Wickham, who we know is reputable. Also, you can check that data was read in correctly, b/c this is a straightforward task.</p>
+</section>
+<section id="install-package" class="slide level2 scrollable">
+<h2>3. Install Package</h2>
+<p>To use the bundle or “package” of code (and or possibly data) from a package, you need to install and also call the package.</p>
+<p>To install a package you can</p>
+<ol type="1">
+<li>go to Tools —&gt; Install Packages in the RStudio header</li>
+</ol>
+<p>OR</p>
+<ol start="2" type="1">
+<li>use the following code:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Therefore,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="call-package" class="slide level2">
+<h2>4. Call Package</h2>
+<p>Reminder – Installing and calling packages</p>
+<p>To call (i.e., be able to use the package) you can use the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Therefore,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use-function" class="slide level2">
+<h2>5. Use Function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>?read_excel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read xls and xlsx files</p>
+<p>Description:</p>
+<pre><code> Read xls and xlsx files
+
+ 'read_excel()' calls 'excel_format()' to determine if 'path' is
+ xls or xlsx, based on the file extension and the file itself, in
+ that order. Use 'read_xls()' and 'read_xlsx()' directly if you
+ know better and want to prevent such guessing.</code></pre>
+<p>Usage:</p>
+<pre><code> read_excel(
+   path,
+   sheet = NULL,
+   range = NULL,
+   col_names = TRUE,
+   col_types = NULL,
+   na = "",
+   trim_ws = TRUE,
+   skip = 0,
+   n_max = Inf,
+   guess_max = min(1000, n_max),
+   progress = readxl_progress(),
+   .name_repair = "unique"
+ )
+ 
+ read_xls(
+   path,
+   sheet = NULL,
+   range = NULL,
+   col_names = TRUE,
+   col_types = NULL,
+   na = "",
+   trim_ws = TRUE,
+   skip = 0,
+   n_max = Inf,
+   guess_max = min(1000, n_max),
+   progress = readxl_progress(),
+   .name_repair = "unique"
+ )
+ 
+ read_xlsx(
+   path,
+   sheet = NULL,
+   range = NULL,
+   col_names = TRUE,
+   col_types = NULL,
+   na = "",
+   trim_ws = TRUE,
+   skip = 0,
+   n_max = Inf,
+   guess_max = min(1000, n_max),
+   progress = readxl_progress(),
+   .name_repair = "unique"
+ )
+ </code></pre>
+<p>Arguments:</p>
+<pre><code>path: Path to the xls/xlsx file.</code></pre>
+<p>sheet: Sheet to read. Either a string (the name of a sheet), or an integer (the position of the sheet). Ignored if the sheet is specified via ‘range’. If neither argument specifies the sheet, defaults to the first sheet.</p>
+<p>range: A cell range to read from, as described in cell-specification. Includes typical Excel ranges like “B3:D87”, possibly including the sheet name like “Budget!B2:G14”, and more. Interpreted strictly, even if the range forces the inclusion of leading or trailing empty rows or columns. Takes precedence over ‘skip’, ‘n_max’ and ‘sheet’.</p>
+<p>col_names: ‘TRUE’ to use the first row as column names, ‘FALSE’ to get default names, or a character vector giving a name for each column. If user provides ‘col_types’ as a vector, ‘col_names’ can have one entry per column, i.e.&nbsp;have the same length as ‘col_types’, or one entry per unskipped column.</p>
+<p>col_types: Either ‘NULL’ to guess all from the spreadsheet or a character vector containing one entry per column from these options: “skip”, “guess”, “logical”, “numeric”, “date”, “text” or “list”. If exactly one ‘col_type’ is specified, it will be recycled. The content of a cell in a skipped column is never read and that column will not appear in the data frame output. A list cell loads a column as a list of length 1 vectors, which are typed using the type guessing logic from ‘col_types = NULL’, but on a cell-by-cell basis.</p>
+<pre><code>  na: Character vector of strings to interpret as missing values.
+      By default, readxl treats blank cells as missing data.</code></pre>
+<p>trim_ws: Should leading and trailing whitespace be trimmed?</p>
+<pre><code>skip: Minimum number of rows to skip before reading anything, be it
+      column names or data. Leading empty rows are automatically
+      skipped, so this is a lower bound. Ignored if 'range' is
+      given.</code></pre>
+<p>n_max: Maximum number of data rows to read. Trailing empty rows are automatically skipped, so this is an upper bound on the number of rows in the returned tibble. Ignored if ‘range’ is given.</p>
+<p>guess_max: Maximum number of data rows to use for guessing column types.</p>
+<p>progress: Display a progress spinner? By default, the spinner appears only in an interactive session, outside the context of knitting a document, and when the call is likely to run for several seconds or more. See ‘readxl_progress()’ for more details.</p>
+<p>.name_repair: Handling of column names. Passed along to ‘tibble::as_tibble()’. readxl’s default is `.name_repair = “unique”, which ensures column names are not empty and are unique.</p>
+<p>Value:</p>
+<pre><code> A tibble</code></pre>
+<p>See Also:</p>
+<pre><code> cell-specification for more details on targetting cells with the
+ 'range' argument</code></pre>
+<p>Examples:</p>
+<pre><code> datasets &lt;- readxl_example("datasets.xlsx")
+ read_excel(datasets)
+ 
+ # Specify sheet either by position or by name
+ read_excel(datasets, 2)
+ read_excel(datasets, "mtcars")
+ 
+ # Skip rows and use default column names
+ read_excel(datasets, skip = 148, col_names = FALSE)
+ 
+ # Recycle a single column type
+ read_excel(datasets, col_types = "text")
+ 
+ # Specify some col_types and guess others
+ read_excel(datasets, col_types = c("text", "guess", "numeric", "guess", "guess"))
+ 
+ # Accomodate a column with disparate types via col_type = "list"
+ df &lt;- read_excel(readxl_example("clippy.xlsx"), col_types = c("text", "list"))
+ df
+ df$value
+ sapply(df$value, class)
+ 
+ # Limit the number of data rows read
+ read_excel(datasets, n_max = 3)
+ 
+ # Read from an Excel range using A1 or R1C1 notation
+ read_excel(datasets, range = "C1:E7")
+ read_excel(datasets, range = "R1C2:R2C5")
+ 
+ # Specify the sheet as part of the range
+ read_excel(datasets, range = "mtcars!B1:D5")
+ 
+ # Read only specific rows or columns
+ read_excel(datasets, range = cell_rows(102:151), col_names = FALSE)
+ read_excel(datasets, range = cell_cols("B:D"))
+ 
+ # Get a preview of column names
+ names(read_excel(readxl_example("datasets.xlsx"), n_max = 0))
+ 
+ # exploit full .name_repair flexibility from tibble
+ 
+ # "universal" names are unique and syntactic
+ read_excel(
+   readxl_example("deaths.xlsx"),
+   range = "arts!A5:F15",
+   .name_repair = "universal"
+ )
+ 
+ # specify name repair as a built-in function
+ read_excel(readxl_example("clippy.xlsx"), .name_repair = toupper)
+ 
+ # specify name repair as a custom function
+ my_custom_name_repair &lt;- function(nms) tolower(gsub("[.]", "_", nms))
+ read_excel(
+   readxl_example("datasets.xlsx"),
+   .name_repair = my_custom_name_repair
+ )
+ 
+ # specify name repair as an anonymous function
+ read_excel(
+   readxl_example("datasets.xlsx"),
+   sheet = "chickwts",
+   .name_repair = ~ substr(.x, start = 1, stop = 3)
+ )</code></pre>
+</section>
+<section id="use-function-1" class="slide level2">
+<h2>5. Use Function</h2>
+<p>Reminder</p>
+<pre><code>read_excel(
+  path,
+  sheet = NULL,
+  range = NULL,
+  col_names = TRUE,
+  col_types = NULL,
+  na = "",
+  trim_ws = TRUE,
+  skip = 0,
+  n_max = Inf,
+  guess_max = min(1000, n_max),
+  progress = readxl_progress(),
+  .name_repair = "unique"
+)</code></pre>
+<p>Let’s practice</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data/serodata.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mini-exercise-2" class="slide level2 scrollable">
+<h2>Mini exercise</h2>
+<p>Lets make some mistakes</p>
+<ol type="1">
+<li><p>What if we read in the data without assigning it to an object (i.e., <code>read_excel(path = "data/serodata.xlsx", sheet = "Data")</code>)?</p></li>
+<li><p>What if we forget to specify the sheet argument? (i.e., <code>dd &lt;- read_excel(path = "data/serodata.xlsx")</code>)?</p></li>
+</ol>
+</section>
+<section id="installing-and-calling-packages---common-confusion" class="slide level2">
+<h2>Installing and calling packages - Common confusion</h2>
+<p>You only need to install a package once (unless you update R), but you will need to call or load a package each time you want to use it.</p>
+<p>The exception to this rule are the “base” set of packages (i.e., <strong>Base R</strong>) that are installed automatically when you install R and that automatically called whenever you open R or RStudio.</p>
+</section>
+<section id="common-error" class="slide level2">
+<h2>Common Error</h2>
+<p>Be prepared to see the error</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>Error<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">"some_function"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This usually mean that either</p>
+<ul>
+<li>you called the function by the wrong name</li>
+<li>you have not installed a package that contains the function</li>
+<li>you have installed a package but you forgot to call it (i.e., <code>library(package_name)</code>) – <strong>most likely</strong></li>
+</ul>
+</section>
+<section id="export-write-data" class="slide level2">
+<h2>Export (write) Data</h2>
+<ul>
+<li>Exporting or ‘Writing out’ data allows you to save modified files to future use or sharing</li>
+<li>R can write almost any file format, especially with external, non-Base R, packages</li>
+<li>We are going to focus again on writing delimited files</li>
+</ul>
+</section>
+<section id="export-delimited-data" class="slide level2">
+<h2>Export delimited data</h2>
+<p>Within the Base R ‘util’ package we can find a handful of useful functions including <code>write.csv()</code> and <code>write.table()</code> to exporting data.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Data Output
+
+Description:
+
+     'write.table' prints its required argument 'x' (after converting
+     it to a data frame if it is not one nor a matrix) to a file or
+     connection.
+
+Usage:
+
+     write.table(x, file = "", append = FALSE, quote = TRUE, sep = " ",
+                 eol = "\n", na = "NA", dec = ".", row.names = TRUE,
+                 col.names = TRUE, qmethod = c("escape", "double"),
+                 fileEncoding = "")
+     
+     write.csv(...)
+     write.csv2(...)
+     
+Arguments:
+
+       x: the object to be written, preferably a matrix or data frame.
+          If not, it is attempted to coerce 'x' to a data frame.
+
+    file: either a character string naming a file or a connection open
+          for writing.  '""' indicates output to the console.
+
+  append: logical. Only relevant if 'file' is a character string.  If
+          'TRUE', the output is appended to the file.  If 'FALSE', any
+          existing file of the name is destroyed.
+
+   quote: a logical value ('TRUE' or 'FALSE') or a numeric vector.  If
+          'TRUE', any character or factor columns will be surrounded by
+          double quotes.  If a numeric vector, its elements are taken
+          as the indices of columns to quote.  In both cases, row and
+          column names are quoted if they are written.  If 'FALSE',
+          nothing is quoted.
+
+     sep: the field separator string.  Values within each row of 'x'
+          are separated by this string.
+
+     eol: the character(s) to print at the end of each line (row).  For
+          example, 'eol = "\r\n"' will produce Windows' line endings on
+          a Unix-alike OS, and 'eol = "\r"' will produce files as
+          expected by Excel:mac 2004.
+
+      na: the string to use for missing values in the data.
+
+     dec: the string to use for decimal points in numeric or complex
+          columns: must be a single character.
+
+row.names: either a logical value indicating whether the row names of
+          'x' are to be written along with 'x', or a character vector
+          of row names to be written.
+
+col.names: either a logical value indicating whether the column names
+          of 'x' are to be written along with 'x', or a character
+          vector of column names to be written.  See the section on
+          'CSV files' for the meaning of 'col.names = NA'.
+
+ qmethod: a character string specifying how to deal with embedded
+          double quote characters when quoting strings.  Must be one of
+          '"escape"' (default for 'write.table'), in which case the
+          quote character is escaped in C style by a backslash, or
+          '"double"' (default for 'write.csv' and 'write.csv2'), in
+          which case it is doubled.  You can specify just the initial
+          letter.
+
+fileEncoding: character string: if non-empty declares the encoding to
+          be used on a file (not a connection) so the character data
+          can be re-encoded as they are written.  See 'file'.
+
+     ...: arguments to 'write.table': 'append', 'col.names', 'sep',
+          'dec' and 'qmethod' cannot be altered.
+
+Details:
+
+     If the table has no columns the rownames will be written only if
+     'row.names = TRUE', and _vice versa_.
+
+     Real and complex numbers are written to the maximal possible
+     precision.
+
+     If a data frame has matrix-like columns these will be converted to
+     multiple columns in the result (_via_ 'as.matrix') and so a
+     character 'col.names' or a numeric 'quote' should refer to the
+     columns in the result, not the input.  Such matrix-like columns
+     are unquoted by default.
+
+     Any columns in a data frame which are lists or have a class (e.g.,
+     dates) will be converted by the appropriate 'as.character' method:
+     such columns are unquoted by default.  On the other hand, any
+     class information for a matrix is discarded and non-atomic (e.g.,
+     list) matrices are coerced to character.
+
+     Only columns which have been converted to character will be quoted
+     if specified by 'quote'.
+
+     The 'dec' argument only applies to columns that are not subject to
+     conversion to character because they have a class or are part of a
+     matrix-like column (or matrix), in particular to columns protected
+     by 'I()'.  Use 'options("OutDec")' to control such conversions.
+
+     In almost all cases the conversion of numeric quantities is
+     governed by the option '"scipen"' (see 'options'), but with the
+     internal equivalent of 'digits = 15'.  For finer control, use
+     'format' to make a character matrix/data frame, and call
+     'write.table' on that.
+
+     These functions check for a user interrupt every 1000 lines of
+     output.
+
+     If 'file' is a non-open connection, an attempt is made to open it
+     and then close it after use.
+
+     To write a Unix-style file on Windows, use a binary connection
+     e.g. 'file = file("filename", "wb")'.
+
+CSV files:
+
+     By default there is no column name for a column of row names.  If
+     'col.names = NA' and 'row.names = TRUE' a blank column name is
+     added, which is the convention used for CSV files to be read by
+     spreadsheets.  Note that such CSV files can be read in R by
+
+       read.csv(file = "&lt;filename&gt;", row.names = 1)
+     
+     'write.csv' and 'write.csv2' provide convenience wrappers for
+     writing CSV files.  They set 'sep' and 'dec' (see below), 'qmethod
+     = "double"', and 'col.names' to 'NA' if 'row.names = TRUE' (the
+     default) and to 'TRUE' otherwise.
+
+     'write.csv' uses '"."' for the decimal point and a comma for the
+     separator.
+
+     'write.csv2' uses a comma for the decimal point and a semicolon
+     for the separator, the Excel convention for CSV files in some
+     Western European locales.
+
+     These wrappers are deliberately inflexible: they are designed to
+     ensure that the correct conventions are used to write a valid
+     file.  Attempts to change 'append', 'col.names', 'sep', 'dec' or
+     'qmethod' are ignored, with a warning.
+
+     CSV files do not record an encoding, and this causes problems if
+     they are not ASCII for many other applications.  Windows Excel
+     2007/10 will open files (e.g., by the file association mechanism)
+     correctly if they are ASCII or UTF-16 (use 'fileEncoding =
+     "UTF-16LE"') or perhaps in the current Windows codepage (e.g.,
+     '"CP1252"'), but the 'Text Import Wizard' (from the 'Data' tab)
+     allows far more choice of encodings.  Excel:mac 2004/8 can
+     _import_ only 'Macintosh' (which seems to mean Mac Roman),
+     'Windows' (perhaps Latin-1) and 'PC-8' files.  OpenOffice 3.x asks
+     for the character set when opening the file.
+
+     There is an IETF RFC4180
+     (&lt;https://www.rfc-editor.org/rfc/rfc4180&gt;) for CSV files, which
+     mandates comma as the separator and CRLF line endings.
+     'write.csv' writes compliant files on Windows: use 'eol = "\r\n"'
+     on other platforms.
+
+Note:
+
+     'write.table' can be slow for data frames with large numbers
+     (hundreds or more) of columns: this is inevitable as each column
+     could be of a different class and so must be handled separately.
+     If they are all of the same class, consider using a matrix
+     instead.
+
+See Also:
+
+     The 'R Data Import/Export' manual.
+
+     'read.table', 'write'.
+
+     'write.matrix' in package 'MASS'.
+
+Examples:
+
+     x &lt;- data.frame(a = I("a \" quote"), b = pi)
+     tf &lt;- tempfile(fileext = ".csv")
+     
+     ## To write a CSV file for input to Excel one might use
+     write.table(x, file = tf, sep = ",", col.names = NA,
+                 qmethod = "double")
+     file.show(tf)
+     ## and to read this file back into R one needs
+     read.table(tf, header = TRUE, sep = ",", row.names = 1)
+     ## NB: you do need to specify a separator if qmethod = "double".
+     
+     ### Alternatively
+     write.csv(x, file = tf)
+     read.csv(tf, row.names = 1)
+     ## or without row names
+     write.csv(x, file = tf, row.names = FALSE)
+     read.csv(tf)
+     
+     ## Not run:
+     
+     ## To write a file in Mac Roman for simple use in Mac Excel 2004/8
+     write.csv(x, file = "foo.csv", fileEncoding = "macroman")
+     ## or for Windows Excel 2007/10
+     write.csv(x, file = "foo.csv", fileEncoding = "UTF-16LE")
+     ## End(Not run)</code></pre>
+</div>
+</div>
+</section>
+<section id="export-delimited-data-1" class="slide level2">
+<h2>Export delimited data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">write.csv</span>(df, <span class="at">file=</span><span class="st">"data/serodata_new.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#comma delimited</span></span>
+<span id="cb26-2"><a></a><span class="fu">write.table</span>(df, <span class="at">file=</span><span class="st">"data/serodata1_new.txt"</span>, <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#tab delimited</span></span>
+<span id="cb26-3"><a></a><span class="fu">write.table</span>(df, <span class="at">file=</span><span class="st">"data/serodata2_new.txt"</span>, <span class="at">sep=</span><span class="st">";"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#semicolon delimited</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note, I wrote the data to new file names. Even though we didn’t change the data at all in this module, it is good practice to keep raw data raw, and not to write over it.</p>
+</section>
+<section id="r-.rds-and-.rdardata-files" class="slide level2">
+<h2>R .rds and .rda/RData files</h2>
+<p>There are two file extensions worth discussing.</p>
+<p>R has two native data formats—Rdata (sometimes shortened to Rda) and Rds. These formats are used when R objects are saved for later use. Rdata is used to save multiple R objects, while Rds is used to save a single R object.</p>
+</section>
+<section id="rds-binary-file" class="slide level2">
+<h2>.rds binary file</h2>
+<p>Saving datasets in <code>.rds</code> format can save time if you have to read it back in later.</p>
+<p><code>write_rds()</code> and <code>read_rds()</code> from <code>readr</code> package can be used to write/read a single R object to/from file.</p>
+<pre><code>library(readr)
+write_rds(object1, file = "filename.rds")
+object1 &lt;- read_rds(file = "filename.rds")</code></pre>
+</section>
+<section id="rdardata-files" class="slide level2">
+<h2>.rda/RData files</h2>
+<p>The Base R functions <code>save()</code> and <code>load()</code> can be used to save and load multiple R objects.</p>
+<p><code>save()</code> writes an external representation of R objects to the specified file, and can by loaded back into the environment using <code>load()</code>. A nice feature about using <code>save</code> and <code>load</code> is that the R object is directly imported into the environment and you don’t have to assign it to an object. The files can be saved as <code>.RData</code> or <code>.rda</code> files.</p>
+<pre><code>save(object1, object2, file = "filename.RData")
+load("filename.RData")</code></pre>
+<p>Note, that when you read .RData files you don’t need to assign it to an abjecct. It simply reads in the objects as they were saved. Therefore, <code>load("filename.RData")</code> will read in <code>object1</code> and <code>object2</code> directly into the Global Environment.</p>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Importing or ‘Reading in’ data is the first step of any real project/analysis</li>
+<li>The Base R ‘util’ package we can find a handful of useful functions including <code>read.csv()</code> and <code>read.delim()</code> to importing/reading data or <code>write.csv()</code> and <code>write.table()</code> for exporti/writing data</li>
+<li>When importing data (exception is object from .RData), you must assign it to an object, otherwise it cannot be called/used</li>
+<li>Properly read data can be found in the Environment window of RStudio</li>
+<li>You only need to install a package once (unless you update R), but you will need to call or load a package each time you want to use it.</li>
+<li>To complete a tasek you don’t know how to do (e.g., reading in an excel data file) use the following steps: 1. Google / Ask ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Call package, 5. Use function</li>
+</ul>
+</section>
+<section id="acknowledgements" class="slide level2">
+<h2>Acknowledgements</h2>
+<p>These are the materials we looked through, modified, or extracted to complete this module’s lecture.</p>
+<ul>
+<li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
+</ul>
+
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

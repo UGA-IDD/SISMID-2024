@@ -12,7 +12,7 @@
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) – Module 1: Introduction to RStudio and R Basics</title>
+  <title>SISMID Module NUMBER Materials (2025) – Module 4: R Project</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,71 +30,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -393,7 +328,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Module 1: Introduction to RStudio and R Basics</h1>
+  <h1 class="title">Module 4: R Project</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -413,417 +348,88 @@
 <h2 id="toc-title">Page Items</h2>
 <ul>
 <li><a href="#/learning-objectives" id="/toc-learning-objectives">Learning Objectives</a></li>
-<li><a href="#/working-with-r-rstudio" id="/toc-working-with-r-rstudio">Working with R – RStudio</a></li>
-<li><a href="#/rstudio" id="/toc-rstudio">RStudio</a></li>
-<li><a href="#/rstudio-1" id="/toc-rstudio-1">RStudio</a></li>
-<li><a href="#/getting-the-editor" id="/toc-getting-the-editor">Getting the editor</a></li>
-<li><a href="#/working-with-r-in-rstudio---2-major-panes" id="/toc-working-with-r-in-rstudio---2-major-panes">Working with R in RStudio - 2 major panes:</a></li>
-<li><a href="#/source-editor" id="/toc-source-editor">Source / Editor</a></li>
-<li><a href="#/r-console" id="/toc-r-console">R Console</a></li>
-<li><a href="#/rstudio-2" id="/toc-rstudio-2">RStudio</a></li>
-<li><a href="#/rstudio-layout" id="/toc-rstudio-layout">RStudio Layout</a></li>
-<li><a href="#/workspaceenvironment" id="/toc-workspaceenvironment">Workspace/Environment</a></li>
-<li><a href="#/workspacehistory" id="/toc-workspacehistory">Workspace/History</a></li>
-<li><a href="#/workspaceother-panes" id="/toc-workspaceother-panes">Workspace/Other Panes</a></li>
-<li><a href="#/getting-started" id="/toc-getting-started">Getting Started</a></li>
-<li><a href="#/explaining-output-on-slides" id="/toc-explaining-output-on-slides">Explaining output on slides</a></li>
-<li><a href="#/r-as-a-calculator" id="/toc-r-as-a-calculator">R as a calculator</a></li>
-<li><a href="#/r-as-a-calculator-1" id="/toc-r-as-a-calculator-1">R as a calculator</a></li>
-<li><a href="#/execute-run-code" id="/toc-execute-run-code">Execute / Run Code</a></li>
-<li><a href="#/mini-exercise" id="/toc-mini-exercise">Mini exercise</a></li>
-<li><a href="#/commenting-in-scripts" id="/toc-commenting-in-scripts">Commenting in Scripts</a></li>
-<li><a href="#/commenting-an-r-script-header" id="/toc-commenting-an-r-script-header">Commenting an R Script header</a></li>
-<li><a href="#/commenting-to-create-sections" id="/toc-commenting-to-create-sections">Commenting to create sections</a></li>
-<li><a href="#/commenting-to-explain-code" id="/toc-commenting-to-explain-code">Commenting to explain code</a></li>
-<li><a href="#/commenting-to-explain-code-1" id="/toc-commenting-to-explain-code-1">Commenting to explain code</a></li>
-<li><a href="#/object---basic-terms" id="/toc-object---basic-terms">Object - Basic terms</a></li>
-<li><a href="#/objects" id="/toc-objects">Objects</a></li>
-<li><a href="#/mini-exercise-1" id="/toc-mini-exercise-1">Mini Exercise</a></li>
-<li><a href="#/objects-1" id="/toc-objects-1">Objects</a></li>
-<li><a href="#/assignment---good-coding" id="/toc-assignment---good-coding">Assignment - Good coding</a></li>
-<li><a href="#/lists" id="/toc-lists">Lists</a></li>
-<li><a href="#/useful-r-studio-shortcuts" id="/toc-useful-r-studio-shortcuts">Useful R Studio Shortcuts</a></li>
-<li><a href="#/rstudio-helps-with-tab-completion" id="/toc-rstudio-helps-with-tab-completion">RStudio helps with “tab completion”</a></li>
+<li><a href="#/rstudio-project" id="/toc-rstudio-project">RStudio Project</a></li>
+<li><a href="#/rstudio-project-creation" id="/toc-rstudio-project-creation">RStudio Project Creation</a></li>
+<li><a href="#/rstudio-project-organization" id="/toc-rstudio-project-organization">RStudio Project Organization</a></li>
+<li><a href="#/some-things-to-notice-in-an-r-project" id="/toc-some-things-to-notice-in-an-r-project">Some things to notice in an R Project</a></li>
+<li><a href="#/r-project---common-issues" id="/toc-r-project---common-issues">R Project - Common issues</a></li>
 <li><a href="#/summary" id="/toc-summary">Summary</a></li>
-<li><a href="#/mini-exercise-2" id="/toc-mini-exercise-2">Mini Exercise</a></li>
+<li><a href="#/mini-exercise" id="/toc-mini-exercise">Mini Exercise</a></li>
 <li><a href="#/acknowledgements" id="/toc-acknowledgements">Acknowledgements</a></li>
 </ul>
 </nav>
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
-<p>After module 1, you should be able to…</p>
+<p>After module 4, you should be able to…</p>
 <ul>
-<li>Create and save an R script</li>
-<li>Describe the utility and differences b/w the console and an R script</li>
-<li>Modify R Studio windows</li>
-<li>Create objects</li>
-<li>Describe the difference b/w character, numeric, list, and matrix objects</li>
-<li>Reference objects in the RStudio Global Environment</li>
-<li>Use basic arithmetic operators in R</li>
-<li>Use comments within an R script to create header, sections, and make notes</li>
+<li>Create an R Project</li>
+<li>Check you are in the desired R Project</li>
+<li>Reference the Files window in RStudio</li>
+<li>Describe “good” R Project organization</li>
 </ul>
 </section>
-<section id="working-with-r-rstudio" class="slide level2">
-<h2>Working with R – RStudio</h2>
-<p>RStudio is an Integrated Development Environment (IDE) for R</p>
-<ul>
-<li>It helps the user effectively use R</li>
-<li>Makes things easier</li>
-<li>Is NOT a dropdown statistical tool (such as Stata)
-<ul>
-<li>See <a href="https://cran.r-project.org/web/packages/Rcmdr/index.html">Rcmdr</a> or <a href="http://vnijs.github.io/radiant/">Radiant</a></li>
-</ul></li>
-</ul>
-
-<img data-src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:30.0%" alt="RStudio logo"></section>
-<section id="rstudio" class="slide level2">
-<h2>RStudio</h2>
-<p>Easier working with R</p>
-<ul>
-<li>Syntax highlighting, code completion, and smart indentation</li>
-<li>Easily manage multiple working directories and projects</li>
-</ul>
-<p>More information</p>
-<ul>
-<li>Workspace browser and data viewer</li>
-<li>Plot history, zooming, and flexible image and file export</li>
-<li>Integrated R help and documentation</li>
-<li>Searchable command history</li>
-</ul>
-</section>
-<section id="rstudio-1" class="slide level2">
-<h2>RStudio</h2>
-
-<img data-src="https://ayeimanolr.files.wordpress.com/2013/04/r-rstudio-1-1.png?w=640&amp;h=382" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="RStudio"></section>
-<section id="getting-the-editor" class="slide level2">
-<h2>Getting the editor</h2>
-
-<img data-src="images/both.png" style="width:90.0%" class="r-stretch"></section>
-<section id="working-with-r-in-rstudio---2-major-panes" class="slide level2 scrollable">
-<h2>Working with R in RStudio - 2 major panes:</h2>
+<section id="rstudio-project" class="slide level2 scrollable">
+<h2>RStudio Project</h2>
+<p>RStudio “Project” is one highly recommended strategy to build organized and reproducible code in R.</p>
 <ol type="1">
-<li>The <strong>Source/Editor</strong>: “Analysis” Script + Interactive Exploration
-<ul>
-<li>Static copy of what you did (reproducibility)</li>
-<li>Top by default</li>
-</ul></li>
-<li>The <strong>R Console</strong>: “interprets” whatever you type
-<ul>
-<li>Calculator</li>
-<li>Try things out interactively, then add to your editor</li>
-<li>Bottom by default</li>
-</ul></li>
+<li>Helps with working directories by easily incorporating relative paths only.</li>
+<li>Helps you organize your code, data, and output.</li>
+<li>Allows you to open multiple RStudio sessions at once!</li>
 </ol>
 </section>
-<section id="source-editor" class="slide level2">
-<h2>Source / Editor</h2>
-<ul>
-<li>Where files open to</li>
-<li>Have R code and comments in them</li>
-<li>Where code is saved</li>
-</ul>
-
-<img data-src="images/rstudio_script.png" style="width:200.0%" class="r-stretch"></section>
-<section id="r-console" class="slide level2">
-<h2>R Console</h2>
-<ul>
-<li>Where code is executed (where things happen)</li>
-<li>You can type here for things interactively</li>
-<li>Code is <strong>not saved</strong></li>
-</ul>
-
-<img data-src="images/rstudio_console.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
-<section id="rstudio-2" class="slide level2">
-<h2>RStudio</h2>
-<p>Useful RStudio “cheat sheet”: <a href="https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf" class="uri">https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf</a></p>
-
-<img data-src="images/rstudio_sheet.png" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%" alt="RStudio"></section>
-<section id="rstudio-layout" class="slide level2">
-<h2>RStudio Layout</h2>
-<p>If RStudio doesn’t look the way you want (or like our RStudio), then do:</p>
-<p>RStudio –&gt; View –&gt; Panes –&gt; Pane Layout</p>
-
-<img data-src="images/pane_layout.png" class="quarto-figure quarto-figure-center r-stretch" width="500"></section>
-<section id="workspaceenvironment" class="slide level2">
-<h2>Workspace/Environment</h2>
-<ul>
-<li>Tells you what <strong>objects</strong> are in R</li>
-<li>What exists in memory/what is loaded?/what did I read in?</li>
-</ul>
-
-<img data-src="images/rstudio_environment.png" style="width:90.0%" class="r-stretch"></section>
-<section id="workspacehistory" class="slide level2">
-<h2>Workspace/History</h2>
-<ul>
-<li>Shows previous commands. Good to look at for debugging, but <strong>don’t rely</strong> on it.</li>
-<li>Also type the “up” key in the Console to scroll through previous commands</li>
-</ul>
+<section id="rstudio-project-creation" class="slide level2">
+<h2>RStudio Project Creation</h2>
+<p>Let’s create a new RStudio Project.</p>
+<p>Go to File –&gt; New Project –&gt; New Directory –&gt; New Project</p>
+<p>Call your Project “IntroToR_RProject”</p>
 </section>
-<section id="workspaceother-panes" class="slide level2">
-<h2>Workspace/Other Panes</h2>
+<section id="rstudio-project-organization" class="slide level2">
+<h2>RStudio Project Organization</h2>
+<p>This is my personal preference for organizing an R Project. But, for this workshop it will be mandatory as it will help us help you. A critical component of conducting any data analysis is being able to reproduce it! Organizing your code, data, output, and figures is a necessary (although not sufficient) condition for reproducibility.</p>
+<p>Create 4 sub-directories with the following names within your “SISMID_IntroToR_RProject” folder:</p>
 <ul>
-<li><strong>Files</strong> - shows the files on your computer of the directory you are working in</li>
-<li><strong>Viewer</strong> - can view data or R objects</li>
-<li><strong>Help</strong> - shows help of R commands</li>
-<li><strong>Plots</strong> - pictures and figures</li>
-<li><strong>Packages</strong> - list of R packages that are loaded in memory</li>
+<li>code</li>
+<li>data</li>
+<li>output</li>
+<li>figures</li>
 </ul>
+<p>We will be working from this directory for the remainder of the Workshop. Take a moment to move any R scripts you have already created to the ‘code’ sub-directories.</p>
 </section>
-<section id="getting-started" class="slide level2">
-<h2>Getting Started</h2>
-<ul>
-<li>File –&gt; New File –&gt; R Script</li>
-<li>Save the blank R script as Module1.R</li>
-</ul>
-</section>
-<section id="explaining-output-on-slides" class="slide level2">
-<h2>Explaining output on slides</h2>
-<p>In slides, a command (we’ll also call them code or a code chunk) will look like this</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">print</span>(<span class="st">"I'm code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "I'm code"</code></pre>
-</div>
-</div>
-<p>And then directly after it, will be the output of the code.<br>
-So <code>print("I'm code")</code> is the code chunk and <code>[1] "I'm code"</code> is the output.</p>
-</section>
-<section id="r-as-a-calculator" class="slide level2">
-<h2>R as a calculator</h2>
-<p>You can do basic arithmetic in R, which I surprisingly use all the time.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
-</div>
-</div>
-</section>
-<section id="r-as-a-calculator-1" class="slide level2">
-<h2>R as a calculator</h2>
-<ul>
-<li>The R console is a full calculator</li>
-<li>Try to play around with it:
-<ul>
-<li>+, -, /, * are add, subtract, divide and multiply</li>
-<li>^ or ** is power</li>
-<li>parentheses – ( and ) – work with order of operations</li>
-<li>%% finds the remainder</li>
-</ul></li>
-</ul>
-</section>
-<section id="execute-run-code" class="slide level2 scrollable">
-<h2>Execute / Run Code</h2>
-<p>To execute or run a line of code, you just put your cursor on line of code and then:</p>
+<section id="some-things-to-notice-in-an-r-project" class="slide level2 scrollable">
+<h2>Some things to notice in an R Project</h2>
 <ol type="1">
-<li>Press Run (which you will find at the top of your window)</li>
-</ol>
-<p>OR</p>
-<ol start="2" type="1">
-<li>Press <code>Cmd + Return</code> (iOS) OR <code>Ctrl + Enter</code> (Windows).</li>
-</ol>
-<p>To execute or run multiple lines of code, you just need to highlight the code you want to run and then follow option 1 or 2.</p>
-</section>
-<section id="mini-exercise" class="slide level2">
-<h2>Mini exercise</h2>
-<p>Execute <code>5+4</code> from your .R file, and then find the answer 9 in the Console.</p>
-</section>
-<section id="commenting-in-scripts" class="slide level2 scrollable">
-<h2>Commenting in Scripts</h2>
-<p>The syntax <code>#</code> creates a comment, which means anything to the right of <code>#</code> will not be executed / run</p>
-<p>Commenting is useful to:</p>
-<ol type="1">
-<li>Create headers for R Scripts</li>
-<li>Create sections within an R Script</li>
-<li>Explain what is happening in your code</li>
+<li>The name of the R Project will be shown at the top of the RStudio application</li>
+<li>If you check the working directory using <code>getwd()</code> you will find the working directory is set to the location where the R Project was saved.</li>
+<li>The Files window in RStudio is also set to the location where the R Project was saved, making it easy to navigate to sub-directories directly from RStudio.</li>
 </ol>
 </section>
-<section id="commenting-an-r-script-header" class="slide level2">
-<h2>Commenting an R Script header</h2>
-<p>Add a comment header to Module1.R. This is the one I typically use, but you may have your own preference. The goal is that you are consistent so that future you / collaborators can make sense of your code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="do">### Title: Module 1</span></span>
-<span id="cb9-2"><a></a><span class="do">### Author: Amy Winter </span></span>
-<span id="cb9-3"><a></a><span class="do">### Objective: Mini Exercise - Developing first R Script</span></span>
-<span id="cb9-4"><a></a><span class="do">### Date: 15 July 2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="r-project---common-issues" class="slide level2">
+<h2>R Project - Common issues</h2>
+<p>If you simply open RStudio, it will not automatically open your R Project. As a result, when you say run a function to import data using the relative path based on your working directory, it won’t be able to find the data.</p>
+<p>To open a previously created R Project, you need to open the R Project (i.e., SISMID_IntroToR_RProject.RProj)</p>
 </section>
-<section id="commenting-to-create-sections" class="slide level2">
-<h2>Commenting to create sections</h2>
-<p>You can also create sections within your code by ending a comment with 4 hash marks. <strong>This is very useful for creating an outline of your R Script.</strong> The “Outline” can be found in the top right of the your source window.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Section 1 Header ####</span></span>
-<span id="cb10-2"><a></a><span class="do">## Section 2 Sub-header ####</span></span>
-<span id="cb10-3"><a></a><span class="do">### Section 3 Sub-sub-header ####</span></span>
-<span id="cb10-4"><a></a><span class="do">#### Section 4 Sub-sub-sub-header ####</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-<img data-src="images/outline.png" style="width:90.0%" class="r-stretch"></section>
-<section id="commenting-to-explain-code" class="slide level2">
-<h2>Commenting to explain code</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="do">## this # is still a comment</span></span>
-<span id="cb11-2"><a></a><span class="do">### you can use many #'s as you want</span></span>
-<span id="cb11-3"><a></a></span>
-<span id="cb11-4"><a></a><span class="co"># sometimes you have a really long comment,</span></span>
-<span id="cb11-5"><a></a><span class="co">#    like explaining what you are doing</span></span>
-<span id="cb11-6"><a></a><span class="co">#    for a step in analysis. </span></span>
-<span id="cb11-7"><a></a><span class="co"># Take it to another line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="commenting-to-explain-code-1" class="slide level2">
-<h2>Commenting to explain code</h2>
-<p>I tend to use:</p>
-<ul>
-<li>One hash tag with a space to describe what is happening in the following few lines of code</li>
-<li>One hastag with no space after a command to list specifics</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Practicing my arithmetic</span></span>
-<span id="cb12-2"><a></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span></span>
-<span id="cb12-3"><a></a><span class="dv">3</span><span class="sc">*</span><span class="dv">5</span></span>
-<span id="cb12-4"><a></a><span class="dv">9</span><span class="sc">/</span><span class="dv">8</span></span>
-<span id="cb12-5"><a></a></span>
-<span id="cb12-6"><a></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span> <span class="co">#5 plus 2 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="object---basic-terms" class="slide level2">
-<h2>Object - Basic terms</h2>
-<p><strong>Object</strong> - an object is something that can be worked with in R - can be lots of different things!</p>
-<ul>
-<li>a scalar / number</li>
-<li>a vector</li>
-<li>a matrix of numbers</li>
-<li>a list</li>
-<li>a plot</li>
-<li>a function</li>
-</ul>
-<p>… many more</p>
-</section>
-<section id="objects" class="slide level2">
-<h2>Objects</h2>
-<ul>
-<li>You can create objects from within the R environment and from files on your computer</li>
-<li>R uses <code>&lt;-</code> to assign values to an object name</li>
-<li>Note: Object names are case-sensitive, i.e.&nbsp;X and x are different</li>
-<li>Here are examples of creating five different objects:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb13-2"><a></a>character.object <span class="ot">&lt;-</span> <span class="st">"blue"</span></span>
-<span id="cb13-3"><a></a>vector.object1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb13-4"><a></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
-<span id="cb13-5"><a></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Note, <code>c()</code> and <code>matrix()</code> are functions, which we will talk more about in module 2.</p>
-</section>
-<section id="mini-exercise-1" class="slide level2">
-<h2>Mini Exercise</h2>
-<p>Try creating one or two of these objects in your R script</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb14-2"><a></a>character.object <span class="ot">&lt;-</span> <span class="st">"blue"</span></span>
-<span id="cb14-3"><a></a>vector.object1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb14-4"><a></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
-<span id="cb14-5"><a></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="objects-1" class="slide level2">
-<h2>Objects</h2>
-<p>Note, you can find these objects now in the Global Environment.</p>
-
-<img data-src="images/global_env.png" style="width:90.0%" class="r-stretch"><p>Also, you can call them anytime (i.e, see them in the Console) by executing (running) the object. For example,</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>character.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "blue"</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>matrix.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2]
-[1,]    2    3
-[2,]    4    5</code></pre>
-</div>
-</div>
-</section>
-<section id="assignment---good-coding" class="slide level2">
-<h2>Assignment - Good coding</h2>
-<p><code>=</code> and <code>&lt;-</code> can both be used for assignment, but <code>&lt;-</code> is better coding practice, because <code>==</code> is a logical operator. We will talk about this more, later.</p>
-</section>
-<section id="lists" class="slide level2">
-<h2>Lists</h2>
-<p>List is a special data class, that can hold vectors, strings, matrices, models, list of other lists.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>list.object <span class="ot">&lt;-</span> <span class="fu">list</span>(number.object, vector.object2, matrix.object)</span>
-<span id="cb19-2"><a></a>list.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 3
-
-[[2]]
-[1] "blue"   "red"    "yellow"
-
-[[3]]
-     [,1] [,2]
-[1,]    2    3
-[2,]    4    5</code></pre>
-</div>
-</div>
-</section>
-<section id="useful-r-studio-shortcuts" class="slide level2">
-<h2>Useful R Studio Shortcuts</h2>
-<p>Will certainly save you time</p>
-<ul>
-<li><code>Cmd + Return</code> (iOS) OR <code>Ctrl + Enter</code> (Windows) in your script evaluates current line/selection
-<ul>
-<li>It’s like copying and pasting the code into the console for it to run.</li>
-</ul></li>
-<li>pressing Up/Down in the Console allows you to navigate command history</li>
-</ul>
-<p>See <a href="http://www.rstudio.com/ide/docs/using/keyboard_shortcuts" class="uri">http://www.rstudio.com/ide/docs/using/keyboard_shortcuts</a> for many more</p>
-</section>
-<section id="rstudio-helps-with-tab-completion" class="slide level2">
-<h2>RStudio helps with “tab completion”</h2>
-<p>If you start typing a object, RStudio will show you options that you can choose without typing out the whole object.</p>
-
-<img data-src="images/tab.completion.png" style="width:90.0%" class="r-stretch"></section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
-<li>RStudio makes working in R easier</li>
-<li>The Editor is for static code like R Scripts</li>
-<li>The Console is for testing code that can’t be saved</li>
-<li>Commenting is your new best friend</li>
-<li>In R we create objects that can be viewed in the Environment panel and called anytime</li>
-<li>An object is something that can be worked with in R</li>
-<li>Use <code>&lt;-</code> syntax to create objects</li>
+<li>R Projects are really helpful for lots of reasons, including to improve the reproducibility of your work</li>
+<li>Consistently set up your R Project’s sub-directories so that you can easily navigate the project</li>
 </ul>
 </section>
-<section id="mini-exercise-2" class="slide level2 scrollable">
+<section id="mini-exercise" class="slide level2 scrollable">
 <h2>Mini Exercise</h2>
 <ol type="1">
-<li>Create a new number object and name it <code>my.object</code></li>
-<li>Create a vector of 4 numbers and name it <code>my.vector</code> using the <code>c()</code> function</li>
-<li>Add <code>my.object</code> and <code>my.vector</code> together use arithmatic operator</li>
+<li>Close R Studio</li>
+<li>Reopen you R Project</li>
+<li>Check that you are actually in the R Project</li>
+<li>Create a new R script and save it in your ‘code’ subdirectory</li>
+<li>Create a vector of numbers and then get a summary statistics of that vector (e.g., sum, mean, median)</li>
+<li>Add comment(s) to your R script to explain your code.</li>
 </ol>
 </section>
 <section id="acknowledgements" class="slide level2">
 <h2>Acknowledgements</h2>
-<p>These are the materials I looked through, modified, or extracted to complete this module’s lecture.</p>
-<ul>
-<li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
-<li>Some RStudio snapshots were pulled from <a href="http://ayeimanol-r.net/2013/04/21/289/" class="uri">http://ayeimanol-r.net/2013/04/21/289/</a></li>
-</ul>
+<p>These are the materials we looked through, modified, or extracted to complete this module’s lecture.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1041,44 +647,6 @@ So <code>print("I'm code")</code> is the code chunk and <code>[1] "I'm code"</co
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

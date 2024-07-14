@@ -31,12 +31,18 @@ A delimited file is a sequential file with column delimiters. Each delimited fil
 
 1. Download Module 5 data from the website and save the data to your data subdirectory -- specifically `SISMID_IntroToR_RProject/data`
 
-2. Open the data files in a text editor application and determine he delminiter of each file.
+2. Open the data files in a text editor application and familiarize you self with the data.
+
+3. Determine the delminiter of the two '.txt' files
 
 
 ## Import delimited data
 
 Within the Base R 'util' package we can find a handful of useful functions including  `read.csv()` and `read.delim()` to importing data.
+
+```{r eval=FALSE, echo=TRUE}
+?read.csv
+```
 
 ```{r echo=FALSE}
 library(printr)
@@ -45,16 +51,20 @@ library(printr)
 
 ## Import .csv files
 
+Reminder
 ```
 read.csv(file, header = TRUE, sep = ",", quote = "\"",
          dec = ".", fill = TRUE, comment.char = "", ...)
 ```
 
-- `file` is the first argument and is the path to your file, in quotes 
-- can be path in your local computer -- absolute file path or relative file path 
-- can be path to a file on a website
+`file` is the first argument and is the path to your file, in quotes 
 
-If your R Project is not already open, go ahead and open it so we take advantage of it setting a useful working directory for us in order to import data.
+	- 		can be path in your local computer -- absolute file path or relative file path 
+	- 		can be path to a file on a website
+
+## Mini Exercise
+
+If your R Project is not already open, open it so we take advantage of it setting a useful working directory for us in order to import data.
 
 
 ## Import .csv files
@@ -68,9 +78,9 @@ df <- read.csv(file = "~/Dropbox/Git/SISMID-2024/modules/data/serodata.csv") #ab
 ```
 
 
-Note #1, I assigned the data frame to an object called `df`.  I could have called the data frame anything, but in order to use the data (i.e., as an object we can find in the Global Environment), I need to assign it to an object. 
+Note #1, I assigned the data frame to an object called `df`.  I could have called the data anything, but in order to use the data (i.e., as an object we can find in the Environment), I need to assign it as an object. 
 
-Note #2, Look to the Global Environment panel, you will see the df object ready to be used.
+Note #2, Look to the Environment window, you will see the `df` object ready to be used.
 
 
 ## Import .txt files
@@ -87,7 +97,7 @@ read.delim(file, header = TRUE, sep = "\t", quote = "\"",
 
 ## Import .txt files
 
-Lets first import serodata1.txt which uses a tab delminiter and serodata2.txt which uses a semicolon delminiter.
+Lets first import 'serodata1.txt' which uses a tab delminiter and 'serodata2.txt' which uses a semicolon delminiter.
 
 
 ```{r, eval = FALSE}
@@ -110,7 +120,7 @@ The data is now successfully read into your R workspace, **many times actually.*
 
 ## 1. Internet Search
 
-```{r, out.width = "33%", echo = FALSE}
+```{r, out.width = "100%", echo = FALSE}
 knitr::include_graphics("images/ChatGPT.png")
 knitr::include_graphics("images/GoogleSearch.png")
 knitr::include_graphics("images/StackOverflow.png")
@@ -122,18 +132,24 @@ I am getting consistent message to use the the `read_excel()` function found in 
 
 ## 3. Install Package
 
-Reminder -- Installing and calling packages
+To use the bundle or "package" of code (and or possibly data) from a package, you need to install and also call the package.
 
-To install a package you can i) go to Tools ---\> Install Packages in the RStudio header, or ii) use the following code:
+To install a package you can 
+
+1. go to Tools ---\> Install Packages in the RStudio header
+
+OR
+
+2. use the following code:
 ```{r echo=TRUE, eval=FALSE}
-install.packages(package_name)
+install.packages("package_name")
 ```
 
 
 Therefore,
 
 ```{r echo=TRUE, eval=FALSE}
-install.packages(readxl)
+install.packages("readxl")
 ```
 
 ## 4. Call Package
@@ -153,6 +169,10 @@ library(readxl)
 
 ## 5. Use Function
 
+```{r eval=FALSE, echo=TRUE}
+?read_excel
+```
+
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
 library(readxl)
@@ -161,6 +181,7 @@ library(readxl)
 
 ## 5. Use Function
 
+Reminder
 ```
 read_excel(
   path,
@@ -178,15 +199,19 @@ read_excel(
 )
 ```
 
+Let's practice
 ```{r echo=TRUE, eval=FALSE}
+df <- read_excel(path = "data/serodata.xlsx", sheet = "Data")
 ```
 
 
-## Lets make some mistakes
+## Mini exercise
 
-1. What if we read in the data without assinging it to an object (i.e., `read_xlsx(path = "data/serodata.xlsx", sheet = "Data")`)?
+Lets make some mistakes
 
-2. What if we forget to specify the sheet argument? (i.e., `dd <- read_xlsx(path = "data/serodata.xlsx")`)?
+1. What if we read in the data without assigning it to an object (i.e., `read_excel(path = "data/serodata.xlsx", sheet = "Data")`)?
+
+2. What if we forget to specify the sheet argument? (i.e., `dd <- read_excel(path = "data/serodata.xlsx")`)?
 
 
 ## Installing and calling packages - Common confusion
@@ -207,7 +232,8 @@ Error: could not find function "some_function"
 This usually mean that either 
 
 - you called the function by the wrong name 
-- you have installed a package but you **forgot to call it**  (i.e., `library(package_name)`)
+- you have not installed a package that contains the function
+- you have installed a package but you forgot to call it (i.e., `library(package_name)`) -- **most likely**
 
 
 ## Export (write) Data 
@@ -234,7 +260,7 @@ write.table(df, file="data/serodata1_new.txt", sep="\t", row.names = FALSE) #tab
 write.table(df, file="data/serodata2_new.txt", sep=";", row.names = FALSE) #semicolon delimited
 ```
 
-Note, I wrote the data to new file names.  Even though we didnt change the data at all in this module, it is good practice to keep raw data raw, and not to write over it.
+Note, I wrote the data to new file names.  Even though we didn't change the data at all in this module, it is good practice to keep raw data raw, and not to write over it.
 
 ## R .rds and .rda/RData files
 
@@ -272,11 +298,17 @@ Note, that when you read .RData files you don't need to assign it to an abjecct.
 
 ## Summary
 
--   
+- Importing or 'Reading in' data is the first step of any real project/analysis
+- The Base R 'util' package we can find a handful of useful functions including  `read.csv()` and `read.delim()` to importing/reading data or `write.csv()` and `write.table()` for exporti/writing data
+- When importing data (exception is object from .RData), you must assign it to an object, otherwise it cannot be called/used
+- Properly read data can be found in the Environment window of RStudio
+- You only need to install a package once (unless you update R), but you will need to call or load a package each time you want to use it. 
+- To complete a tasek you don't know how to do (e.g., reading in an excel data file) use the following steps: 1. Google / Ask ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Call package, 5. Use function
+
 
 ## Acknowledgements
 
-These are the materials I looked through, modified, or extracted to complete this module's lecture.
+These are the materials we looked through, modified, or extracted to complete this module's lecture.
 
 -   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
 

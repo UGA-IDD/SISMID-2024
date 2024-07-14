@@ -12,7 +12,7 @@
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) – Module 1: Introduction to RStudio and R Basics</title>
+  <title>SISMID Module NUMBER Materials (2025) – Module 2: Functions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Module 1: Introduction to RStudio and R Basics</h1>
+  <h1 class="title">Module 2: Functions</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -413,416 +413,415 @@
 <h2 id="toc-title">Page Items</h2>
 <ul>
 <li><a href="#/learning-objectives" id="/toc-learning-objectives">Learning Objectives</a></li>
-<li><a href="#/working-with-r-rstudio" id="/toc-working-with-r-rstudio">Working with R – RStudio</a></li>
-<li><a href="#/rstudio" id="/toc-rstudio">RStudio</a></li>
-<li><a href="#/rstudio-1" id="/toc-rstudio-1">RStudio</a></li>
-<li><a href="#/getting-the-editor" id="/toc-getting-the-editor">Getting the editor</a></li>
-<li><a href="#/working-with-r-in-rstudio---2-major-panes" id="/toc-working-with-r-in-rstudio---2-major-panes">Working with R in RStudio - 2 major panes:</a></li>
-<li><a href="#/source-editor" id="/toc-source-editor">Source / Editor</a></li>
-<li><a href="#/r-console" id="/toc-r-console">R Console</a></li>
-<li><a href="#/rstudio-2" id="/toc-rstudio-2">RStudio</a></li>
-<li><a href="#/rstudio-layout" id="/toc-rstudio-layout">RStudio Layout</a></li>
-<li><a href="#/workspaceenvironment" id="/toc-workspaceenvironment">Workspace/Environment</a></li>
-<li><a href="#/workspacehistory" id="/toc-workspacehistory">Workspace/History</a></li>
-<li><a href="#/workspaceother-panes" id="/toc-workspaceother-panes">Workspace/Other Panes</a></li>
-<li><a href="#/getting-started" id="/toc-getting-started">Getting Started</a></li>
-<li><a href="#/explaining-output-on-slides" id="/toc-explaining-output-on-slides">Explaining output on slides</a></li>
-<li><a href="#/r-as-a-calculator" id="/toc-r-as-a-calculator">R as a calculator</a></li>
-<li><a href="#/r-as-a-calculator-1" id="/toc-r-as-a-calculator-1">R as a calculator</a></li>
-<li><a href="#/execute-run-code" id="/toc-execute-run-code">Execute / Run Code</a></li>
-<li><a href="#/mini-exercise" id="/toc-mini-exercise">Mini exercise</a></li>
-<li><a href="#/commenting-in-scripts" id="/toc-commenting-in-scripts">Commenting in Scripts</a></li>
-<li><a href="#/commenting-an-r-script-header" id="/toc-commenting-an-r-script-header">Commenting an R Script header</a></li>
-<li><a href="#/commenting-to-create-sections" id="/toc-commenting-to-create-sections">Commenting to create sections</a></li>
-<li><a href="#/commenting-to-explain-code" id="/toc-commenting-to-explain-code">Commenting to explain code</a></li>
-<li><a href="#/commenting-to-explain-code-1" id="/toc-commenting-to-explain-code-1">Commenting to explain code</a></li>
-<li><a href="#/object---basic-terms" id="/toc-object---basic-terms">Object - Basic terms</a></li>
-<li><a href="#/objects" id="/toc-objects">Objects</a></li>
-<li><a href="#/mini-exercise-1" id="/toc-mini-exercise-1">Mini Exercise</a></li>
-<li><a href="#/objects-1" id="/toc-objects-1">Objects</a></li>
-<li><a href="#/assignment---good-coding" id="/toc-assignment---good-coding">Assignment - Good coding</a></li>
-<li><a href="#/lists" id="/toc-lists">Lists</a></li>
-<li><a href="#/useful-r-studio-shortcuts" id="/toc-useful-r-studio-shortcuts">Useful R Studio Shortcuts</a></li>
-<li><a href="#/rstudio-helps-with-tab-completion" id="/toc-rstudio-helps-with-tab-completion">RStudio helps with “tab completion”</a></li>
+<li><a href="#/function---basic-term" id="/toc-function---basic-term">Function - Basic term</a></li>
+<li><a href="#/function" id="/toc-function">Function</a></li>
+<li><a href="#/arguments---basic-term" id="/toc-arguments---basic-term">Arguments - Basic term</a></li>
+<li><a href="#/arguments" id="/toc-arguments">Arguments</a></li>
+<li><a href="#/example" id="/toc-example">Example</a></li>
+<li><a href="#/sure-that-is-easy-enough-but-how-do-you-know" id="/toc-sure-that-is-easy-enough-but-how-do-you-know">Sure that is easy enough, but how do you know</a></li>
+<li><a href="#/seeking-help-for-using-functions" id="/toc-seeking-help-for-using-functions">Seeking help for using functions</a></li>
+<li><a href="#/how-to-specify-arguments" id="/toc-how-to-specify-arguments">How to specify arguments</a></li>
+<li><a href="#/package---basic-term" id="/toc-package---basic-term">Package - Basic term</a></li>
+<li><a href="#/packages" id="/toc-packages">Packages</a></li>
+<li><a href="#/additional-packages" id="/toc-additional-packages">Additional Packages</a></li>
+<li><a href="#/installing-and-calling-packages" id="/toc-installing-and-calling-packages"><strong>Installing</strong> and calling packages</a></li>
+<li><a href="#/installing-and-calling-packages-1" id="/toc-installing-and-calling-packages-1">Installing and <strong>calling</strong> packages</a></li>
+<li><a href="#/mini-exercise" id="/toc-mini-exercise">Mini Exercise</a></li>
+<li><a href="#/functions-from-module-1" id="/toc-functions-from-module-1">Functions from Module 1</a></li>
+<li><a href="#/functions-from-module-1-1" id="/toc-functions-from-module-1-1">Functions from Module 1</a></li>
 <li><a href="#/summary" id="/toc-summary">Summary</a></li>
-<li><a href="#/mini-exercise-2" id="/toc-mini-exercise-2">Mini Exercise</a></li>
 <li><a href="#/acknowledgements" id="/toc-acknowledgements">Acknowledgements</a></li>
 </ul>
 </nav>
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
-<p>After module 1, you should be able to…</p>
+<p>After module 2, you should be able to…</p>
 <ul>
-<li>Create and save an R script</li>
-<li>Describe the utility and differences b/w the console and an R script</li>
-<li>Modify R Studio windows</li>
-<li>Create objects</li>
-<li>Describe the difference b/w character, numeric, list, and matrix objects</li>
-<li>Reference objects in the RStudio Global Environment</li>
-<li>Use basic arithmetic operators in R</li>
-<li>Use comments within an R script to create header, sections, and make notes</li>
+<li>Describe and execute functions in R</li>
+<li>Modify default behavior of functions using arguments in R</li>
+<li>Use R-specific sources of help to get more information about functions and packages</li>
+<li>Differentiate between Base R functions and functions that come from other packages</li>
 </ul>
 </section>
-<section id="working-with-r-rstudio" class="slide level2">
-<h2>Working with R – RStudio</h2>
-<p>RStudio is an Integrated Development Environment (IDE) for R</p>
-<ul>
-<li>It helps the user effectively use R</li>
-<li>Makes things easier</li>
-<li>Is NOT a dropdown statistical tool (such as Stata)
-<ul>
-<li>See <a href="https://cran.r-project.org/web/packages/Rcmdr/index.html">Rcmdr</a> or <a href="http://vnijs.github.io/radiant/">Radiant</a></li>
-</ul></li>
-</ul>
-
-<img data-src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:30.0%" alt="RStudio logo"></section>
-<section id="rstudio" class="slide level2">
-<h2>RStudio</h2>
-<p>Easier working with R</p>
-<ul>
-<li>Syntax highlighting, code completion, and smart indentation</li>
-<li>Easily manage multiple working directories and projects</li>
-</ul>
-<p>More information</p>
-<ul>
-<li>Workspace browser and data viewer</li>
-<li>Plot history, zooming, and flexible image and file export</li>
-<li>Integrated R help and documentation</li>
-<li>Searchable command history</li>
-</ul>
+<section id="function---basic-term" class="slide level2">
+<h2>Function - Basic term</h2>
+<p><strong>Function</strong> - Functions are “self contained” modules of code that accomplish specific tasks. Functions usually take in some sort of object (e.g., vector, list), process it, and return a result. You can write your own, use functions that come directly from installing R (i.e., Base R functions), or use functions from external packages.</p>
+<p>A function might help you add numbers together, create a plot, or organize your data. In fact, we have already used three functions in the Module 1, including <code>c()</code>, <code>matrix()</code>, <code>list()</code>. Here is another one, <code>sum()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20235</code></pre>
+</div>
+</div>
 </section>
-<section id="rstudio-1" class="slide level2">
-<h2>RStudio</h2>
-
-<img data-src="https://ayeimanolr.files.wordpress.com/2013/04/r-rstudio-1-1.png?w=640&amp;h=382" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="RStudio"></section>
-<section id="getting-the-editor" class="slide level2">
-<h2>Getting the editor</h2>
-
-<img data-src="images/both.png" style="width:90.0%" class="r-stretch"></section>
-<section id="working-with-r-in-rstudio---2-major-panes" class="slide level2 scrollable">
-<h2>Working with R in RStudio - 2 major panes:</h2>
+<section id="function" class="slide level2">
+<h2>Function</h2>
+<p>The general usage for a function is the name of the function followed by parentheses. Within the parentheses are <strong>arguments</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">function_name</span>(argument1, argument2, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="arguments---basic-term" class="slide level2 scrollable">
+<h2>Arguments - Basic term</h2>
+<p><strong>Arguments</strong> are what you pass to the function and can include:</p>
 <ol type="1">
-<li>The <strong>Source/Editor</strong>: “Analysis” Script + Interactive Exploration
-<ul>
-<li>Static copy of what you did (reproducibility)</li>
-<li>Top by default</li>
-</ul></li>
-<li>The <strong>R Console</strong>: “interprets” whatever you type
-<ul>
-<li>Calculator</li>
-<li>Try things out interactively, then add to your editor</li>
-<li>Bottom by default</li>
-</ul></li>
+<li>the physical object on which the function carries out a task (e.g., can be data such as a number 1 or 20234)</li>
 </ol>
-</section>
-<section id="source-editor" class="slide level2">
-<h2>Source / Editor</h2>
-<ul>
-<li>Where files open to</li>
-<li>Have R code and comments in them</li>
-<li>Where code is saved</li>
-</ul>
-
-<img data-src="images/rstudio_script.png" style="width:200.0%" class="r-stretch"></section>
-<section id="r-console" class="slide level2">
-<h2>R Console</h2>
-<ul>
-<li>Where code is executed (where things happen)</li>
-<li>You can type here for things interactively</li>
-<li>Code is <strong>not saved</strong></li>
-</ul>
-
-<img data-src="images/rstudio_console.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
-<section id="rstudio-2" class="slide level2">
-<h2>RStudio</h2>
-<p>Useful RStudio “cheat sheet”: <a href="https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf" class="uri">https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf</a></p>
-
-<img data-src="images/rstudio_sheet.png" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%" alt="RStudio"></section>
-<section id="rstudio-layout" class="slide level2">
-<h2>RStudio Layout</h2>
-<p>If RStudio doesn’t look the way you want (or like our RStudio), then do:</p>
-<p>RStudio –&gt; View –&gt; Panes –&gt; Pane Layout</p>
-
-<img data-src="images/pane_layout.png" class="quarto-figure quarto-figure-center r-stretch" width="500"></section>
-<section id="workspaceenvironment" class="slide level2">
-<h2>Workspace/Environment</h2>
-<ul>
-<li>Tells you what <strong>objects</strong> are in R</li>
-<li>What exists in memory/what is loaded?/what did I read in?</li>
-</ul>
-
-<img data-src="images/rstudio_environment.png" style="width:90.0%" class="r-stretch"></section>
-<section id="workspacehistory" class="slide level2">
-<h2>Workspace/History</h2>
-<ul>
-<li>Shows previous commands. Good to look at for debugging, but <strong>don’t rely</strong> on it.</li>
-<li>Also type the “up” key in the Console to scroll through previous commands</li>
-</ul>
-</section>
-<section id="workspaceother-panes" class="slide level2">
-<h2>Workspace/Other Panes</h2>
-<ul>
-<li><strong>Files</strong> - shows the files on your computer of the directory you are working in</li>
-<li><strong>Viewer</strong> - can view data or R objects</li>
-<li><strong>Help</strong> - shows help of R commands</li>
-<li><strong>Plots</strong> - pictures and figures</li>
-<li><strong>Packages</strong> - list of R packages that are loaded in memory</li>
-</ul>
-</section>
-<section id="getting-started" class="slide level2">
-<h2>Getting Started</h2>
-<ul>
-<li>File –&gt; New File –&gt; R Script</li>
-<li>Save the blank R script as Module1.R</li>
-</ul>
-</section>
-<section id="explaining-output-on-slides" class="slide level2">
-<h2>Explaining output on slides</h2>
-<p>In slides, a command (we’ll also call them code or a code chunk) will look like this</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">print</span>(<span class="st">"I'm code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "I'm code"</code></pre>
+<pre><code>[1] 20235</code></pre>
 </div>
 </div>
-<p>And then directly after it, will be the output of the code.<br>
-So <code>print("I'm code")</code> is the code chunk and <code>[1] "I'm code"</code> is the output.</p>
-</section>
-<section id="r-as-a-calculator" class="slide level2">
-<h2>R as a calculator</h2>
-<p>You can do basic arithmetic in R, which I surprisingly use all the time.</p>
+<ol start="2" type="1">
+<li>options that alter the way the function operates (e.g., such as the <code>base</code> argument in the function <code>log()</code>)</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
+<pre><code>[1] 3.321928</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base=</span><span class="fu">exp</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
+<pre><code>[1] 2.302585</code></pre>
 </div>
 </div>
 </section>
-<section id="r-as-a-calculator-1" class="slide level2">
-<h2>R as a calculator</h2>
+<section id="arguments" class="slide level2">
+<h2>Arguments</h2>
+<p>Most functions are created with <strong>default argument options</strong>. The defaults represent standard values that the author of the function specified as being “good enough in standard cases”. This means if you don’t specify an argument when calling the function, it will use a default.</p>
 <ul>
-<li>The R console is a full calculator</li>
-<li>Try to play around with it:
-<ul>
-<li>+, -, /, * are add, subtract, divide and multiply</li>
-<li>^ or ** is power</li>
-<li>parentheses – ( and ) – work with order of operations</li>
-<li>%% finds the remainder</li>
-</ul></li>
+<li>If you want something specific, simply change the argument yourself with a value of your choice.</li>
+<li>If an argument is required but you did not specify it and there is no default argument specified when the function was created, you will receive an error.</li>
 </ul>
 </section>
-<section id="execute-run-code" class="slide level2 scrollable">
-<h2>Execute / Run Code</h2>
-<p>To execute or run a line of code, you just put your cursor on line of code and then:</p>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p>What is the default in the <code>base</code> argument of the <code>log()</code> function?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.302585</code></pre>
+</div>
+</div>
+</section>
+<section id="sure-that-is-easy-enough-but-how-do-you-know" class="slide level2">
+<h2>Sure that is easy enough, but how do you know</h2>
+<ul>
+<li>the purpose of a function?</li>
+<li>what arguments a function includes?</li>
+<li>how to specify the arguments?</li>
+</ul>
+</section>
+<section id="seeking-help-for-using-functions" class="slide level2">
+<h2>Seeking help for using functions</h2>
+<p>The best way of finding out this information is to use the <code>?</code> followed by the name of the function. Doing this will open up the help manual in the bottom RStudio Help panel. It provides a description of the function, usage, arguments, details, and examples. Lets look at the help file for the function <code>round()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>?log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Registered S3 method overwritten by 'printr':
+  method                from     
+  knit_print.data.frame rmarkdown</code></pre>
+<p>Logarithms and Exponentials</p>
+<p>Description:</p>
+<pre><code> 'log' computes logarithms, by default natural logarithms, 'log10'
+ computes common (i.e., base 10) logarithms, and 'log2' computes
+ binary (i.e., base 2) logarithms.  The general form 'log(x, base)'
+ computes logarithms with base 'base'.
+
+ 'log1p(x)' computes log(1+x) accurately also for |x| &lt;&lt; 1.
+
+ 'exp' computes the exponential function.
+
+ 'expm1(x)' computes exp(x) - 1 accurately also for |x| &lt;&lt; 1.</code></pre>
+<p>Usage:</p>
+<pre><code> log(x, base = exp(1))
+ logb(x, base = exp(1))
+ log10(x)
+ log2(x)
+ 
+ log1p(x)
+ 
+ exp(x)
+ expm1(x)
+ </code></pre>
+<p>Arguments:</p>
+<pre><code>   x: a numeric or complex vector.
+
+base: a positive or complex number: the base with respect to which
+      logarithms are computed.  Defaults to e='exp(1)'.</code></pre>
+<p>Details:</p>
+<pre><code> All except 'logb' are generic functions: methods can be defined
+ for them individually or via the 'Math' group generic.
+
+ 'log10' and 'log2' are only convenience wrappers, but logs to
+ bases 10 and 2 (whether computed _via_ 'log' or the wrappers) will
+ be computed more efficiently and accurately where supported by the
+ OS.  Methods can be set for them individually (and otherwise
+ methods for 'log' will be used).
+
+ 'logb' is a wrapper for 'log' for compatibility with S.  If (S3 or
+ S4) methods are set for 'log' they will be dispatched.  Do not set
+ S4 methods on 'logb' itself.
+
+ All except 'log' are primitive functions.</code></pre>
+<p>Value:</p>
+<pre><code> A vector of the same length as 'x' containing the transformed
+ values.  'log(0)' gives '-Inf', and 'log(x)' for negative values
+ of 'x' is 'NaN'.  'exp(-Inf)' is '0'.
+
+ For complex inputs to the log functions, the value is a complex
+ number with imaginary part in the range [-pi, pi]: which end of
+ the range is used might be platform-specific.</code></pre>
+<p>S4 methods:</p>
+<pre><code> 'exp', 'expm1', 'log', 'log10', 'log2' and 'log1p' are S4 generic
+ and are members of the 'Math' group generic.
+
+ Note that this means that the S4 generic for 'log' has a signature
+ with only one argument, 'x', but that 'base' can be passed to
+ methods (but will not be used for method selection).  On the other
+ hand, if you only set a method for the 'Math' group generic then
+ 'base' argument of 'log' will be ignored for your class.</code></pre>
+<p>Source:</p>
+<pre><code> 'log1p' and 'expm1' may be taken from the operating system, but if
+ not available there then they are based on the Fortran subroutine
+ 'dlnrel' by W. Fullerton of Los Alamos Scientific Laboratory (see
+ &lt;https://netlib.org/slatec/fnlib/dlnrel.f&gt;) and (for small x) a
+ single Newton step for the solution of 'log1p(y) = x'
+ respectively.</code></pre>
+<p>References:</p>
+<pre><code> Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+ Language_.  Wadsworth &amp; Brooks/Cole.  (for 'log', 'log10' and
+ 'exp'.)
+
+ Chambers, J. M. (1998) _Programming with Data.  A Guide to the S
+ Language_.  Springer. (for 'logb'.)</code></pre>
+<p>See Also:</p>
+<pre><code> 'Trig', 'sqrt', 'Arithmetic'.</code></pre>
+<p>Examples:</p>
+<pre><code> log(exp(3))
+ log10(1e7) # = 7
+ 
+ x &lt;- 10^-(1+2*1:9)
+ cbind(deparse.level=2, # to get nice column names
+       x, log(1+x), log1p(x), exp(x)-1, expm1(x))</code></pre>
+</section>
+<section id="how-to-specify-arguments" class="slide level2 scrollable">
+<h2>How to specify arguments</h2>
 <ol type="1">
-<li>Press Run (which you will find at the top of your window)</li>
+<li>Arguments are separated with a comma</li>
+<li>You can specify arguments by either including them in the correct order OR by assigning the argument within the function parentheses.</li>
+</ol>
+
+<img data-src="images/log_args.png" style="width:70.0%" class="r-stretch"><div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.321928</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">log</span>(<span class="at">base=</span><span class="dv">2</span>, <span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.321928</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">log</span>(<span class="at">x=</span><span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.321928</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.321928</code></pre>
+</div>
+</div>
+</section>
+<section id="package---basic-term" class="slide level2">
+<h2>Package - Basic term</h2>
+<p>When you download R, it has a “base” set of functions, that are associated with a “base” set of packages including: ‘base’, ‘datasets’, ‘graphics’, ‘grDevices’, ‘methods’, ‘stats’, ‘methods’ (typically just referred to as <strong>Base R</strong>).</p>
+<ul>
+<li>e.g., the <code>log()</code> function comes from the ‘base’ package</li>
+</ul>
+<p><strong>Package</strong> - a package in R is a bundle or “package” of code (and or possibly data) that can be loaded together for easy repeated use or for <strong>sharing</strong> with others.</p>
+<p>Packages are analogous to software applications like Microsoft Word. After installation, your operating system allows you to use it, just like having Word installed allows you to use it.</p>
+</section>
+<section id="packages" class="slide level2">
+<h2>Packages</h2>
+<p>The Packages window in RStudio can help you identify what have been installed (listed), and which one have been called (check mark).</p>
+<p>Lets go look at the Packages window, find the <code>base</code> package and find the <code>log()</code> function. It automatically loads the help file that we looked at earlier using <code>?log</code>.</p>
+</section>
+<section id="additional-packages" class="slide level2">
+<h2>Additional Packages</h2>
+<p>You can install additional packages for your uses from <a href="https://cran.r-project.org/">CRAN</a> or <a href="https://github.com/">GitHub</a>. These additional packages are written by RStudio or R users/developers (like us)</p>
+<ul>
+<li>Not all packages available on CRAN or GitHub are trustworthy</li>
+<li>RStudio (the company) makes a lot of great packages</li>
+<li>Who wrote it? <strong>Hadley Wickham</strong> is a major authority on R (Employee and Developer at RStudio)</li>
+<li>How to <a href="https://simplystatistics.org/posts/2015-11-06-how-i-decide-when-to-trust-an-r-package/#:~:text=The%20first%20thing%20I%20do,I%20immediately%20trust%20the%20package.">trust</a> an R package</li>
+</ul>
+</section>
+<section id="installing-and-calling-packages" class="slide level2 scrollable">
+<h2><strong>Installing</strong> and calling packages</h2>
+<p>To use the bundle or “package” of code (and or possibly data) from a package, you need to install and also call the package.</p>
+<p>To install a package you can</p>
+<ol type="1">
+<li>go to Tools —&gt; Install Packages in the RStudio header</li>
 </ol>
 <p>OR</p>
 <ol start="2" type="1">
-<li>Press <code>Cmd + Return</code> (iOS) OR <code>Ctrl + Enter</code> (Windows).</li>
+<li>use the following code:</li>
 </ol>
-<p>To execute or run multiple lines of code, you just need to highlight the code you want to run and then follow option 1 or 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">install.packages</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="installing-and-calling-packages-1" class="slide level2">
+<h2>Installing and <strong>calling</strong> packages</h2>
+<p>To call (i.e., be able to use the package) you can use the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">library</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>More on installing and calling packages later…</p>
 </section>
 <section id="mini-exercise" class="slide level2">
-<h2>Mini exercise</h2>
-<p>Execute <code>5+4</code> from your .R file, and then find the answer 9 in the Console.</p>
-</section>
-<section id="commenting-in-scripts" class="slide level2 scrollable">
-<h2>Commenting in Scripts</h2>
-<p>The syntax <code>#</code> creates a comment, which means anything to the right of <code>#</code> will not be executed / run</p>
-<p>Commenting is useful to:</p>
-<ol type="1">
-<li>Create headers for R Scripts</li>
-<li>Create sections within an R Script</li>
-<li>Explain what is happening in your code</li>
-</ol>
-</section>
-<section id="commenting-an-r-script-header" class="slide level2">
-<h2>Commenting an R Script header</h2>
-<p>Add a comment header to Module1.R. This is the one I typically use, but you may have your own preference. The goal is that you are consistent so that future you / collaborators can make sense of your code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="do">### Title: Module 1</span></span>
-<span id="cb9-2"><a></a><span class="do">### Author: Amy Winter </span></span>
-<span id="cb9-3"><a></a><span class="do">### Objective: Mini Exercise - Developing first R Script</span></span>
-<span id="cb9-4"><a></a><span class="do">### Date: 15 July 2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="commenting-to-create-sections" class="slide level2">
-<h2>Commenting to create sections</h2>
-<p>You can also create sections within your code by ending a comment with 4 hash marks. <strong>This is very useful for creating an outline of your R Script.</strong> The “Outline” can be found in the top right of the your source window.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Section 1 Header ####</span></span>
-<span id="cb10-2"><a></a><span class="do">## Section 2 Sub-header ####</span></span>
-<span id="cb10-3"><a></a><span class="do">### Section 3 Sub-sub-header ####</span></span>
-<span id="cb10-4"><a></a><span class="do">#### Section 4 Sub-sub-sub-header ####</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-<img data-src="images/outline.png" style="width:90.0%" class="r-stretch"></section>
-<section id="commenting-to-explain-code" class="slide level2">
-<h2>Commenting to explain code</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="do">## this # is still a comment</span></span>
-<span id="cb11-2"><a></a><span class="do">### you can use many #'s as you want</span></span>
-<span id="cb11-3"><a></a></span>
-<span id="cb11-4"><a></a><span class="co"># sometimes you have a really long comment,</span></span>
-<span id="cb11-5"><a></a><span class="co">#    like explaining what you are doing</span></span>
-<span id="cb11-6"><a></a><span class="co">#    for a step in analysis. </span></span>
-<span id="cb11-7"><a></a><span class="co"># Take it to another line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="commenting-to-explain-code-1" class="slide level2">
-<h2>Commenting to explain code</h2>
-<p>I tend to use:</p>
-<ul>
-<li>One hash tag with a space to describe what is happening in the following few lines of code</li>
-<li>One hastag with no space after a command to list specifics</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Practicing my arithmetic</span></span>
-<span id="cb12-2"><a></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span></span>
-<span id="cb12-3"><a></a><span class="dv">3</span><span class="sc">*</span><span class="dv">5</span></span>
-<span id="cb12-4"><a></a><span class="dv">9</span><span class="sc">/</span><span class="dv">8</span></span>
-<span id="cb12-5"><a></a></span>
-<span id="cb12-6"><a></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span> <span class="co">#5 plus 2 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="object---basic-terms" class="slide level2">
-<h2>Object - Basic terms</h2>
-<p><strong>Object</strong> - an object is something that can be worked with in R - can be lots of different things!</p>
-<ul>
-<li>a scalar / number</li>
-<li>a vector</li>
-<li>a matrix of numbers</li>
-<li>a list</li>
-<li>a plot</li>
-<li>a function</li>
-</ul>
-<p>… many more</p>
-</section>
-<section id="objects" class="slide level2">
-<h2>Objects</h2>
-<ul>
-<li>You can create objects from within the R environment and from files on your computer</li>
-<li>R uses <code>&lt;-</code> to assign values to an object name</li>
-<li>Note: Object names are case-sensitive, i.e.&nbsp;X and x are different</li>
-<li>Here are examples of creating five different objects:</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb13-2"><a></a>character.object <span class="ot">&lt;-</span> <span class="st">"blue"</span></span>
-<span id="cb13-3"><a></a>vector.object1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb13-4"><a></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
-<span id="cb13-5"><a></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Note, <code>c()</code> and <code>matrix()</code> are functions, which we will talk more about in module 2.</p>
-</section>
-<section id="mini-exercise-1" class="slide level2">
 <h2>Mini Exercise</h2>
-<p>Try creating one or two of these objects in your R script</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb14-2"><a></a>character.object <span class="ot">&lt;-</span> <span class="st">"blue"</span></span>
-<span id="cb14-3"><a></a>vector.object1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb14-4"><a></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
-<span id="cb14-5"><a></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Find and execute a <strong>Base R</strong> function that will round the number 0.86424 to two digits.</p>
 </section>
-<section id="objects-1" class="slide level2">
-<h2>Objects</h2>
-<p>Note, you can find these objects now in the Global Environment.</p>
-
-<img data-src="images/global_env.png" style="width:90.0%" class="r-stretch"><p>Also, you can call them anytime (i.e, see them in the Console) by executing (running) the object. For example,</p>
+<section id="functions-from-module-1" class="slide level2">
+<h2>Functions from Module 1</h2>
+<p>The combine function <code>c()</code> collects/combines/joins single R objects into a vector of R objects. It is mostly used for creating vectors of numbers, character strings, and other data types.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>character.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>?c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "blue"</code></pre>
+<pre><code>Combine Values into a Vector or List
+
+Description:
+
+     This is a generic function which combines its arguments.
+
+     The default method combines its arguments to form a vector.  All
+     arguments are coerced to a common type which is the type of the
+     returned value, and all attributes except names are removed.
+
+Usage:
+
+     ## S3 Generic function
+     c(...)
+     
+     ## Default S3 method:
+     c(..., recursive = FALSE, use.names = TRUE)
+     
+Arguments:
+
+     ...: objects to be concatenated.  All 'NULL' entries are dropped
+          before method dispatch unless at the very beginning of the
+          argument list.
+
+recursive: logical.  If 'recursive = TRUE', the function recursively
+          descends through lists (and pairlists) combining all their
+          elements into a vector.
+
+use.names: logical indicating if 'names' should be preserved.
+
+Details:
+
+     The output type is determined from the highest type of the
+     components in the hierarchy NULL &lt; raw &lt; logical &lt; integer &lt;
+     double &lt; complex &lt; character &lt; list &lt; expression.  Pairlists are
+     treated as lists, whereas non-vector components (such as 'name's /
+     'symbol's and 'call's) are treated as one-element 'list's which
+     cannot be unlisted even if 'recursive = TRUE'.
+
+     There is a 'c.factor' method which combines factors into a factor.
+
+     'c' is sometimes used for its side effect of removing attributes
+     except names, for example to turn an 'array' into a vector.
+     'as.vector' is a more intuitive way to do this, but also drops
+     names.  Note that methods other than the default are not required
+     to do this (and they will almost certainly preserve a class
+     attribute).
+
+     This is a primitive function.
+
+Value:
+
+     'NULL' or an expression or a vector of an appropriate mode.  (With
+     no arguments the value is 'NULL'.)
+
+S4 methods:
+
+     This function is S4 generic, but with argument list '(x, ...)'.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth &amp; Brooks/Cole.
+
+See Also:
+
+     'unlist' and 'as.vector' to produce attribute-free vectors.
+
+Examples:
+
+     c(1,7:9)
+     c(1:5, 10.5, "next")
+     
+     ## uses with a single argument to drop attributes
+     x &lt;- 1:4
+     names(x) &lt;- letters[1:4]
+     x
+     c(x)          # has names
+     as.vector(x)  # no names
+     dim(x) &lt;- c(2,2)
+     x
+     c(x)
+     as.vector(x)
+     
+     ## append to a list:
+     ll &lt;- list(A = 1, c = "C")
+     ## do *not* use
+     c(ll, d = 1:3) # which is == c(ll, as.list(c(d = 1:3)))
+     ## but rather
+     c(ll, d = list(1:3))  # c() combining two lists
+     
+     c(list(A = c(B = 1)), recursive = TRUE)
+     
+     c(options(), recursive = TRUE)
+     c(list(A = c(B = 1, C = 2), B = c(E = 7)), recursive = TRUE)</code></pre>
 </div>
 </div>
+</section>
+<section id="functions-from-module-1-1" class="slide level2">
+<h2>Functions from Module 1</h2>
+<p>The <code>matrix()</code> function creates a matrix from the given set of values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>matrix.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2]
-[1,]    2    3
-[2,]    4    5</code></pre>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>?matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</section>
-<section id="assignment---good-coding" class="slide level2">
-<h2>Assignment - Good coding</h2>
-<p><code>=</code> and <code>&lt;-</code> can both be used for assignment, but <code>&lt;-</code> is better coding practice, because <code>==</code> is a logical operator. We will talk about this more, later.</p>
-</section>
-<section id="lists" class="slide level2">
-<h2>Lists</h2>
-<p>List is a special data class, that can hold vectors, strings, matrices, models, list of other lists.</p>
+<p>xxamy - doesn’t seem to work - may need to paste in a screen shot figure</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>list.object <span class="ot">&lt;-</span> <span class="fu">list</span>(number.object, vector.object2, matrix.object)</span>
-<span id="cb19-2"><a></a>list.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 3
-
-[[2]]
-[1] "blue"   "red"    "yellow"
-
-[[3]]
-     [,1] [,2]
-[1,]    2    3
-[2,]    4    5</code></pre>
+<pre><code>No documentation for 'matix' in specified packages and libraries</code></pre>
 </div>
 </div>
 </section>
-<section id="useful-r-studio-shortcuts" class="slide level2">
-<h2>Useful R Studio Shortcuts</h2>
-<p>Will certainly save you time</p>
-<ul>
-<li><code>Cmd + Return</code> (iOS) OR <code>Ctrl + Enter</code> (Windows) in your script evaluates current line/selection
-<ul>
-<li>It’s like copying and pasting the code into the console for it to run.</li>
-</ul></li>
-<li>pressing Up/Down in the Console allows you to navigate command history</li>
-</ul>
-<p>See <a href="http://www.rstudio.com/ide/docs/using/keyboard_shortcuts" class="uri">http://www.rstudio.com/ide/docs/using/keyboard_shortcuts</a> for many more</p>
-</section>
-<section id="rstudio-helps-with-tab-completion" class="slide level2">
-<h2>RStudio helps with “tab completion”</h2>
-<p>If you start typing a object, RStudio will show you options that you can choose without typing out the whole object.</p>
-
-<img data-src="images/tab.completion.png" style="width:90.0%" class="r-stretch"></section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
-<li>RStudio makes working in R easier</li>
-<li>The Editor is for static code like R Scripts</li>
-<li>The Console is for testing code that can’t be saved</li>
-<li>Commenting is your new best friend</li>
-<li>In R we create objects that can be viewed in the Environment panel and called anytime</li>
-<li>An object is something that can be worked with in R</li>
-<li>Use <code>&lt;-</code> syntax to create objects</li>
+<li>Functions are “self contained” modules of code that accomplish specific tasks.</li>
+<li>Arguments are what you pass to functions (e.g., objects on which you carry out the task or options for how to carry out the task)</li>
+<li>Arguments may include defaults that the author of the function specified as being “good enough in standard cases”, but that can be changed.</li>
+<li>An R Package is a bundle or “package” of code (and or possibly data) that can be used by installing it once and calling it (using <code>library()</code>) each time R/Rstudio is opened</li>
+<li>The Help window in RStudio is useful for to get more information about functions and packages</li>
 </ul>
-</section>
-<section id="mini-exercise-2" class="slide level2 scrollable">
-<h2>Mini Exercise</h2>
-<ol type="1">
-<li>Create a new number object and name it <code>my.object</code></li>
-<li>Create a vector of 4 numbers and name it <code>my.vector</code> using the <code>c()</code> function</li>
-<li>Add <code>my.object</code> and <code>my.vector</code> together use arithmatic operator</li>
-</ol>
 </section>
 <section id="acknowledgements" class="slide level2">
 <h2>Acknowledgements</h2>
 <p>These are the materials I looked through, modified, or extracted to complete this module’s lecture.</p>
 <ul>
-<li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
-<li>Some RStudio snapshots were pulled from <a href="http://ayeimanol-r.net/2013/04/21/289/" class="uri">http://ayeimanol-r.net/2013/04/21/289/</a></li>
+<li><a href="https://hbctraining.github.io/Intro-to-R/lessons/03_introR-functions-and-arguments.html#:~:text=A%20key%20feature%20of%20R,it%2C%20and%20return%20a%20result.">“Introduction to R - ARCHIVED” from Harvard Chan Bioinformatics Core (HBC)</a></li>
 </ul>
 
 <div class="quarto-auto-generated-content">

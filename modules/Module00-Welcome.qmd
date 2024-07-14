@@ -1,6 +1,9 @@
 ---
 title: "Welcome to SISMID Workshop: Introduction to R"
-format: revealjs
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
 ---
 
 ## Welcome to SISMID Workshop: Introduction to R!
@@ -17,7 +20,8 @@ Email: Wesley.Billings@uga.edu
 ## Introductions
 
 * Name?
-* Current position / program?
+* Current position / institution?
+* Past experience with other statistical programs, including R?
 * Why do you want to learn R?
 * Favorite useful app
 * Favorite guilty pleasure app
@@ -31,8 +35,6 @@ Email: Wesley.Billings@uga.edu
 
 - The aim of the S language, as expressed by John Chambers, is "to turn ideas into software, quickly and faithfully"
 
-<sub>[source: http://www.r-project.org/, https://en.wikipedia.org/wiki/S_(programming_language), https://en.wikipedia.org/wiki/Bell_Labs)] </sub>
-
 ## What is R?
 
 - **R**oss Ihaka and **R**obert Gentleman at the University of Auckland, New Zealand developed R
@@ -43,8 +45,6 @@ Email: Wesley.Billings@uga.edu
 ```{r, fig.alt="R logo", out.width = "20%", echo = FALSE, fig.align='center'}
 knitr::include_graphics("https://www.r-project.org/logo/Rlogo.png")
 ```
-
-<sub>[source: http://www.r-project.org/, https://en.wikipedia.org/wiki/R_(programming_language)]</sub>
 
 ## What is R?
 
@@ -86,14 +86,6 @@ knitr::include_graphics("https://www.r-project.org/logo/Rlogo.png")
 * Slower, and more memory intensive, than the more traditional programming languages (C, Perl, Python)
 
 
-## Who uses R?
-
-* Data scientist can use two excellent tools: R and Python. 
-* A programming language is a tool to compute and communicate your discovery. 
-* How do you deal with data (Most important aspect for this course!)
-    * import, clean, prep, analyze. This should be your primary focus.
-* Data scientist are not programmers. Their job is to understand the data, manipulate it and expose the best approach.
-
 ## Is R DIfficult?
 
 * Short answer – It has a steep learning curve. 
@@ -102,58 +94,43 @@ knitr::include_graphics("https://www.r-project.org/logo/Rlogo.png")
 
 
 
-## Workshop Objective
+## Overall Workshop Objectives
 
-We hope to teach you to fish -- Note in a full semester course some of these more abstract themes are sprinkled in throughout the semester while we continue to learn all sorts of functions.  Here we need you to get some of these main themes as quickly as possible ...
-What you can expect at the end
-How this differs from Tidy course
+By the end of this workshop, you should be able to 
 
-We will focus this class on using **base R** because some resources online and R users will use this.
+1. start a new project, read in data, and conduct basic data manipulation, analysis, and visualization
+2. know how to use and find packages/functions that we did not specifically learn in class
+3. troubleshoot errors (xxzane? -- not included right now)
 
-## Tidyverse and Base R
 
-We will mostly show you how to use tidyverse packages and functions. 
+## This workshop differs from "Introduction to Tidyverse"
 
-This is a newer set of packages designed for data science that can make your code more **intuitive** as compared to the original older Base R.
+We will focus this class on using **Base R** functions and packages, i.e., pre-installed into R and the basis for most other functions and packages! If you know Base R then are will be more equipped to use all the other useful/pretty packages that exit.
 
-**Tidyverse advantages**:  
- - **consistent structure** - making it easier to learn how to use different packages  
- - particularly good for **wrangling** (manipulating, cleaning, joining) data  
- - more flexible for **visualizing** data  
+the Tidyverse is one set of useful/pretty packages, designed to can make your code more **intuitive** as compared to the original older Base R. **Tidyverse advantages**:  
 
-Packages for the tidyverse are managed by a team of respected data scientists at RStudio.
+-	**consistent structure** - making it easier to learn how to use different packages
+-	particularly good for **wrangling** (manipulating, cleaning, joining) data  
+-	more flexible for **visualizing** data  
 
 ```{r, fig.alt="Tidyverse hex sticker", out.width = "10%", echo = FALSE, fig.align='center'}
 knitr::include_graphics("https://tidyverse.tidyverse.org/logo.png")
 ```
 
-See this [article](https://tidyverse.tidyverse.org/articles/paper.html) for more info.
-
-
-
 
 ## Workshop Overview
 
-10 lecture blocks:
-Lecture:
-* Start with learning objectives
-* End with summary slides
-Practice:
-* Mini-exercise or full exercise
+14 lecture blocks that will each:
+- Start with learning objectives
+- End with summary slides
+- Include mini-exercise(s) or a full exercise
 
 Themes that will show up throughout the workshop:
-* Reproducibility
-* Good coding techniques
-* Thinking algorithmically
-* [Basic terms / R jargon](https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf)
-* Common confusion
+- Reproducibility
+- Good coding techniques
+- Thinking algorithmically
+- [Basic terms / R jargon](https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf)
 
-
-## Course Format
-
- * Lecture with slides (possibly "Interactive")
- * Lab/Practical experience
- * One 10 min breaks each day - timing may vary
 
 ## Reproducibility
 
@@ -163,6 +140,7 @@ xxzane slides
 
 
 ## Thinking algorithmically 
+
 
 ## Useful (+ Free) Resources
 
@@ -198,18 +176,12 @@ xxzane slides
 - R terminology: https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf
 
 
-## Thank you
-
-revised from Carrie Wright and Ava Hoffman [https://jhudatascience.org/intro_to_r/]
-
-
 ## Installing R
 
-* Install the latest version from: [http://cran.r-project.org/](http://cran.r-project.org/ )
 
-* [Install RStudio](https://www.rstudio.com/products/rstudio/download/)
+Hopefully everyone has pre-installed R and RStudio.  We will take a moment to go around and make sure everyone is ready to go. Please open up your RStudio and leave it open as we check everyone's laptops.
 
-RStudio is an **integrated development environment** (IDE) that makes it easier to work with R.
+- Install the latest version from: [http://cran.r-project.org/](http://cran.r-project.org/ )
+- [Install RStudio](https://www.rstudio.com/products/rstudio/download/)
 
-More on that soon!
 

@@ -32,8 +32,6 @@ RStudio is an Integrated Development Environment (IDE) for R
 knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg")
 ```
 
-<sub>\[[source](https://www.rstudio.com/)\]</sub>
-
 ## RStudio
 
 Easier working with R
@@ -146,7 +144,7 @@ print("I'm code")
 ```
 
 And then directly after it, will be the output of the code.  
-So `print("I'm code")` is the code chunk and [1] "I'm code" is the output.
+So `print("I'm code")` is the code chunk and `[1] "I'm code"` is the output.
 
 ## R as a calculator
 
@@ -172,7 +170,7 @@ You can do basic arithmetic in R, which I surprisingly use all the time.
 
 To execute or run a line of code, you just put your cursor on line of code and then:
 
-  1. Press Run (which you will find at the top of your window
+  1. Press Run (which you will find at the top of your window)
 
   OR
 
@@ -186,7 +184,7 @@ Execute `5+4` from your .R file, and then find the answer 9 in the Console.
 
 ## Commenting in Scripts
 
-The syntax `#` creates a comment, which means anything to the right of `#` will not be evaluated / run
+The syntax `#` creates a comment, which means anything to the right of `#` will not be executed / run
 
 Commenting is useful to:
 
@@ -233,13 +231,11 @@ knitr::include_graphics("images/outline.png")
 # Take it to another line
 ```
 
-Again, you can take on whatever style you want, the most important thing is to be consistent.  
-
 ## Commenting to explain code
 
 I tend to use:
 
--   One hash tag with a space to describe what might be happening in the following few lines of code
+-   One hash tag with a space to describe what is happening in the following few lines of code
 -   One hastag with no space after a command to list specifics 
 
 ```{r, echo=T, eval=F}
@@ -269,9 +265,7 @@ I tend to use:
 - You can create objects from within the R environment and from files on your computer
 - R uses `<-` to assign values to an object name 
 - Note: Object names are case-sensitive, i.e. X and x are different
-- Try creating one of two of these objects in your R script
-
-
+- Here are examples of creating five different objects:
 ```{r echo=T}
 number.object <- 3
 character.object <- "blue"
@@ -281,6 +275,19 @@ matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
 ```
 
 Note, `c()` and `matrix()` are functions, which we will talk more about in module 2.
+
+
+## Mini Exercise
+
+Try creating one or two of these objects in your R script
+
+```{r echo=T}
+number.object <- 3
+character.object <- "blue"
+vector.object1 <- c(2,3,4,5)
+vector.object2 <- c("blue", "red", "yellow")
+matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
+```
 
 ## Objects 
 
@@ -343,9 +350,9 @@ knitr::include_graphics("images/tab.completion.png")
 
 -   RStudio makes working in R easier
 -   The Editor is for static code like R Scripts
--   The console is for testing code that can't be saved
+-   The Console is for testing code that can't be saved
 -   Commenting is your new best friend
--   In R we create objects that can be viewed in the Global Environment panel and called anytime
+-   In R we create objects that can be viewed in the Environment panel and called anytime
 -   An object is something that can be worked with in R
 -   Use `<-` syntax to create objects
 
@@ -353,12 +360,12 @@ knitr::include_graphics("images/tab.completion.png")
 ## Mini Exercise
 
 1. Create a new number object and name it `my.object`
-2. Create a vector of 4 numbers and name it `my.vector`
-3. Add `my.object` and `my.vector`
+2. Create a vector of 4 numbers and name it `my.vector` using the `c()` function
+3. Add `my.object` and `my.vector` together use arithmatic operator
 
 ## Acknowledgements
 
-These are the materials I looked through, modified, or extracted to complete this module's lecture.
+These are the materials we looked through, modified, or extracted to complete this module's lecture.
 
 -   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
 -   Some RStudio snapshots were pulled from <http://ayeimanol-r.net/2013/04/21/289/>

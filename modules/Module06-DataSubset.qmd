@@ -329,7 +329,7 @@ nrow(df_lte10_v2)
 
 ## Acknowledgements
 
-These are the materials I looked through, modified, or extracted to complete this module's lecture.
+These are the materials we looked through, modified, or extracted to complete this module's lecture.
 
 -   ["Introduction to R for Public Health Researchers" Johns Hopkins University](https://jhudatascience.org/intro_to_r/)
 -   [CRAN Project](https://cran.r-project.org/doc/manuals/R-lang.html#Indexing)

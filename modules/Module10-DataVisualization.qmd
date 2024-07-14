@@ -357,7 +357,7 @@ legend(x=1, y=1.35, fill=c("darkblue","red"),  legend = c("seronegative", "serop
 
 ## Acknowledgements
 
-These are the materials I looked through, modified, or extracted to complete this module's lecture.
+These are the materials we looked through, modified, or extracted to complete this module's lecture.
 
 -   ["Base Plotting in R" by Medium](https://towardsdatascience.com/base-plotting-in-r-eb365da06b22)
 -		["Base R margins: a cheatsheet"](https://r-graph-gallery.com/74-margin-and-oma-cheatsheet.html)

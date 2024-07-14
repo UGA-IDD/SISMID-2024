@@ -49,7 +49,7 @@ We will be working from this directory for the remainder of the Workshop. Take a
 
 1. The name of the R Project will be shown at the top of the RStudio application
 2. If you check the working directory using `getwd()` you will find the working directory is set to the location where the R Project was saved.
-3. The Files window in RStudio is also set to the location where the R Project was saved, making it easy to navigate you sub-directories directly from RStudio.
+3. The Files window in RStudio is also set to the location where the R Project was saved, making it easy to navigate to sub-directories directly from RStudio.
 
 
 ## R Project - Common issues
@@ -61,20 +61,22 @@ To open a previously created R Project, you need to open the R Project (i.e., SI
 ## Summary
 
 -   R Projects are really helpful for lots of reasons, including to improve the reproducibility of your work
--   Set up your R Project's sub-directories so that you can easily navigate the project
+-   Consistently set up your R Project's sub-directories so that you can easily navigate the project
+-		If you get an error that a file can't be found, make sure you correctly opened the R Project by looking for the Project name at the top of the RStudio application window.
 
 
 ## Mini Exercise
 
 1. Close R Studio
-2. Reopen you R Project
+2. Reopen your R Project
 3. Check that you are actually in the R Project
 4. Create a new R script and save it in your 'code' subdirectory
-5. Create a vector of numbers and then get a summary statistics of that vector (e.g., sum, mean, median) 
-6. Add comment(s) to your R script to explain your code.
+5. Create a vector of numbers
+6. Create a vector a character values
+7. Add comment(s) to your R script to explain your code.
 
 
 ## Acknowledgements
 
-These are the materials I looked through, modified, or extracted to complete this module's lecture.
+These are the materials we looked through, modified, or extracted to complete this module's lecture.
 

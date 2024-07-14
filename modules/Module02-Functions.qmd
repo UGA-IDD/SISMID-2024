@@ -69,7 +69,11 @@ What is the default in the `base` argument of the `log()` function?
 log(10)
 ```
 
-**But, how do you know the purpose of a function and what arguments a function includes and how to specify the arguments?**
+## Sure that is easy enough, but how do you know
+
+- the purpose of a function? 
+- what arguments a function includes? 
+- how to specify the arguments?
 
 ## Seeking help for using functions
 
@@ -96,7 +100,7 @@ knitr::include_graphics("images/log_args.png")
 
 ```{r echo=TRUE}
 log(10, 2)
-log(x=10, base=2)
+log(base=2, x=10)
 log(x=10, 2)
 log(10, base=2)
 ```
@@ -127,21 +131,31 @@ You can install additional packages for your uses from [CRAN](https://cran.r-pro
 -   Who wrote it? **Hadley Wickham** is a major authority on R (Employee and Developer at RStudio)
 -   How to [trust](https://simplystatistics.org/posts/2015-11-06-how-i-decide-when-to-trust-an-r-package/#:~:text=The%20first%20thing%20I%20do,I%20immediately%20trust%20the%20package.) an R package
 
-## Installing and calling packages
+## **Installing** and calling packages
 
-To install a package you can i) go to Tools ---\> Install Packages in the RStudio header, or ii) use the following code:
+To use the bundle or "package" of code (and or possibly data) from a package, you need to install and also call the package.
+
+To install a package you can 
+
+1. go to Tools ---\> Install Packages in the RStudio header
+
+OR
+
+2. use the following code:
 ```{r echo=TRUE, eval=FALSE}
-install.packages(package_name)
+install.packages("package_name")
 ```
 
-xxzane - how to put more spacing between these lines?
+
+## Installing and **calling** packages
 
 To call (i.e., be able to use the package) you can use the following code:
+
 ```{r echo=TRUE, eval=FALSE}
 library(package_name)
 ```
 
-More on this later...
+More on installing and calling packages later...
 
 
 ## Mini Exercise
@@ -152,6 +166,12 @@ Find and execute a **Base R** function that will round the number 0.86424 to two
 ## Functions from Module 1
 
 The combine function `c()` collects/combines/joins single R objects into a vector of R objects. It is mostly used for creating vectors of numbers, character strings, and other data types. 
+
+```{r echo=TRUE, eval=FALSE}
+?c
+```
+
+
 ```{r echo=FALSE}
 library(printr)
 ?c
@@ -160,6 +180,12 @@ library(printr)
 ## Functions from Module 1
 
 The `matrix()` function creates a matrix from the given set of values.
+
+```{r echo=TRUE, eval=FALSE}
+?matrix
+```
+
+xxamy - doesn't seem to work - may need to paste in a screen shot figure
 ```{r echo=FALSE}
 library(printr)
 ?matix
@@ -177,7 +203,7 @@ library(printr)
 
 ## Acknowledgements
 
-These are the materials I looked through, modified, or extracted to complete this module's lecture.
+These are the materials we looked through, modified, or extracted to complete this module's lecture.
 
 - ["Introduction to R - ARCHIVED" from  Harvard Chan Bioinformatics Core (HBC)](https://hbctraining.github.io/Intro-to-R/lessons/03_introR-functions-and-arguments.html#:\~:text=A%20key%20feature%20of%20R,it%2C%20and%20return%20a%20result.)
 
