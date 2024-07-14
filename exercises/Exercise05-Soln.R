@@ -230,7 +230,7 @@ barplot(
 # fit a logistic regression model where DP_infection is the outcome and
 # DP_Antibody is the only predictor.
 diph_mod <- glm(
-	DP_vacc ~ DP_antibody,
+	DP_infection ~ DP_antibody,
 	data = diph,
 	family = "binomial"
 )

@@ -4,6 +4,8 @@
 # Zane Billings and Amy Winter
 ################################################################################
 
+# xxzane add question about variable classes from ex1 here
+
 # Question 1 ###################################################################
 # For this question, we'll use the measles vaccination coverage dataset.
 # Part A: load the file "MeaslesVaccinationCoverage.csv" into R.

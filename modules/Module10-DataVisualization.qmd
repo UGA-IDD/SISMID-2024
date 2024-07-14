@@ -4,6 +4,7 @@ format:
   revealjs:
     scrollable: true
     smaller: true
+    toc: false
 ---
 
 ## Learning Objectives
@@ -26,15 +27,13 @@ head(x=df, n=3)
 Create `age_group` three level factor variable
 ```{r echo=TRUE}
 df$age_group <- ifelse(df$age <= 5, "young", 
-                       ifelse(df$age<=10 & df$age>5, "middle", 
-                              ifelse(df$age>10, "old", NA)))
+                       ifelse(df$age<=10 & df$age>5, "middle", "old")) 
 df$age_group <- factor(df$age_group, levels=c("young", "middle", "old"))
 ```
 
-Create `seropos` binary variable representing seropositivity if antibody concentrations are >10 mIUmL.
+Create `seropos` binary variable representing seropositivity if antibody concentrations are >10 IU/mL.
 ```{r echo=TRUE}
-df$seropos <- ifelse(df$IgG_concentration<10, 0, 
-										ifelse(df$IgG_concentration>=10, 1, NA))
+df$seropos <- ifelse(df$IgG_concentration<10, 0, 1)
 ```
 
 ## Base R data visualizattion functions
@@ -42,12 +41,12 @@ df$seropos <- ifelse(df$IgG_concentration<10, 0,
 The Base R 'graphics' package has a ton of graphics options. 
 
 ```{r echo=TRUE, eval=FALSE}
-library(help = "graphics")
+help(package = "graphics")
 ```
 
 ```{r echo=FALSE, eval=TRUE}
 library(printr)
-library(help = "graphics")
+help(package = "graphics")
 ```
 
 
@@ -64,15 +63,19 @@ To make a plot you often need to specify the following features:
 
 The parameter section fixes the settings for all your plots, basically the plot options. Adding attributes via `par()` before you call the plot creates ‘global’ settings for your plot.
 
-In the example below, we have set two commonly used optional attributes in the global plot settings. 
--		The `mfrow` specifies that we have one row and two columns of plots — that is, two plots side by side. 
--		The `mar` attribute is a vector of our margin widths, with the first value indicating the margin below the plot (5), the second indicating the margin to the left of the plot (5), the third, the top of the plot(4), and the fourth to the left (1).
+In the example below, we have set two commonly used optional attributes in the global plot settings.
+
+-	The `mfrow` specifies that we have one row and two columns of plots — that is, two plots side by side. 
+-	The `mar` attribute is a vector of our margin widths, with the first value indicating the margin below the plot (5), the second indicating the margin to the left of the plot (5), the third, the top of the plot(4), and the fourth to the left (1).
 
 ```
 par(mfrow = c(1,2), mar = c(5,5,4,1))
 ```
 
-```{r, out.width = "70%", echo = FALSE}
+
+## 1. Parameters
+
+```{r, figwidth = "100%", echo = FALSE}
 knitr::include_graphics("images/par.png")
 ```
 
@@ -92,7 +95,7 @@ library(printr)
 
 ## Common parameter options
 
-Six useful parameter arguments help improve the readability of the plot:
+Eight useful parameter arguments help improve the readability of the plot:
 
 - `xlab`: specifies the x-axis label of the plot
 - `ylab`: specifies the y-axis label
@@ -137,7 +140,7 @@ library(printr)
 
 ## `histogram()` example
 
-Reminder
+Reminder function signature
 ```
 hist(x, breaks = "Sturges",
      freq = NULL, probability = !freq,
@@ -186,7 +189,7 @@ plot(
 	type="p", 
 	main="Age by IgG Concentrations", 
 	xlab="Age (years)", 
-	ylab="IgG Concentration (mIU/mL)", 
+	ylab="IgG Concentration (IU/mL)", 
 	pch=16, 
 	cex=0.9,
 	col="lightblue")
@@ -208,7 +211,7 @@ library(printr)
 
 ## `boxplot()` example
 
-Reminder
+Reminder function signature
 ```
 boxplot(formula, data = NULL, ..., subset, na.action = NULL,
         xlab = mklab(y_var = horizontal),
@@ -239,7 +242,7 @@ boxplot(
 
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
-?boxplot
+?barplot
 ```
 
 
@@ -247,7 +250,7 @@ library(printr)
 
 The function takes the a lot of arguments to control the way the way our data is plotted. 
 
-Reminder
+Reminder function signature
 ```
 barplot(height, width = 1, space = NULL,
         names.arg = NULL, legend.text = NULL, beside = FALSE,
@@ -264,8 +267,8 @@ barplot(height, width = 1, space = NULL,
 ```{r echo=TRUE}
 freq <- table(df$seropos, df$age_group)
 barplot(freq)
-prop <- prop.table(freq)
-barplot(prop)
+prop.cell.percentages <- prop.table(freq)
+barplot(prop.cell.percentages)
 ```
 
 ## 3. Legend!
@@ -285,7 +288,7 @@ library(printr)
 
 ## Add legend to the plot
 
-Reminder
+Reminder function signature
 ```
 legend(x, y = NULL, legend, fill = NULL, col = par("col"),
        border = "black", lty, lwd, pch,
@@ -301,26 +304,37 @@ legend(x, y = NULL, legend, fill = NULL, col = par("col"),
        seg.len = 2)
 ```
 
-Let's practice (xxzane - can we make the plot bigger?)
-```{r echo=TRUE}
-barplot(prop, col=c("darkblue","red"), ylim=c(0,0.7), main="Seropositivity by Age Group")
-legend(x=2.5, y=0.7,
+Let's practice
+```{r echo=TRUE, eval=FALSE}
+barplot(prop.cell.percentages, col=c("darkblue","red"), ylim=c(0,0.5), main="Seropositivity by Age Group")
+legend(x=2.5, y=0.5,
 			 fill=c("darkblue","red"), 
 			 legend = c("seronegative", "seropositive"))
 
 ```
 
+
+## Add legend to the plot
+
+```{r echo=FALSE}
+barplot(prop.cell.percentages, col=c("darkblue","red"), ylim=c(0,0.5), main="Seropositivity by Age Group")
+legend(x=2.5, y=0.5,
+			 fill=c("darkblue","red"), 
+			 legend = c("seronegative", "seropositive"))
+
+```
+
+
 ## `barplot()` example
 
 Getting closer, but what I really want is column proportions (i.e., the proportions should sum to one for each age group). Also, the age groups need more meaningful names.
 
-```{r echo=TRUE}
+```{r echo=TRUE, eval=FALSE}
 freq <- table(df$seropos, df$age_group)
-tot.per.age.group <- colSums(freq)
-age.seropos.matrix <- t(t(freq)/tot.per.age.group)
-colnames(age.seropos.matrix) <- c("1-5 yo", "6-10 yo", "11-15 yo")
+prop.column.percentages <- prop.table(freq, margin=2)
+colnames(prop.column.percentages) <- c("1-5 yo", "6-10 yo", "11-15 yo")
 
-barplot(age.seropos.matrix, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Age Group")
+barplot(prop.column.percentages, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Age Group")
 axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
 legend(x=2.8, y=1.35,
 			 fill=c("darkblue","red"), 
@@ -330,25 +344,58 @@ legend(x=2.8, y=1.35,
 
 ## `barplot()` example
 
+```{r echo=FALSE, eval=TRUE}
+freq <- table(df$seropos, df$age_group)
+prop.column.percentages <- prop.table(freq, margin=2)
+colnames(prop.column.percentages) <- c("1-5 yo", "6-10 yo", "11-15 yo")
+
+barplot(prop.column.percentages, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Age Group")
+axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
+legend(x=2.8, y=1.35,
+			 fill=c("darkblue","red"), 
+			 legend = c("seronegative", "seropositive"))
+
+```
+
+
+
+## `barplot()` example
+
 Now, let look at seropositivity by two individual level characteristics in the same plot. 
 
 ```{r echo=FALSE}
-freq <- table(df$seropos, df$slum)
-tot.per.slum.cat <- colSums(freq)
-slum.seropos.matrix <- t(t(freq)/tot.per.slum.cat)
+freq2 <- table(df$seropos, df$slum)
+prop.column.percentages2 <- prop.table(freq2, margin=2)
 ```
 
-```{r echo=TRUE}
+```{r echo=TRUE, eval=FALSE}
 par(mfrow = c(1,2))
-barplot(age.seropos.matrix, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Age Group")
+barplot(prop.column.percentages, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Age Group")
 axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
-legend(x=1, y=1.35, fill=c("darkblue","red"), legend = c("seronegative", "seropositive"))
+legend("topright",
+			 fill=c("darkblue","red"), 
+			 legend = c("seronegative", "seropositive"))
 
-barplot(slum.seropos.matrix, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Residence")
+barplot(prop.column.percentages2, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Residence")
 axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
-legend(x=1, y=1.35, fill=c("darkblue","red"),  legend = c("seronegative", "seropositive"))
+legend("topright", fill=c("darkblue","red"),  legend = c("seronegative", "seropositive"))
 ```
 
+
+## `barplot()` example
+
+```{r echo=FALSE, eval=TRUE}
+par(mfrow = c(1,2))
+barplot(prop.column.percentages, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Age Group")
+axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
+legend("topright",
+			 fill=c("darkblue","red"), 
+			 legend = c("seronegative", "seropositive"))
+
+barplot(prop.column.percentages2, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Residence")
+axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
+legend("topright", fill=c("darkblue","red"),  legend = c("seronegative", "seropositive"))
+```
 
 
 ## Summary

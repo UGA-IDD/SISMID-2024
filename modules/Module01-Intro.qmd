@@ -4,6 +4,7 @@ format:
   revealjs:
     scrollable: true
     smaller: true
+    toc: false
 ---
 
 ## Learning Objectives
@@ -11,11 +12,11 @@ format:
 After module 1, you should be able to...
 
 -   Create and save an R script
--   Describe the utility and differences b/w the console and an R script
--   Modify R Studio windows
+-   Describe the utility and differences b/w the Console and the Source panes
+-   Modify R Studio panes
 -   Create objects
 -   Describe the difference b/w character, numeric, list, and matrix objects
--   Reference objects in the RStudio Global Environment
+-   Reference objects in the RStudio Environment pane
 -   Use basic arithmetic operators in R
 -   Use comments within an R script to create header, sections, and make notes
 
@@ -26,7 +27,7 @@ RStudio is an Integrated Development Environment (IDE) for R
 -   It helps the user effectively use R
 -   Makes things easier
 -   Is NOT a dropdown statistical tool (such as Stata)
-    -   See [Rcmdr](https://cran.r-project.org/web/packages/Rcmdr/index.html) or [Radiant](http://vnijs.github.io/radiant/)
+    -   See [jamovi](https://www.jamovi.org/) or also [Rcmdr](https://cran.r-project.org/web/packages/Rcmdr/index.html), [Radiant](http://vnijs.github.io/radiant/)
 
 ```{r, fig.alt="RStudio logo", out.width = "30%", echo = FALSE, fig.align='center'}
 knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg")
@@ -60,10 +61,14 @@ knitr::include_graphics("images/both.png")
 
 ## Working with R in RStudio - 2 major panes:
 
-1)  The **Source/Editor**: "Analysis" Script + Interactive Exploration
-    -   Static copy of what you did (reproducibility)
-    -   Top by default
-2)  The **R Console**: "interprets" whatever you type
+1) The **Source/Editor**: xxamy
+
+- "Analysis" Script
+- Static copy of what you did (reproducibility)
+- Top by default
+    
+2)  The **R Console**: "interprets" whatever you type:
+
     -   Calculator
     -   Try things out interactively, then add to your editor
     -   Bottom by default
@@ -102,7 +107,7 @@ knitr::include_graphics("images/rstudio_sheet.png")
 
 If RStudio doesn't look the way you want (or like our RStudio), then do:
 
-RStudio --\> View --\> Panes --\> Pane Layout
+In R Studio Menu Bar go to View Menu --\> Panes --\> Pane Layout
 
 ```{r, out.width = "500px", echo = FALSE, fig.align='center'}
 knitr::include_graphics("images/pane_layout.png")
@@ -120,7 +125,7 @@ knitr::include_graphics("images/rstudio_environment.png")
 ## Workspace/History
 
 -   Shows previous commands. Good to look at for debugging, but **don't rely** on it.
--   Also type the "up" key in the Console to scroll through previous commands
+-   Also type the "up" and "down" key in the Console to scroll through previous commands
 
 ## Workspace/Other Panes
 
@@ -132,19 +137,22 @@ knitr::include_graphics("images/rstudio_environment.png")
 
 ## Getting Started
 
--   File --\> New File --\> R Script
+-   In R Studio Menu Bar go to File Menu --\> New File --\> R Script
 -   Save the blank R script as Module1.R
 
 ## Explaining output on slides
 
-In slides, a command (we'll also call them code or a code chunk) will look like this
+In slides, the R command/code will be in a box, and then directly after it, will be the output of the code starting with `[1]`
 
 ```{r echo=T}
 print("I'm code")
 ```
 
-And then directly after it, will be the output of the code.  
-So `print("I'm code")` is the code chunk and `[1] "I'm code"` is the output.
+So `print("I'm code")` is the command and `[1] "I'm code"` is the output.
+
+</br>
+
+Commands/code and output written as inline text will be typewriter blue font. For example `code`
 
 ## R as a calculator
 
@@ -159,16 +167,16 @@ You can do basic arithmetic in R, which I surprisingly use all the time.
 ## R as a calculator
 
 - The R console is a full calculator
-- Try to play around with it:
-    - +, -, /, * are add, subtract, divide and multiply
-    - ^ or ** is power
-    - parentheses -- ( and ) -- work with order of operations 
-    - %% finds the remainder
+- Arithmetic operators:
+    - `+`, `-`, `/`, `*` are add, subtract, divide and multiply
+    - `^` or `**` is power
+    - parentheses -- `(` and `)` -- work with order of operations 
+    - `%%` finds the remainder
     
 
 ## Execute / Run Code
 
-To execute or run a line of code, you just put your cursor on line of code and then:
+To execute or run a line of code (i.e., command), you just put your cursor on the command and then:
 
   1. Press Run (which you will find at the top of your window)
 
@@ -176,7 +184,7 @@ To execute or run a line of code, you just put your cursor on line of code and t
 
   2. Press `Cmd + Return` (iOS) OR `Ctrl + Enter` (Windows).
 
-To execute or run multiple lines of code, you just need to highlight the code you want to run and then follow option 1 or 2.
+To execute or run multiple lines of code, you need to highlight the code you want to run and then follow option 1 or 2.
 
 ## Mini exercise 
 
@@ -205,7 +213,7 @@ Add a comment header to Module1.R.  This is the one I typically use, but you may
 
 ## Commenting to create sections
 
-You can also create sections within your code by ending a comment with 4 hash marks. **This is very useful for creating an outline of your R Script.** The "Outline" can be found in the top right of the your source window.
+You can also create sections within your code by ending a comment with 4 hash marks. **This is very useful for creating an outline of your R Script.** The "Outline" can be found in the top right of the your Source pane
 
 ```{r, echo=T, eval=F}
 # Section 1 Header ####
@@ -231,12 +239,10 @@ knitr::include_graphics("images/outline.png")
 # Take it to another line
 ```
 
-## Commenting to explain code
-
 I tend to use:
 
--   One hash tag with a space to describe what is happening in the following few lines of code
--   One hastag with no space after a command to list specifics 
+-   One hash mark with a space to describe what is happening in the following few lines of code
+-   One hash mark with no space after a command to list specifics 
 
 ```{r, echo=T, eval=F}
 # Practicing my arithmetic
@@ -264,7 +270,7 @@ I tend to use:
 
 - You can create objects from within the R environment and from files on your computer
 - R uses `<-` to assign values to an object name 
-- Note: Object names are case-sensitive, i.e. X and x are different
+- Note: Object names are case-sensitive, i.e. `X` and `x` are different
 - Here are examples of creating five different objects:
 ```{r echo=T}
 number.object <- 3
@@ -298,7 +304,7 @@ knitr::include_graphics("images/global_env.png")
 ```
 
 
-Also, you can call them anytime (i.e, see them in the Console) by executing (running) the object.  For example,
+Also, you can print them anytime (i.e, see them in the Console) by executing (running) the object.  For example,
 
 ```{r, echo = TRUE}
 character.object
@@ -309,9 +315,11 @@ matrix.object
 ```
 
 
-## Assignment - Good coding
+# Object names and assingment - Good coding
 
-`=` and `<-` can both be used for assignment, but `<-` is better coding practice, because `==` is a logical operator. We will talk about this more, later.
+xxzane
+
+`=` and `<-` can both be used for assignment, but `<-` is better coding practice, because sometimes `=` doesn't work and we want to distinguish between the logical operator `==`. We will talk about this more, later.
 
 ## Lists
 
@@ -352,7 +360,7 @@ knitr::include_graphics("images/tab.completion.png")
 -   The Editor is for static code like R Scripts
 -   The Console is for testing code that can't be saved
 -   Commenting is your new best friend
--   In R we create objects that can be viewed in the Environment panel and called anytime
+-   In R we create objects that can be viewed in the Environment pane and used anytime
 -   An object is something that can be worked with in R
 -   Use `<-` syntax to create objects
 
@@ -361,7 +369,7 @@ knitr::include_graphics("images/tab.completion.png")
 
 1. Create a new number object and name it `my.object`
 2. Create a vector of 4 numbers and name it `my.vector` using the `c()` function
-3. Add `my.object` and `my.vector` together use arithmatic operator
+3. Add `my.object` and `my.vector` together using an arithmetic operator
 
 ## Acknowledgements
 

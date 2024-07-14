@@ -5,6 +5,8 @@ format:
     scrollable: true
     smaller: true
     toc: false
+#execute: 
+#  echo: true
 ---
 
 ## Learning Objectives
@@ -48,11 +50,11 @@ Note, if you have a very large dataset with 15+ variables, `summary()` is not so
 
 ## Description of data
 
-This is data based on a simulated pathogen X IgG antibody serological survey.  The rows represent individuals. Variables include IgG concentrations in IU/mL, age in years, gender, and residence based on slum characterization.  We will use this dataset for lectures throughout the Workshop.
+This is data based on a simulated pathogen X IgG antibody serological survey.  The rows represent individuals. Variables include IgG concentrations in IU/mL, age in years, gender, and residence based on slum characterization.  We will use this dataset for modules throughout the Workshop.
 
 ## View the data as a whole dataframe
 
-The `View()` function, one of the few Base R functions with a capital letter can be used to open a new tab in the Console and view the data as you would in excel.
+The `View()` function, one of the few Base R functions with a capital letter, and can be used to open a new tab in the Console and view the data as you would in excel.
 
 ```{r echo=TRUE, eval=FALSE}
 View(df)
@@ -64,15 +66,17 @@ knitr::include_graphics("images/ViewTab.png")
 
 ## View the data as a whole dataframe
 
-You can also open a new tab of the data by clicking on the data icon beside the object in the Environment window.
+You can also open a new tab of the data by clicking on the data icon beside the object in the Environment pane
 
 ```{r, out.width = "90%", echo = FALSE}
 knitr::include_graphics("images/View.png")
 ```
 
+You can also hold down `Cmd` or `CTRL` and click on the name of a data frame in your code.
+
 ## Indexing
 
-R contains several constructs which allow access to individual elements or subsets through indexing operations. Indexing can be used both to extract part of an object and to replace parts of an object (or to add parts). There are three basic indexing syntax: `[ ]`, `[[ ]]` and `$`.
+R contains several operators which allow access to individual elements or subsets through indexing. Indexing can be used both to extract part of an object and to replace parts of an object (or to add parts). There are three basic indexing operators: `[`, `[[` and `$`. 
 
 ```{r echo=TRUE, eval=FALSE}
 x[i] #if x is a vector
@@ -84,7 +88,7 @@ x$"a" #if x is a data frame or list
 
 ## Vectors and multi-dimensional objects
 
-To index a vector, `vector[i]` select the ith element. To index a multi-dimensional objects such as a matrix, `matrix[i, j]` selects the element in row i and column j, where as in a three dimensional `array[k, i, i, j]` selects the element in matrix k, row i, and column j. 
+To index a vector, `vector[i]` select the ith element. To index a multi-dimensional objects such as a matrix, `matrix[i, j]` selects the element in row i and column j, where as in a three dimensional `array[k, i, j]` selects the element in matrix k, row i, and column j. 
 
 Let's practice by first creating the same objects as we did in Module 1.
 ```{r echo=T}
@@ -101,7 +105,7 @@ vector.object1
 matrix.object
 ```
 
-Finally, let's use indexing to pull our elements of the objects.  
+Finally, let's use indexing to pull out elements of the objects.  
 ```{r echo=T}
 vector.object1[2] #pulling the second element
 matrix.object[1,2] #pulling the element in row 1 column 2
@@ -123,17 +127,28 @@ Now we use indexing to pull out the 3rd element in the list.
 list.object[[3]]
 ```
 
-## $ for indexing
-
-`$` allows only a literal character string or a symbol as the index.
-
+What happens if we use a single square bracket?
 ```{r echo=T}
+list.object[3]
+```
+
+The `[[` operator is called the "extract" operator and gives us the element
+from the list. The `[` operator is called the "subset" operator and gives
+us a subset of the list, that is still a list.
+
+## $ for indexing for data frame
+
+`$` allows only a literal character string or a symbol as the index.  For a data frame it extracts a variable.
+
+```{r echo=T, eval=FALSE}
 df$IgG_concentration
 ```
 
-Note, if you have spaces in your variable name, you will need to use back ticks `variable name` after the `$`.  This is a good reason to not create variables / column names with spaces.
+Note, if you have spaces in your variable name, you will need to use back ticks \` after the `$`.  This is a good reason to not create variables / column names with spaces.
 
 ## $ for indexing with lists
+
+`$` allows only a literal character string or a symbol as the index.  For a list it extracts a named element.
 
 List elements can be named
 ```{r echo=TRUE}
@@ -145,7 +160,7 @@ list.object.named <- list(
 list.object.named
 ```
 
-If list elements are named, than you can reference data from list using `$` or using double square brackets, `[[ ]]`
+If list elements are named, than you can reference data from list using `$` or using double square brackets, `[[`
 ```{r echo=TRUE}
 list.object.named$uga 
 list.object.named[["uga"]] 
@@ -156,34 +171,38 @@ list.object.named[["uga"]]
 
 As mentioned above, indexing can be used both to extract part of an object and to replace parts of an object (or to add parts).
 
-```{r}
-colnames(df) # just prints
-colnames(df)[1:2] <- c("IgG_concentration_mIU/mL", "age_year") # reassigns
+```{r echo=TRUE}
+colnames(df) 
+colnames(df)[2:3] <- c("IgG_concentration_IU/mL", "age_year") # reassigns
 colnames(df)
-colnames(df)[1:2] <- c("IgG_concentration", "age") #reset
+```
+
+For the sake of the module, I am going to reassign them back to the original variable names
+```{r echo=TRUE}
+colnames(df)[2:3] <- c("IgG_concentration", "age") #reset
 ```
 
 ##  Using indexing to subset by columns
 
-We can also subset a data frames and matrices (2-dimensional objects) using the bracket `[ row , column ]`.  We can subset by columns and pull the `x` column using the index of the column or the column name. 
+We can also subset data frames and matrices (2-dimensional objects) using the bracket `[ row , column ]`.  We can subset by columns and pull the `x` column using the index of the column or the column name. Leaving either row or column dimension blank means to select all of them.
 
-For example, here I am pulling the 3nd column, which has the variable name `age`
-```{r echo=T}
+For example, here I am pulling the 3rd column, which has the variable name `age`, for all of rows.
+```{r echo=T, eval=FALSE}
 df[ , "age"] #same as df[ , 3]
 ```
-We can select multiple columns using multiple column names:
+We can select multiple columns using multiple column names, again this is selecting these variables for all of the rows.
 ```{r echo=T}
 df[, c("age", "gender")] #same as df[ , c(3,4)]
 ```
 We can remove select columns using indexing as well, OR by simply changing the column to `NULL`
-```{r echo=T}
+```{r echo=T, eval=FALSE}
 df[, -5] #remove column 5, "slum" variable
 ```
 ```{r echo=TRUE, eval=FALSE}
 df$slum <- NULL # this is the same as above
 ```
-We can also grab the `age` column using the `$` operator. 
-```{r echo=T}
+We can also grab the `age` column using the `$` operator, again this is selecting the variable for all of the rows.
+```{r echo=T, eval=FALSE}
 df$age
 ```
 
@@ -211,7 +230,7 @@ operator | operator option |description
 `>`|%g%|greater than
 `>=`|%ge%|greater than or equal to
 `==`||equal to
-`!=`|not equal to
+`!=`||not equal to
 `x&y`||x and y
 `x|y`||x or y
 `%in%`||match
@@ -241,8 +260,10 @@ number.object %in% c(6,7,2)
 ```{r echo=TRUE}
 cn <- colnames(df)
 cn
+cn=="IgG_concentration"
 cn[cn=="IgG_concentration"] <-"IgG_concentration_mIU" #rename cn to "IgG_concentration_mIU" when cn is "IgG_concentration"
 colnames(df) <- cn
+colnames(df)
 ```
 
 Note, I am resetting the column name back to the original name for the sake of the rest of the module.
@@ -258,13 +279,19 @@ In this example, we subset by rows and pull only observations with an age of les
 ```{r echo=T}
 df_lte10 <- df[df$age<=10, ]
 ```
-In this example, we subset by rows and pull only observations with an age of less than or equal to 5 OR greater than 10.
+Lets check that my subsets worked using the `summary()` function. 
+```{r echo=T}
+summary(df_lte10$age)
+```
+
+</br>
+
+In the next example, we subset by rows and pull only observations with an age of less than or equal to 5 OR greater than 10.
 ```{r echo=TRUE}
 df_lte5_gt10 <- df[df$age<=5 | df$age>10, ]
 ```
 Lets check that my subsets worked using the `summary()` function. 
 ```{r echo=T}
-summary(df_lte10$age)
 summary(df_lte5_gt10$age)
 ```
 
@@ -275,24 +302,25 @@ Missing data need to be carefully described and dealt with in data analysis. Und
 
 Types of "missing" values:
 
--   `NA` - general missing data
--   `NaN` - stands for "**N**ot **a** **N**umber", happens when you do
-    0/0.
--   `Inf` and `-Inf` - Infinity, happens when you divide a positive
-    number (or negative number) by 0.
--   blank space - sometimes when data is read it, there is a blank space left
+- `NA` - **N**ot **A**pplicable general missing data
+- `NaN` - stands for "**N**ot **a** **N**umber", happens when you do 0/0.
+- `Inf` and `-Inf` - Infinity, happens when you divide a positive number (or negative number) by 0.
+- blank space - sometimes when data is read it, there is a blank space left
+- an empty string (e.g., `""`) 
+- `NULL`- undefined value that represents something that does not exist
 
 ## Logical operators to help identify and missing data
 
-operator | operator option |description
+operator |description
 -----|-----|-----:
-`is.na`||is NAN or NA
-`is.nan`||is NAN
-`!is.na`||is not NAN or NA
-`!is.nan`||is not NAN
-`is.infinite`||is infinite
-`any`||are any TRUE
-`which`||which are TRUE
+`is.na`|is NAN or NA
+`is.nan`|is NAN
+`!is.na`|is not NAN or NA
+`!is.nan`|is not NAN
+`is.infinite`|is infinite
+`any`|are any TRUE
+`all`|all are TRUE
+`which`|which are TRUE
 
 ## More logical operators examples
 
@@ -347,8 +375,8 @@ df_lt5_f <- subset(df, df$age<=5 & gender=="Female", select=c(IgG_concentration,
 `subset()` automatically removes NAs, which is a different behavior from doing logical operations on NAs.
 
 ```{r echo=T}
-summary(df_lte10$age)
-summary(df_lte10_v2$age)
+summary(df_lte10$age) #created with indexing
+summary(df_lte10_v2$age) #created with the subset function
 ```
 
 We can also see this by looking at the number or rows in each dataset.
@@ -362,11 +390,11 @@ nrow(df_lte10_v2)
 
 ## Summary
 
-- `colnames()`, `str()` and `summary()`functions from Base R are great functions to assess the data type and some summary statistics
-- There are three basic indexing syntax: `[ ]`, `[[ ]]` and `$`
+- `colnames()`, `str()` and `summary()`functions from Base R are functions to assess the data type and some summary statistics
+- There are three basic indexing syntax: `[`, `[[` and `$`
 - Indexing can be used to extract part of an object (e.g., subset data) and to replace parts of an object (e.g., rename variables / columns)
 - Logical operators can be evaluated on object(s) in order to return a binary response of TRUE/FALSE, and are useful for decision rules for indexing
-- There are 5 “types” of missing values, the most common being “NA”
+- There are 7 “types” of missing values, the most common being “NA”
 - Logical operators meant to determine missing values are very helpful for data cleaning
 - The Base R `subset()` function is a slightly easier way to select variables and observations.
 

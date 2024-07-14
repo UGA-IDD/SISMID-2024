@@ -4,6 +4,7 @@ format:
   revealjs:
     scrollable: true
     smaller: true
+    toc: false
 ---
 
 ## Learning Objectives
@@ -11,15 +12,15 @@ format:
 After module 5, you should be able to...
 
 -   Use Base R functions to load data
--   Install and call external R Packages to extend R's functionality
--   Install any type of data into R
--   Find loaded data in the Global Environment window of RStudio
+-   Install and attach external R Packages to extend R's functionality
+-   Load any type of data into R
+-   Find loaded data in the Environment pane of RStudio
 -   Reading and writing R .Rds and .Rda/.RData files
 
 
 ## Import (read) Data
 
--   Importing or 'Reading in' data is the first step of any real project/analysis
+-   Importing or 'Reading in' data are the first step of any real project / data analysis
 -   R can read almost any file format, especially with external, non-Base R, packages
 -   We are going to focus on simple delimited files first. 
     -   comma separated (e.g. '.csv')
@@ -31,9 +32,13 @@ A delimited file is a sequential file with column delimiters. Each delimited fil
 
 1. Download Module 5 data from the website and save the data to your data subdirectory -- specifically `SISMID_IntroToR_RProject/data`
 
-2. Open the data files in a text editor application and familiarize you self with the data.
+1. Open the '.csv' and '.txt' data files in a text editor application and familiarize yourself with the data (i.e., Notepad for Windows and TextEdit for Mac)
 
-3. Determine the delminiter of the two '.txt' files
+1. Open the '.xlsx' data file in excel and familiarize yourself with the data
+		-		if you use a Mac **do not** open in Numbers, it can corrupt the file
+		-		if you do not have excel, you can upload it to Google Sheets
+
+1. Determine the delimiter of the two '.txt' files
 
 
 ## Import delimited data
@@ -51,18 +56,18 @@ library(printr)
 
 ## Import .csv files
 
-Reminder
+Function signature reminder
 ```
 read.csv(file, header = TRUE, sep = ",", quote = "\"",
          dec = ".", fill = TRUE, comment.char = "", ...)
 ```
 
-`file` is the first argument and is the path to your file, in quotes 
+		-		`file` is the first argument and is the path to your file, in quotes 
+		
+				-		can be path in your local computer -- absolute file path or relative file path 
+				-		can be path to a file on a website
 
-	- 		can be path in your local computer -- absolute file path or relative file path 
-	- 		can be path to a file on a website
-
-## Mini Exercise
+## Mini exercise
 
 If your R Project is not already open, open it so we take advantage of it setting a useful working directory for us in order to import data.
 
@@ -74,30 +79,30 @@ Lets import a new data file
 ```{r, echo=TRUE, eval = FALSE}
 ## Examples
 df <- read.csv(file = "data/serodata.csv") #relative path
-df <- read.csv(file = "~/Dropbox/Git/SISMID-2024/modules/data/serodata.csv") #absolute path starting from my home directory
 ```
 
 
 Note #1, I assigned the data frame to an object called `df`.  I could have called the data anything, but in order to use the data (i.e., as an object we can find in the Environment), I need to assign it as an object. 
 
-Note #2, Look to the Environment window, you will see the `df` object ready to be used.
+Note #2, Look to the Environment pane, you will see the `df` object ready to be used.
 
 
 ## Import .txt files
 
 `read.csv()` is a special case of `read.delim()` -- a general function to read a delimited file into a data frame  
 
+Reminder function signature
 ```
 read.delim(file, header = TRUE, sep = "\t", quote = "\"",
            dec = ".", fill = TRUE, comment.char = "", ...)
 ```
 
-- `file` is the path to your file, in quotes 
-- `delim` is what separates the fields within a record. The default for csv is comma
+		- `file` is the path to your file, in quotes 
+		- `delim` is what separates the fields within a record. The default for csv is comma
 
 ## Import .txt files
 
-Lets first import 'serodata1.txt' which uses a tab delminiter and 'serodata2.txt' which uses a semicolon delminiter.
+Lets first import 'serodata1.txt' which uses a tab delimiter and 'serodata2.txt' which uses a semicolon delimiter.
 
 
 ```{r, eval = FALSE}
@@ -106,7 +111,7 @@ df <- read.delim(file = "data/serodata.txt", sep = "\t")
 df <- read.delim(file = "data/serodata.txt", sep = ";")
 ```
 
-The data is now successfully read into your R workspace, **many times actually.** Notice, that each time we imported the data we assigned the data to the `df` object, meaning we replaced it each time we reassinged the `df` object.  
+The dataset is now successfully read into your R workspace, **many times actually.** Notice, that each time we imported the data we assigned the data to the `df` object, meaning we replaced it each time we reassinged the `df` object.  
 
 
 ## What if we have a .xlsx file - what do we do?
@@ -114,7 +119,7 @@ The data is now successfully read into your R workspace, **many times actually.*
 1. Google / Ask ChatGPT
 2. Find and vet function and package you want
 3. Install package
-4. Call package
+4. Attach package
 5. Use function
 
 
@@ -152,19 +157,17 @@ Therefore,
 install.packages("readxl")
 ```
 
-## 4. Call Package
+## 4. Attach Package
 
-Reminder -- Installing and calling packages
-
-To call (i.e., be able to use the package) you can use the following code:
+Reminder - To attach (i.e., be able to use the package) you can use the following code:
 ```{r echo=TRUE, eval=FALSE}
-library(package_name)
+require(package_name)
 ```
 
 Therefore, 
 
 ```{r echo=TRUE, eval=FALSE}
-library(readxl)
+require(readxl)
 ```
 
 ## 5. Use Function
@@ -181,7 +184,7 @@ library(readxl)
 
 ## 5. Use Function
 
-Reminder
+Reminder of function signature
 ```
 read_excel(
   path,
@@ -205,9 +208,7 @@ df <- read_excel(path = "data/serodata.xlsx", sheet = "Data")
 ```
 
 
-## Mini exercise
-
-Lets make some mistakes
+## Lets make some mistakes
 
 1. What if we read in the data without assigning it to an object (i.e., `read_excel(path = "data/serodata.xlsx", sheet = "Data")`)?
 
@@ -216,29 +217,33 @@ Lets make some mistakes
 
 ## Installing and calling packages - Common confusion
 
-You only need to install a package once (unless you update R), but you will need to call or load a package each time you want to use it. 
+</br>
+
+You only need to install a package once (unless you update R or want to update the package), but you will need to call or load a package each time you want to use it. 
+
+</br>
 
 The exception to this rule are the "base" set of packages (i.e., **Base R**) that are installed automatically when you install R and that automatically called whenever you open R or RStudio.
 
 
 ## Common Error
 
-Be prepared to see the error 
+Be prepared to see this error
 
 ```{r echo=TRUE, eval=FALSE}
-Error: could not find function "some_function"
+Error: could not find function "some_function_name"
 ```
 
-This usually mean that either 
+This usually means that either 
 
 - you called the function by the wrong name 
 - you have not installed a package that contains the function
-- you have installed a package but you forgot to call it (i.e., `library(package_name)`) -- **most likely**
+- you have installed a package but you forgot to attach it (i.e., `require(package_name)`) -- **most likely**
 
 
 ## Export (write) Data 
 
--   Exporting or 'Writing out' data allows you to save modified files to future use or sharing
+-   Exporting or 'Writing out' data allows you to save modified files for future use or sharing
 -   R can write almost any file format, especially with external, non-Base R, packages
 -   We are going to focus again on writing delimited files
 
@@ -254,6 +259,8 @@ library(printr)
 
 ## Export delimited data
 
+Let's practice exporting the data as three files with three different delimiters (comma, tab, semicolon)
+
 ```{r echo=TRUE, eval=FALSE}
 write.csv(df, file="data/serodata_new.csv", row.names = FALSE) #comma delimited
 write.table(df, file="data/serodata1_new.txt", sep="\t", row.names = FALSE) #tab delimited
@@ -266,7 +273,7 @@ Note, I wrote the data to new file names.  Even though we didn't change the data
 
 There are two file extensions worth discussing.
 
-R has two native data formats—Rdata (sometimes shortened to Rda) and Rds. These formats are used when R objects are saved for later use. Rdata is used to save multiple R objects, while Rds is used to save a single R object. 
+R has two native data formats—'Rdata' (sometimes shortened to 'Rda') and 'Rds'. These formats are used when R objects are saved for later use. 'Rdata' is used to save multiple R objects, while 'Rds' is used to save a single R object. 'Rds' is fast to write/read and is very small.
 
 ## .rds binary file
 
@@ -285,25 +292,26 @@ object1 <- read_rds(file = "filename.rds")
 
 The Base R functions `save()` and `load()` can be used to save and load multiple R objects. 
 
-`save()` writes an external representation of R objects to the specified file, and can by loaded back into the environment using `load()`. A nice feature about using `save` and `load` is that the R object is directly imported into the environment and you don't have to assign it to an object. The files can be saved as `.RData` or `.rda` files.
+`save()` writes an external representation of R objects to the specified file, and can by loaded back into the environment using `load()`. A nice feature about using `save` and `load` is that the R object(s) is directly imported into the environment and you don't have to specify the name. The files can be saved as `.RData` or `.Rda` files.
 
+Function signature
 ```
 save(object1, object2, file = "filename.RData")
 load("filename.RData")
 ```
 
-Note, that when you read .RData files you don't need to assign it to an abjecct.  It simply reads in the objects as they were saved.  Therefore, `load("filename.RData")` will read in `object1` and  `object2` directly into the Global Environment.
+Note, that you separate the objects you want to save with commas.
 
 
 
 ## Summary
 
-- Importing or 'Reading in' data is the first step of any real project/analysis
-- The Base R 'util' package we can find a handful of useful functions including  `read.csv()` and `read.delim()` to importing/reading data or `write.csv()` and `write.table()` for exporti/writing data
-- When importing data (exception is object from .RData), you must assign it to an object, otherwise it cannot be called/used
-- Properly read data can be found in the Environment window of RStudio
-- You only need to install a package once (unless you update R), but you will need to call or load a package each time you want to use it. 
-- To complete a tasek you don't know how to do (e.g., reading in an excel data file) use the following steps: 1. Google / Ask ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Call package, 5. Use function
+- Importing or 'Reading in' data are the first step of any real project /  data analysis
+- The Base R 'util' package has useful functions including  `read.csv()` and `read.delim()` to importing/reading data or `write.csv()` and `write.table()` for exporting/writing data
+- When importing data (exception is object from .RData), you must assign it to an object, otherwise it cannot be used
+- If data are imported correctly, they can be found in the Environment pane of RStudio
+- You only need to install a package once (unless you update R or the package), but you will need to attach a package each time you want to use it. 
+- To complete a task you don't know how to do (e.g., reading in an excel data file) use the following steps: 1. Google / Ask ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Attach package, 5. Use function
 
 
 ## Acknowledgements

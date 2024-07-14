@@ -4,6 +4,7 @@ format:
   revealjs:
     scrollable: true
     smaller: true
+    toc: false
 ---
 
 ## Learning Objectives
@@ -18,7 +19,7 @@ After module 2, you should be able to...
 
 ## Function - Basic term
 
-**Function** - Functions are "self contained" modules of code that accomplish specific tasks. Functions usually take in some sort of object (e.g., vector, list), process it, and return a result. You can write your own, use functions that come directly from installing R (i.e., Base R functions), or use functions from external packages.
+**Function** - Functions are "self contained" modules of code that **accomplish specific tasks**. Functions usually take in some sort of object (e.g., vector, list), process it, and return a result. You can write your own, use functions that come directly from installing R (i.e., Base R functions), or use functions from external packages.
 
 A function might help you add numbers together, create a plot, or organize your data. In fact, we have already used three functions in the Module 1, including `c()`, `matrix()`, `list()`. Here is another one, `sum()`
 
@@ -29,7 +30,7 @@ sum(1, 20234)
 
 ## Function
 
-The general usage for a function is the name of the function followed by parentheses. Within the parentheses are **arguments**.
+The general usage for a function is the name of the function followed by parentheses (i.e., the function signature). Within the parentheses are **arguments**.
 
 ```{r echo=TRUE, eval=FALSE}
 function_name(argument1, argument2, ...)
@@ -107,7 +108,7 @@ log(10, base=2)
 
 ## Package - Basic term
 
-When you download R, it has a "base" set of functions, that are associated with a "base" set of packages including: 'base', 'datasets', 'graphics', 'grDevices', 'methods', 'stats', 'methods' (typically just referred to as **Base R**).
+When you download R, it has a "base" set of functions, that are associated with a "base" set of packages including: 'base', 'datasets', 'graphics', 'grDevices', 'methods', 'stats' (typically just referred to as **Base R**).
 
 -   e.g., the `log()` function comes from the 'base' package
 
@@ -117,27 +118,27 @@ Packages are analogous to software applications like Microsoft Word. After insta
 
 ## Packages
 
-The Packages window in RStudio can help you identify what have been installed (listed), and which one have been called (check mark).
+The Packages pane in RStudio can help you identify what have been installed (listed), and which one have been attached (check mark).
 
-Lets go look at the Packages window, find the `base` package and find the `log()` function. It automatically loads the help file that we looked at earlier using `?log`.
+Lets go look at the Packages pane, find the `base` package and find the `log()` function. It automatically loads the help file that we looked at earlier using `?log`.
 
 
 ## Additional Packages
 
-You can install additional packages for your uses from [CRAN](https://cran.r-project.org/) or [GitHub](https://github.com/). These additional packages are written by RStudio or R users/developers (like us)
+You can install additional packages for your use from [CRAN](https://cran.r-project.org/) or [GitHub](https://github.com/). These additional packages are written by RStudio or R users/developers (like us)
 
 -   Not all packages available on CRAN or GitHub are trustworthy
 -   RStudio (the company) makes a lot of great packages
 -   Who wrote it? **Hadley Wickham** is a major authority on R (Employee and Developer at RStudio)
 -   How to [trust](https://simplystatistics.org/posts/2015-11-06-how-i-decide-when-to-trust-an-r-package/#:~:text=The%20first%20thing%20I%20do,I%20immediately%20trust%20the%20package.) an R package
 
-## **Installing** and calling packages
+## **Installing** and attaching packages
 
-To use the bundle or "package" of code (and or possibly data) from a package, you need to install and also call the package.
+To use the bundle or "package" of code (and or possibly data) from a package, you need to install and also attach the package.
 
 To install a package you can 
 
-1. go to Tools ---\> Install Packages in the RStudio header
+1. go to R Studio Menu Bar Tools Menu ---\> Install Packages in the RStudio header
 
 OR
 
@@ -147,25 +148,25 @@ install.packages("package_name")
 ```
 
 
-## Installing and **calling** packages
+## Installing and **attaching** packages
 
-To call (i.e., be able to use the package) you can use the following code:
+To attach (i.e., be able to use the package) you can use the following code:
 
 ```{r echo=TRUE, eval=FALSE}
-library(package_name)
+require(package_name) #library(package_name) also works
 ```
 
-More on installing and calling packages later...
+More on installing and attaching packages later...
 
 
-## Mini Exercise
+## Mini exercise
 
 Find and execute a **Base R** function that will round the number 0.86424 to two digits.
 
 
 ## Functions from Module 1
 
-The combine function `c()` collects/combines/joins single R objects into a vector of R objects. It is mostly used for creating vectors of numbers, character strings, and other data types. 
+The combine function `c()` concatenate/collects/combines single R objects into a vector of R objects. It is mostly used for creating vectors of numbers, character strings, and other data types. 
 
 ```{r echo=TRUE, eval=FALSE}
 ?c
@@ -185,10 +186,9 @@ The `matrix()` function creates a matrix from the given set of values.
 ?matrix
 ```
 
-xxamy - doesn't seem to work - may need to paste in a screen shot figure
 ```{r echo=FALSE}
 library(printr)
-?matix
+?matrix
 ```
 
 
@@ -197,8 +197,8 @@ library(printr)
 - Functions are "self contained" modules of code that accomplish specific tasks.
 - Arguments are what you pass to functions (e.g., objects on which you carry out the task or options for how to carry out the task)
 - Arguments may include defaults that the author of the function specified as being "good enough in standard cases", but that can be changed.
-- An R Package is a bundle or "package" of code (and or possibly data) that can be used by installing it once and calling it (using `library()`) each time R/Rstudio is opened
-- The Help window in RStudio is useful for to get more information about functions and packages 
+- An R Package is a bundle or "package" of code (and or possibly data) that can be used by installing it once and attaching it (using `require`()`) each time R/Rstudio is opened
+- The Help pane in RStudio is useful for to get more information about functions and packages 
 
 
 ## Acknowledgements

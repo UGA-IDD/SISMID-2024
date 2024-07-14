@@ -25,7 +25,7 @@ cases_long <-
 	reshape(
 		cases,
 		direction = "long",
-		varying = which(startsWith(names(cases), "X")),
+		varying = paste0("X", 2023:1980),
 		v.names = "Cases",
 		idvar = names(cases)[1:3],
 		times = 1980:2023

@@ -4,15 +4,16 @@ format:
   revealjs:
     scrollable: true
     smaller: true
+    toc: false
 ---
 
 ## Learning Objectives
 
 After module 9, you should be able to...
 
--		Descriptively assess association between two variables
--		Compute basic statistics 
--		Fit a generalized linear model
+-	Descriptively assess association between two variables
+-	Compute basic statistics 
+-	Fit a generalized linear model
 
 ## Import data for this module
 
@@ -28,15 +29,13 @@ head(x=df, n=3)
 Create `age_group` three level factor variable
 ```{r echo=TRUE}
 df$age_group <- ifelse(df$age <= 5, "young", 
-                       ifelse(df$age<=10 & df$age>5, "middle", 
-                              ifelse(df$age>10, "old", NA)))
+                       ifelse(df$age<=10 & df$age>5, "middle", "old"))
 df$age_group <- factor(df$age_group, levels=c("young", "middle", "old"))
 ```
 
 Create `seropos` binary variable representing seropositivity if antibody concentrations are >10 IU/mL.
 ```{r echo=TRUE}
-df$seropos <- ifelse(df$IgG_concentration<10, 0, 
-										ifelse(df$IgG_concentration>=10, 1, NA))
+df$seropos <- ifelse(df$IgG_concentration<10, 0, 1)
 ```
 
 
@@ -44,16 +43,39 @@ df$seropos <- ifelse(df$IgG_concentration<10, 0,
 
 We use `table()` prior to look at one variable, now we can generate frequency tables for 2 plus variables.  To get cell percentages, the `prop.table()` is useful.  
 
+```{r echo=TRUE, eval=FALSE}
+?prop.table
+```
+
+```{r echo=TRUE}
+library(printr)
+?prop.table
+```
+
+## 2 variable contingency tables
+
+Let's practice
 ```{r echo=TRUE}
 freq <- table(df$age_group, df$seropos)
-prop <- prop.table(freq)
 freq
-prop
 ```
+
+Now, lets move to percentages
+```{r echo=TRUE}
+prop.cell.percentages <- prop.table(freq)
+prop.cell.percentages
+prop.column.percentages <- prop.table(freq, margin=2)
+prop.column.percentages
+```
+
 
 ## Chi-Square test
 
 The `chisq.test()` function test of independence of factor variables from `stats` package.
+
+```{r echo=TRUE, eval=FALSE}
+?chisq.test
+```
 
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
@@ -67,7 +89,7 @@ library(printr)
 chisq.test(freq)
 ```
 
-We reject the null hypothesis that the proportion of seropositive individuals who are young (<5yo) is the same for individuals who are middle (5-10yo) or old (>10yo).
+We reject the null hypothesis that the proportion of seropositive individuals in the young, middle, and old age groups are the same.
 
 
 ## Correlation
@@ -83,16 +105,30 @@ cor(df$age, df$IgG_concentration, method="pearson", use = "complete.obs") #IF ha
 
 Small positive correlation between IgG concentration and age.
 
+## Correlation confidence interval
+
+The function `cor.test()` also gives you the confidence interval of the correlation statistic. Note, it uses complete observations by default. 
+
+```{r echo=TRUE}
+cor.test(df$age, df$IgG_concentration, method="pearson")
+```
+
+
 ## T-test
 
 The commonly used are:
 
 -   **one-sample t-test** -- used to test mean of a variable in one group (to the null hypothesis mean)
--   **two-sample t-test** -- used to test difference in means of a variable between two groups (null hypothesis - the group means are the *same*); if "two groups" are data of the *same* individuals collected at 2 time points, we say it is two-sample paired t-test
+-   **two-sample t-test** -- used to test difference in means of a variable between two groups (null hypothesis - the group means are the *same*)
 
 ## T-test
 
 We can use the `t.test()` function from the `stats` package.
+
+
+```{r echo=TRUE, eval=FALSE}
+?t.test
+```
 
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
@@ -125,6 +161,10 @@ The mean IgG concenration of young and old is 45.05 and 129.35 IU/mL, respective
 To fit regression models in R, we use the function `glm()` (Generalized Linear Model).
 
 
+```{r echo=TRUE, eval=FALSE}
+?glm
+```
+
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
 ?glm
@@ -134,9 +174,9 @@ library(printr)
 
 We tend to focus on three arguments:
 
--   `formula` -- model formula written using names of columns in our data
--   `data` -- our data frame
--		`family` -- error distribution and link function
+- `formula` -- model formula written using names of columns in our data
+- `data` -- our data frame
+- `family` -- error distribution and link function
 
 ```{r echo=TRUE}
 fit1 <- glm(IgG_concentration~age+gender+slum, data=df, family=gaussian())
@@ -170,9 +210,8 @@ summary(fit2)
 
 ## Summary
 
--		Use `cor()` to calculate correlation between two numeric vectors.
--   `corrplot()` and `ggpairs()` is nice for a quick visualization of correlations
--   `t.test()` or `t_test()` tests the mean compared to null or difference in means between two groups
+-	Use `cor()` or `cor.test()` to calculate correlation between two numeric vectors.
+- `t.test()` tests the mean compared to null or difference in means between two groups
 -		... xxamy more
 
 ## Acknowledgements

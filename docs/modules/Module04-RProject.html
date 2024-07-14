@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.54">
+  <meta name="generator" content="quarto-1.3.353">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) – Module 4: R Project</title>
+  <title>SISMID Module NUMBER Materials (2025) - Module 4: R Project</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -157,8 +157,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -343,21 +342,6 @@
 </div>
 </div>
 
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Page Items</h2>
-<ul>
-<li><a href="#/learning-objectives" id="/toc-learning-objectives">Learning Objectives</a></li>
-<li><a href="#/rstudio-project" id="/toc-rstudio-project">RStudio Project</a></li>
-<li><a href="#/rstudio-project-creation" id="/toc-rstudio-project-creation">RStudio Project Creation</a></li>
-<li><a href="#/rstudio-project-organization" id="/toc-rstudio-project-organization">RStudio Project Organization</a></li>
-<li><a href="#/some-things-to-notice-in-an-r-project" id="/toc-some-things-to-notice-in-an-r-project">Some things to notice in an R Project</a></li>
-<li><a href="#/r-project---common-issues" id="/toc-r-project---common-issues">R Project - Common issues</a></li>
-<li><a href="#/summary" id="/toc-summary">Summary</a></li>
-<li><a href="#/mini-exercise" id="/toc-mini-exercise">Mini Exercise</a></li>
-<li><a href="#/acknowledgements" id="/toc-acknowledgements">Acknowledgements</a></li>
-</ul>
-</nav>
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
@@ -365,11 +349,11 @@
 <ul>
 <li>Create an R Project</li>
 <li>Check you are in the desired R Project</li>
-<li>Reference the Files window in RStudio</li>
+<li>Reference the Files pane in RStudio</li>
 <li>Describe “good” R Project organization</li>
 </ul>
 </section>
-<section id="rstudio-project" class="slide level2 scrollable">
+<section id="rstudio-project" class="slide level2">
 <h2>RStudio Project</h2>
 <p>RStudio “Project” is one highly recommended strategy to build organized and reproducible code in R.</p>
 <ol type="1">
@@ -381,8 +365,8 @@
 <section id="rstudio-project-creation" class="slide level2">
 <h2>RStudio Project Creation</h2>
 <p>Let’s create a new RStudio Project.</p>
-<p>Go to File –&gt; New Project –&gt; New Directory –&gt; New Project</p>
-<p>Call your Project “IntroToR_RProject”</p>
+<p>Find the File Menu in the Menu Bar –&gt; New Project –&gt; New Directory –&gt; New Project</p>
+<p>Name your Project “IntroToR_RProject”</p>
 </section>
 <section id="rstudio-project-organization" class="slide level2">
 <h2>RStudio Project Organization</h2>
@@ -394,36 +378,38 @@
 <li>output</li>
 <li>figures</li>
 </ul>
-<p>We will be working from this directory for the remainder of the Workshop. Take a moment to move any R scripts you have already created to the ‘code’ sub-directories.</p>
+<p>We will be working from this directory for the remainder of the Workshop. Take a moment to move any R scripts you have already created to the ‘code’ sub-directory.</p>
 </section>
-<section id="some-things-to-notice-in-an-r-project" class="slide level2 scrollable">
+<section id="some-things-to-notice-in-an-r-project" class="slide level2">
 <h2>Some things to notice in an R Project</h2>
 <ol type="1">
-<li>The name of the R Project will be shown at the top of the RStudio application</li>
+<li>The name of the R Project will be shown at the top of the RStudio Window</li>
 <li>If you check the working directory using <code>getwd()</code> you will find the working directory is set to the location where the R Project was saved.</li>
-<li>The Files window in RStudio is also set to the location where the R Project was saved, making it easy to navigate to sub-directories directly from RStudio.</li>
+<li>The Files pane in RStudio is also set to the location where the R Project was saved, making it easy to navigate to sub-directories directly from RStudio.</li>
 </ol>
 </section>
 <section id="r-project---common-issues" class="slide level2">
 <h2>R Project - Common issues</h2>
 <p>If you simply open RStudio, it will not automatically open your R Project. As a result, when you say run a function to import data using the relative path based on your working directory, it won’t be able to find the data.</p>
-<p>To open a previously created R Project, you need to open the R Project (i.e., SISMID_IntroToR_RProject.RProj)</p>
+<p>To open a previously created R Project, you need to open the R Project (i.e., double click on SISMID_IntroToR_RProject.RProj)</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
 <li>R Projects are really helpful for lots of reasons, including to improve the reproducibility of your work</li>
 <li>Consistently set up your R Project’s sub-directories so that you can easily navigate the project</li>
+<li>If you get an error that a file can’t be found, make sure you correctly opened the R Project by looking for the Project name at the top of the RStudio application window.</li>
 </ul>
 </section>
-<section id="mini-exercise" class="slide level2 scrollable">
+<section id="mini-exercise" class="slide level2">
 <h2>Mini Exercise</h2>
 <ol type="1">
 <li>Close R Studio</li>
-<li>Reopen you R Project</li>
+<li>Reopen your R Project</li>
 <li>Check that you are actually in the R Project</li>
 <li>Create a new R script and save it in your ‘code’ subdirectory</li>
-<li>Create a vector of numbers and then get a summary statistics of that vector (e.g., sum, mean, median)</li>
+<li>Create a vector of numbers</li>
+<li>Create a vector a character values</li>
 <li>Add comment(s) to your R script to explain your code.</li>
 </ol>
 </section>
@@ -431,10 +417,8 @@
 <h2>Acknowledgements</h2>
 <p>These are the materials we looked through, modified, or extracted to complete this module’s lecture.</p>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
     </div>
@@ -463,6 +447,7 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -679,7 +664,18 @@
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -711,50 +707,11 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -764,17 +721,8 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -788,11 +736,7 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {

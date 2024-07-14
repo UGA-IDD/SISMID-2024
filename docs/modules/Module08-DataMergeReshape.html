@@ -12,7 +12,7 @@
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) - Module 2: Functions</title>
+  <title>SISMID Module NUMBER Materials (2025) - Module 8: Data Merging and Reshaping</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Module 2: Functions</h1>
+  <h1 class="title">Module 8: Data Merging and Reshaping</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -410,513 +410,777 @@
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
-<p>After module 2, you should be able to…</p>
+<p>After module 8, you should be able to…</p>
 <ul>
-<li>Describe and execute functions in R</li>
-<li>Modify default behavior of functions using arguments in R</li>
-<li>Use R-specific sources of help to get more information about functions and packages</li>
-<li>Differentiate between Base R functions and functions that come from other packages</li>
+<li>Merge/join data together</li>
+<li>Reshape data from wide to long</li>
+<li>Reshape data from long to wide</li>
 </ul>
 </section>
-<section id="function---basic-term" class="slide level2">
-<h2>Function - Basic term</h2>
-<p><strong>Function</strong> - Functions are “self contained” modules of code that <strong>accomplish specific tasks</strong>. Functions usually take in some sort of object (e.g., vector, list), process it, and return a result. You can write your own, use functions that come directly from installing R (i.e., Base R functions), or use functions from external packages.</p>
-<p>A function might help you add numbers together, create a plot, or organize your data. In fact, we have already used three functions in the Module 1, including <code>c()</code>, <code>matrix()</code>, <code>list()</code>. Here is another one, <code>sum()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 20235</code></pre>
-</div>
-</div>
-</section>
-<section id="function" class="slide level2">
-<h2>Function</h2>
-<p>The general usage for a function is the name of the function followed by parentheses (i.e., the function signature). Within the parentheses are <strong>arguments</strong>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">function_name</span>(argument1, argument2, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="arguments---basic-term" class="slide level2">
-<h2>Arguments - Basic term</h2>
-<p><strong>Arguments</strong> are what you pass to the function and can include:</p>
-<ol type="1">
-<li>the physical object on which the function carries out a task (e.g., can be data such as a number 1 or 20234)</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 20235</code></pre>
-</div>
-</div>
-<ol start="2" type="1">
-<li>options that alter the way the function operates (e.g., such as the <code>base</code> argument in the function <code>log()</code>)</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.321928</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base=</span><span class="fu">exp</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.302585</code></pre>
-</div>
-</div>
-</section>
-<section id="arguments" class="slide level2">
-<h2>Arguments</h2>
-<p>Most functions are created with <strong>default argument options</strong>. The defaults represent standard values that the author of the function specified as being “good enough in standard cases”. This means if you don’t specify an argument when calling the function, it will use a default.</p>
+<section id="joining-types" class="slide level2">
+<h2>Joining types</h2>
+<p>Pay close attention to the number of rows in your data set before and after a join. This will help flag when an issue has arisen. This will depend on the type of merge:</p>
 <ul>
-<li>If you want something specific, simply change the argument yourself with a value of your choice.</li>
-<li>If an argument is required but you did not specify it and there is no default argument specified when the function was created, you will receive an error.</li>
+<li>1:1 merge (one-to-one merge) – Simplest merge (sometimes things go wrong)</li>
+<li>1:m merge (one-to-many merge) – More complex (things often go wrong)
+<ul>
+<li>The “one” suggests that one dataset has the merging variable (e.g., id) each represented once and the “many” implies that one dataset has the merging variable represented multiple times</li>
+</ul></li>
+<li>m:m merge (many-to-many merge) – Danger zone (can be unpredictable)</li>
 </ul>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<p>What is the default in the <code>base</code> argument of the <code>log()</code> function?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.302585</code></pre>
-</div>
-</div>
-</section>
-<section id="sure-that-is-easy-enough-but-how-do-you-know" class="slide level2">
-<h2>Sure that is easy enough, but how do you know</h2>
+<section id="one-to-one-merge" class="slide level2">
+<h2>one-to-one merge</h2>
 <ul>
-<li>the purpose of a function?</li>
-<li>what arguments a function includes?</li>
-<li>how to specify the arguments?</li>
+<li>This means that each row of data represents a unique unit of analysis that exists in another dataset (e.g,. id variable)</li>
+<li>Will likely have variables that don’t exist in the current dataset (that’s why you are trying to merge it in)</li>
+<li>The merging variable (e.g., id) each represented a single time</li>
+<li>You should try to structure your data so that a 1:1 merge or 1:m merge is possible so that fewer things can go wrong.</li>
 </ul>
 </section>
-<section id="seeking-help-for-using-functions" class="slide level2">
-<h2>Seeking help for using functions</h2>
-<p>The best way of finding out this information is to use the <code>?</code> followed by the name of the function. Doing this will open up the help manual in the bottom RStudio Help panel. It provides a description of the function, usage, arguments, details, and examples. Lets look at the help file for the function <code>round()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>?log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="merge-function" class="slide level2">
+<h2><code>merge()</code> function</h2>
+<p>We will use the <code>merge()</code> function to conduct one-to-one merge</p>
 <pre><code>Registered S3 method overwritten by 'printr':
   method                from     
   knit_print.data.frame rmarkdown</code></pre>
-<p>Logarithms and Exponentials</p>
+<p>Merge Two Data Frames</p>
 <p>Description:</p>
-<pre><code> 'log' computes logarithms, by default natural logarithms, 'log10'
- computes common (i.e., base 10) logarithms, and 'log2' computes
- binary (i.e., base 2) logarithms.  The general form 'log(x, base)'
- computes logarithms with base 'base'.
-
- 'log1p(x)' computes log(1+x) accurately also for |x| &lt;&lt; 1.
-
- 'exp' computes the exponential function.
-
- 'expm1(x)' computes exp(x) - 1 accurately also for |x| &lt;&lt; 1.</code></pre>
+<pre><code> Merge two data frames by common columns or row names, or do other
+ versions of database _join_ operations.</code></pre>
 <p>Usage:</p>
-<pre><code> log(x, base = exp(1))
- logb(x, base = exp(1))
- log10(x)
- log2(x)
+<pre><code> merge(x, y, ...)
  
- log1p(x)
+ ## Default S3 method:
+ merge(x, y, ...)
  
- exp(x)
- expm1(x)
+ ## S3 method for class 'data.frame'
+ merge(x, y, by = intersect(names(x), names(y)),
+       by.x = by, by.y = by, all = FALSE, all.x = all, all.y = all,
+       sort = TRUE, suffixes = c(".x",".y"), no.dups = TRUE,
+       incomparables = NULL, ...)
  </code></pre>
 <p>Arguments:</p>
-<pre><code>   x: a numeric or complex vector.
-
-base: a positive or complex number: the base with respect to which
-      logarithms are computed.  Defaults to e='exp(1)'.</code></pre>
+<pre><code>x, y: data frames, or objects to be coerced to one.</code></pre>
+<p>by, by.x, by.y: specifications of the columns used for merging. See ‘Details’.</p>
+<pre><code> all: logical; 'all = L' is shorthand for 'all.x = L' and 'all.y =
+      L', where 'L' is either 'TRUE' or 'FALSE'.</code></pre>
+<p>all.x: logical; if ‘TRUE’, then extra rows will be added to the output, one for each row in ‘x’ that has no matching row in ‘y’. These rows will have ‘NA’s in those columns that are usually filled with values from ’y’. The default is ‘FALSE’, so that only rows with data from both ‘x’ and ‘y’ are included in the output.</p>
+<p>all.y: logical; analogous to ‘all.x’.</p>
+<pre><code>sort: logical.  Should the result be sorted on the 'by' columns?</code></pre>
+<p>suffixes: a character vector of length 2 specifying the suffixes to be used for making unique the names of columns in the result which are not used for merging (appearing in ‘by’ etc).</p>
+<p>no.dups: logical indicating that ‘suffixes’ are appended in more cases to avoid duplicated column names in the result. This was implicitly false before R version 3.5.0.</p>
+<p>incomparables: values which cannot be matched. See ‘match’. This is intended to be used for merging on one column, so these are incomparable values of that column.</p>
+<pre><code> ...: arguments to be passed to or from methods.</code></pre>
 <p>Details:</p>
-<pre><code> All except 'logb' are generic functions: methods can be defined
- for them individually or via the 'Math' group generic.
+<pre><code> 'merge' is a generic function whose principal method is for data
+ frames: the default method coerces its arguments to data frames
+ and calls the '"data.frame"' method.
 
- 'log10' and 'log2' are only convenience wrappers, but logs to
- bases 10 and 2 (whether computed _via_ 'log' or the wrappers) will
- be computed more efficiently and accurately where supported by the
- OS.  Methods can be set for them individually (and otherwise
- methods for 'log' will be used).
+ By default the data frames are merged on the columns with names
+ they both have, but separate specifications of the columns can be
+ given by 'by.x' and 'by.y'.  The rows in the two data frames that
+ match on the specified columns are extracted, and joined together.
+ If there is more than one match, all possible matches contribute
+ one row each.  For the precise meaning of 'match', see 'match'.
 
- 'logb' is a wrapper for 'log' for compatibility with S.  If (S3 or
- S4) methods are set for 'log' they will be dispatched.  Do not set
- S4 methods on 'logb' itself.
+ Columns to merge on can be specified by name, number or by a
+ logical vector: the name '"row.names"' or the number '0' specifies
+ the row names.  If specified by name it must correspond uniquely
+ to a named column in the input.
 
- All except 'log' are primitive functions.</code></pre>
+ If 'by' or both 'by.x' and 'by.y' are of length 0 (a length zero
+ vector or 'NULL'), the result, 'r', is the _Cartesian product_ of
+ 'x' and 'y', i.e., 'dim(r) = c(nrow(x)*nrow(y), ncol(x) +
+ ncol(y))'.
+
+ If 'all.x' is true, all the non matching cases of 'x' are appended
+ to the result as well, with 'NA' filled in the corresponding
+ columns of 'y'; analogously for 'all.y'.
+
+ If the columns in the data frames not used in merging have any
+ common names, these have 'suffixes' ('".x"' and '".y"' by default)
+ appended to try to make the names of the result unique.  If this
+ is not possible, an error is thrown.
+
+ If a 'by.x' column name matches one of 'y', and if 'no.dups' is
+ true (as by default), the y version gets suffixed as well,
+ avoiding duplicate column names in the result.
+
+ The complexity of the algorithm used is proportional to the length
+ of the answer.
+
+ In SQL database terminology, the default value of 'all = FALSE'
+ gives a _natural join_, a special case of an _inner join_.
+ Specifying 'all.x = TRUE' gives a _left (outer) join_, 'all.y =
+ TRUE' a _right (outer) join_, and both ('all = TRUE') a _(full)
+ outer join_.  DBMSes do not match 'NULL' records, equivalent to
+ 'incomparables = NA' in R.</code></pre>
 <p>Value:</p>
-<pre><code> A vector of the same length as 'x' containing the transformed
- values.  'log(0)' gives '-Inf', and 'log(x)' for negative values
- of 'x' is 'NaN'.  'exp(-Inf)' is '0'.
+<pre><code> A data frame.  The rows are by default lexicographically sorted on
+ the common columns, but for 'sort = FALSE' are in an unspecified
+ order.  The columns are the common columns followed by the
+ remaining columns in 'x' and then those in 'y'.  If the matching
+ involved row names, an extra character column called 'Row.names'
+ is added at the left, and in all cases the result has 'automatic'
+ row names.</code></pre>
+<p>Note:</p>
+<pre><code> This is intended to work with data frames with vector-like
+ columns: some aspects work with data frames containing matrices,
+ but not all.
 
- For complex inputs to the log functions, the value is a complex
- number with imaginary part in the range [-pi, pi]: which end of
- the range is used might be platform-specific.</code></pre>
-<p>S4 methods:</p>
-<pre><code> 'exp', 'expm1', 'log', 'log10', 'log2' and 'log1p' are S4 generic
- and are members of the 'Math' group generic.
-
- Note that this means that the S4 generic for 'log' has a signature
- with only one argument, 'x', but that 'base' can be passed to
- methods (but will not be used for method selection).  On the other
- hand, if you only set a method for the 'Math' group generic then
- 'base' argument of 'log' will be ignored for your class.</code></pre>
-<p>Source:</p>
-<pre><code> 'log1p' and 'expm1' may be taken from the operating system, but if
- not available there then they are based on the Fortran subroutine
- 'dlnrel' by W. Fullerton of Los Alamos Scientific Laboratory (see
- &lt;https://netlib.org/slatec/fnlib/dlnrel.f&gt;) and (for small x) a
- single Newton step for the solution of 'log1p(y) = x'
- respectively.</code></pre>
-<p>References:</p>
-<pre><code> Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
- Language_.  Wadsworth &amp; Brooks/Cole.  (for 'log', 'log10' and
- 'exp'.)
-
- Chambers, J. M. (1998) _Programming with Data.  A Guide to the S
- Language_.  Springer. (for 'logb'.)</code></pre>
+ Currently long vectors are not accepted for inputs, which are thus
+ restricted to less than 2^31 rows. That restriction also applies
+ to the result for 32-bit platforms.</code></pre>
 <p>See Also:</p>
-<pre><code> 'Trig', 'sqrt', 'Arithmetic'.</code></pre>
+<pre><code> 'data.frame', 'by', 'cbind'.
+
+ 'dendrogram' for a class which has a 'merge' method.</code></pre>
 <p>Examples:</p>
-<pre><code> log(exp(3))
- log10(1e7) # = 7
+<pre><code> authors &lt;- data.frame(
+     ## I(*) : use character columns of names to get sensible sort order
+     surname = I(c("Tukey", "Venables", "Tierney", "Ripley", "McNeil")),
+     nationality = c("US", "Australia", "US", "UK", "Australia"),
+     deceased = c("yes", rep("no", 4)))
+ authorN &lt;- within(authors, { name &lt;- surname; rm(surname) })
+ books &lt;- data.frame(
+     name = I(c("Tukey", "Venables", "Tierney",
+              "Ripley", "Ripley", "McNeil", "R Core")),
+     title = c("Exploratory Data Analysis",
+               "Modern Applied Statistics ...",
+               "LISP-STAT",
+               "Spatial Statistics", "Stochastic Simulation",
+               "Interactive Data Analysis",
+               "An Introduction to R"),
+     other.author = c(NA, "Ripley", NA, NA, NA, NA,
+                      "Venables &amp; Smith"))
  
- x &lt;- 10^-(1+2*1:9)
- cbind(deparse.level=2, # to get nice column names
-       x, log(1+x), log1p(x), exp(x)-1, expm1(x))</code></pre>
+ (m0 &lt;- merge(authorN, books))
+ (m1 &lt;- merge(authors, books, by.x = "surname", by.y = "name"))
+  m2 &lt;- merge(books, authors, by.x = "name", by.y = "surname")
+ stopifnot(exprs = {
+    identical(m0, m2[, names(m0)])
+    as.character(m1[, 1]) == as.character(m2[, 1])
+    all.equal(m1[, -1], m2[, -1][ names(m1)[-1] ])
+    identical(dim(merge(m1, m2, by = NULL)),
+              c(nrow(m1)*nrow(m2), ncol(m1)+ncol(m2)))
+ })
+ 
+ ## "R core" is missing from authors and appears only here :
+ merge(authors, books, by.x = "surname", by.y = "name", all = TRUE)
+ 
+ 
+ ## example of using 'incomparables'
+ x &lt;- data.frame(k1 = c(NA,NA,3,4,5), k2 = c(1,NA,NA,4,5), data = 1:5)
+ y &lt;- data.frame(k1 = c(NA,2,NA,4,5), k2 = c(NA,NA,3,4,5), data = 1:5)
+ merge(x, y, by = c("k1","k2")) # NA's match
+ merge(x, y, by = "k1") # NA's match, so 6 rows
+ merge(x, y, by = "k2", incomparables = NA) # 2 rows</code></pre>
 </section>
-<section id="how-to-specify-arguments" class="slide level2">
-<h2>How to specify arguments</h2>
-<ol type="1">
-<li>Arguments are separated with a comma</li>
-<li>You can specify arguments by either including them in the correct order OR by assigning the argument within the function parentheses.</li>
-</ol>
-
-<img data-src="images/log_args.png" style="width:70.0%" class="r-stretch"><div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="lets-import-the-new-data-we-want-to-merge-and-take-a-look" class="slide level2">
+<h2>Lets import the new data we want to merge and take a look</h2>
+<p>The new data <code>serodata_new.csv</code> represents a follow-up serological survey four years later. At this follow-up individuals were retested for IgG antibody concentrations and their ages were collected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>df_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata_new.csv"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">str</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.321928</code></pre>
+<pre><code>'data.frame':   636 obs. of  3 variables:
+ $ observation_id   : int  5772 8095 9784 9338 6369 6885 6252 8913 7332 6941 ...
+ $ IgG_concentration: num  0.261 2.981 0.282 136.638 0.381 ...
+ $ age              : int  6 8 8 8 5 8 8 NA 8 6 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">log</span>(<span class="at">base=</span><span class="dv">2</span>, <span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.321928</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">log</span>(<span class="at">x=</span><span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.321928</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.321928</code></pre>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">summary</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">observation_id</th>
+<th style="text-align: left;">IgG_concentration</th>
+<th style="text-align: left;">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Min. :5006</td>
+<td style="text-align: left;">Min. : 0.0051</td>
+<td style="text-align: left;">Min. : 5.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1st Qu.:6328</td>
+<td style="text-align: left;">1st Qu.: 0.2751</td>
+<td style="text-align: left;">1st Qu.: 7.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Median :7494</td>
+<td style="text-align: left;">Median : 1.5477</td>
+<td style="text-align: left;">Median :10.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mean :7490</td>
+<td style="text-align: left;">Mean : 82.7684</td>
+<td style="text-align: left;">Mean :10.63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">3rd Qu.:8736</td>
+<td style="text-align: left;">3rd Qu.:129.6389</td>
+<td style="text-align: left;">3rd Qu.:14.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Max. :9982</td>
+<td style="text-align: left;">Max. :950.6590</td>
+<td style="text-align: left;">Max. :19.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA’s :9</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
-<section id="package---basic-term" class="slide level2">
-<h2>Package - Basic term</h2>
-<p>When you download R, it has a “base” set of functions, that are associated with a “base” set of packages including: ‘base’, ‘datasets’, ‘graphics’, ‘grDevices’, ‘methods’, ‘stats’ (typically just referred to as <strong>Base R</strong>).</p>
+<section id="merge-the-new-data-with-the-original-data" class="slide level2">
+<h2>Merge the new data with the original data</h2>
+<p>Lets load the old data as well and look for a variable, or variables, to merge by.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata.csv"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "observation_id"    "IgG_concentration" "age"              
+[4] "gender"            "slum"             </code></pre>
+</div>
+</div>
+<p>We notice that <code>observation_id</code> seems to be the obvious variable by which to merge. However, we also realize that <code>IgG_concentration</code> and <code>age</code> are the exact same names. If we merge now we see that</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">head</span>(<span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T, <span class="at">by=</span><span class="fu">c</span>(<span class="st">'observation_id'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 24%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 24%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration.x</th>
+<th style="text-align: right;">age.x</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">slum</th>
+<th style="text-align: right;">IgG_concentration.y</th>
+<th style="text-align: right;">age.y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5006</td>
+<td style="text-align: right;">164.2979452</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">155.5811325</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5024</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">0.2918605</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5026</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">0.2542945</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5030</td>
+<td style="text-align: right;">0.0555556</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">0.0533262</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5035</td>
+<td style="text-align: right;">26.2112514</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">22.0159300</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5054</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">0.2709671</td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="merge-the-new-data-with-the-original-data-1" class="slide level2">
+<h2>Merge the new data with the original data</h2>
+<p>The first option is to rename the <code>IgG_concentration</code> and <code>age</code> variables before the merge, so that it is clear which is time point 1 and time point 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>df<span class="sc">$</span>IgG_concentration_time1 <span class="ot">&lt;-</span> df<span class="sc">$</span>IgG_concentration</span>
+<span id="cb19-2"><a href="#cb19-2"></a>df<span class="sc">$</span>age_time1 <span class="ot">&lt;-</span> df<span class="sc">$</span>age</span>
+<span id="cb19-3"><a href="#cb19-3"></a>df<span class="sc">$</span>IgG_concentration <span class="ot">&lt;-</span> df<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#remove the original variables</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>df_new<span class="sc">$</span>IgG_concentration_time2 <span class="ot">&lt;-</span> df_new<span class="sc">$</span>IgG_concentration</span>
+<span id="cb19-6"><a href="#cb19-6"></a>df_new<span class="sc">$</span>age_time2 <span class="ot">&lt;-</span> df_new<span class="sc">$</span>age</span>
+<span id="cb19-7"><a href="#cb19-7"></a>df_new<span class="sc">$</span>IgG_concentration <span class="ot">&lt;-</span> df_new<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#remove the original variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, lets merge.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>df_all_wide <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T, <span class="at">by=</span><span class="fu">c</span>(<span class="st">'observation_id'</span>))</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">str</span>(df_all_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   651 obs. of  7 variables:
+ $ observation_id         : int  5006 5024 5026 5030 5035 5054 5057 5063 5064 5080 ...
+ $ gender                 : chr  "Male" "Female" "Female" "Female" ...
+ $ slum                   : chr  "Non slum" "Non slum" "Non slum" "Non slum" ...
+ $ IgG_concentration_time1: num  164.2979 0.3 0.3 0.0556 26.2113 ...
+ $ age_time1              : int  7 5 10 7 11 3 3 12 14 6 ...
+ $ IgG_concentration_time2: num  155.5811 0.2919 0.2543 0.0533 22.0159 ...
+ $ age_time2              : int  11 9 14 11 15 7 7 16 18 10 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="merge-the-new-data-with-the-original-data-2" class="slide level2">
+<h2>Merge the new data with the original data</h2>
+<p>The second option is to add a time variable to the two data sets and then merge by <code>observation_id</code>,<code>time</code>,<code>age</code>,<code>IgG_concentration</code>. Note, I need to read in the data again b/c I removed the <code>IgG_concentration</code> and <code>age</code> variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata.csv"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>df_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata_new.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co">#you can put in one number and it will repeat it</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>df_new<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">slum</th>
+<th style="text-align: right;">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5772</td>
+<td style="text-align: right;">0.3176895</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8095</td>
+<td style="text-align: right;">3.4368231</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9784</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9338</td>
+<td style="text-align: right;">143.2363014</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6369</td>
+<td style="text-align: right;">0.4476534</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6885</td>
+<td style="text-align: right;">0.0252708</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">head</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: right;">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5772</td>
+<td style="text-align: right;">0.2612388</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8095</td>
+<td style="text-align: right;">2.9809049</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9784</td>
+<td style="text-align: right;">0.2819489</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9338</td>
+<td style="text-align: right;">136.6382260</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6369</td>
+<td style="text-align: right;">0.3810119</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6885</td>
+<td style="text-align: right;">0.0245951</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now, lets merge. Note, “By default the data frames are merged on the columns with names they both have” therefore if I don’t specify the by argument it will merge on all matching variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df_all_long <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T) </span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">str</span>(df_all_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1287 obs. of  6 variables:
+ $ observation_id   : int  5006 5006 5024 5024 5026 5026 5030 5030 5035 5035 ...
+ $ IgG_concentration: num  155.581 164.298 0.292 0.3 0.254 ...
+ $ age              : int  11 7 9 5 14 10 11 7 15 11 ...
+ $ time             : num  2 1 2 1 2 1 2 1 2 1 ...
+ $ gender           : chr  NA "Male" NA "Female" ...
+ $ slum             : chr  NA "Non slum" NA "Non slum" ...</code></pre>
+</div>
+</div>
+<p>Note, there are 1287 rows, which is the sum of the number of rows of <code>df</code> (651 rows) and <code>df_new</code> (636 rows)</p>
+</section>
+<section id="what-is-widelong-data" class="slide level2">
+<h2>What is wide/long data?</h2>
+<p>Above, we actually created a wide and long version of the data.</p>
+<p>Wide: has many columns</p>
 <ul>
-<li>e.g., the <code>log()</code> function comes from the ‘base’ package</li>
+<li>multiple columns per individual, values spread across multiple columns</li>
+<li>easier for humans to read</li>
 </ul>
-<p><strong>Package</strong> - a package in R is a bundle or “package” of code (and or possibly data) that can be loaded together for easy repeated use or for <strong>sharing</strong> with others.</p>
-<p>Packages are analogous to software applications like Microsoft Word. After installation, your operating system allows you to use it, just like having Word installed allows you to use it.</p>
-</section>
-<section id="packages" class="slide level2">
-<h2>Packages</h2>
-<p>The Packages pane in RStudio can help you identify what have been installed (listed), and which one have been attached (check mark).</p>
-<p>Lets go look at the Packages window, find the <code>base</code> package and find the <code>log()</code> function. It automatically loads the help file that we looked at earlier using <code>?log</code>.</p>
-</section>
-<section id="additional-packages" class="slide level2">
-<h2>Additional Packages</h2>
-<p>You can install additional packages for your use from <a href="https://cran.r-project.org/">CRAN</a> or <a href="https://github.com/">GitHub</a>. These additional packages are written by RStudio or R users/developers (like us)</p>
+<p>Long: has many rows</p>
 <ul>
-<li>Not all packages available on CRAN or GitHub are trustworthy</li>
-<li>RStudio (the company) makes a lot of great packages</li>
-<li>Who wrote it? <strong>Hadley Wickham</strong> is a major authority on R (Employee and Developer at RStudio)</li>
-<li>How to <a href="https://simplystatistics.org/posts/2015-11-06-how-i-decide-when-to-trust-an-r-package/#:~:text=The%20first%20thing%20I%20do,I%20immediately%20trust%20the%20package.">trust</a> an R package</li>
+<li>column names become data</li>
+<li>multiple rows per observation, a single column contains the values</li>
+<li>easier for R to make plots &amp; do analysis</li>
 </ul>
 </section>
-<section id="installing-and-attaching-packages" class="slide level2">
-<h2><strong>Installing</strong> and attaching packages</h2>
-<p>To use the bundle or “package” of code (and or possibly data) from a package, you need to install and also attach the package.</p>
-<p>To install a package you can</p>
-<ol type="1">
-<li>go to R Studio Menu Bar Tools Menu —&gt; Install Packages in the RStudio header</li>
-</ol>
-<p>OR</p>
-<ol start="2" type="1">
-<li>use the following code:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="reshape-function" class="slide level2">
+<h2><code>reshape()</code> function</h2>
+<p>The <code>reshape()</code> function allows you to toggle between wide and long data</p>
+<p>Reshape Grouped Data</p>
+<p>Description:</p>
+<pre><code> This function reshapes a data frame between 'wide' format (with
+ repeated measurements in separate columns of the same row) and
+ 'long' format (with the repeated measurements in separate rows).</code></pre>
+<p>Usage:</p>
+<pre><code> reshape(data, varying = NULL, v.names = NULL, timevar = "time",
+         idvar = "id", ids = 1:NROW(data),
+         times = seq_along(varying[[1]]),
+         drop = NULL, direction, new.row.names = NULL,
+         sep = ".",
+         split = if (sep == "") {
+             list(regexp = "[A-Za-z][0-9]", include = TRUE)
+         } else {
+             list(regexp = sep, include = FALSE, fixed = TRUE)}
+         )
+ 
+ ### Typical usage for converting from long to wide format:
+ 
+ # reshape(data, direction = "wide",
+ #         idvar = "___", timevar = "___", # mandatory
+ #         v.names = c(___),    # time-varying variables
+ #         varying = list(___)) # auto-generated if missing
+ 
+ ### Typical usage for converting from wide to long format:
+ 
+ ### If names of wide-format variables are in a 'nice' format
+ 
+ # reshape(data, direction = "long",
+ #         varying = c(___), # vector 
+ #         sep)              # to help guess 'v.names' and 'times'
+ 
+ ### To specify long-format variable names explicitly
+ 
+ # reshape(data, direction = "long",
+ #         varying = ___,  # list / matrix / vector (use with care)
+ #         v.names = ___,  # vector of variable names in long format
+ #         timevar, times, # name / values of constructed time variable
+ #         idvar, ids)     # name / values of constructed id variable
+ </code></pre>
+<p>Arguments:</p>
+<pre><code>data: a data frame</code></pre>
+<p>varying: names of sets of variables in the wide format that correspond to single variables in long format (‘time-varying’). This is canonically a list of vectors of variable names, but it can optionally be a matrix of names, or a single vector of names. In each case, when ‘direction = “long”’, the names can be replaced by indices which are interpreted as referring to ‘names(data)’. See ‘Details’ for more details and options.</p>
+<p>v.names: names of variables in the long format that correspond to multiple variables in the wide format. See ‘Details’.</p>
+<p>timevar: the variable in long format that differentiates multiple records from the same group or individual. If more than one record matches, the first will be taken (with a warning).</p>
+<p>idvar: Names of one or more variables in long format that identify multiple records from the same group/individual. These variables may also be present in wide format.</p>
+<pre><code> ids: the values to use for a newly created 'idvar' variable in
+      long format.</code></pre>
+<p>times: the values to use for a newly created ‘timevar’ variable in long format. See ‘Details’.</p>
+<pre><code>drop: a vector of names of variables to drop before reshaping.</code></pre>
+<p>direction: character string, partially matched to either ‘“wide”’ to reshape to wide format, or ‘“long”’ to reshape to long format.</p>
+<p>new.row.names: character or ‘NULL’: a non-null value will be used for the row names of the result.</p>
+<pre><code> sep: A character vector of length 1, indicating a separating
+      character in the variable names in the wide format.  This is
+      used for guessing 'v.names' and 'times' arguments based on
+      the names in 'varying'.  If 'sep == ""', the split is just
+      before the first numeral that follows an alphabetic
+      character.  This is also used to create variable names when
+      reshaping to wide format.</code></pre>
+<p>split: A list with three components, ‘regexp’, ‘include’, and (optionally) ‘fixed’. This allows an extended interface to variable name splitting. See ‘Details’.</p>
+<p>Details:</p>
+<pre><code> Although 'reshape()' can be used in a variety of contexts, the
+ motivating application is data from longitudinal studies, and the
+ arguments of this function are named and described in those terms.
+ A longitudinal study is characterized by repeated measurements of
+ the same variable(s), e.g., height and weight, on each unit being
+ studied (e.g., individual persons) at different time points (which
+ are assumed to be the same for all units). These variables are
+ called time-varying variables. The study may include other
+ variables that are measured only once for each unit and do not
+ vary with time (e.g., gender and race); these are called
+ time-constant variables.
+
+ A 'wide' format representation of a longitudinal dataset will have
+ one record (row) for each unit, typically with some time-constant
+ variables that occupy single columns, and some time-varying
+ variables that occupy multiple columns (one column for each time
+ point).  A 'long' format representation of the same dataset will
+ have multiple records (rows) for each individual, with the
+ time-constant variables being constant across these records and
+ the time-varying variables varying across the records.  The 'long'
+ format dataset will have two additional variables: a 'time'
+ variable identifying which time point each record comes from, and
+ an 'id' variable showing which records refer to the same unit.
+
+ The type of conversion (long to wide or wide to long) is
+ determined by the 'direction' argument, which is mandatory unless
+ the 'data' argument is the result of a previous call to 'reshape'.
+ In that case, the operation can be reversed simply using
+ 'reshape(data)' (the other arguments are stored as attributes on
+ the data frame).
+
+ Conversion from long to wide format with 'direction = "wide"' is
+ the simpler operation, and is mainly useful in the context of
+ multivariate analysis where data is often expected as a
+ wide-format matrix. In this case, the time variable 'timevar' and
+ id variable 'idvar' must be specified. All other variables are
+ assumed to be time-varying, unless the time-varying variables are
+ explicitly specified via the 'v.names' argument.  A warning is
+ issued if time-constant variables are not actually constant.
+
+ Each time-varying variable is expanded into multiple variables in
+ the wide format.  The names of these expanded variables are
+ generated automatically, unless they are specified as the
+ 'varying' argument in the form of a list (or matrix) with one
+ component (or row) for each time-varying variable. If 'varying' is
+ a vector of names, it is implicitly converted into a matrix, with
+ one row for each time-varying variable. Use this option with care
+ if there are multiple time-varying variables, as the ordering (by
+ column, the default in the 'matrix' constructor) may be
+ unintuitive, whereas the explicit list or matrix form is
+ unambiguous.
+
+ Conversion from wide to long with 'direction = "long"' is the more
+ common operation as most (univariate) statistical modeling
+ functions expect data in the long format. In the simpler case
+ where there is only one time-varying variable, the corresponding
+ columns in the wide format input can be specified as the 'varying'
+ argument, which can be either a vector of column names or the
+ corresponding column indices. The name of the corresponding
+ variable in the long format output combining these columns can be
+ optionally specified as the 'v.names' argument, and the name of
+ the time variables as the 'timevar' argument. The values to use as
+ the time values corresponding to the different columns in the wide
+ format can be specified as the 'times' argument.  If 'v.names' is
+ unspecified, the function will attempt to guess 'v.names' and
+ 'times' from 'varying' (an explicitly specified 'times' argument
+ is unused in that case).  The default expects variable names like
+ 'x.1', 'x.2', where 'sep = "."' specifies to split at the dot and
+ drop it from the name.  To have alphabetic followed by numeric
+ times use 'sep = ""'.
+
+ Multiple time-varying variables can be specified in two ways,
+ either with 'varying' as an atomic vector as above, or as a list
+ (or a matrix). The first form is useful (and mandatory) if the
+ automatic variable name splitting as described above is used; this
+ requires the names of all time-varying variables to be suitably
+ formatted in the same manner, and 'v.names' to be unspecified. If
+ 'varying' is a list (with one component for each time-varying
+ variable) or a matrix (one row for each time-varying variable),
+ variable name splitting is not attempted, and 'v.names' and
+ 'times' will generally need to be specified, although they will
+ default to, respectively, the first variable name in each set, and
+ sequential times.
+
+ Also, guessing is not attempted if 'v.names' is given explicitly,
+ even if 'varying' is an atomic vector. In that case, the number of
+ time-varying variables is taken to be the length of 'v.names', and
+ 'varying' is implicitly converted into a matrix, with one row for
+ each time-varying variable. As in the case of long to wide
+ conversion, the matrix is filled up by column, so careful
+ attention needs to be paid to the order of variable names (or
+ indices) in 'varying', which is taken to be like 'x.1', 'y.1',
+ 'x.2', 'y.2' (i.e., variables corresponding to the same time point
+ need to be grouped together).
+
+ The 'split' argument should not usually be necessary.  The
+ 'split$regexp' component is passed to either 'strsplit' or
+ 'regexpr', where the latter is used if 'split$include' is 'TRUE',
+ in which case the splitting occurs after the first character of
+ the matched string.  In the 'strsplit' case, the separator is not
+ included in the result, and it is possible to specify fixed-string
+ matching using 'split$fixed'.</code></pre>
+<p>Value:</p>
+<pre><code> The reshaped data frame with added attributes to simplify
+ reshaping back to the original form.</code></pre>
+<p>See Also:</p>
+<pre><code> 'stack', 'aperm'; 'relist' for reshaping the result of 'unlist'.
+ 'xtabs' and 'as.data.frame.table' for creating contingency tables
+ and converting them back to data frames.</code></pre>
+<p>Examples:</p>
+<pre><code> summary(Indometh) # data in long format
+ 
+ ## long to wide (direction = "wide") requires idvar and timevar at a minimum
+ reshape(Indometh, direction = "wide", idvar = "Subject", timevar = "time")
+ 
+ ## can also explicitly specify name of combined variable
+ wide &lt;- reshape(Indometh, direction = "wide", idvar = "Subject",
+                 timevar = "time", v.names = "conc", sep= "_")
+ wide
+ 
+ ## reverse transformation
+ reshape(wide, direction = "long")
+ reshape(wide, idvar = "Subject", varying = list(2:12),
+         v.names = "conc", direction = "long")
+ 
+ ## times need not be numeric
+ df &lt;- data.frame(id = rep(1:4, rep(2,4)),
+                  visit = I(rep(c("Before","After"), 4)),
+                  x = rnorm(4), y = runif(4))
+ df
+ reshape(df, timevar = "visit", idvar = "id", direction = "wide")
+ ## warns that y is really varying
+ reshape(df, timevar = "visit", idvar = "id", direction = "wide", v.names = "x")
+ 
+ 
+ ##  unbalanced 'long' data leads to NA fill in 'wide' form
+ df2 &lt;- df[1:7, ]
+ df2
+ reshape(df2, timevar = "visit", idvar = "id", direction = "wide")
+ 
+ ## Alternative regular expressions for guessing names
+ df3 &lt;- data.frame(id = 1:4, age = c(40,50,60,50), dose1 = c(1,2,1,2),
+                   dose2 = c(2,1,2,1), dose4 = c(3,3,3,3))
+ reshape(df3, direction = "long", varying = 3:5, sep = "")
+ 
+ 
+ ## an example that isn't longitudinal data
+ state.x77 &lt;- as.data.frame(state.x77)
+ long &lt;- reshape(state.x77, idvar = "state", ids = row.names(state.x77),
+                 times = names(state.x77), timevar = "Characteristic",
+                 varying = list(names(state.x77)), direction = "long")
+ 
+ reshape(long, direction = "wide")
+ 
+ reshape(long, direction = "wide", new.row.names = unique(long$state))
+ 
+ ## multiple id variables
+ df3 &lt;- data.frame(school = rep(1:3, each = 4), class = rep(9:10, 6),
+                   time = rep(c(1,1,2,2), 3), score = rnorm(12))
+ wide &lt;- reshape(df3, idvar = c("school", "class"), direction = "wide")
+ wide
+ ## transform back
+ reshape(wide)</code></pre>
 </section>
-<section id="installing-and-attaching-packages-1" class="slide level2">
-<h2>Installing and <strong>attaching</strong> packages</h2>
-<p>To attach (i.e., be able to use the package) you can use the following code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">require</span>(package_name) <span class="co">#library(package_name) also works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>More on installing and attaching packages later…</p>
+<section id="long-to-wide-data" class="slide level2">
+<h2>long to wide data</h2>
+<p>xxzane - help</p>
 </section>
-<section id="mini-exercise" class="slide level2">
-<h2>Mini Exercise</h2>
-<p>Find and execute a <strong>Base R</strong> function that will round the number 0.86424 to two digits.</p>
+<section id="wide-to-long-data" class="slide level2">
+<h2>wide to long data</h2>
+<p>xxzane - help</p>
 </section>
-<section id="functions-from-module-1" class="slide level2">
-<h2>Functions from Module 1</h2>
-<p>The combine function <code>c()</code> concatenate/collects/combines single R objects into a vector of R objects. It is mostly used for creating vectors of numbers, character strings, and other data types.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>?c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Combine Values into a Vector or List
-
-Description:
-
-     This is a generic function which combines its arguments.
-
-     The default method combines its arguments to form a vector.  All
-     arguments are coerced to a common type which is the type of the
-     returned value, and all attributes except names are removed.
-
-Usage:
-
-     ## S3 Generic function
-     c(...)
-     
-     ## Default S3 method:
-     c(..., recursive = FALSE, use.names = TRUE)
-     
-Arguments:
-
-     ...: objects to be concatenated.  All 'NULL' entries are dropped
-          before method dispatch unless at the very beginning of the
-          argument list.
-
-recursive: logical.  If 'recursive = TRUE', the function recursively
-          descends through lists (and pairlists) combining all their
-          elements into a vector.
-
-use.names: logical indicating if 'names' should be preserved.
-
-Details:
-
-     The output type is determined from the highest type of the
-     components in the hierarchy NULL &lt; raw &lt; logical &lt; integer &lt;
-     double &lt; complex &lt; character &lt; list &lt; expression.  Pairlists are
-     treated as lists, whereas non-vector components (such as 'name's /
-     'symbol's and 'call's) are treated as one-element 'list's which
-     cannot be unlisted even if 'recursive = TRUE'.
-
-     There is a 'c.factor' method which combines factors into a factor.
-
-     'c' is sometimes used for its side effect of removing attributes
-     except names, for example to turn an 'array' into a vector.
-     'as.vector' is a more intuitive way to do this, but also drops
-     names.  Note that methods other than the default are not required
-     to do this (and they will almost certainly preserve a class
-     attribute).
-
-     This is a primitive function.
-
-Value:
-
-     'NULL' or an expression or a vector of an appropriate mode.  (With
-     no arguments the value is 'NULL'.)
-
-S4 methods:
-
-     This function is S4 generic, but with argument list '(x, ...)'.
-
-References:
-
-     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
-     Language_.  Wadsworth &amp; Brooks/Cole.
-
-See Also:
-
-     'unlist' and 'as.vector' to produce attribute-free vectors.
-
-Examples:
-
-     c(1,7:9)
-     c(1:5, 10.5, "next")
-     
-     ## uses with a single argument to drop attributes
-     x &lt;- 1:4
-     names(x) &lt;- letters[1:4]
-     x
-     c(x)          # has names
-     as.vector(x)  # no names
-     dim(x) &lt;- c(2,2)
-     x
-     c(x)
-     as.vector(x)
-     
-     ## append to a list:
-     ll &lt;- list(A = 1, c = "C")
-     ## do *not* use
-     c(ll, d = 1:3) # which is == c(ll, as.list(c(d = 1:3)))
-     ## but rather
-     c(ll, d = list(1:3))  # c() combining two lists
-     
-     c(list(A = c(B = 1)), recursive = TRUE)
-     
-     c(options(), recursive = TRUE)
-     c(list(A = c(B = 1, C = 2), B = c(E = 7)), recursive = TRUE)</code></pre>
-</div>
-</div>
-</section>
-<section id="functions-from-module-1-1" class="slide level2">
-<h2>Functions from Module 1</h2>
-<p>The <code>matrix()</code> function creates a matrix from the given set of values.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>?matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Matrices
-
-Description:
-
-     'matrix' creates a matrix from the given set of values.
-
-     'as.matrix' attempts to turn its argument into a matrix.
-
-     'is.matrix' tests if its argument is a (strict) matrix.
-
-Usage:
-
-     matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,
-            dimnames = NULL)
-     
-     as.matrix(x, ...)
-     ## S3 method for class 'data.frame'
-     as.matrix(x, rownames.force = NA, ...)
-     
-     is.matrix(x)
-     
-Arguments:
-
-    data: an optional data vector (including a list or 'expression'
-          vector).  Non-atomic classed R objects are coerced by
-          'as.vector' and all attributes discarded.
-
-    nrow: the desired number of rows.
-
-    ncol: the desired number of columns.
-
-   byrow: logical. If 'FALSE' (the default) the matrix is filled by
-          columns, otherwise the matrix is filled by rows.
-
-dimnames: A 'dimnames' attribute for the matrix: 'NULL' or a 'list' of
-          length 2 giving the row and column names respectively.  An
-          empty list is treated as 'NULL', and a list of length one as
-          row names.  The list can be named, and the list names will be
-          used as names for the dimensions.
-
-       x: an R object.
-
-     ...: additional arguments to be passed to or from methods.
-
-rownames.force: logical indicating if the resulting matrix should have
-          character (rather than 'NULL') 'rownames'.  The default,
-          'NA', uses 'NULL' rownames if the data frame has 'automatic'
-          row.names or for a zero-row data frame.
-
-Details:
-
-     If one of 'nrow' or 'ncol' is not given, an attempt is made to
-     infer it from the length of 'data' and the other parameter.  If
-     neither is given, a one-column matrix is returned.
-
-     If there are too few elements in 'data' to fill the matrix, then
-     the elements in 'data' are recycled.  If 'data' has length zero,
-     'NA' of an appropriate type is used for atomic vectors ('0' for
-     raw vectors) and 'NULL' for lists.
-
-     'is.matrix' returns 'TRUE' if 'x' is a vector and has a '"dim"'
-     attribute of length 2 and 'FALSE' otherwise.  Note that a
-     'data.frame' is *not* a matrix by this test.  The function is
-     generic: you can write methods to handle specific classes of
-     objects, see InternalMethods.
-
-     'as.matrix' is a generic function.  The method for data frames
-     will return a character matrix if there is only atomic columns and
-     any non-(numeric/logical/complex) column, applying 'as.vector' to
-     factors and 'format' to other non-character columns.  Otherwise,
-     the usual coercion hierarchy (logical &lt; integer &lt; double &lt;
-     complex) will be used, e.g., all-logical data frames will be
-     coerced to a logical matrix, mixed logical-integer will give a
-     integer matrix, etc.
-
-     The default method for 'as.matrix' calls 'as.vector(x)', and hence
-     e.g. coerces factors to character vectors.
-
-     When coercing a vector, it produces a one-column matrix, and
-     promotes the names (if any) of the vector to the rownames of the
-     matrix.
-
-     'is.matrix' is a primitive function.
-
-     The 'print' method for a matrix gives a rectangular layout with
-     dimnames or indices.  For a list matrix, the entries of length not
-     one are printed in the form 'integer,7' indicating the type and
-     length.
-
-Note:
-
-     If you just want to convert a vector to a matrix, something like
-
-       dim(x) &lt;- c(nx, ny)
-       dimnames(x) &lt;- list(row_names, col_names)
-     
-     will avoid duplicating 'x' _and_ preserve 'class(x)' which may be
-     useful, e.g., for 'Date' objects.
-
-References:
-
-     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
-     Language_.  Wadsworth &amp; Brooks/Cole.
-
-See Also:
-
-     'data.matrix', which attempts to convert to a numeric matrix.
-
-     A matrix is the special case of a two-dimensional 'array'.
-     'inherits(m, "array")' is true for a 'matrix' 'm'.
-
-Examples:
-
-     is.matrix(as.matrix(1:10))
-     !is.matrix(warpbreaks)  # data.frame, NOT matrix!
-     warpbreaks[1:10,]
-     as.matrix(warpbreaks[1:10,])  # using as.matrix.data.frame(.) method
-     
-     ## Example of setting row and column names
-     mdat &lt;- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
-                    dimnames = list(c("row1", "row2"),
-                                    c("C.1", "C.2", "C.3")))
-     mdat</code></pre>
-</div>
-</div>
+<section id="lets-get-real" class="slide level2">
+<h2>Let’s get real</h2>
+<p>Use the <code>pivot_wider()</code> and <code>pivot_longer()</code> from the tidyr package!</p>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
-<li>Functions are “self contained” modules of code that accomplish specific tasks.</li>
-<li>Arguments are what you pass to functions (e.g., objects on which you carry out the task or options for how to carry out the task)</li>
-<li>Arguments may include defaults that the author of the function specified as being “good enough in standard cases”, but that can be changed.</li>
-<li>An R Package is a bundle or “package” of code (and or possibly data) that can be used by installing it once and attaching it (using <code>library()</code>) each time R/Rstudio is opened</li>
-<li>The Help window in RStudio is useful for to get more information about functions and packages</li>
+<li>…</li>
 </ul>
 </section>
 <section id="acknowledgements" class="slide level2">
 <h2>Acknowledgements</h2>
 <p>These are the materials we looked through, modified, or extracted to complete this module’s lecture.</p>
 <ul>
-<li><a href="https://hbctraining.github.io/Intro-to-R/lessons/03_introR-functions-and-arguments.html#:~:text=A%20key%20feature%20of%20R,it%2C%20and%20return%20a%20result.">“Introduction to R - ARCHIVED” from Harvard Chan Bioinformatics Core (HBC)</a></li>
+<li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
 </ul>
 
 <div class="footer footer-default">

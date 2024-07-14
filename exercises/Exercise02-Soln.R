@@ -84,12 +84,19 @@ oceania_countries <- cr[cr$region == "Oceania", "alpha.3"]
 # year recorded in the MeaslesCases data set. Ignore missing data values.
 # Which year had the highest number of measles cases in Oceania?
 # Which year had the lowest number of cases?
+# HINT 1: First subset the cases data so you only have the rows for countries in
+# Oceania, and you only have the columns which are cases in each year.
+# HINT 2: you can select a sequence of adjacent columns in the dataset using
+# the : (colon) operator, e.g. to get all of the years, you can use
+# X2023:X1980 as the "select" argument in subset().
+# Hint 3: After you subset the data, you can get the sums across each column ( e.g. with colSums() ) and
+# look at the highest and lowest values.
 colSums(
 	subset(cases, iso3c %in% oceania_countries, X2023:X1980),
 	na.rm = TRUE
 )
 
-# Part E: Are there any countries where the average number of measles cases from
+# BONUS PROBLEM Part E: Are there any countries where the average number of measles cases from
 # 2020 - 2023 for that country is higher than the average number of measles
 # cases from 1997 - 2000?
 # Only consider countries with no missing values during these periods. (HINT:

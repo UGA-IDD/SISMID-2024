@@ -12,7 +12,7 @@
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) - Welcome to SISMID Workshop: Introduction to R</title>
+  <title>SISMID Module NUMBER Materials (2025) - Algorithmic Thinking Case Study 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -244,7 +309,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -327,7 +391,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Welcome to SISMID Workshop: Introduction to R</h1>
+  <h1 class="title">Algorithmic Thinking Case Study 1</h1>
+  <p class="subtitle">SISMID 2024 – Introduction to R</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -343,167 +408,206 @@
 </div>
 
 </section>
-<section id="welcome-to-sismid-workshop-introduction-to-r" class="slide level2">
-<h2>Welcome to SISMID Workshop: Introduction to R!</h2>
-<p><strong>Amy Winter (she/her)</strong></p>
-<p>Assistant Professor, Department of Epidemiology and Biostatistics</p>
-<p>Email: awinter@uga.edu</p>
-<p><br></p>
-<p><strong>Zane Billings (he/him)</strong></p>
-<p>PhD Candidate, Department of Epidemiology and Biostatistics</p>
-<p>Email: Wesley.Billings@uga.edu</p>
-</section>
-<section id="introductions" class="slide level2">
-<h2>Introductions</h2>
+<section id="learning-goals" class="slide level2">
+<h2>Learning goals</h2>
 <ul>
-<li>Name?</li>
-<li>Current position / institution?</li>
-<li>Past experience with other statistical programs, including R?</li>
-<li>Why do you want to learn R?</li>
-<li>Favorite useful app</li>
-<li>Favorite guilty pleasure app</li>
+<li>Use logical operators, subsetting functions, and math calculations in R</li>
+<li>Translate human-understandable problem descriptions into instructions that R can understand.</li>
 </ul>
 </section>
-<section id="what-is-r" class="slide level2">
-<h2>What is R?</h2>
-<ul>
-<li><p>R is a language and environment for statistical computing and graphics developed in 1991</p></li>
-<li><p>R is the open source implementation of the <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S language</a>, which was developed by <a href="https://ca.slack-edge.com/T023TPZA8LF-U024EN26Q0L-113294823b2c-512">Bell laboratories</a> in the 70s.</p></li>
-<li><p>The aim of the S language, as expressed by John Chambers, is “to turn ideas into software, quickly and faithfully”</p></li>
-</ul>
-</section>
-<section id="what-is-r-1" class="slide level2">
-<h2>What is R?</h2>
-<ul>
-<li><p><strong>R</strong>oss Ihaka and <strong>R</strong>obert Gentleman at the University of Auckland, New Zealand developed R</p></li>
-<li><p>R is both <a href="https://en.wikipedia.org/wiki/Open_source">open source</a> and <a href="https://en.wikipedia.org/wiki/Open-source_software_development">open development</a></p></li>
-</ul>
+<section>
+<section id="remember-r-always-does-exactly-what-you-tell-it-to-do" class="title-slide slide level1 center">
+<h1>Remember, R always does EXACTLY what you tell it to do!</h1>
 
-<img data-src="https://www.r-project.org/logo/Rlogo.png" style="width:20.0%" alt="R logo" class="r-stretch quarto-figure-center"></section>
-<section id="what-is-r-2" class="slide level2">
-<h2>What is R?</h2>
+</section>
+<section id="instructions" class="slide level2">
+<h2>Instructions</h2>
 <ul>
-<li>R possesses an extensive catalog of statistical and graphical methods
-<ul>
-<li>includes machine learning algorithm, linear regression, time series, statistical inference to name a few.</li>
-</ul></li>
-<li>Data analysis with R is done in a series of steps; programming, transforming, discovering, modeling and communicate the results</li>
+<li>Make a new R script for this case study, and save it to your code folder.</li>
+<li>We’ll use the diphtheria serosample data from Exercise 1 for this case study. Load it into R and use the functions we’ve learned to look at it.</li>
 </ul>
 </section>
-<section id="what-is-r-3" class="slide level2">
-<h2>What is R?</h2>
+<section id="instructions-1" class="slide level2">
+<h2>Instructions</h2>
 <ul>
-<li>Program: R is a clear and accessible programming tool</li>
-<li>Transform: R is made up of a collection of packages/libraries designed specifically for statistical computing</li>
-<li>Discover: Investigate the data, refine your hypothesis and analyze them</li>
-<li>Model: R provides a wide array of tools to capture the right model for your data</li>
-<li>Communicate: Integrate codes, graphs, and outputs to a report with R Markdown or build Shiny apps to share with the world</li>
+<li>Make a new R script for this case study, and save it to your code folder.</li>
+<li>We’ll use the diphtheria serosample data from Exercise 1 for this case study. Load it into R and use the functions we’ve learned to look at it.</li>
+<li>The <code>str()</code> of your dataset should look like this.</li>
 </ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [250 × 5] (S3: tbl_df/tbl/data.frame)
+ $ age_months  : num [1:250] 15 44 103 88 88 118 85 19 78 112 ...
+ $ group       : chr [1:250] "urban" "rural" "urban" "urban" ...
+ $ DP_antibody : num [1:250] 0.481 0.657 1.368 1.218 0.333 ...
+ $ DP_infection: num [1:250] 1 1 1 1 1 1 1 1 1 1 ...
+ $ DP_vacc     : num [1:250] 0 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+</div>
 </section>
-<section id="why-r" class="slide level2">
-<h2>Why R?</h2>
-<ul>
-<li><p>Free (open source)</p></li>
-<li><p>High level language designed for statistical computing</p></li>
-<li><p>Powerful and flexible - especially for data wrangling and visualization</p></li>
-<li><p>Extensive add-on software (packages)</p></li>
-<li><p>Strong community</p></li>
-</ul>
-</section>
-<section id="why-not-r" class="slide level2">
-<h2>Why not R?</h2>
-<ul>
-<li><p>Little centralized support, relies on online community and package developers</p></li>
-<li><p>Annoying to update</p></li>
-<li><p>Slower, and more memory intensive, than the more traditional programming languages (C, Perl, Python)</p></li>
-</ul>
-</section>
-<section id="is-r-difficult" class="slide level2">
-<h2>Is R Difficult?</h2>
-<ul>
-<li>Short answer – It has a steep learning curve, like all programming languages</li>
-<li>Years ago, R was a difficult language to master.</li>
-<li>Hadley Wickham developed a collection of packages called tidyverse. Data manipulation became trivial and intuitive. Creating a graph was not so difficult anymore.</li>
-</ul>
-</section>
-<section id="overall-workshop-objectives" class="slide level2">
-<h2>Overall Workshop Objectives</h2>
-<p>By the end of this workshop, you should be able to</p>
+<section id="q1-was-the-overall-prevalence-higher-in-urban-or-rural-areas" class="slide level2">
+<h2>Q1: Was the overall prevalence higher in urban or rural areas?</h2>
+<div>
 <ol type="1">
-<li>start a new project, read in data, and conduct basic data manipulation, analysis, and visualization</li>
-<li>know how to use and find packages/functions that we did not specifically learn in class</li>
-<li>troubleshoot errors</li>
+<li class="fragment">How do we calculate the prevalence from the data?</li>
+<li class="fragment">How do we calculate the prevalence separately for urban and rural areas?</li>
+<li class="fragment">How do we determine which prevalence is higher and if the difference is meaningful?</li>
 </ol>
+</div>
 </section>
-<section id="this-workshop-differs-from-introduction-to-tidyverse" class="slide level2">
-<h2>This workshop differs from “Introduction to Tidyverse”</h2>
-<p>We will focus this class on using <strong>Base R</strong> functions and packages, i.e., pre-installed into R and the basis for most other functions and packages! If you know Base R then are will be more equipped to use all the other useful/pretty packages that exit.</p>
-<p>The Tidyverse is one set of useful/pretty sets of packages, designed to can make your code more <strong>intuitive</strong> as compared to the original older Base R. <strong>Tidyverse advantages</strong>:</p>
+<section id="q1-how-do-we-calculate-the-prevalence-from-the-data" class="slide level2">
+<h2>Q1: How do we calculate the prevalence from the data?</h2>
+<div>
 <ul>
-<li><strong>consistent structure</strong> - making it easier to learn how to use different packages</li>
-<li>particularly good for <strong>wrangling</strong> (manipulating, cleaning, joining) data<br>
-</li>
-<li>more flexible for <strong>visualizing</strong> data</li>
+<li class="fragment">The variable <code>DP_infection</code> in our dataset is binary / dichotomous.</li>
+<li class="fragment">The prevalence is the number or percent of people who had the disease over some duration.</li>
+<li class="fragment">The average of a binary variable gives the prevalence!</li>
 </ul>
-
-<img data-src="https://tidyverse.tidyverse.org/logo.png" style="width:10.0%" alt="Tidyverse hex sticker" class="r-stretch quarto-figure-center"></section>
-<section id="workshop-overview" class="slide level2">
-<h2>Workshop Overview</h2>
-<p>14 lecture blocks that will each:</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">mean</span>(diph<span class="sc">$</span>DP_infection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="q1-how-do-we-calculate-the-prevalence-separately-for-urban-and-rural-areas" class="slide level2">
+<h2>Q1: How do we calculate the prevalence separately for urban and rural areas?</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">mean</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"urban"</span>, ]<span class="sc">$</span>DP_infection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8235294</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">mean</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"rural"</span>, ]<span class="sc">$</span>DP_infection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.778626</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
 <ul>
-<li>Start with learning objectives</li>
-<li>End with summary slides</li>
-<li>Include mini-exercise(s) or a full exercise</li>
+<li>There are many ways you could write this code! You can use <code>subset()</code> or you can write the indices many ways.</li>
+<li>Using <code>tbl_df</code> objects from <code>haven</code> uses different <code>[[</code> rules than a base R data frame.</li>
 </ul>
-<p>Themes that will show up throughout the workshop:</p>
+</div>
+</section>
+<section id="q1-how-do-we-calculate-the-prevalence-separately-for-urban-and-rural-areas-1" class="slide level2">
+<h2>Q1: How do we calculate the prevalence separately for urban and rural areas?</h2>
 <ul>
-<li>Reproducibility</li>
-<li>Good coding techniques</li>
-<li>Thinking algorithmically</li>
-<li><a href="https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf">Basic terms / R jargon</a></li>
+<li>One easy way is to use the <code>aggregate()</code> function.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">aggregate</span>(DP_infection <span class="sc">~</span> group, <span class="at">data =</span> diph, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  group DP_infection
+1 rural    0.7786260
+2 urban    0.8235294</code></pre>
+</div>
+</div>
+</section>
+<section id="q1-how-do-we-determine-which-prevalence-is-higher-and-if-the-difference-is-meaningful" class="slide level2">
+<h2>Q1: How do we determine which prevalence is higher and if the difference is meaningful?</h2>
+<div>
+<ul>
+<li class="fragment">We probably need to include a confidence interval in our calculation.</li>
+<li class="fragment">This is actually not so easy without more advanced tools that we will learn in upcoming modules.</li>
+<li class="fragment">Right now the best options are to do it by hand or google a function.</li>
+</ul>
+</div>
+</section>
+<section id="q1-by-hand" class="slide level2">
+<h2>Q1: By hand</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>p_urban <span class="ot">&lt;-</span> <span class="fu">mean</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"urban"</span>, ]<span class="sc">$</span>DP_infection)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>p_rural <span class="ot">&lt;-</span> <span class="fu">mean</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"rural"</span>, ]<span class="sc">$</span>DP_infection)</span>
+<span id="cb10-3"><a href="#cb10-3"></a>se_urban <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_urban <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_urban) <span class="sc">/</span> <span class="fu">nrow</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"urban"</span>, ]))</span>
+<span id="cb10-4"><a href="#cb10-4"></a>se_rural <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p_rural <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_rural) <span class="sc">/</span> <span class="fu">nrow</span>(diph[diph<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"rural"</span>, ])) </span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>result_urban <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="st">"Urban: "</span>, <span class="fu">round</span>(p_urban, <span class="dv">2</span>), <span class="st">"; 95% CI: ("</span>,</span>
+<span id="cb10-8"><a href="#cb10-8"></a>    <span class="fu">round</span>(p_urban <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se_urban, <span class="dv">2</span>), <span class="st">", "</span>,</span>
+<span id="cb10-9"><a href="#cb10-9"></a>    <span class="fu">round</span>(p_urban <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se_urban, <span class="dv">2</span>), <span class="st">")"</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a>result_rural <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb10-13"><a href="#cb10-13"></a>    <span class="st">"Rural: "</span>, <span class="fu">round</span>(p_rural, <span class="dv">2</span>), <span class="st">"; 95% CI: ("</span>,</span>
+<span id="cb10-14"><a href="#cb10-14"></a>    <span class="fu">round</span>(p_rural <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se_rural, <span class="dv">2</span>), <span class="st">", "</span>,</span>
+<span id="cb10-15"><a href="#cb10-15"></a>    <span class="fu">round</span>(p_rural <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se_rural, <span class="dv">2</span>), <span class="st">")"</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a>)</span>
+<span id="cb10-17"><a href="#cb10-17"></a></span>
+<span id="cb10-18"><a href="#cb10-18"></a><span class="fu">cat</span>(result_urban, result_rural, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Urban: 0.82; 95% CI: (0.76, 0.89)
+Rural: 0.78; 95% CI: (0.71, 0.85)</code></pre>
+</div>
+</div>
+</section>
+<section id="q1-by-hand-1" class="slide level2">
+<h2>Q1: By hand</h2>
+<ul>
+<li>We can see that the 95% CI’s overlap, so the groups are probably not that different. <strong>To be sure, we need to do a 2-sample test! But this is not a statistics class.</strong></li>
+<li>Some people will tell you that coding like this is “bad”. <strong>But ‘bad’ code that gives you answers is better than broken code!</strong> We will learn techniques for writing this with less work and less repetition in upcoming modules.</li>
 </ul>
 </section>
-<section id="reproducibility" class="slide level2">
-<h2>Reproducibility</h2>
-<p>xxzane slides</p>
+<section id="q1-googling-a-package" class="slide level2">
+<h2>Q1: Googling a package</h2>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># install.packages("DescTools")</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">aggregate</span>(DP_infection <span class="sc">~</span> group, <span class="at">data =</span> diph, <span class="at">FUN =</span> DescTools<span class="sc">::</span>MeanCI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  group DP_infection.mean DP_infection.lwr.ci DP_infection.upr.ci
+1 rural         0.7786260           0.7065872           0.8506647
+2 urban         0.8235294           0.7540334           0.8930254</code></pre>
+</div>
+</div>
+</div>
 </section>
-<section id="useful-free-resources" class="slide level2">
-<h2>Useful (+ Free) Resources</h2>
-<p><strong>Want more?</strong></p>
+<section id="you-try-it" class="slide level2">
+<h2>You try it!</h2>
 <ul>
-<li><p>R for Data Science: http://r4ds.had.co.nz/<br>
-(great general information)</p></li>
-<li><p>Fundamentals of Data Visualization: https://clauswilke.com/dataviz/</p></li>
-<li><p>R for Epidemiology: https://www.r4epi.com/</p></li>
-<li><p>The Epidemiologist R Handbook: https://epirhandbook.com/en/</p></li>
-<li><p>R basics by Rafael A. Irizarry: https://rafalab.github.io/dsbook/r-basics.html (great general information)</p></li>
-<li><p>Open Case Studies: https://www.opencasestudies.org/<br>
-(resource for specific public health cases with statistical implementation and interpretation)</p></li>
+<li>Using any of the approaches you can think of, answer this question!</li>
+<li><strong>How many children under 5 were vaccinated? In children under 5, did vaccination lower the prevalence of infection?</strong></li>
 </ul>
 </section>
-<section id="useful-free-resources-1" class="slide level2">
-<h2>Useful (+Free) Resources</h2>
-<p><strong>Need help?</strong></p>
-<ul>
-<li><p>Various “Cheat Sheets”: https://github.com/rstudio/cheatsheets/</p></li>
-<li><p>R reference card: http://cran.r-project.org/doc/contrib/Short-refcard.pdf</p></li>
-<li><p>R jargon: https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf</p></li>
-<li><p>R vs Stata: https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf</p></li>
-<li><p>R terminology: https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf</p></li>
-</ul>
+<section id="you-try-it-1" class="slide level2">
+<h2>You try it!</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># How many children under 5 were vaccinated</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">sum</span>(diph<span class="sc">$</span>DP_vacc[diph<span class="sc">$</span>age_months <span class="sc">&lt;</span> <span class="dv">60</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 91</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Prevalence in both vaccine groups for children under 5</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">aggregate</span>(</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    DP_infection <span class="sc">~</span> DP_vacc,</span>
+<span id="cb16-4"><a href="#cb16-4"></a>    <span class="at">data =</span> <span class="fu">subset</span>(diph, age_months <span class="sc">&lt;</span> <span class="dv">60</span>),</span>
+<span id="cb16-5"><a href="#cb16-5"></a>    <span class="at">FUN =</span> DescTools<span class="sc">::</span>MeanCI</span>
+<span id="cb16-6"><a href="#cb16-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  DP_vacc DP_infection.mean DP_infection.lwr.ci DP_infection.upr.ci
+1       0         0.4285714           0.1977457           0.6593972
+2       1         0.6373626           0.5366845           0.7380407</code></pre>
+</div>
+</div>
+<p>It appears that prevalence was HIGHER in the vaccine group? That is counterintuitive, but the sample size for the unvaccinated group is too small to be sure.</p>
 </section>
-<section id="installing-r" class="slide level2">
-<h2>Installing R</h2>
-<p>Hopefully everyone has pre-installed R and RStudio. We will take a moment to go around and make sure everyone is ready to go. Please open up your RStudio and leave it open as we check everyone’s laptops.</p>
+<section id="congratulations-for-finishing-the-first-case-study" class="slide level2">
+<h2>Congratulations for finishing the first case study!</h2>
 <ul>
-<li>Install the latest version from: <a href="http://cran.r-project.org/">http://cran.r-project.org/</a></li>
-<li><a href="https://www.rstudio.com/products/rstudio/download/">Install RStudio</a></li>
+<li>What R functions and skills did you practice?</li>
+<li>What other questions could you answer about the same dataset with the skills you know now?</li>
 </ul>
 
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -530,13 +634,13 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': true,
+'smaller': false,
  
         // Display controls in the bottom right corner
         controls: false,
