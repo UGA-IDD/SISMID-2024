@@ -1274,8 +1274,8 @@ Examples:
  'as.character' method and be sortable (by 'order').
 
  Ordered factors differ from factors only in their class, but
- methods and the model-fitting functions treat the two classes
- quite differently.
+ methods and model-fitting functions may treat the two classes
+ quite differently, see 'options("contrasts")'.
 
  The encoding of the vector happens as follows.  First all the
  values in 'exclude' are removed from 'levels'. If 'x[i]' equals
@@ -1553,6 +1553,15 @@ Examples:
 </table>
 </div>
 </div>
+<p>You can create a new data frame out of vectors (and potentially lists, but this is an advanced feature and unusual) by using the <code>data.frame()</code> function. Recall that all of the vectors that make up a data frame must be the same length.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a>lotr <span class="ot">&lt;-</span> </span>
+<span id="cb95-2"><a></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb95-3"><a></a>    <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Frodo"</span>, <span class="st">"Sam"</span>, <span class="st">"Aragorn"</span>, <span class="st">"Legolas"</span>, <span class="st">"Gimli"</span>),</span>
+<span id="cb95-4"><a></a>    <span class="at">race =</span> <span class="fu">c</span>(<span class="st">"Hobbit"</span>, <span class="st">"Hobbit"</span>, <span class="st">"Human"</span>, <span class="st">"Elf"</span>, <span class="st">"Dwarf"</span>),</span>
+<span id="cb95-5"><a></a>    <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">53</span>, <span class="dv">38</span>, <span class="dv">87</span>, <span class="dv">2931</span>, <span class="dv">139</span>)</span>
+<span id="cb95-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="numeric-variable-data-summary" class="slide level2">
 <h2>Numeric variable data summary</h2>
@@ -1569,15 +1578,15 @@ Examples:
 <li><code>colSums()</code>: get the columns sums of a data frame</li>
 <li><code>rowSums()</code>: get the row sums of a data frame</li>
 <li><code>colMeans()</code>: get the columns means of a data frame</li>
-<li><code>rowMeans</code>()`: get the row means of a data frame</li>
+<li><code>rowMeans()</code>: get the row means of a data frame</li>
 </ul>
-<p>Note, the top 8 functions have an <code>na.rm</code> <strong>argument for missing data</strong></p>
+<p>Note, all of these functions have an <code>na.rm</code> <strong>argument for missing data</strong>.</p>
 </section>
 <section id="numeric-variable-data-summary-1" class="slide level2">
 <h2>Numeric variable data summary</h2>
 <p>Let’s look at a help file for <code>mean()</code> to make note of the <code>na.rm</code> argument</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a></a>?range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a>?range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Range of Values</p>
 <p>Description:</p>
@@ -1585,14 +1594,17 @@ Examples:
  the given arguments.</code></pre>
 <p>Usage:</p>
 <pre><code> range(..., na.rm = FALSE)
- 
  ## Default S3 method:
  range(..., na.rm = FALSE, finite = FALSE)
+ ## same for classes 'Date' and 'POSIXct'
+ 
+ .rangeNum(..., na.rm, finite, isNumeric)
  </code></pre>
 <p>Arguments:</p>
 <pre><code> ...: any 'numeric' or character objects.</code></pre>
 <p>na.rm: logical, indicating if ‘NA’’s should be omitted.</p>
 <p>finite: logical, indicating if all non-finite elements should be omitted.</p>
+<p>isNumeric: a ‘function’ returning ‘TRUE’ or ‘FALSE’ when called on ‘c(…, recursive = TRUE)’, ‘is.numeric()’ for the default ‘range()’ method.</p>
 <p>Details:</p>
 <pre><code> 'range' is a generic function: methods can be defined for it
  directly or via the 'Summary' group generic.  For this to work
@@ -1631,7 +1643,7 @@ Examples:
 <section id="numeric-variable-data-summary-examples" class="slide level2">
 <h2>Numeric variable data summary examples</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top" style="width:100%;">
 <colgroup>
@@ -1748,15 +1760,15 @@ Examples:
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a></a><span class="fu">range</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a></a><span class="fu">range</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a></a><span class="fu">range</span>(df<span class="sc">$</span>age, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a></a><span class="fu">range</span>(df<span class="sc">$</span>age, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a></a><span class="fu">median</span>(df<span class="sc">$</span>IgG_concentration, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a></a><span class="fu">median</span>(df<span class="sc">$</span>IgG_concentration, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.665753</code></pre>
 </div>
@@ -1766,7 +1778,7 @@ Examples:
 <h2>Character variable data summaries</h2>
 <p>Data summarization on character or factor vectors/variables using <code>table()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a></a>?table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a></a>?table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Cross Tabulation and Table Creation</p>
 <p>Description:</p>
@@ -1802,7 +1814,7 @@ Examples:
       'as.data.frame.table(x, *)' may be called explicitly for
       non-table 'x' for "reshaping" 'array's.</code></pre>
 <p>row.names: a character vector giving the row names for the data frame.</p>
-<p>responseName: The name to be used for the column of table entries, usually counts.</p>
+<p>responseName: the name to be used for the column of table entries, usually counts.</p>
 <p>stringsAsFactors: logical: should the classifying factors be returned as factors (the default) or character vectors?</p>
 <p>sep, base: passed to ‘provideDimnames’.</p>
 <p>Details:</p>
@@ -1877,6 +1889,7 @@ Examples:
  
  a &lt;- letters[1:3]
  table(a, sample(a))                    # dnn is c("a", "")
+ table(a, sample(a), dnn = NULL)        # dimnames() have no names
  table(a, sample(a), deparse.level = 0) # dnn is c("", "")
  table(a, sample(a), deparse.level = 2) # dnn is c("a", "sample(a)")
  
@@ -1931,7 +1944,7 @@ Examples:
 <h2>Character variable data summary examples</h2>
 <p>Number of observations in each category</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -1948,7 +1961,7 @@ Examples:
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>gender, <span class="at">useNA=</span><span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>gender, <span class="at">useNA=</span><span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -1967,7 +1980,7 @@ Examples:
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>age_group, <span class="at">useNA=</span><span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>age_group, <span class="at">useNA=</span><span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -1990,7 +2003,7 @@ Examples:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>gender)<span class="sc">/</span><span class="fu">nrow</span>(df) <span class="co">#if no NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>gender)<span class="sc">/</span><span class="fu">nrow</span>(df) <span class="co">#if no NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -2007,7 +2020,7 @@ Examples:
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>age_group)<span class="sc">/</span><span class="fu">nrow</span>(df[<span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>age_group),]) <span class="co">#if there are NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>age_group)<span class="sc">/</span><span class="fu">nrow</span>(df[<span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>age_group),]) <span class="co">#if there are NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -2026,7 +2039,7 @@ Examples:
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>age_group)<span class="sc">/</span><span class="fu">nrow</span>(<span class="fu">subset</span>(df, <span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>age_group),)) <span class="co">#if there are NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a></a><span class="fu">table</span>(df<span class="sc">$</span>age_group)<span class="sc">/</span><span class="fu">nrow</span>(<span class="fu">subset</span>(df, <span class="sc">!</span><span class="fu">is.na</span>(df<span class="sc">$</span>age_group),)) <span class="co">#if there are NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
@@ -2286,42 +2299,80 @@ Examples:
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {

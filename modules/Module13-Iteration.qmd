@@ -1,5 +1,5 @@
 ---
-title: "Iteration in R"
+title: "Module 13: Iteration in R"
 format:
   revealjs:
     toc: false

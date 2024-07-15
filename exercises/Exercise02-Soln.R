@@ -4,6 +4,8 @@
 # Zane Billings and Amy Winter
 ################################################################################
 
+# For this exercise, you should try to complete all three questions in order.
+
 # Question 1 ###################################################################
 # Part A: create a numeric vector with the values 1, 2, 5, 1, 7, and 8. Name
 # the vector q1_vec.
