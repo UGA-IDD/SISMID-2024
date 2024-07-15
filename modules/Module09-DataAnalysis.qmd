@@ -38,6 +38,58 @@ Create `seropos` binary variable representing seropositivity if antibody concent
 df$seropos <- ifelse(df$IgG_concentration<10, 0, 1)
 ```
 
+## Grouped analyses
+
+* Most of this module will discuss statistical analyses. But first we'll
+discuss doing univariate analyses we've already used on multiple groups.
+* We can use the `aggregate()` function to do many analyses across groups.
+
+```{r echo=TRUE, eval=FALSE}
+?aggregate
+```
+
+```{r echo=TRUE}
+library(printr)
+?aggregate
+```
+
+## Grouped analyses
+
+* Let's calculate seropositivity rate across age groups using the variables
+we just created.
+* The easiest way to use `aggregate()` is with the formula option. The syntax
+is `variable_of_intest ~ grouping_variables`.
+
+```{r}
+aggregate(
+	# Formula specifies we are calculating statistics on seropos, separately for
+	# each level of age_group
+	seropos ~ age_group,
+	data = df, # Data argument
+	FUN = mean # function for our calculation WITHOUT PARENTHESES
+)
+```
+
+* We can add as many things as we want on the RHS of the formula.
+
+```{r}
+aggregate(
+	IgG_concentration ~ age_group + slum,
+	data = df,
+	FUN = sd # standard deviation
+)
+```
+
+* We can also add multiple variables on the LHS at the same time using
+`cbind()` syntax.
+
+```{r}
+aggregate(
+	cbind(age, IgG_concentration) ~ gender + slum,
+	data = df,
+	FUN = median
+)
+```
 
 ## 2 variable contingency tables
 
