@@ -61,17 +61,21 @@ knitr::include_graphics("images/both.png")
 
 ## Working with R in RStudio - 2 major panes:
 
-1) The **Source/Editor**: xxamy
+1. The **Source/Editor**:
+
+</br> 
 
 - "Analysis" Script
-- Static copy of what you did (reproducibility)
-- Top by default
-    
-2)  The **R Console**: "interprets" whatever you type:
 
-    -   Calculator
-    -   Try things out interactively, then add to your editor
-    -   Bottom by default
+- Static copy of what you did (reproducibility)
+
+- Top by default
+
+2. The **R Console**: "interprets" whatever you type:
+
+- Calculator
+- Try things out interactively, then add to your editor
+- Bottom by default
 
 ## Source / Editor
 
@@ -178,7 +182,7 @@ You can do basic arithmetic in R, which I surprisingly use all the time.
 
 To execute or run a line of code (i.e., command), you just put your cursor on the command and then:
 
-  1. Press Run (which you will find at the top of your window)
+  1. Press Run (which you will find at the top of your Console pane)
 
   OR
 
@@ -276,13 +280,13 @@ I tend to use:
 number.object <- 3
 character.object <- "blue"
 vector.object1 <- c(2,3,4,5)
-vector.object2 <- c("blue", "red", "yellow")
+vector.object2 <- paste0(c("b", "t", "u"), c(8,4,2))
 matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
 ```
 
-Note, `c()` and `matrix()` are functions, which we will talk more about in module 2.
+Note, `c()`, `paste0()`, and `matrix()` are functions, which we will talk more about in module 2.
 
-## Object names
+## Object names  - Good coding
 
 - In general, any object name can be typed into R.
 - However, only some are considered "valid". If you use a non-valid object name,
@@ -295,7 +299,7 @@ you will have to enclose it in backticks \``like this`\` for R to recognize it.
 `next`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, `NA_integer_`,
 `NA_real_`, `NA_Complex_`, `_NA_Character`, `...`, `..1`, `..2`, `..3`, and so on.
 
-## Object names
+## Object names  - Good coding
 
 | Valid        | Invalid |
 |--------------|---------|
@@ -305,6 +309,11 @@ you will have to enclose it in backticks \``like this`\` for R to recognize it.
 | `measles_data` | `.9data`  |
 | `.calc`        | `xX~mŷ_δätą~Xx` |
 
+
+## Object assingment - Good coding
+
+`=` and `<-` can both be used for assignment, but `<-` is better coding practice, because sometimes `=` doesn't work and we want to distinguish between the logical operator `==`. We will talk about this more, later.
+
 ## Mini Exercise
 
 Try creating one or two of these objects in your R script
@@ -313,13 +322,13 @@ Try creating one or two of these objects in your R script
 number.object <- 3
 character.object <- "blue"
 vector.object1 <- c(2,3,4,5)
-vector.object2 <- c("blue", "red", "yellow")
+vector.object2 <- paste0(c("b", "t", "u"), c(8,4,2))
 matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
 ```
 
 ## Objects 
 
-Note, you can find these objects now in the Global Environment.
+Note, you can find these objects now in your Environment pane.
 
 ```{r, out.width = "90%", echo = FALSE}
 knitr::include_graphics("images/global_env.png")
@@ -335,13 +344,6 @@ character.object
 ```{r, echo = TRUE}
 matrix.object
 ```
-
-
-# Object names and assingment - Good coding
-
-xxzane
-
-`=` and `<-` can both be used for assignment, but `<-` is better coding practice, because sometimes `=` doesn't work and we want to distinguish between the logical operator `==`. We will talk about this more, later.
 
 ## Lists
 

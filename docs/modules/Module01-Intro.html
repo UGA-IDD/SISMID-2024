@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) - Module 1: Introduction to RStudio and R Basics</title>
+  <title>SISMID Module NUMBER Materials (2025) – Module 1: Introduction to RStudio and R Basics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -434,7 +435,7 @@
 </ul></li>
 </ul>
 
-<img data-src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" style="width:30.0%" alt="RStudio logo" class="r-stretch quarto-figure-center"></section>
+<img data-src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:30.0%" alt="RStudio logo"></section>
 <section id="rstudio" class="slide level2">
 <h2>RStudio</h2>
 <p>Easier working with R</p>
@@ -453,29 +454,30 @@
 <section id="rstudio-1" class="slide level2">
 <h2>RStudio</h2>
 
-<img data-src="https://ayeimanolr.files.wordpress.com/2013/04/r-rstudio-1-1.png?w=640&amp;h=382" style="width:80.0%" alt="RStudio" class="r-stretch quarto-figure-center"></section>
+<img data-src="https://ayeimanolr.files.wordpress.com/2013/04/r-rstudio-1-1.png?w=640&amp;h=382" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="RStudio"></section>
 <section id="getting-the-editor" class="slide level2">
 <h2>Getting the editor</h2>
 
 <img data-src="images/both.png" style="width:90.0%" class="r-stretch"></section>
-<section id="working-with-r-in-rstudio---2-major-panes" class="slide level2">
+<section id="working-with-r-in-rstudio---2-major-panes" class="slide level2 scrollable">
 <h2>Working with R in RStudio - 2 major panes:</h2>
 <ol type="1">
-<li>The <strong>Source/Editor</strong>: xxamy</li>
+<li>The <strong>Source/Editor</strong>:</li>
 </ol>
+<p><br></p>
 <ul>
-<li>“Analysis” Script</li>
-<li>Static copy of what you did (reproducibility)</li>
-<li>Top by default</li>
+<li><p>“Analysis” Script</p></li>
+<li><p>Static copy of what you did (reproducibility)</p></li>
+<li><p>Top by default</p></li>
 </ul>
 <ol start="2" type="1">
-<li><p>The <strong>R Console</strong>: “interprets” whatever you type:</p>
+<li>The <strong>R Console</strong>: “interprets” whatever you type:</li>
+</ol>
 <ul>
 <li>Calculator</li>
 <li>Try things out interactively, then add to your editor</li>
 <li>Bottom by default</li>
-</ul></li>
-</ol>
+</ul>
 </section>
 <section id="source-editor" class="slide level2">
 <h2>Source / Editor</h2>
@@ -494,18 +496,18 @@
 <li>Code is <strong>not saved</strong></li>
 </ul>
 
-<img data-src="images/rstudio_console.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/rstudio_console.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
 <section id="rstudio-2" class="slide level2">
 <h2>RStudio</h2>
 <p>Useful RStudio “cheat sheet”: <a href="https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf" class="uri">https://github.com/rstudio/cheatsheets/blob/main/rstudio-ide.pdf</a></p>
 
-<img data-src="images/rstudio_sheet.png" style="width:65.0%" alt="RStudio" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/rstudio_sheet.png" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%" alt="RStudio"></section>
 <section id="rstudio-layout" class="slide level2">
 <h2>RStudio Layout</h2>
 <p>If RStudio doesn’t look the way you want (or like our RStudio), then do:</p>
 <p>In R Studio Menu Bar go to View Menu –&gt; Panes –&gt; Pane Layout</p>
 
-<img data-src="images/pane_layout.png" width="500" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/pane_layout.png" class="quarto-figure quarto-figure-center r-stretch" width="500"></section>
 <section id="workspaceenvironment" class="slide level2">
 <h2>Workspace/Environment</h2>
 <ul>
@@ -542,7 +544,7 @@
 <h2>Explaining output on slides</h2>
 <p>In slides, the R command/code will be in a box, and then directly after it, will be the output of the code starting with <code>[1]</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">print</span>(<span class="st">"I'm code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">print</span>(<span class="st">"I'm code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "I'm code"</code></pre>
 </div>
@@ -555,15 +557,15 @@
 <h2>R as a calculator</h2>
 <p>You can do basic arithmetic in R, which I surprisingly use all the time.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
@@ -582,11 +584,11 @@
 </ul></li>
 </ul>
 </section>
-<section id="execute-run-code" class="slide level2">
+<section id="execute-run-code" class="slide level2 scrollable">
 <h2>Execute / Run Code</h2>
 <p>To execute or run a line of code (i.e., command), you just put your cursor on the command and then:</p>
 <ol type="1">
-<li>Press Run (which you will find at the top of your window)</li>
+<li>Press Run (which you will find at the top of your Console pane)</li>
 </ol>
 <p>OR</p>
 <ol start="2" type="1">
@@ -598,7 +600,7 @@
 <h2>Mini exercise</h2>
 <p>Execute <code>5+4</code> from your .R file, and then find the answer 9 in the Console.</p>
 </section>
-<section id="commenting-in-scripts" class="slide level2">
+<section id="commenting-in-scripts" class="slide level2 scrollable">
 <h2>Commenting in Scripts</h2>
 <p>The syntax <code>#</code> creates a comment, which means anything to the right of <code>#</code> will not be executed / run</p>
 <p>Commenting is useful to:</p>
@@ -612,33 +614,33 @@
 <h2>Commenting an R Script header</h2>
 <p>Add a comment header to Module1.R. This is the one I typically use, but you may have your own preference. The goal is that you are consistent so that future you / collaborators can make sense of your code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="do">### Title: Module 1</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="do">### Author: Amy Winter </span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="do">### Objective: Mini Exercise - Developing first R Script</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="do">### Date: 15 July 2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="do">### Title: Module 1</span></span>
+<span id="cb9-2"><a></a><span class="do">### Author: Amy Winter </span></span>
+<span id="cb9-3"><a></a><span class="do">### Objective: Mini Exercise - Developing first R Script</span></span>
+<span id="cb9-4"><a></a><span class="do">### Date: 15 July 2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="commenting-to-create-sections" class="slide level2">
 <h2>Commenting to create sections</h2>
 <p>You can also create sections within your code by ending a comment with 4 hash marks. <strong>This is very useful for creating an outline of your R Script.</strong> The “Outline” can be found in the top right of the your Source pane</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Section 1 Header ####</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="do">## Section 2 Sub-header ####</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="do">### Section 3 Sub-sub-header ####</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="do">#### Section 4 Sub-sub-sub-header ####</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Section 1 Header ####</span></span>
+<span id="cb10-2"><a></a><span class="do">## Section 2 Sub-header ####</span></span>
+<span id="cb10-3"><a></a><span class="do">### Section 3 Sub-sub-header ####</span></span>
+<span id="cb10-4"><a></a><span class="do">#### Section 4 Sub-sub-sub-header ####</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <img data-src="images/outline.png" style="width:90.0%" class="r-stretch"></section>
 <section id="commenting-to-explain-code" class="slide level2">
 <h2>Commenting to explain code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="do">## this # is still a comment</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="do">### you can use many #'s as you want</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># sometimes you have a really long comment,</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co">#    like explaining what you are doing</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="co">#    for a step in analysis. </span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co"># Take it to another line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="do">## this # is still a comment</span></span>
+<span id="cb11-2"><a></a><span class="do">### you can use many #'s as you want</span></span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="co"># sometimes you have a really long comment,</span></span>
+<span id="cb11-5"><a></a><span class="co">#    like explaining what you are doing</span></span>
+<span id="cb11-6"><a></a><span class="co">#    for a step in analysis. </span></span>
+<span id="cb11-7"><a></a><span class="co"># Take it to another line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I tend to use:</p>
 <ul>
@@ -646,12 +648,12 @@
 <li>One hash mark with no space after a command to list specifics</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Practicing my arithmetic</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="dv">3</span><span class="sc">*</span><span class="dv">5</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="dv">9</span><span class="sc">/</span><span class="dv">8</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span> <span class="co">#5 plus 2 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Practicing my arithmetic</span></span>
+<span id="cb12-2"><a></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span></span>
+<span id="cb12-3"><a></a><span class="dv">3</span><span class="sc">*</span><span class="dv">5</span></span>
+<span id="cb12-4"><a></a><span class="dv">9</span><span class="sc">/</span><span class="dv">8</span></span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span> <span class="co">#5 plus 2 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="object---basic-terms" class="slide level2">
@@ -676,38 +678,89 @@
 <li>Here are examples of creating five different objects:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>character.object <span class="ot">&lt;-</span> <span class="st">"blue"</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>vector.object1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb13-4"><a href="#cb13-4"></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
-<span id="cb13-5"><a href="#cb13-5"></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb13-2"><a></a>character.object <span class="ot">&lt;-</span> <span class="st">"blue"</span></span>
+<span id="cb13-3"><a></a>vector.object1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb13-4"><a></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"t"</span>, <span class="st">"u"</span>), <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb13-5"><a></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note, <code>c()</code> and <code>matrix()</code> are functions, which we will talk more about in module 2.</p>
+<p>Note, <code>c()</code>, <code>paste0()</code>, and <code>matrix()</code> are functions, which we will talk more about in module 2.</p>
+</section>
+<section id="object-names---good-coding" class="slide level2">
+<h2>Object names - Good coding</h2>
+<ul>
+<li>In general, any object name can be typed into R.</li>
+<li>However, only some are considered “valid”. If you use a non-valid object name, you will have to enclose it in backticks `<code>like this</code>` for R to recognize it.</li>
+<li>From the R documentation:</li>
+</ul>
+<blockquote>
+<p>A syntactically valid name consists of letters, numbers and the dot or underline characters and starts with a letter or the dot not followed by a number. Names such as “.2way” are not valid, and neither are the reserved words.</p>
+</blockquote>
+<ul>
+<li>Reserved words: <code>if</code>, <code>else</code>, <code>repeat</code>, <code>while</code>, <code>function</code>, <code>for</code>, <code>in</code>, <code>next</code>, <code>break</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>Inf</code>, <code>NaN</code>, <code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_Complex_</code>, <code>_NA_Character</code>, <code>...</code>, <code>..1</code>, <code>..2</code>, <code>..3</code>, and so on.</li>
+</ul>
+</section>
+<section id="object-names---good-coding-1" class="slide level2">
+<h2>Object names - Good coding</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Valid</th>
+<th>Invalid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>my_object</code></td>
+<td><code>my-data</code></td>
+</tr>
+<tr class="even">
+<td><code>the.vector</code></td>
+<td><code>2data</code></td>
+</tr>
+<tr class="odd">
+<td><code>num12</code></td>
+<td><code>for</code></td>
+</tr>
+<tr class="even">
+<td><code>measles_data</code></td>
+<td><code>.9data</code></td>
+</tr>
+<tr class="odd">
+<td><code>.calc</code></td>
+<td><code>xX~mŷ_δätą~Xx</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="object-assingment---good-coding" class="slide level2">
+<h2>Object assingment - Good coding</h2>
+<p><code>=</code> and <code>&lt;-</code> can both be used for assignment, but <code>&lt;-</code> is better coding practice, because sometimes <code>=</code> doesn’t work and we want to distinguish between the logical operator <code>==</code>. We will talk about this more, later.</p>
 </section>
 <section id="mini-exercise-1" class="slide level2">
 <h2>Mini Exercise</h2>
 <p>Try creating one or two of these objects in your R script</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>character.object <span class="ot">&lt;-</span> <span class="st">"blue"</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>vector.object1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb14-4"><a href="#cb14-4"></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5"></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>number.object <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb14-2"><a></a>character.object <span class="ot">&lt;-</span> <span class="st">"blue"</span></span>
+<span id="cb14-3"><a></a>vector.object1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb14-4"><a></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"t"</span>, <span class="st">"u"</span>), <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb14-5"><a></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="objects-1" class="slide level2">
 <h2>Objects</h2>
-<p>Note, you can find these objects now in the Global Environment.</p>
+<p>Note, you can find these objects now in your Environment pane.</p>
 
 <img data-src="images/global_env.png" style="width:90.0%" class="r-stretch"><p>Also, you can print them anytime (i.e, see them in the Console) by executing (running) the object. For example,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>character.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>character.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "blue"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>matrix.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>matrix.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    2    3
@@ -715,24 +768,18 @@
 </div>
 </div>
 </section>
-<section>
-<section id="object-names-and-assingment---good-coding" class="title-slide slide level1 center">
-<h1>Object names and assingment - Good coding</h1>
-<p>xxzane</p>
-<p><code>=</code> and <code>&lt;-</code> can both be used for assignment, but <code>&lt;-</code> is better coding practice, because sometimes <code>=</code> doesn’t work and we want to distinguish between the logical operator <code>==</code>. We will talk about this more, later.</p>
-</section>
 <section id="lists" class="slide level2">
 <h2>Lists</h2>
 <p>List is a special data class, that can hold vectors, strings, matrices, models, list of other lists.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>list.object <span class="ot">&lt;-</span> <span class="fu">list</span>(number.object, vector.object2, matrix.object)</span>
-<span id="cb19-2"><a href="#cb19-2"></a>list.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>list.object <span class="ot">&lt;-</span> <span class="fu">list</span>(number.object, vector.object2, matrix.object)</span>
+<span id="cb19-2"><a></a>list.object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 3
 
 [[2]]
-[1] "blue"   "red"    "yellow"
+[1] "b8" "t4" "u2"
 
 [[3]]
      [,1] [,2]
@@ -770,7 +817,7 @@
 <li>Use <code>&lt;-</code> syntax to create objects</li>
 </ul>
 </section>
-<section id="mini-exercise-2" class="slide level2">
+<section id="mini-exercise-2" class="slide level2 scrollable">
 <h2>Mini Exercise</h2>
 <ol type="1">
 <li>Create a new number object and name it <code>my.object</code></li>
@@ -786,10 +833,12 @@
 <li>Some RStudio snapshots were pulled from <a href="http://ayeimanol-r.net/2013/04/21/289/" class="uri">http://ayeimanol-r.net/2013/04/21/289/</a></li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</div>
+</section>
     </div>
   </div>
 
@@ -816,7 +865,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1071,18 +1119,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1114,11 +1151,50 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1128,8 +1204,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1143,7 +1228,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

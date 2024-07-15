@@ -76,19 +76,14 @@ log(10)
 - what arguments a function includes? 
 - how to specify the arguments?
 
-## Seeking help for using functions
+## Seeking help for using functions (*)
 
 The best way of finding out this information is to use the `?` followed by the name of the function. Doing this will open up the help manual in the bottom RStudio Help panel. It provides a description of the function, usage, arguments, details, and examples. Lets look at the help file for the function `round()`
 
-```{r echo=TRUE, eval=FALSE}
-?log
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("images/help_file.png")
 ```
 
-
-```{r, echo = FALSE, results = "asis"}
-library(printr)
-?log
-```
 
 ## How to specify arguments
 
@@ -180,9 +175,28 @@ library(printr)
 
 ## Functions from Module 1
 
+The `paste0()` function concatenate/combines vectors after converting to character.
+
+```{r echo=TRUE, eval=FALSE}
+vector.object2 <- paste0(c("b", "t", "u"), c(8,4,2))
+vector.object2
+?paste0
+```
+
+```{r echo=FALSE}
+library(printr)
+?paste0
+```
+
+
+
+## Functions from Module 1
+
 The `matrix()` function creates a matrix from the given set of values.
 
 ```{r echo=TRUE, eval=FALSE}
+matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
+matrix.object
 ?matrix
 ```
 

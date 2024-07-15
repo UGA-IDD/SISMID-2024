@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) - Module 2: Functions</title>
+  <title>SISMID Module NUMBER Materials (2025) – Module 2: Functions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -423,7 +424,7 @@
 <p><strong>Function</strong> - Functions are “self contained” modules of code that <strong>accomplish specific tasks</strong>. Functions usually take in some sort of object (e.g., vector, list), process it, and return a result. You can write your own, use functions that come directly from installing R (i.e., Base R functions), or use functions from external packages.</p>
 <p>A function might help you add numbers together, create a plot, or organize your data. In fact, we have already used three functions in the Module 1, including <code>c()</code>, <code>matrix()</code>, <code>list()</code>. Here is another one, <code>sum()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20235</code></pre>
 </div>
@@ -433,17 +434,17 @@
 <h2>Function</h2>
 <p>The general usage for a function is the name of the function followed by parentheses (i.e., the function signature). Within the parentheses are <strong>arguments</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">function_name</span>(argument1, argument2, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">function_name</span>(argument1, argument2, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="arguments---basic-term" class="slide level2">
+<section id="arguments---basic-term" class="slide level2 scrollable">
 <h2>Arguments - Basic term</h2>
 <p><strong>Arguments</strong> are what you pass to the function and can include:</p>
 <ol type="1">
 <li>the physical object on which the function carries out a task (e.g., can be data such as a number 1 or 20234)</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20235</code></pre>
 </div>
@@ -452,15 +453,15 @@
 <li>options that alter the way the function operates (e.g., such as the <code>base</code> argument in the function <code>log()</code>)</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.321928</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base=</span><span class="fu">exp</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base=</span><span class="fu">exp</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.302585</code></pre>
 </div>
@@ -478,7 +479,7 @@
 <h2>Example</h2>
 <p>What is the default in the <code>base</code> argument of the <code>log()</code> function?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.302585</code></pre>
 </div>
@@ -493,99 +494,11 @@
 </ul>
 </section>
 <section id="seeking-help-for-using-functions" class="slide level2">
-<h2>Seeking help for using functions</h2>
+<h2>Seeking help for using functions (*)</h2>
 <p>The best way of finding out this information is to use the <code>?</code> followed by the name of the function. Doing this will open up the help manual in the bottom RStudio Help panel. It provides a description of the function, usage, arguments, details, and examples. Lets look at the help file for the function <code>round()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>?log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<pre><code>Registered S3 method overwritten by 'printr':
-  method                from     
-  knit_print.data.frame rmarkdown</code></pre>
-<p>Logarithms and Exponentials</p>
-<p>Description:</p>
-<pre><code> 'log' computes logarithms, by default natural logarithms, 'log10'
- computes common (i.e., base 10) logarithms, and 'log2' computes
- binary (i.e., base 2) logarithms.  The general form 'log(x, base)'
- computes logarithms with base 'base'.
 
- 'log1p(x)' computes log(1+x) accurately also for |x| &lt;&lt; 1.
-
- 'exp' computes the exponential function.
-
- 'expm1(x)' computes exp(x) - 1 accurately also for |x| &lt;&lt; 1.</code></pre>
-<p>Usage:</p>
-<pre><code> log(x, base = exp(1))
- logb(x, base = exp(1))
- log10(x)
- log2(x)
- 
- log1p(x)
- 
- exp(x)
- expm1(x)
- </code></pre>
-<p>Arguments:</p>
-<pre><code>   x: a numeric or complex vector.
-
-base: a positive or complex number: the base with respect to which
-      logarithms are computed.  Defaults to e='exp(1)'.</code></pre>
-<p>Details:</p>
-<pre><code> All except 'logb' are generic functions: methods can be defined
- for them individually or via the 'Math' group generic.
-
- 'log10' and 'log2' are only convenience wrappers, but logs to
- bases 10 and 2 (whether computed _via_ 'log' or the wrappers) will
- be computed more efficiently and accurately where supported by the
- OS.  Methods can be set for them individually (and otherwise
- methods for 'log' will be used).
-
- 'logb' is a wrapper for 'log' for compatibility with S.  If (S3 or
- S4) methods are set for 'log' they will be dispatched.  Do not set
- S4 methods on 'logb' itself.
-
- All except 'log' are primitive functions.</code></pre>
-<p>Value:</p>
-<pre><code> A vector of the same length as 'x' containing the transformed
- values.  'log(0)' gives '-Inf', and 'log(x)' for negative values
- of 'x' is 'NaN'.  'exp(-Inf)' is '0'.
-
- For complex inputs to the log functions, the value is a complex
- number with imaginary part in the range [-pi, pi]: which end of
- the range is used might be platform-specific.</code></pre>
-<p>S4 methods:</p>
-<pre><code> 'exp', 'expm1', 'log', 'log10', 'log2' and 'log1p' are S4 generic
- and are members of the 'Math' group generic.
-
- Note that this means that the S4 generic for 'log' has a signature
- with only one argument, 'x', but that 'base' can be passed to
- methods (but will not be used for method selection).  On the other
- hand, if you only set a method for the 'Math' group generic then
- 'base' argument of 'log' will be ignored for your class.</code></pre>
-<p>Source:</p>
-<pre><code> 'log1p' and 'expm1' may be taken from the operating system, but if
- not available there then they are based on the Fortran subroutine
- 'dlnrel' by W. Fullerton of Los Alamos Scientific Laboratory (see
- &lt;https://netlib.org/slatec/fnlib/dlnrel.f&gt;) and (for small x) a
- single Newton step for the solution of 'log1p(y) = x'
- respectively.</code></pre>
-<p>References:</p>
-<pre><code> Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
- Language_.  Wadsworth &amp; Brooks/Cole.  (for 'log', 'log10' and
- 'exp'.)
-
- Chambers, J. M. (1998) _Programming with Data.  A Guide to the S
- Language_.  Springer. (for 'logb'.)</code></pre>
-<p>See Also:</p>
-<pre><code> 'Trig', 'sqrt', 'Arithmetic'.</code></pre>
-<p>Examples:</p>
-<pre><code> log(exp(3))
- log10(1e7) # = 7
- 
- x &lt;- 10^-(1+2*1:9)
- cbind(deparse.level=2, # to get nice column names
-       x, log(1+x), log1p(x), exp(x)-1, expm1(x))</code></pre>
-</section>
-<section id="how-to-specify-arguments" class="slide level2">
+<img data-src="images/help_file.png" style="width:70.0%" class="r-stretch"></section>
+<section id="how-to-specify-arguments" class="slide level2 scrollable">
 <h2>How to specify arguments</h2>
 <ol type="1">
 <li>Arguments are separated with a comma</li>
@@ -593,19 +506,19 @@ base: a positive or complex number: the base with respect to which
 </ol>
 
 <img data-src="images/log_args.png" style="width:70.0%" class="r-stretch"><div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.321928</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">log</span>(<span class="at">base=</span><span class="dv">2</span>, <span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">log</span>(<span class="at">base=</span><span class="dv">2</span>, <span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.321928</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">log</span>(<span class="at">x=</span><span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">log</span>(<span class="at">x=</span><span class="dv">10</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.321928</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.321928</code></pre>
 </div>
@@ -623,7 +536,7 @@ base: a positive or complex number: the base with respect to which
 <section id="packages" class="slide level2">
 <h2>Packages</h2>
 <p>The Packages pane in RStudio can help you identify what have been installed (listed), and which one have been attached (check mark).</p>
-<p>Lets go look at the Packages window, find the <code>base</code> package and find the <code>log()</code> function. It automatically loads the help file that we looked at earlier using <code>?log</code>.</p>
+<p>Lets go look at the Packages pane, find the <code>base</code> package and find the <code>log()</code> function. It automatically loads the help file that we looked at earlier using <code>?log</code>.</p>
 </section>
 <section id="additional-packages" class="slide level2">
 <h2>Additional Packages</h2>
@@ -635,7 +548,7 @@ base: a positive or complex number: the base with respect to which
 <li>How to <a href="https://simplystatistics.org/posts/2015-11-06-how-i-decide-when-to-trust-an-r-package/#:~:text=The%20first%20thing%20I%20do,I%20immediately%20trust%20the%20package.">trust</a> an R package</li>
 </ul>
 </section>
-<section id="installing-and-attaching-packages" class="slide level2">
+<section id="installing-and-attaching-packages" class="slide level2 scrollable">
 <h2><strong>Installing</strong> and attaching packages</h2>
 <p>To use the bundle or “package” of code (and or possibly data) from a package, you need to install and also attach the package.</p>
 <p>To install a package you can</p>
@@ -647,28 +560,33 @@ base: a positive or complex number: the base with respect to which
 <li>use the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="installing-and-attaching-packages-1" class="slide level2">
 <h2>Installing and <strong>attaching</strong> packages</h2>
 <p>To attach (i.e., be able to use the package) you can use the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">require</span>(package_name) <span class="co">#library(package_name) also works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">require</span>(package_name) <span class="co">#library(package_name) also works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>More on installing and attaching packages later…</p>
 </section>
 <section id="mini-exercise" class="slide level2">
-<h2>Mini Exercise</h2>
+<h2>Mini exercise</h2>
 <p>Find and execute a <strong>Base R</strong> function that will round the number 0.86424 to two digits.</p>
 </section>
 <section id="functions-from-module-1" class="slide level2">
 <h2>Functions from Module 1</h2>
 <p>The combine function <code>c()</code> concatenate/collects/combines single R objects into a vector of R objects. It is mostly used for creating vectors of numbers, character strings, and other data types.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>?c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>?c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'printr':
+  method                from     
+  knit_print.data.frame rmarkdown</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Combine Values into a Vector or List
 
@@ -770,9 +688,157 @@ Examples:
 </section>
 <section id="functions-from-module-1-1" class="slide level2">
 <h2>Functions from Module 1</h2>
+<p>The <code>paste0()</code> function concatenate/combines vectors after converting to character.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>vector.object2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"t"</span>, <span class="st">"u"</span>), <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb27-2"><a></a>vector.object2</span>
+<span id="cb27-3"><a></a>?paste0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Concatenate Strings
+
+Description:
+
+     Concatenate vectors after converting to character.
+
+Usage:
+
+     paste (..., sep = " ", collapse = NULL, recycle0 = FALSE)
+     paste0(...,            collapse = NULL, recycle0 = FALSE)
+     
+Arguments:
+
+     ...: one or more R objects, to be converted to character vectors.
+
+     sep: a character string to separate the terms.  Not
+          'NA_character_'.
+
+collapse: an optional character string to separate the results.  Not
+          'NA_character_'.
+
+recycle0: 'logical' indicating if zero-length character arguments
+          should lead to the zero-length 'character(0)' after the
+          'sep'-phase (which turns into '""' in the 'collapse'-phase,
+          i.e., when 'collapse' is not 'NULL').
+
+Details:
+
+     'paste' converts its arguments (_via_ 'as.character') to character
+     strings, and concatenates them (separating them by the string
+     given by 'sep').  If the arguments are vectors, they are
+     concatenated term-by-term to give a character vector result.
+     Vector arguments are recycled as needed, with zero-length
+     arguments being recycled to '""' only if 'recycle0' is not true
+     _or_ 'collapse' is not 'NULL'.
+
+     Note that 'paste()' coerces 'NA_character_', the character missing
+     value, to '"NA"' which may seem undesirable, e.g., when pasting
+     two character vectors, or very desirable, e.g. in 'paste("the
+     value of p is ", p)'.
+
+     'paste0(..., collapse)' is equivalent to 'paste(..., sep = "",
+     collapse)', slightly more efficiently.
+
+     If a value is specified for 'collapse', the values in the result
+     are then concatenated into a single string, with the elements
+     being separated by the value of 'collapse'.
+
+Value:
+
+     A character vector of the concatenated values.  This will be of
+     length zero if all the objects are, unless 'collapse' is non-NULL,
+     in which case it is '""' (a single empty string).
+
+     If any input into an element of the result is in UTF-8 (and none
+     are declared with encoding '"bytes"', see 'Encoding'), that
+     element will be in UTF-8, otherwise in the current encoding in
+     which case the encoding of the element is declared if the current
+     locale is either Latin-1 or UTF-8, at least one of the
+     corresponding inputs (including separators) had a declared
+     encoding and all inputs were either ASCII or declared.
+
+     If an input into an element is declared with encoding '"bytes"',
+     no translation will be done of any of the elements and the
+     resulting element will have encoding '"bytes"'.  If 'collapse' is
+     non-NULL, this applies also to the second, collapsing, phase, but
+     some translation may have been done in pasting object together in
+     the first phase.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth &amp; Brooks/Cole.
+
+See Also:
+
+     'toString' typically calls 'paste(*, collapse=", ")'.  String
+     manipulation with 'as.character', 'substr', 'nchar', 'strsplit';
+     further, 'cat' which concatenates and writes to a file, and
+     'sprintf' for C like string construction.
+
+     'plotmath' for the use of 'paste' in plot annotation.
+
+Examples:
+
+     ## When passing a single vector, paste0 and paste work like as.character.
+     paste0(1:12)
+     paste(1:12)        # same
+     as.character(1:12) # same
+     
+     ## If you pass several vectors to paste0, they are concatenated in a
+     ## vectorized way.
+     (nth &lt;- paste0(1:12, c("st", "nd", "rd", rep("th", 9))))
+     
+     ## paste works the same, but separates each input with a space.
+     ## Notice that the recycling rules make every input as long as the longest input.
+     paste(month.abb, "is the", nth, "month of the year.")
+     paste(month.abb, letters)
+     
+     ## You can change the separator by passing a sep argument
+     ## which can be multiple characters.
+     paste(month.abb, "is the", nth, "month of the year.", sep = "_*_")
+     
+     ## To collapse the output into a single string, pass a collapse argument.
+     paste0(nth, collapse = ", ")
+     
+     ## For inputs of length 1, use the sep argument rather than collapse
+     paste("1st", "2nd", "3rd", collapse = ", ") # probably not what you wanted
+     paste("1st", "2nd", "3rd", sep = ", ")
+     
+     ## You can combine the sep and collapse arguments together.
+     paste(month.abb, nth, sep = ": ", collapse = "; ")
+     
+     ## Using paste() in combination with strwrap() can be useful
+     ## for dealing with long strings.
+     (title &lt;- paste(strwrap(
+         "Stopping distance of cars (ft) vs. speed (mph) from Ezekiel (1930)",
+         width = 30), collapse = "\n"))
+     plot(dist ~ speed, cars, main = title)
+     
+     ## 'recycle0 = TRUE' allows more vectorized behaviour, i.e. zero-length recycling :
+     valid &lt;- FALSE
+     val &lt;- pi
+     paste("The value is", val[valid], "-- not so good!")
+     paste("The value is", val[valid], "-- good: empty!", recycle0=TRUE) # -&gt; character(0)
+     ## When  'collapse = &lt;string&gt;',  the result is a length-1 string :
+     paste("foo", {}, "bar", collapse="|")                  # |--&gt;  "foo  bar"
+     paste("foo", {}, "bar", collapse="|", recycle0 = TRUE) # |--&gt;  ""
+     ## all empty args
+     paste(    collapse="|")                  # |--&gt;  ""  as do all these:
+     paste(    collapse="|", recycle0 = TRUE)
+     paste({}, collapse="|")
+     paste({}, collapse="|", recycle0 = TRUE)</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-from-module-1-2" class="slide level2">
+<h2>Functions from Module 1</h2>
 <p>The <code>matrix()</code> function creates a matrix from the given set of values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>?matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>matrix.object <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span>vector.object1, <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb29-2"><a></a>matrix.object</span>
+<span id="cb29-3"><a></a>?matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -908,8 +974,8 @@ Examples:
 <li>Functions are “self contained” modules of code that accomplish specific tasks.</li>
 <li>Arguments are what you pass to functions (e.g., objects on which you carry out the task or options for how to carry out the task)</li>
 <li>Arguments may include defaults that the author of the function specified as being “good enough in standard cases”, but that can be changed.</li>
-<li>An R Package is a bundle or “package” of code (and or possibly data) that can be used by installing it once and attaching it (using <code>library()</code>) each time R/Rstudio is opened</li>
-<li>The Help window in RStudio is useful for to get more information about functions and packages</li>
+<li>An R Package is a bundle or “package” of code (and or possibly data) that can be used by installing it once and attaching it (using <code>require</code>()`) each time R/Rstudio is opened</li>
+<li>The Help pane in RStudio is useful for to get more information about functions and packages</li>
 </ul>
 </section>
 <section id="acknowledgements" class="slide level2">
@@ -919,8 +985,10 @@ Examples:
 <li><a href="https://hbctraining.github.io/Intro-to-R/lessons/03_introR-functions-and-arguments.html#:~:text=A%20key%20feature%20of%20R,it%2C%20and%20return%20a%20result.">“Introduction to R - ARCHIVED” from Harvard Chan Bioinformatics Core (HBC)</a></li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -949,7 +1017,6 @@ Examples:
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1204,18 +1271,7 @@ Examples:
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1247,11 +1303,50 @@ Examples:
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1261,8 +1356,17 @@ Examples:
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1276,7 +1380,11 @@ Examples:
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
