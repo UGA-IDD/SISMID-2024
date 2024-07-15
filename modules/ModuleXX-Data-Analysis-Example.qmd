@@ -1,6 +1,5 @@
 ---
-title: "Algorithmic Thinking Case Study 1"
-subtitle: "SISMID 2024 -- Introduction to R"
+title: "Data Analysis Example"
 format:
   revealjs:
     toc: false
