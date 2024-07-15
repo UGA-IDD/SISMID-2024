@@ -65,7 +65,7 @@ head(df)
 
 ## Creating conditional variables
 
-One frequently used tool is creating variables with conditions. A general function for creating new variables based on existing variables is the Base R `ifelse()` function, which "returns a value depending on whether the element of test is `TRUE` or `FALSE`."
+One frequently used tool is creating variables with conditions. A general function for creating new variables based on existing variables is the Base R `ifelse()` function, which "returns a value depending on whether the element of test is `TRUE` or `FALSE` or `NA`.
 
 ```{r, echo = TRUE, eval=FALSE}
 ?ifelse
@@ -350,7 +350,7 @@ Note, all of these functions have an `na.rm` **argument for missing data**.
 
 ## Numeric variable data summary
 
-Let's look at a help file for `mean()` to make note of the `na.rm` argument
+Let's look at a help file for `range()` to make note of the `na.rm` argument
 
 ```{r, echo = TRUE, eval=FALSE}
 ?range
@@ -411,7 +411,7 @@ table(df$age_group)/nrow(subset(df, !is.na(df$age_group),)) #if there are NA val
 - One useful function for creating new variables based on existing variables is the `ifelse()` function, which returns a value depending on whether the element of test is `TRUE` or `FALSE`
 - The `class()` function allows you to evaluate the class of an object.
 -  There are two types of numeric class objects: integer and double
--  Logical class objects only have `TRUE` or `False` (without quotes)
+-  Logical class objects only have `TRUE` or `FALSE` or `NA` (without quotes)
 -  `is.CLASS_NAME(x)` can be used to test the class of an object x
 -  `as.CLASS_NAME(x)` can be used to change the class of an object x
 -  Factors are a special character class that has levels 

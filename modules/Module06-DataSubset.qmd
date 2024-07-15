@@ -100,7 +100,7 @@ matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
 ```
 
 Here is a reminder of what these objects look like.
-```{r echo=T}
+```{r echo=T }
 vector.object1
 matrix.object
 ```
@@ -273,7 +273,7 @@ mean(df$IgG_concentration[df$age %in% c(0:3, 7:10)], na.rm=TRUE)
 cn <- colnames(df)
 cn
 cn=="IgG_concentration"
-cn[cn=="IgG_concentration"] <-"IgG_concentration_mIU" #rename cn to "IgG_concentration_mIU" when cn is "IgG_concentration"
+cn[cn=="IgG_concentration"] <-"IgG_concentration_IU/mL" #rename cn to "IgG_concentration_IU" when cn is "IgG_concentration"
 colnames(df) <- cn
 colnames(df)
 ```
@@ -282,7 +282,7 @@ colnames(df)
 
 Note, I am resetting the column name back to the original name for the sake of the rest of the module.
 ```{r echo=TRUE}
-colnames(df)[colnames(df)=="IgG_concentration_mIU"] <- "IgG_concentration" #reset
+colnames(df)[colnames(df)=="IgG_concentration_IU"] <- "IgG_concentration" #reset
 ```
 
 
