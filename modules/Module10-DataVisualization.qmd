@@ -127,7 +127,7 @@ We will only look at four types of plots today:
 - `barplot()` displays barplot
 
 
-## `histogram()` Help File
+## `hist()` Help File
 
 ```{r echo=TRUE, eval=FALSE}
 ?hist
@@ -138,7 +138,7 @@ library(printr)
 ?hist
 ```
 
-## `histogram()` example
+## `hist()` example
 
 Reminder function signature
 ```
@@ -231,6 +231,7 @@ points(
 ```
 
 * The `lines()` function works similarly for connected lines.
+* Note that the `points()` or `lines()` functions must be called with a `plot()`-style function
 * We will show how we could draw a `legend()` in a future section.
 
 
@@ -435,10 +436,17 @@ axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
 legend("topright", fill=c("darkblue","red"),  legend = c("seronegative", "seropositive"))
 ```
 
+## Base R plots vs the Tidyverse ggplot2 package
+
+It is good to know both b/c they each have their strengths
 
 ## Summary
 
--		
+- the Base R 'graphics' package has a ton of graphics options that allow for ultimate flexibility
+- Base R plots typically include setting plot options (`par()`), mapping data to the plot (e.g., `plot()`, `barplot()`, `points()`, `lines()`), and creating a legend (`legend()`). 
+- the functions `points()` or `lines()` add additional points or additional lines to an existing plot, but must be called with a `plot()`-style function
+- in Base R plotting the legend is not automatically generated, so be careful when creating it
+
 
 ## Acknowledgements
 

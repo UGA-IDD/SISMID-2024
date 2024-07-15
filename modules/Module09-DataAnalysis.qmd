@@ -262,9 +262,13 @@ summary(fit2)
 
 ## Summary
 
--	Use `cor()` or `cor.test()` to calculate correlation between two numeric vectors.
-- `t.test()` tests the mean compared to null or difference in means between two groups
--		... xxamy more
+- the `aggregate()` function can be used to conduct analyses across groups (i.e., categorical variables in the data(
+- the `table()` function can generate frequency tables for 2 plus variables, but to get percentage tables, the `prop.table()` is useful
+- the `chisq.test()` function tests independence of factor variables 
+- the `cor()` or `cor.test()` functions can be used to calculate correlation between two numeric vectors
+- the `t.test()` functions conducts one and two sample (paired or unpaired) t-tests
+- the function `glm()` fits generalized linear modules to data and returns a fit object that can be read with the `summary()` function
+- changing the `family` argument in the `glm()` function allows you to fit models with different link functions
 
 ## Acknowledgements
 
