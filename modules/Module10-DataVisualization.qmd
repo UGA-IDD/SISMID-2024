@@ -195,6 +195,44 @@ plot(
 	col="lightblue")
 ```
 
+## Adding more stuff to the same plot
+
+* We can use the functions `points()` or `lines()` to add additional points
+or additional lines to an existing plot.
+
+```{r}
+plot(
+	df$age[df$slum == "Non slum"],
+	df$IgG_concentration[df$slum == "Non slum"],
+	type = "p",
+	main = "IgG Concentration vs Age",
+	xlab = "Age (years)",
+	ylab = "IgG Concentration (IU/mL)",
+	pch = 16,
+	cex = 0.9,
+	col = "lightblue",
+	xlim = range(df$age, na.rm = TRUE),
+	ylim = range(df$IgG_concentration, na.rm = TRUE)
+)
+points(
+	df$age[df$slum == "Mixed"],
+	df$IgG_concentration[df$slum == "Mixed"],
+	pch = 16,
+	cex = 0.9,
+	col = "blue"
+)
+points(
+	df$age[df$slum == "Slum"],
+	df$IgG_concentration[df$slum == "Slum"],
+	pch = 16,
+	cex = 0.9,
+	col = "darkblue"
+)
+```
+
+* The `lines()` function works similarly for connected lines.
+* We will show how we could draw a `legend()` in a future section.
+
 
 ## `boxplot()` Help File
 
