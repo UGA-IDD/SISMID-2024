@@ -177,6 +177,8 @@ colnames(df)[2:3] <- c("IgG_concentration_IU/mL", "age_year") # reassigns
 colnames(df)
 ```
 
+</br>
+
 For the sake of the module, I am going to reassign them back to the original variable names
 ```{r echo=TRUE}
 colnames(df)[2:3] <- c("IgG_concentration", "age") #reset
@@ -256,11 +258,11 @@ We can use any of these logical operators to subset our data.
 
 ```{r}
 # Overall mean
-mean(df$IgG_concentration)
+mean(df$IgG_concentration, na.rm=TRUE)
 # Mean for all children who are not age 3
-mean(df$IgG_concentration[df$age != 3])
+mean(df$IgG_concentration[df$age != 3], na.rm=TRUE)
 # Mean for all children who are between 0 and 3 or between 7 and 10 years old
-mean(df$IgG_concentration[df$age %in% c(0:3, 7:10)])
+mean(df$IgG_concentration[df$age %in% c(0:3, 7:10)], na.rm=TRUE)
 ```
 
 ## Using indexing and logical operators to rename columns
@@ -275,6 +277,8 @@ cn[cn=="IgG_concentration"] <-"IgG_concentration_mIU" #rename cn to "IgG_concent
 colnames(df) <- cn
 colnames(df)
 ```
+
+</br>
 
 Note, I am resetting the column name back to the original name for the sake of the rest of the module.
 ```{r echo=TRUE}
