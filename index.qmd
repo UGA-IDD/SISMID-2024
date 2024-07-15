@@ -4,7 +4,7 @@ title: "Welcome"
 
 Welcome to "Introduction to R"!
 
-This website contains all of the slides and exercises for the [2024
+This website contains all of the material for the [2024
 Summer Institute in Modeling for Infectious Diseases (SISMID) Module
 "Introduction to R"](https://sph.emory.edu/SISMID/modules/intro-to-r/index.html).
 
@@ -27,7 +27,7 @@ by clicking on the correct download link for your OS.
 
 <div class="container">
 <div class="box" style="--width: 50%">
-<h3 style="margin-top:0px; text-align: center">Instructor: [Dr. Amy Winter](https://publichealth.uga.edu/faculty-member/amy-k-winter/)</h3>
+<h3 style="margin-top:0px; text-align: center">Co-Instructor: [Dr. Amy Winter](https://publichealth.uga.edu/faculty-member/amy-k-winter/)</h3>
 
 <img src="./images/amy.jpg" style="width: 100%"/>
 
@@ -40,7 +40,7 @@ Health to graduate students at the University of Georgia.
 </div>
 
 <div class="box" style="--width: 50%">
-<h3 style="margin-top:0px; text-align: center">TA: [Zane Billings](https://wzbillings.com/ )</h3>
+<h3 style="margin-top:0px; text-align: center">Co-Instructor: [Zane Billings](https://wzbillings.com/ )</h3>
 
 <img src="./images/zane.jpg" style="width: 100%"/>
 

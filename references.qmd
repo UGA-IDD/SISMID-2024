@@ -1,4 +1,5 @@
 ---
+title: Course Resources
 bibliography: SISMID-Module.bib
 nocite: "@*"
 ---
@@ -6,9 +7,12 @@ nocite: "@*"
 # Data and Exercise downloads
 
 * Download all datasets here: [click to download](./downloads/data.zip).
-* Download all exercises and solution files here:
-* Download all slide decks here:
-* Course GitHub where all materials can be found: [https://github.com/UGA-IDD/SISMID-2024](https://github.com/UGA-IDD/SISMID-2024).
+* Download all exercises and solution files here: [click to download](./downloads/exercises.zip)
+* Download all slide decks here: [click to download](./downloads/modules.zip)
+* Get the example R Markdown document for Module 11 here: [click to download](./modules/Module11-Rmarkdown-Demo.Rmd){target="_blank"}
+    - And the sample bibligraphy "bib" file is here: [click to download](./modules/example-bib.bib){target="_blank"}
+    - And the rendered HTML file is here: [click to download](./modules/Module11-Rmarkdown-Demo.html){target="_blank"}
+* Course GitHub where all materials can be found (to download the entire course as a zip file click the green "Code" button): [https://github.com/UGA-IDD/SISMID-2024](https://github.com/UGA-IDD/SISMID-2024){target="_blank"}.
 
 # Need help?
 

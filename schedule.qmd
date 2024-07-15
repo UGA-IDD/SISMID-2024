@@ -18,19 +18,19 @@ All times are in Eastern Daylight Time (EDT; UTC-4)
 
 | Time                | Section |
 |:--------------------|:--------|
-| 08:30 am - 09:00 am | Module 0 Amy and Zane |
-| 09:00 am - 10:00 am | Module 1 Amy |
-| 10:00 am - 10:3- am | Coffee break |
-| 10:30 am - 11:15 am | Module 2 Amy |
-| 11:15 am - 11:30 am | Module 3 Zane |
-| 11:30 am - 12:00 pm | Module 4 Zane |
+| 08:30 am - 09:00 am | Module 0 (Amy and Zane) |
+| 09:00 am - 10:00 am | Module 1 (Amy) |
+| 10:00 am - 10:30 am | Coffee break |
+| 10:30 am - 11:15 am | Module 2 (Amy) |
+| 11:15 am - 11:30 am | Module 3 (Zane) |
+| 11:30 am - 12:00 pm | Module 4 (Zane) |
 | 12:00 pm - 01:30 pm | Lunch (2nd floor lobby) |
-| 01:30 pm - 02:15 pm | Module 5 Amy |
+| 01:30 pm - 02:15 pm | Module 5 (Amy) |
 | 02:15 pm - 02:45 pm | Exercise 1|
-| 02:45 pm - 03:00 pm | Start Module 6 Amy |
+| 02:45 pm - 03:00 pm | Start Module 6 (Amy) |
 | 03:00 pm - 03:30 pm | Coffee break |
-| 03:30 pm - 04:00 pm | Finish Module 6 Amy or Zane |
-| 04:00 pm - 05:00 pm | Module 7, exercise 2 in remaining time  Zane |
+| 03:30 pm - 04:00 pm | Finish Module 6 (Amy or Zane) |
+| 04:00 pm - 05:00 pm | Module 7, exercise 2 in remaining time  (Zane) |
 | 05:00 pm - 07:00 pm | **Networking night** and poster session, Randal Rollins P01 |
 
 : {.striped .hover tbl-colwidths="[25,75]"}
@@ -54,7 +54,7 @@ All times are in Eastern Daylight Time (EDT; UTC-4)
 | 03:00 pm - 03:30 pm | Coffee break |
 | 03:30 pm - 04:00 pm | Exercise 5 |
 | 04:00 pm - 04:30 pm | Review exercise 5 |
-| 04:30 pm - 05:00 pm | Markdown module
+| 04:30 pm - 05:00 pm | Module 11 |
 
 : {.striped .hover tbl-colwidths="[25,75]"}
 
@@ -62,8 +62,8 @@ All times are in Eastern Daylight Time (EDT; UTC-4)
 
 | Time                | Section |
 |:--------------------|:--------|
-| 08:30 am - 10:00 am | content |
+| 08:30 am - 10:00 am | tbd; Modules 12 (Amy) and 13 (Zane) |
 | 10:00 am - 10:15 am | Coffee break |
-| 10:30 am - 12:00 pm | content |
+| 10:30 am - 12:00 pm | tbd; Module 14, practice, questions, review |
 
 : {.striped .hover tbl-colwidths="[25,75]"}

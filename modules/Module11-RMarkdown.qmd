@@ -1,5 +1,5 @@
 ---
-title: "Literate Programming"
+title: "Module 11: Literate Programming"
 format:
   revealjs:
     toc: false
