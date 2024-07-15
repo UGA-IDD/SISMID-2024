@@ -33,6 +33,16 @@ Email: Wesley.Billings@uga.edu
 * Favorite useful app
 * Favorite guilty pleasure app
 
+## Course website
+
+* All of the materials for this course can be found online here: [here](https://uga-idd.github.io/SISMID-2024/).
+* This contains the schedule, course resources, and online versions of all of
+our slide decks.
+* The **Course Resources** page contains download links for all of the data,
+exercises, and slides for this class.
+* Please feel free to download these resources and share them -- all of the
+course content is under the [Creative Commons BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).
+
 
 ## What is R?
 

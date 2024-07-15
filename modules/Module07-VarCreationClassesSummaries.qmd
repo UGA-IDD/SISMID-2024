@@ -315,6 +315,19 @@ You can transform an existing matrix into data frames using `as.data.frame()`
 as.data.frame(matrix(1:6, ncol = 2) ) 
 ```
 
+You can create a new data frame out of vectors (and potentially lists, but
+this is an advanced feature and unusual) by using the `data.frame()` function.
+Recall that all of the vectors that make up a data frame must be the same
+length.
+
+```{r}
+lotr <- 
+  data.frame(
+    name = c("Frodo", "Sam", "Aragorn", "Legolas", "Gimli"),
+    race = c("Hobbit", "Hobbit", "Human", "Elf", "Dwarf"),
+    age = c(53, 38, 87, 2931, 139)
+  )
+```
 
 ## Numeric variable data summary
 
@@ -331,9 +344,9 @@ Data summarization on numeric vectors/variables:
 - `colSums()`: get the columns sums of a data frame
 - `rowSums()`: get the row sums of a data frame
 - `colMeans()`: get the columns means of a data frame
-- `rowMeans`()`: get the row means of a data frame
+- `rowMeans()`: get the row means of a data frame
 
-Note, the top 8 functions have an `na.rm` **argument for missing data**
+Note, all of these functions have an `na.rm` **argument for missing data**.
 
 ## Numeric variable data summary
 
