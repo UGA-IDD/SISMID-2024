@@ -17,20 +17,20 @@ After module 7, you should be able to...
 -   Conduct 1 variable data summaries
 
 ## Import data for this module
-Let's first read in the data from the previous module and look at it briefly with a new function `head()`.
+Let's first read in the data from the previous module and look at it briefly with a new function `head()`. `head()` allows us to look at the first `n` observations.
+
+
+```{r, out.width = "100%", echo = FALSE, fig.align='left'}
+knitr::include_graphics("images/head_args.png")
+```
 
 ```{r echo=TRUE}
 df <- read.csv(file = "data/serodata.csv") #relative path
 head(x=df, n=3)
 ```
 
-```{r, echo = FALSE, results = "asis"}
-library(printr)
-?head
-```
 
-
-## Adding new columns
+## Adding new columns with `$` operator
 
 You can add a new column, called `log_IgG` to `df`, using the `$` operator:
 ```{r echo=TRUE}
@@ -40,14 +40,20 @@ head(df,3)
 
 Note, my use of the underscore in the variable name rather than a space.  This is good coding practice and make calling variables much less prone to error.
 
-## Adding new columns
+## Adding new columns with `transform()`
 
 We can also add a new column using the `transform()` function:
+
+```{r, echo = TRUE, eval=FALSE}
+?transform
+```
 
 ```{r, echo = FALSE}
 library(printr)
 ?transform
 ```
+
+## Adding new columns with `transform()`
 
 For example, adding a binary column for seropositivity called `seropos`:
 
@@ -59,7 +65,11 @@ head(df)
 
 ## Creating conditional variables
 
-One frequently-used tool is creating variables with conditions. A general function for creating new variables based on existing variables is the Base R `ifelse()` function, which "returns a value depending on whether the element of test is `TRUE` or `FALSE`."
+One frequently used tool is creating variables with conditions. A general function for creating new variables based on existing variables is the Base R `ifelse()` function, which "returns a value depending on whether the element of test is `TRUE` or `FALSE`."
+
+```{r, echo = TRUE, eval=FALSE}
+?ifelse
+```
 
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
@@ -76,18 +86,28 @@ df$age_group <- ifelse(df$age <= 5, "young", "old")
 head(df)
 ```
 
+## `ifelse` example
 Let's delve into what is actually happening, with a focus on the NA values in `age` variable.
+
+```{r echo=TRUE, eval=FALSE}
+df$age_group <- ifelse(df$age <= 5, "young", "old")
+```
 
 ```{r echo=TRUE}
 df$age <= 5
-table(df$age, df$age_group, useNA="always", dnn=list("age", ""))
 ```
 
-## Nesting `ifelse` statements example
+## Nesting two `ifelse` statements example
+
+`ifelse(test1, yes_to_test1, ifelse(test2, no_to_test2_yes_to_test2, no_to_test1_no_to_test2))`.
 
 ```{r echo=TRUE}
 df$age_group <- ifelse(df$age <= 5, "young", 
                        ifelse(df$age<=10 & df$age>5, "middle", "old"))
+```
+
+Let's use the `table()` function to check if it worked.
+```{r echo=TRUE, eval=TRUE}
 table(df$age, df$age_group, useNA="always", dnn=list("age", ""))
 ```
 
@@ -274,9 +294,11 @@ Two-dimensional classes are those we would often use to store data read from a f
 
 Matrices, like data frames are also composed of rows and columns. Matrices, unlike `data.frame`, the entire matrix is composed of one R class. **For example: all entries are `numeric`, or all entries are `character`**
 
-`as.matrix()` creates a matrix from a data frame (where all values are the same class).
+`as.matrix()` creates a matrix from a data frame (where all values are the same class). As a reminder, here is the matrix signature function to help remind us how to build a matrix
 
-You can also create a matrix from scratch using `matrix()` Use `?matrix` to see the arguments.  
+```
+matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL)
+```
 
 ```{r echo=TRUE}
 matrix(data=1:6, ncol = 2) 
@@ -306,12 +328,25 @@ Data summarization on numeric vectors/variables:
 -	`sum()`: sum of x
 -	`max()`: maximum value in x
 -	`min()`: minimum value in x
+- `colSums()`: get the columns sums of a data frame
+- `rowSums()`: get the row sums of a data frame
+- `colMeans()`: get the columns means of a data frame
+- `rowMeans`()`: get the row means of a data frame
 
-Note, **all have the ** `na.rm` **argument for missing data**
+Note, the top 8 functions have an `na.rm` **argument for missing data**
+
+## Numeric variable data summary
+
+Let's look at a help file for `mean()` to make note of the `na.rm` argument
+
+```{r, echo = TRUE, eval=FALSE}
+?range
+```
+
 
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
-?mean
+?range
 ```
 
 ## Numeric variable data summary examples
@@ -327,6 +362,12 @@ median(df$IgG_concentration, na.rm=TRUE)
 ## Character variable data summaries
 
 Data summarization on character or factor vectors/variables using `table()`
+
+		
+```{r, echo = TRUE, eval=FALSE}
+?table
+```
+
 		
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
@@ -353,14 +394,16 @@ table(df$age_group)/nrow(subset(df, !is.na(df$age_group),)) #if there are NA val
 
 ## Summary
 
--   Adding (or modifying) columns/variable to a data frame by using `$` 
--   There are two types of numeric class objects: integer and double
--   Logical class objects only have `TRUE` or `False` (without quotes)
--   `is.CLASS_NAME(x)` can be used to test the class of an object x
--   `as.CLASS_NAME(x)` can be used to change the class of an object x
--   Factors are a special character class that has levels 
--   ...xxamy complete
-		
+- You can create new columns/variable to a data frame by using `$`  or the `transform()` function
+- One useful function for creating new variables based on existing variables is the `ifelse()` function, which returns a value depending on whether the element of test is `TRUE` or `FALSE`
+- The `class()` function allows you to evaluate the class of an object.
+-  There are two types of numeric class objects: integer and double
+-  Logical class objects only have `TRUE` or `False` (without quotes)
+-  `is.CLASS_NAME(x)` can be used to test the class of an object x
+-  `as.CLASS_NAME(x)` can be used to change the class of an object x
+-  Factors are a special character class that has levels 
+- There are many fairly intuitive data summary functions you can perform on a vector (i.e., `mean()`, `sd()`, `range()`) or on rows or columns of a data frame (i.e., `colSums()`, `colMeans()`, `rowSums()`)
+- The `table()` function builds frequency tables of the counts at each combination of categorical levels
 
 ## Acknowledgements
 
