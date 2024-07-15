@@ -105,11 +105,39 @@ head(df_new)
 
 Now, lets merge. Note, "By default the data frames are merged on the columns with names they both have" therefore if I don't specify the by argument it will merge on all matching variables.
 ```{r echo=TRUE}
-df_all_long <- merge(df, df_new, all.x=T, all.y=T) 
-str(df_all_long)
+df_all_long <- merge(df, df_new, all.x=T, all.y=T)
+head(df_all_long)
 ```
+
 Note, there are 1287 rows, which is the sum of the number of rows of `df` (651 rows) and `df_new` (636 rows)
 
+Notice that there are some missing values though, because `df_new` doesn't have
+the `gender` or `slum` variables. If we assume that those are constant and
+don't change between the two study points, we can fill in the data points
+before merging for an easy solution. One easy way to make a new dataframe from
+`df_new` with extra columns is to use the `transform()` function, which lets
+us make multiple column changes to a data frame at one time. We just
+need to make sure to match the correct `observation_id` values together, using
+the `match()` function.
+
+```{r}
+df_new_filled <- transform(
+  df_new,
+  gender = df[match(df_new$observation_id, df$observation_id), "gender"],
+  slum = df[match(df_new$observation_id, df$observation_id), "slum"]
+)
+```
+
+Now we can redo the merge.
+
+```{r}
+df_all_long <- merge(df, df_new_filled, all.x=T, all.y=T)
+head(df_all_long)
+```
+
+Looks good now! Another solution would be to edit the data file, or use
+a function that can actually fill in missing values for the same individual,
+like `zoo::na.locf()`.
 
 ## What is wide/long data?
 
@@ -136,15 +164,138 @@ library(printr)
 ```
 
 
-## long to wide data
-
-xxzane - help
-
-
 ## wide to long data
 
-xxzane - help
+Reminder: "typical usage for converting from long to wide format"
 
+```{r, eval = FALSE}
+### If names of wide-format variables are in a 'nice' format
+
+reshape(data, direction = "long",
+       varying = c(___), # vector 
+       sep)              # to help guess 'v.names' and 'times'
+
+### To specify long-format variable names explicitly
+
+reshape(data, direction = "long",
+       varying = ___,  # list / matrix / vector (use with care)
+       v.names = ___,  # vector of variable names in long format
+       timevar, times, # name / values of constructed time variable
+       idvar, ids)     # name / values of constructed id variable
+```
+
+We can try to apply that to our data.
+
+```{r}
+df_wide_to_long <-
+  reshape(
+    # First argument is the wide-format data frame to be reshaped
+    df_all_wide,
+    # We are inputting wide data and expect long format as output
+    direction = "long",
+    # "varying" argument is a list of vectors. Each vector in the list is a
+    # group of time-varying (or grouping-factor-varying) variables which
+    # should become one variable after reformat. We want two variables after
+    # reformating, so we need two vectors in a list.
+    varying = list(
+      c("IgG_concentration_time1", "IgG_concentration_time2"),
+      c("age_time1", "age_time2")
+    ),
+    # "v.names" is a vector of names for the new long-format variables, it
+    # should have the same length as the list for varying and the names will
+    # be assigned in order.
+    v.names = c("IgG_concentration", "age"),
+    # Name of the variable for the time index that will be created
+    timevar = "time",
+    # Values of the time variable that should be created. Note that if you
+    # have any missing observations over time, they NEED to be in the dataset
+    # as NAs or your times will get messed up.
+    times = 1:2,
+    # 'idvar' is a variable that marks which records belong to each
+    # observational unit, for us that is the ID marking individuals.
+    idvar = "observation_id"
+  )
+```
+
+Notice that this has exactly twice as many rows as our wide data format, and
+doesn't appear to have any systematic missingness, so it seems correct.
+
+```{r}
+str(df_wide_to_long)
+nrow(df_wide_to_long)
+nrow(df_all_wide)
+```
+
+## long to wide data
+
+Reminder: "typical usage for converting from long to wide format"
+
+```{r, eval = FALSE}
+reshape(data, direction = "wide",
+       idvar = "___", timevar = "___", # mandatory
+       v.names = c(___),    # time-varying variables
+       varying = list(___)) # auto-generated if missing
+```
+
+We can try to apply that to our data. Note that the arguments are the same
+as in the wide to long case, but we don't need to specify the `times` argument
+because they are in the data already. The `varying` argument is optional also,
+and R will auto-generate names for the wide variables if it is left empty.
+
+```{r}
+df_long_to_wide <-
+  reshape(
+    df_all_long,
+    direction = "wide",
+    idvar = "observation_id",
+    timevar = "time",
+    v.names = c("IgG_concentration", "age"),
+    varying = list(
+      c("IgG_concentration_time1", "IgG_concentration_time2"),
+      c("age_time1", "age_time2")
+    )
+  )
+```
+
+We can do the same checks to make sure we pivoted correctly.
+
+```{r}
+str(df_long_to_wide)
+nrow(df_long_to_wide)
+nrow(df_all_long)
+```
+
+Note that this time we don't have exactly twice as many records because of some
+quirks in how `reshape()` works. When we go from wide to long, R will create
+new records with NA values at the second time point for the individuals who
+were not in the second study -- it won't do that when we go from long to
+wide data. This is why it can be important to make sure all of your
+missing data are **explicit** rather than **implicit**.
+
+```{r}
+# For the original long dataset, we can see that not all individuals have 2
+# time points
+all(table(df_all_long$observation_id) == 2)
+# But for the reshaped version they do all have 2 time points
+all(table(df_wide_to_long$observation_id) == 2)
+```
+
+
+## `reshape` metadata
+
+Whenever you use `reshape()` to change the data format, it leaves behind some
+metadata on our new data frame, as an `attr`.
+
+```{r}
+str(df_wide_to_long)
+```
+
+This stores information so we can `reshape()` back to the other format and
+we don't have to specify arguments again.
+
+```{r}
+df_back_to_wide <- reshape(df_wide_to_long)
+```
 
 ## Let's get real
 
