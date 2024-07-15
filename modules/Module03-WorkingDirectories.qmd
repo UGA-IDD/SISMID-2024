@@ -17,7 +17,13 @@ After module 3, you should be able to...
 
 ## File Structure
 
-xxzane slide(s)
+**The internal file structure of the computer is completely nested!**
+
+```{r}
+knitr::include_graphics(here::here("images", "presentation4.webp"))
+```
+
+Computer scientists call this the "file tree".
 
 ## Working Directory -- Basic term
 
@@ -25,6 +31,37 @@ xxzane slide(s)
 -   For example, if you want to load data into R or save a figure, you will need to tell R where to look for or store the file
 -   Many people recommend not setting a directory in the scripts, rather assume you're in the directory the script is in
 
+## Understanding the working directory
+
+```{r}
+#| echo: false
+#| fig-align: "center"
+knitr::include_graphics(here::here("images", "map.png"))
+```
+
+## Understanding the working directory
+
+```{r}
+#| echo: false
+#| fig-align: "center"
+knitr::include_graphics(here::here("images", "map-floorplan.png"))
+```
+
+## Understanding the working directory
+
+```{r}
+#| echo: false
+#| fig-align: "center"
+knitr::include_graphics(here::here("images", "map-floor-room.png"))
+```
+
+## Understanding the working directory
+
+```{r}
+#| echo: false
+#| fig-align: "center"
+knitr::include_graphics(here::here("images", "map-wd.png"))
+```
 
 ## Getting and setting the working directory using code
 

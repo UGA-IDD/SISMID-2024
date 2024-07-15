@@ -30,7 +30,7 @@ website:
         href: index.qmd
       - text: "Course Schedule"
         href: schedule.qmd
-      - text: "More References"
+      - text: "Course Resources"
         href: references.qmd
       - section: "Day 1"
         contents:

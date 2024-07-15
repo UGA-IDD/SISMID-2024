@@ -282,6 +282,28 @@ matrix.object <- matrix(data=vector.object1, nrow=2, ncol=2, byrow=TRUE)
 
 Note, `c()` and `matrix()` are functions, which we will talk more about in module 2.
 
+## Object names
+
+- In general, any object name can be typed into R.
+- However, only some are considered "valid". If you use a non-valid object name,
+you will have to enclose it in backticks \``like this`\` for R to recognize it.
+- From the R documentation:
+
+> A syntactically valid name consists of letters, numbers and the dot or underline characters and starts with a letter or the dot not followed by a number. Names such as ".2way" are not valid, and neither are the reserved words.
+
+- Reserved words: `if`, `else`, `repeat`, `while`, `function`, `for`, `in`,
+`next`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, `NA_integer_`,
+`NA_real_`, `NA_Complex_`, `_NA_Character`, `...`, `..1`, `..2`, `..3`, and so on.
+
+## Object names
+
+| Valid        | Invalid |
+|--------------|---------|
+| `my_object`    | `my-data` |
+| `the.vector`   | `2data`   |
+| `num12`        | `for`     |
+| `measles_data` | `.9data`  |
+| `.calc`        | `xX~mŷ_δätą~Xx` |
 
 ## Mini Exercise
 

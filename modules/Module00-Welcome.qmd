@@ -142,7 +142,21 @@ Themes that will show up throughout the workshop:
 
 ## Reproducibility
 
-xxzane slides
+* **Reproducible research**: the idea that other people should be able to
+verify the claims you make -- usually by being able to see your data and run
+your code.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+
+knitr::include_graphics(here::here("images", "repspectrum.JPG"))
+```
+
+* **2023 was the US government's year of open science** -- specific
+aspects of reproducibility will be mandated for federally funded research!
+* Sharing and documenting your code is a massive step towards making your
+work reproducible, and the R ecosystem can play a big role in that!
 
 
 ## Useful (+ Free) Resources

@@ -252,6 +252,16 @@ number.object!=5
 number.object %in% c(6,7,2)
 ```
 
+We can use any of these logical operators to subset our data.
+
+```{r}
+# Overall mean
+mean(df$IgG_concentration)
+# Mean for all children who are not age 3
+mean(df$IgG_concentration[df$age != 3])
+# Mean for all children who are between 0 and 3 or between 7 and 10 years old
+mean(df$IgG_concentration[df$age %in% c(0:3, 7:10)])
+```
 
 ## Using indexing and logical operators to rename columns
 
