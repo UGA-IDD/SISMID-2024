@@ -6,6 +6,7 @@
 
 # In this exercise, we'll practice data cleaning using the measles datasets
 # we've looked at previously.
+# You should try to finish all of the questions in order.
 
 # Question 1 ###################################################################
 # Part A: Load in the MeaslesCases.csv data, and take a look at it to remind
@@ -21,6 +22,13 @@ str(cases)
 
 # Part C: use the reshape() function to edit this dataset so that you have
 # one column for cases and one column for year.
+# HINT 1: remember you need to specify these arguments: the data set, then
+# direction, varying, v.names, idvar, times.
+# HINT 2: the varying argument should be a vector that contains the values
+# X2023, X2022, X2021, ..., X1981, X1980. An easy way to create this is to
+# use the paste0() function.
+# HINT 3: the idvar argument should be the first three columns of the cases
+# data set.
 cases_long <-
 	reshape(
 		cases,
@@ -55,6 +63,8 @@ popsize$`Indicator Code` <- NULL
 # Part C: reshape the dataset into long format.
 # Make sure the times in the long format data are correct and the variable
 # containing the population size data has an understandable name.
+# HINT: the idvar argument should be the first two columns of the popsize
+# dataset, and the varying argument should be the rest of the columns.
 popsize_long <-
 	reshape(
 		popsize,
@@ -81,6 +91,9 @@ vc <- read.csv(here::here("data", "MeaslesVaccinationCoverage.csv"))
 # Merge together the (long format) cases dataset and the vaccination coverage
 # dataset. Set the `all` argument to be TRUE (i.e., do a full join).
 # You will need to specify the "by.x" and "by.y" arguments correctly.
+# HINT: If the x dataset is the long format cases data, you should set by.x =
+# c("iso3c", "time"). Then set by.y to the corresponding columns in the
+# vaccination coverage data set.
 cases_vc <-
 	merge(
 		cases_long, vc,
@@ -95,6 +108,8 @@ cases_vc <-
 # cases/coverage dataset but do NOT include years/countries from the popsize
 # dataset that are unused. (I.e. if x = cases/coverage dataset, all.x = TRUE
 # and all.y = FALSE).
+# HINT: the by.x argument should be the same as the previous merge if the
+# x (left side) dataset is the result of the previous merge.
 cases_vc_pop <-
 	merge(
 		cases_vc, popsize_long,
@@ -118,7 +133,10 @@ names(cases_vc_pop)[names(cases_vc_pop) == "COVERAGE"] <- "vaccine_coverage"
 
 # Part E: sort the dataset by country code, then by year, then by the variable
 # containig the MCV1/MCV2 information (whatever you renamed it).
-# Hint: use the order() function.
+# HINT 1: use the order() function to create the sorting order.
+# HINT 2: once you create the sorting order with order(), you can use the
+# result as an index in [ to sort a data frame (by selecting the rows in
+# the correct order).
 sort_order <-
 	order(
 		cases_vc_pop$iso3c, cases_vc_pop$time, cases_vc_pop$vaccine_antigen
@@ -126,10 +144,8 @@ sort_order <-
 meas_sorted <- cases_vc_pop[sort_order, ]
 
 # Part F: remove all of the countries where the MCV1/MCV2 variable is missing.
+# HINT: use is.na() and subsetting.
 meas_clean <- meas_sorted[!is.na(meas_sorted$vaccine_antigen), ]
-
-# Part G: if you look at all of the country names in the dataset, you will see
-# that some are NA.
 
 # Part G: use some of the functions we've learned to look at your dataset
 # and make sure it looks OK. Then answer these questions.

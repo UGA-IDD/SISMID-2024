@@ -7,8 +7,18 @@
 # This exercise will focus on variable summarization and basic statistics with
 # R using two different infectious disease datasets.
 
+# This is a long exercise! We recommend that you try all of the questions when
+# you have time. But during class, you should focus on one of the two questions;
+# choose which one interests you more.
+# Q1 is about exploring the measles data you cleaned last time and making
+# a table that is almost publication-ready.
+# Q2 is about exploring diphtheria serosurvey data and calculating crude and
+# adjusted odds ratios.
+
 # Q1: Measles data #############################################################
 # Part A: Load the "measles_final" dataset you created at the end of exercise 3.
+# If you didn't finish exercise 3, you can download the finished Rds file from
+# the course website and start there.
 
 
 # Part B: choose a country from the dataset to focus on, and make a new data

@@ -5,10 +5,17 @@
 ################################################################################
 
 # This exercise will focus on making base R graphics.
+# Like exercise 4, this exercise is quite long. While we think both questions
+# can provide you with valuable experience, during class you should focus on
+# either Q1 or Q2 depending on what interests you.
+# In Q1, you will make plots of vaccine coverage and incidence with the
+# measles data.
+# in Q2, you will explore the diphtheria dataset and fit a logistic regression
+# model, which you can use to make a nice but difficult plot.
 
 # Question 1 ###################################################################
 # Part A: load in the "measles_final" dataset you created at the end of exercise
-# 3.
+# 3. Remember you can download this from the course website if you need to.
 
 
 # Part B: choose one country from the dataset -- it can be either the same
@@ -27,6 +34,11 @@
 # chose. Make sure the lines for MCV1 and 2 are visually distinct using color,
 # line type, or some other way. Give the plot good axis titles, and add a
 # legend showing which line is MCV1 and 2.
+# HINT: create two subsets of the data, one for MCV1 and one for MCV2.
+# Then make a plot with one of the subsets (make sure you set the xlim and
+# ylim arguments correctly). Then, use the points() function to add the
+# data for the second subset. Make sure you make them distinguishable using
+# shapes and/or colors, and add a legend!!
 
 
 # Part E: now let's go back to the original dataset, with every country.
@@ -51,7 +63,6 @@
 # HINT: for this model, the slope is positive. So you don't need to worry about
 # whether the sign in the middle should be a + or a -.
 
-
 # Part H: for all countries, but for only the year 2010, make a plot showing
 # two boxplots, one for MCV1 coverage and one for MCV2 coverage.
 
@@ -61,7 +72,15 @@
 # and one boxplot for MCV2). The top left plot should be for the year 2000,
 # the top right plot for 2005, the bottom left for 2010, and the bottom right
 # for 2015.
+# HINT: the correct syntax for the layout function for this question is
+# layout(matrix(1:4, ncol = 2, byrow = TRUE)).
+# HINT: YOu will need four boxplot() calls in this exercise.
 
+
+# IMPORTANT: after you finish your plot, you should call layout(1) to reset
+# to the default layout.
+# You can use par(mfrow = ...) instead of layout() for this question if you
+# want to.
 
 # Question 2 ###################################################################
 # Part A: Load the diphtheria data set.
@@ -70,16 +89,25 @@
 # Part B: Make a histogram of the DP_antibody variable. Choose appropriate
 # breaks, and make the axis labels and (optionally) title meaningful.
 
+
 # Part C: Make a histogram of the DP_antibody variable that distinguishes
 # between the levels of DP_vacc somehow. You can either stack two
 # histograms, or show overlapping histograms in different colors.
+# HINT: you can just adjustcolor("color", alpha.f = number from 0 to 1) to
+# make a color partially transparent.
+# HINT: you can set the argument "add = TRUE" to a histogram to plot the
+# new histogram directly on top of whatever plot is currently being shown
+# in the graphics window.
 
 
 # Part D: make a bar plot of DP infection status.
 
+
 # Part E: make a grouped bar plot, where DP infection status is on the x
 # axis, but each vaccine group has its own bar -- there will be four bars
 # total on the plot.
+# HINT: use google or the help page to find the argument you need to change
+# to get side by side bars.
 
 
 # Part E 1/2: Make the same plot but with a stacked bar chart instead of
@@ -89,12 +117,17 @@
 # Part F: this is the last exercise but it has multiple parts! First,
 # fit a logistic regression model where DP_infection is the outcome and
 # DP_Antibody is the only predictor.
+# Make sure you look at the summary.
+
 
 
 # Next, make a new data frame that has a single column named "DP_antibody".
 # For the value of that column, make a sequence of numbers using seq() that
 # goes from the minimum observed antibody level in our data, to the maximum
 # observed level, and make the sequence 100 numbers long.
+# HINT: read the help page for the seq() function to figure out which three
+# arguments you need to specify. Your data frame code will look something like
+# grid_data <- data.frame(DP_antibody = seq(...)).
 
 
 # Now use the predict() function, passing in your fitted logistic regression
@@ -109,11 +142,14 @@
 # DP_antibody: the sequence of numbers you generated before.
 # preds: from the prediction object, this is $fit.
 # se: from the prediction object, this is $se.fit.
+# HINT: use the data.frame() function.
 
 
 # Now add two more columns to "pred_data" like this:
 # lwr = preds - 1.96 * se
 # upr = preds + 1.96 * se
+# HINT: you can do this with pred_data$lwr <- ..., or with the transform()
+# function.
 
 
 # Right now all of our predictions and CIs are in log-odds units, which is
@@ -121,6 +157,8 @@
 # transform() function, apply the plogis() function to the preds, lwr, and upr
 # columns of pred_data. All you need to know about plogis() is that it turns
 # log odds ratios into probabilities.
+# HINT: if you don't want to use the transform function, you could also do
+# pred_data$column <- plogis(pred_data$column).
 
 
 # Now we can make a plot showing off our logistic regression model! First,
