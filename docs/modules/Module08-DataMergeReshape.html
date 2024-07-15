@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) - Module 8: Data Merging and Reshaping</title>
+  <title>SISMID Module NUMBER Materials (2025) – Module 8: Data Merging and Reshaping</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -441,6 +442,9 @@
 <section id="merge-function" class="slide level2">
 <h2><code>merge()</code> function</h2>
 <p>We will use the <code>merge()</code> function to conduct one-to-one merge</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>?merge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <pre><code>Registered S3 method overwritten by 'printr':
   method                from     
   knit_print.data.frame rmarkdown</code></pre>
@@ -581,17 +585,17 @@
 <h2>Lets import the new data we want to merge and take a look</h2>
 <p>The new data <code>serodata_new.csv</code> represents a follow-up serological survey four years later. At this follow-up individuals were retested for IgG antibody concentrations and their ages were collected.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>df_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata_new.csv"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">str</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>df_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata_new.csv"</span>)</span>
+<span id="cb14-2"><a></a><span class="fu">str</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   636 obs. of  3 variables:
  $ observation_id   : int  5772 8095 9784 9338 6369 6885 6252 8913 7332 6941 ...
  $ IgG_concentration: num  0.261 2.981 0.282 136.638 0.381 ...
  $ age              : int  6 8 8 8 5 8 8 NA 8 6 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">summary</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">summary</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -652,18 +656,18 @@
 <h2>Merge the new data with the original data</h2>
 <p>Lets load the old data as well and look for a variable, or variables, to merge by.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata.csv"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata.csv"</span>)</span>
+<span id="cb17-2"><a></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "observation_id"    "IgG_concentration" "age"              
 [4] "gender"            "slum"             </code></pre>
 </div>
 </div>
-<p>We notice that <code>observation_id</code> seems to be the obvious variable by which to merge. However, we also realize that <code>IgG_concentration</code> and <code>age</code> are the exact same names. If we merge now we see that</p>
+<p>We notice that <code>observation_id</code> seems to be the obvious variable by which to merge. However, we also realize that <code>IgG_concentration</code> and <code>age</code> are the exact same names. If we merge now we see that R has forced the <code>IgG_concentration</code> and <code>age</code> to have a <code>.x</code> or <code>.y</code> to make sure that these variables are different.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">head</span>(<span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T, <span class="at">by=</span><span class="fu">c</span>(<span class="st">'observation_id'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">head</span>(<span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T, <span class="at">by=</span><span class="fu">c</span>(<span class="st">'observation_id'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 18%">
 <col style="width: 24%">
@@ -746,20 +750,21 @@
 </section>
 <section id="merge-the-new-data-with-the-original-data-1" class="slide level2">
 <h2>Merge the new data with the original data</h2>
+<p>What do we do?</p>
 <p>The first option is to rename the <code>IgG_concentration</code> and <code>age</code> variables before the merge, so that it is clear which is time point 1 and time point 2.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>df<span class="sc">$</span>IgG_concentration_time1 <span class="ot">&lt;-</span> df<span class="sc">$</span>IgG_concentration</span>
-<span id="cb19-2"><a href="#cb19-2"></a>df<span class="sc">$</span>age_time1 <span class="ot">&lt;-</span> df<span class="sc">$</span>age</span>
-<span id="cb19-3"><a href="#cb19-3"></a>df<span class="sc">$</span>IgG_concentration <span class="ot">&lt;-</span> df<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#remove the original variables</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a></span>
-<span id="cb19-5"><a href="#cb19-5"></a>df_new<span class="sc">$</span>IgG_concentration_time2 <span class="ot">&lt;-</span> df_new<span class="sc">$</span>IgG_concentration</span>
-<span id="cb19-6"><a href="#cb19-6"></a>df_new<span class="sc">$</span>age_time2 <span class="ot">&lt;-</span> df_new<span class="sc">$</span>age</span>
-<span id="cb19-7"><a href="#cb19-7"></a>df_new<span class="sc">$</span>IgG_concentration <span class="ot">&lt;-</span> df_new<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#remove the original variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>df<span class="sc">$</span>IgG_concentration_time1 <span class="ot">&lt;-</span> df<span class="sc">$</span>IgG_concentration</span>
+<span id="cb20-2"><a></a>df<span class="sc">$</span>age_time1 <span class="ot">&lt;-</span> df<span class="sc">$</span>age</span>
+<span id="cb20-3"><a></a>df<span class="sc">$</span>IgG_concentration <span class="ot">&lt;-</span> df<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#remove the original variables</span></span>
+<span id="cb20-4"><a></a></span>
+<span id="cb20-5"><a></a>df_new<span class="sc">$</span>IgG_concentration_time2 <span class="ot">&lt;-</span> df_new<span class="sc">$</span>IgG_concentration</span>
+<span id="cb20-6"><a></a>df_new<span class="sc">$</span>age_time2 <span class="ot">&lt;-</span> df_new<span class="sc">$</span>age</span>
+<span id="cb20-7"><a></a>df_new<span class="sc">$</span>IgG_concentration <span class="ot">&lt;-</span> df_new<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co">#remove the original variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, lets merge.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>df_all_wide <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T, <span class="at">by=</span><span class="fu">c</span>(<span class="st">'observation_id'</span>))</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">str</span>(df_all_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>df_all_wide <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T, <span class="at">by=</span><span class="fu">c</span>(<span class="st">'observation_id'</span>))</span>
+<span id="cb21-2"><a></a><span class="fu">str</span>(df_all_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   651 obs. of  7 variables:
  $ observation_id         : int  5006 5024 5026 5030 5035 5054 5057 5063 5064 5080 ...
@@ -774,17 +779,17 @@
 </section>
 <section id="merge-the-new-data-with-the-original-data-2" class="slide level2">
 <h2>Merge the new data with the original data</h2>
-<p>The second option is to add a time variable to the two data sets and then merge by <code>observation_id</code>,<code>time</code>,<code>age</code>,<code>IgG_concentration</code>. Note, I need to read in the data again b/c I removed the <code>IgG_concentration</code> and <code>age</code> variables.</p>
+<p>The second option is to add a time variable to the two data sets and then merge by <code>observation_id</code>, <code>time</code>, <code>age</code>, and <code>IgG_concentration</code>. Note, I need to read in the data again b/c I removed the <code>IgG_concentration</code> and <code>age</code> variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata.csv"</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>df_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata_new.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata.csv"</span>)</span>
+<span id="cb23-2"><a></a>df_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/serodata_new.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co">#you can put in one number and it will repeat it</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>df_new<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>df<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co">#you can put in one number and it will repeat it</span></span>
+<span id="cb24-2"><a></a>df_new<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb24-3"><a></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">observation_id</th>
@@ -847,9 +852,9 @@
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">head</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">head</span>(df_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">observation_id</th>
@@ -901,19 +906,152 @@
 </div>
 <p>Now, lets merge. Note, “By default the data frames are merged on the columns with names they both have” therefore if I don’t specify the by argument it will merge on all matching variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df_all_long <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T) </span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">str</span>(df_all_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   1287 obs. of  6 variables:
- $ observation_id   : int  5006 5006 5024 5024 5026 5026 5030 5030 5035 5035 ...
- $ IgG_concentration: num  155.581 164.298 0.292 0.3 0.254 ...
- $ age              : int  11 7 9 5 14 10 11 7 15 11 ...
- $ time             : num  2 1 2 1 2 1 2 1 2 1 ...
- $ gender           : chr  NA "Male" NA "Female" ...
- $ slum             : chr  NA "Non slum" NA "Non slum" ...</code></pre>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>df_all_long <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T)</span>
+<span id="cb26-2"><a></a><span class="fu">head</span>(df_all_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: right;">time</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">slum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5006</td>
+<td style="text-align: right;">155.5811325</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5006</td>
+<td style="text-align: right;">164.2979452</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5024</td>
+<td style="text-align: right;">0.2918605</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5024</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5026</td>
+<td style="text-align: right;">0.2542945</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5026</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Note, there are 1287 rows, which is the sum of the number of rows of <code>df</code> (651 rows) and <code>df_new</code> (636 rows)</p>
+<p>Notice that there are some missing values though, because <code>df_new</code> doesn’t have the <code>gender</code> or <code>slum</code> variables. If we assume that those are constant and don’t change between the two study points, we can fill in the data points before merging for an easy solution. One easy way to make a new dataframe from <code>df_new</code> with extra columns is to use the <code>transform()</code> function, which lets us make multiple column changes to a data frame at one time. We just need to make sure to match the correct <code>observation_id</code> values together, using the <code>match()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>df_new_filled <span class="ot">&lt;-</span> <span class="fu">transform</span>(</span>
+<span id="cb27-2"><a></a>  df_new,</span>
+<span id="cb27-3"><a></a>  <span class="at">gender =</span> df[<span class="fu">match</span>(df_new<span class="sc">$</span>observation_id, df<span class="sc">$</span>observation_id), <span class="st">"gender"</span>],</span>
+<span id="cb27-4"><a></a>  <span class="at">slum =</span> df[<span class="fu">match</span>(df_new<span class="sc">$</span>observation_id, df<span class="sc">$</span>observation_id), <span class="st">"slum"</span>]</span>
+<span id="cb27-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can redo the merge.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>df_all_long <span class="ot">&lt;-</span> <span class="fu">merge</span>(df, df_new_filled, <span class="at">all.x=</span>T, <span class="at">all.y=</span>T)</span>
+<span id="cb28-2"><a></a><span class="fu">head</span>(df_all_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">observation_id</th>
+<th style="text-align: right;">IgG_concentration</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">slum</th>
+<th style="text-align: right;">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5006</td>
+<td style="text-align: right;">155.5811325</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5006</td>
+<td style="text-align: right;">164.2979452</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5024</td>
+<td style="text-align: right;">0.2918605</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5024</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5026</td>
+<td style="text-align: right;">0.2542945</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5026</td>
+<td style="text-align: right;">0.3000000</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Non slum</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Looks good now! Another solution would be to edit the data file, or use a function that can actually fill in missing values for the same individual, like <code>zoo::na.locf()</code>.</p>
 </section>
 <section id="what-is-widelong-data" class="slide level2">
 <h2>What is wide/long data?</h2>
@@ -933,6 +1071,9 @@
 <section id="reshape-function" class="slide level2">
 <h2><code>reshape()</code> function</h2>
 <p>The <code>reshape()</code> function allows you to toggle between wide and long data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>?reshape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Reshape Grouped Data</p>
 <p>Description:</p>
 <pre><code> This function reshapes a data frame between 'wide' format (with
@@ -1158,13 +1299,177 @@
  ## transform back
  reshape(wide)</code></pre>
 </section>
-<section id="long-to-wide-data" class="slide level2">
-<h2>long to wide data</h2>
-<p>xxzane - help</p>
-</section>
 <section id="wide-to-long-data" class="slide level2">
 <h2>wide to long data</h2>
-<p>xxzane - help</p>
+<p>Reminder: “typical usage for converting from long to wide format”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="do">### If names of wide-format variables are in a 'nice' format</span></span>
+<span id="cb40-2"><a></a></span>
+<span id="cb40-3"><a></a><span class="fu">reshape</span>(data, <span class="at">direction =</span> <span class="st">"long"</span>,</span>
+<span id="cb40-4"><a></a>       <span class="at">varying =</span> <span class="fu">c</span>(___), <span class="co"># vector </span></span>
+<span id="cb40-5"><a></a>       sep)              <span class="co"># to help guess 'v.names' and 'times'</span></span>
+<span id="cb40-6"><a></a></span>
+<span id="cb40-7"><a></a><span class="do">### To specify long-format variable names explicitly</span></span>
+<span id="cb40-8"><a></a></span>
+<span id="cb40-9"><a></a><span class="fu">reshape</span>(data, <span class="at">direction =</span> <span class="st">"long"</span>,</span>
+<span id="cb40-10"><a></a>       <span class="at">varying =</span> ___,  <span class="co"># list / matrix / vector (use with care)</span></span>
+<span id="cb40-11"><a></a>       <span class="at">v.names =</span> ___,  <span class="co"># vector of variable names in long format</span></span>
+<span id="cb40-12"><a></a>       timevar, times, <span class="co"># name / values of constructed time variable</span></span>
+<span id="cb40-13"><a></a>       idvar, ids)     <span class="co"># name / values of constructed id variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can try to apply that to our data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>df_wide_to_long <span class="ot">&lt;-</span></span>
+<span id="cb41-2"><a></a>  <span class="fu">reshape</span>(</span>
+<span id="cb41-3"><a></a>    <span class="co"># First argument is the wide-format data frame to be reshaped</span></span>
+<span id="cb41-4"><a></a>    df_all_wide,</span>
+<span id="cb41-5"><a></a>    <span class="co"># We are inputting wide data and expect long format as output</span></span>
+<span id="cb41-6"><a></a>    <span class="at">direction =</span> <span class="st">"long"</span>,</span>
+<span id="cb41-7"><a></a>    <span class="co"># "varying" argument is a list of vectors. Each vector in the list is a</span></span>
+<span id="cb41-8"><a></a>    <span class="co"># group of time-varying (or grouping-factor-varying) variables which</span></span>
+<span id="cb41-9"><a></a>    <span class="co"># should become one variable after reformat. We want two variables after</span></span>
+<span id="cb41-10"><a></a>    <span class="co"># reformating, so we need two vectors in a list.</span></span>
+<span id="cb41-11"><a></a>    <span class="at">varying =</span> <span class="fu">list</span>(</span>
+<span id="cb41-12"><a></a>      <span class="fu">c</span>(<span class="st">"IgG_concentration_time1"</span>, <span class="st">"IgG_concentration_time2"</span>),</span>
+<span id="cb41-13"><a></a>      <span class="fu">c</span>(<span class="st">"age_time1"</span>, <span class="st">"age_time2"</span>)</span>
+<span id="cb41-14"><a></a>    ),</span>
+<span id="cb41-15"><a></a>    <span class="co"># "v.names" is a vector of names for the new long-format variables, it</span></span>
+<span id="cb41-16"><a></a>    <span class="co"># should have the same length as the list for varying and the names will</span></span>
+<span id="cb41-17"><a></a>    <span class="co"># be assigned in order.</span></span>
+<span id="cb41-18"><a></a>    <span class="at">v.names =</span> <span class="fu">c</span>(<span class="st">"IgG_concentration"</span>, <span class="st">"age"</span>),</span>
+<span id="cb41-19"><a></a>    <span class="co"># Name of the variable for the time index that will be created</span></span>
+<span id="cb41-20"><a></a>    <span class="at">timevar =</span> <span class="st">"time"</span>,</span>
+<span id="cb41-21"><a></a>    <span class="co"># Values of the time variable that should be created. Note that if you</span></span>
+<span id="cb41-22"><a></a>    <span class="co"># have any missing observations over time, they NEED to be in the dataset</span></span>
+<span id="cb41-23"><a></a>    <span class="co"># as NAs or your times will get messed up.</span></span>
+<span id="cb41-24"><a></a>    <span class="at">times =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb41-25"><a></a>    <span class="co"># 'idvar' is a variable that marks which records belong to each</span></span>
+<span id="cb41-26"><a></a>    <span class="co"># observational unit, for us that is the ID marking individuals.</span></span>
+<span id="cb41-27"><a></a>    <span class="at">idvar =</span> <span class="st">"observation_id"</span></span>
+<span id="cb41-28"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice that this has exactly twice as many rows as our wide data format, and doesn’t appear to have any systematic missingness, so it seems correct.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">str</span>(df_wide_to_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1302 obs. of  6 variables:
+ $ observation_id   : int  5006 5024 5026 5030 5035 5054 5057 5063 5064 5080 ...
+ $ gender           : chr  "Male" "Female" "Female" "Female" ...
+ $ slum             : chr  "Non slum" "Non slum" "Non slum" "Non slum" ...
+ $ time             : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ IgG_concentration: num  164.2979 0.3 0.3 0.0556 26.2113 ...
+ $ age              : int  7 5 10 7 11 3 3 12 14 6 ...
+ - attr(*, "reshapeLong")=List of 4
+  ..$ varying:List of 2
+  .. ..$ : chr [1:2] "IgG_concentration_time1" "IgG_concentration_time2"
+  .. ..$ : chr [1:2] "age_time1" "age_time2"
+  ..$ v.names: chr [1:2] "IgG_concentration" "age"
+  ..$ idvar  : chr "observation_id"
+  ..$ timevar: chr "time"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">nrow</span>(df_wide_to_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1302</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">nrow</span>(df_all_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 651</code></pre>
+</div>
+</div>
+</section>
+<section id="long-to-wide-data" class="slide level2">
+<h2>long to wide data</h2>
+<p>Reminder: “typical usage for converting from long to wide format”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">reshape</span>(data, <span class="at">direction =</span> <span class="st">"wide"</span>,</span>
+<span id="cb48-2"><a></a>       <span class="at">idvar =</span> <span class="st">"___"</span>, <span class="at">timevar =</span> <span class="st">"___"</span>, <span class="co"># mandatory</span></span>
+<span id="cb48-3"><a></a>       <span class="at">v.names =</span> <span class="fu">c</span>(___),    <span class="co"># time-varying variables</span></span>
+<span id="cb48-4"><a></a>       <span class="at">varying =</span> <span class="fu">list</span>(___)) <span class="co"># auto-generated if missing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can try to apply that to our data. Note that the arguments are the same as in the wide to long case, but we don’t need to specify the <code>times</code> argument because they are in the data already. The <code>varying</code> argument is optional also, and R will auto-generate names for the wide variables if it is left empty.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>df_long_to_wide <span class="ot">&lt;-</span></span>
+<span id="cb49-2"><a></a>  <span class="fu">reshape</span>(</span>
+<span id="cb49-3"><a></a>    df_all_long,</span>
+<span id="cb49-4"><a></a>    <span class="at">direction =</span> <span class="st">"wide"</span>,</span>
+<span id="cb49-5"><a></a>    <span class="at">idvar =</span> <span class="st">"observation_id"</span>,</span>
+<span id="cb49-6"><a></a>    <span class="at">timevar =</span> <span class="st">"time"</span>,</span>
+<span id="cb49-7"><a></a>    <span class="at">v.names =</span> <span class="fu">c</span>(<span class="st">"IgG_concentration"</span>, <span class="st">"age"</span>),</span>
+<span id="cb49-8"><a></a>    <span class="at">varying =</span> <span class="fu">list</span>(</span>
+<span id="cb49-9"><a></a>      <span class="fu">c</span>(<span class="st">"IgG_concentration_time1"</span>, <span class="st">"IgG_concentration_time2"</span>),</span>
+<span id="cb49-10"><a></a>      <span class="fu">c</span>(<span class="st">"age_time1"</span>, <span class="st">"age_time2"</span>)</span>
+<span id="cb49-11"><a></a>    )</span>
+<span id="cb49-12"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can do the same checks to make sure we pivoted correctly.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">str</span>(df_long_to_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   651 obs. of  7 variables:
+ $ observation_id         : int  5006 5024 5026 5030 5035 5054 5057 5063 5064 5080 ...
+ $ gender                 : chr  "Male" "Female" "Female" "Female" ...
+ $ slum                   : chr  "Non slum" "Non slum" "Non slum" "Non slum" ...
+ $ IgG_concentration_time1: num  155.5811 0.2919 0.2543 0.0533 22.0159 ...
+ $ age_time1              : int  11 9 14 11 15 7 7 16 18 10 ...
+ $ IgG_concentration_time2: num  164.2979 0.3 0.3 0.0556 26.2113 ...
+ $ age_time2              : int  7 5 10 7 11 3 3 12 14 6 ...
+ - attr(*, "reshapeWide")=List of 5
+  ..$ v.names: chr [1:2] "IgG_concentration" "age"
+  ..$ timevar: chr "time"
+  ..$ idvar  : chr "observation_id"
+  ..$ times  : num [1:2] 2 1
+  ..$ varying: chr [1:2, 1:2] "IgG_concentration_time1" "age_time1" "IgG_concentration_time2" "age_time2"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">nrow</span>(df_long_to_wide)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 651</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">nrow</span>(df_all_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1287</code></pre>
+</div>
+</div>
+<p>Note that this time we don’t have exactly twice as many records because of some quirks in how <code>reshape()</code> works. When we go from wide to long, R will create new records with NA values at the second time point for the individuals who were not in the second study – it won’t do that when we go from long to wide data. This is why it can be important to make sure all of your missing data are <strong>explicit</strong> rather than <strong>implicit</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="co"># For the original long dataset, we can see that not all individuals have 2</span></span>
+<span id="cb56-2"><a></a><span class="co"># time points</span></span>
+<span id="cb56-3"><a></a><span class="fu">all</span>(<span class="fu">table</span>(df_all_long<span class="sc">$</span>observation_id) <span class="sc">==</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="co"># But for the reshaped version they do all have 2 time points</span></span>
+<span id="cb58-2"><a></a><span class="fu">all</span>(<span class="fu">table</span>(df_wide_to_long<span class="sc">$</span>observation_id) <span class="sc">==</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="reshape-metadata" class="slide level2">
+<h2><code>reshape</code> metadata</h2>
+<p>Whenever you use <code>reshape()</code> to change the data format, it leaves behind some metadata on our new data frame, as an <code>attr</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">str</span>(df_wide_to_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1302 obs. of  6 variables:
+ $ observation_id   : int  5006 5024 5026 5030 5035 5054 5057 5063 5064 5080 ...
+ $ gender           : chr  "Male" "Female" "Female" "Female" ...
+ $ slum             : chr  "Non slum" "Non slum" "Non slum" "Non slum" ...
+ $ time             : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ IgG_concentration: num  164.2979 0.3 0.3 0.0556 26.2113 ...
+ $ age              : int  7 5 10 7 11 3 3 12 14 6 ...
+ - attr(*, "reshapeLong")=List of 4
+  ..$ varying:List of 2
+  .. ..$ : chr [1:2] "IgG_concentration_time1" "IgG_concentration_time2"
+  .. ..$ : chr [1:2] "age_time1" "age_time2"
+  ..$ v.names: chr [1:2] "IgG_concentration" "age"
+  ..$ idvar  : chr "observation_id"
+  ..$ timevar: chr "time"</code></pre>
+</div>
+</div>
+<p>This stores information so we can <code>reshape()</code> back to the other format and we don’t have to specify arguments again.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>df_back_to_wide <span class="ot">&lt;-</span> <span class="fu">reshape</span>(df_wide_to_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="lets-get-real" class="slide level2">
 <h2>Let’s get real</h2>
@@ -1173,7 +1478,11 @@
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
-<li>…</li>
+<li>the <code>merge()</code> function can be used to marge datasets.</li>
+<li>pay close attention to the number of rows in your data set before and after a merge</li>
+<li>wide data has many columns and has many columns per observation</li>
+<li>long data has many rows and can have multiple rows per observation</li>
+<li>the&nbsp;<code>reshape()</code>&nbsp;function allows you to toggle between wide and long data. although we highly recommend using <code>pivot_wider()</code> and <code>pivot_longer()</code> from the tidyr package instead</li>
 </ul>
 </section>
 <section id="acknowledgements" class="slide level2">
@@ -1183,8 +1492,10 @@
 <li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -1213,7 +1524,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1468,18 +1778,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1511,11 +1810,50 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1525,8 +1863,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1540,7 +1887,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

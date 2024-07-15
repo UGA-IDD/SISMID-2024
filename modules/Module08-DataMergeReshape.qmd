@@ -36,6 +36,10 @@ Pay close attention to the number of rows in your data set before and after a jo
 
 We will use the `merge()` function to conduct one-to-one merge
 
+```{r echo=TRUE, eval=FALSE}
+?merge
+```
+
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
 ?merge
@@ -62,13 +66,15 @@ df <- read.csv("data/serodata.csv")
 colnames(df)
 ```
 
-We notice that `observation_id` seems to be the obvious variable by which to merge.  However, we also realize that `IgG_concentration` and `age` are the exact same names.  If we merge now we see that 
+We notice that `observation_id` seems to be the obvious variable by which to merge.  However, we also realize that `IgG_concentration` and `age` are the exact same names.  If we merge now we see that R has forced the `IgG_concentration` and `age` to have a `.x` or `.y` to make sure that these variables are different.
 
 ```{r echo=TRUE}
 head(merge(df, df_new, all.x=T, all.y=T, by=c('observation_id')))
 ```
 
 ## Merge the new data with the original data
+
+What do we do?
 
 The first option is to rename the `IgG_concentration` and `age` variables before the merge, so that it is clear which is time point 1 and time point 2. 
 ```{r echo=TRUE}
@@ -89,7 +95,7 @@ str(df_all_wide)
 
 ## Merge the new data with the original data
 
-The second option is to add a time variable to the two data sets and then merge by `observation_id`,`time`,`age`,`IgG_concentration`. Note, I need to read in the data again b/c I removed the `IgG_concentration` and `age` variables.
+The second option is to add a time variable to the two data sets and then merge by `observation_id`, `time`, `age`, and `IgG_concentration`. Note, I need to read in the data again b/c I removed the `IgG_concentration` and `age` variables.
 
 ```{r echo=TRUE}
 df <- read.csv("data/serodata.csv")
@@ -157,6 +163,11 @@ Long: has many rows
 ## `reshape()` function 
 
 The `reshape()` function allows you to toggle between wide and long data
+
+```{r echo=TRUE, eval=FALSE}
+?reshape
+```
+
 
 ```{r, echo = FALSE, results = "asis"}
 library(printr)
@@ -305,7 +316,11 @@ Use the `pivot_wider()` and `pivot_longer()` from the tidyr package!
 
 ## Summary
 
--   ...
+- the `merge()` function can be used to marge datasets. 
+- pay close attention to the number of rows in your data set before and after a merge
+- wide data has many columns and has many columns per observation
+- long data has many rows and can have multiple rows per observation
+- the `reshape()` function allows you to toggle between wide and long data. although we highly recommend using `pivot_wider()` and `pivot_longer()` from the tidyr package instead 
 		
 
 ## Acknowledgements
