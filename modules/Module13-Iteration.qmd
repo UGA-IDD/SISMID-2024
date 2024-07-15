@@ -162,6 +162,55 @@ for (this_island in levels(penguins$island)) {
 }
 ```
 
+## Side note: the pipe operator `|>` {.scrollable}
+
+* This operator allows us to chain commands together so the output of the
+previous statement is passed into the next statement.
+* E.g. the code
+
+```{r, eval = FALSE}
+island_mean <-
+	penguins$bill_depth_mm[penguins$island == "Torgersen"] |>
+	mean(na.rm = TRUE) |>
+	round(digits = 2)
+```
+
+will be transformed by R into
+
+```{r, eval = FALSE}
+island_mean <-
+	round(
+		mean(
+			penguins$bill_depth_mm[penguins$island == "Torgersen"],
+			na.rm = TRUE
+		),
+		digits = 2
+	)
+```
+
+before it gets run. So using the pipe is a way to avoid deeply nested functions.
+
+Note that another alernative could be like this:
+
+```{r}
+island_data <- penguins$bill_depth_mm[penguins$island == "Torgersen"]
+island_mean_raw <- mean(island_data, na.rm = TRUE)
+island_mean <- round(island_mean_raw, digits = 2)
+```
+
+So using `|>` can also help us to avoid a lot of assignments.
+
+* **Whichever style you prefer is fine!** Some people like the pipe, some
+people like nesting, and some people like intermediate assignments. All three
+are perfectly fine as long as your code is neat and commented.
+* If you go on to the `tidyverse` class, you will use a lot of piping -- it
+is a very popular coding style in R these days thanks to the inventors of
+the `tidyverse` packages.
+* Also note that you need R version 4.1.0 or better to use `|>`. If you are
+on an older version of R, it will not be available.
+
+**Now, back to loops!**
+
 ## Remember: write DRY code!
 
 * DRY = "Don't Repeat Yourself"
@@ -201,7 +250,7 @@ for (i in 1:10) {
 * Almost all basic operations in R are **vectorized**: they work on a vector of
 arguments all at the same time.
 
-## Wait, did we need to do that?
+## Wait, did we need to do that? {.scrollable}
 
 * Well, yes, because you need to practice loops!
 * But technically no, because we can use **vectorization**.
@@ -213,22 +262,14 @@ arguments all at the same time.
 (1:10)^2
 ```
 
-## Wait, did we need to do that?
-
-* Well, yes, because you need to practice loops!
-* But technically no, because we can use **vectorization**.
-* Almost all basic operations in R are **vectorized**: they work on a vector of
-arguments all at the same time.
-
-```{r}
-# No loop needed!
-(1:10)^2
-```
+. . .
 
 ```{r}
 # Get the first 10 odd numbers, a common CS 101 loop problem on exams
 (1:20)[which((1:20 %% 2) == 1)]
 ```
+
+. . .
 
 * So you should really try vectorization first, then use loops only when
 you can't use vectorization.
@@ -314,8 +355,9 @@ for (i in 1:length(countries)) {
 	
 	# Get the summary statistics for this country
 	country_cases <- country_data$Cases
-	country_med <- median(country_cases, na.rm = TRUE)
-	country_iqr <- IQR(country_cases, na.rm = TRUE)
+	country_quart <- quantile(
+		country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)
+	)
 	country_range <- range(country_cases, na.rm = TRUE)
 }
 ```
@@ -441,9 +483,9 @@ titles as "Year" and "Incidence per 1000 people".
 * Using a `for` loop and the `lines()` function, make a plot that shows all of
 the incidence curves over time, overlapping on the plot.
 * HINT: use `col = adjustcolor(black, alpha.f = 0.25)` to make the curves
-transparent, so you can see the others.
+partially transparent, so you can see the overlap.
 * BONUS PROBLEM: using the function `cumsum()`, make a plot of the cumulative
-incidence per 1000 people over time for all of the countries. (Dealing with
+cases (not standardized) over time for all of the countries. (Dealing with
 the NA's here is tricky!!)
 
 ## Main problem solution
@@ -512,7 +554,7 @@ plot(
 	xlim = c(1980, 2022),
 	ylim = c(1, 6.2e6),
 	xlab = "Year",
-	ylab = "Cumulative cases per 1000 people"
+	ylab = paste0("Cumulative cases since", min(meas$time))
 )
 
 for (i in 1:length(countries)) {
