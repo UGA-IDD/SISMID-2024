@@ -1549,7 +1549,7 @@
     "href": "modules/Module05-DataImportExport.html#import-.csv-files",
     "title": "Module 5: Data Import and Export",
     "section": "Import .csv files",
-    "text": "Import .csv files\nFunction signature reminder\nread.csv(file, header = TRUE, sep = \",\", quote = \"\\\"\",\n         dec = \".\", fill = TRUE, comment.char = \"\", ...)\n    -       `file` is the first argument and is the path to your file, in quotes \n    \n            -       can be path in your local computer -- absolute file path or relative file path \n            -       can be path to a file on a website"
+    "text": "Import .csv files\nFunction signature reminder\nread.csv(file, header = TRUE, sep = \",\", quote = \"\\\"\",\n         dec = \".\", fill = TRUE, comment.char = \"\", ...)\n\n## Examples\ndf &lt;- read.csv(file = \"data/serodata.csv\") #relative path\n\nNote #1, I assigned the data frame to an object called df. I could have called the data anything, but in order to use the data (i.e., as an object we can find in the Environment), I need to assign it as an object.\nNote #2, If the data is imported correct, you can expect to see the df object ready to be used."
   },
   {
     "objectID": "modules/Module05-DataImportExport.html#import-.csv-files-1",
@@ -1563,7 +1563,7 @@
     "href": "modules/Module05-DataImportExport.html#import-.txt-files",
     "title": "Module 5: Data Import and Export",
     "section": "Import .txt files",
-    "text": "Import .txt files\nread.csv() is a special case of read.delim() – a general function to read a delimited file into a data frame\nReminder function signature\nread.delim(file, header = TRUE, sep = \"\\t\", quote = \"\\\"\",\n           dec = \".\", fill = TRUE, comment.char = \"\", ...)\n    - `file` is the path to your file, in quotes \n    - `delim` is what separates the fields within a record. The default for csv is comma"
+    "text": "Import .txt files\nread.csv() is a special case of read.delim() – a general function to read a delimited file into a data frame\nReminder function signature\nread.delim(file, header = TRUE, sep = \"\\t\", quote = \"\\\"\",\n           dec = \".\", fill = TRUE, comment.char = \"\", ...)\n    - `file` is the path to your file, in quotes \n    - `delim` is what separates the fields within a record. The default for csv is comma\nWe can import the ‘.txt’ files given that we know that ‘serodata1.txt’ uses a tab delimiter and ‘serodata2.txt’ uses a semicolon delimiter.\n\n## Examples\ndf &lt;- read.delim(file = \"data/serodata.txt\", sep = \"\\t\")\ndf &lt;- read.delim(file = \"data/serodata.txt\", sep = \";\")\n\nThe dataset is now successfully read into your R workspace, many times actually. Notice, that each time we imported the data we assigned the data to the df object, meaning we replaced it each time we reassigned the df object."
   },
   {
     "objectID": "modules/Module05-DataImportExport.html#import-.txt-files-1",
@@ -1577,7 +1577,7 @@
     "href": "modules/Module05-DataImportExport.html#what-if-we-have-a-.xlsx-file---what-do-we-do",
     "title": "Module 5: Data Import and Export",
     "section": "What if we have a .xlsx file - what do we do?",
-    "text": "What if we have a .xlsx file - what do we do?\n\nGoogle / Ask ChatGPT\nFind and vet function and package you want\nInstall package\nAttach package\nUse function"
+    "text": "What if we have a .xlsx file - what do we do?\n\nAsk Google / ChatGPT\nFind and vet function and package you want\nInstall package\nAttach package\nUse function"
   },
   {
     "objectID": "modules/Module05-DataImportExport.html#internet-search",
@@ -1598,7 +1598,7 @@
     "href": "modules/Module05-DataImportExport.html#install-package",
     "title": "Module 5: Data Import and Export",
     "section": "3. Install Package",
-    "text": "3. Install Package\nTo use the bundle or “package” of code (and or possibly data) from a package, you need to install and also call the package.\nTo install a package you can\n\ngo to Tools —&gt; Install Packages in the RStudio header\n\nOR\n\nuse the following code:\n\n\ninstall.packages(\"package_name\")\n\nTherefore,\n\ninstall.packages(\"readxl\")"
+    "text": "3. Install Package\nTo use the bundle or “package” of code (and or possibly data) from a package, you need to install and also attach the package.\nTo install a package you can\n\ngo to Tools —&gt; Install Packages in the RStudio header\n\nOR\n\nuse the following code:\n\n\ninstall.packages(\"package_name\")\n\nTherefore,\n\ninstall.packages(\"readxl\")"
   },
   {
     "objectID": "modules/Module05-DataImportExport.html#call-package",
@@ -1675,7 +1675,7 @@
     "href": "modules/Module05-DataImportExport.html#rds-binary-file",
     "title": "Module 5: Data Import and Export",
     "section": ".rds binary file",
-    "text": ".rds binary file\nSaving datasets in .rds format can save time if you have to read it back in later.\nwrite_rds() and read_rds() from readr package can be used to write/read a single R object to/from file.\nlibrary(readr)\nwrite_rds(object1, file = \"filename.rds\")\nobject1 &lt;- read_rds(file = \"filename.rds\")"
+    "text": ".rds binary file\nSaving datasets in .rds format can save time if you have to read it back in later.\nwrite_rds() and read_rds() from readr package can be used to write/read a single R object to/from file.\nrequire(readr)\nwrite_rds(object1, file = \"filename.rds\")\nobject1 &lt;- read_rds(file = \"filename.rds\")"
   },
   {
     "objectID": "modules/Module05-DataImportExport.html#rdardata-files",
@@ -1689,7 +1689,7 @@
     "href": "modules/Module05-DataImportExport.html#summary",
     "title": "Module 5: Data Import and Export",
     "section": "Summary",
-    "text": "Summary\n\nImporting or ‘Reading in’ data are the first step of any real project / data analysis\nThe Base R ‘util’ package has useful functions including read.csv() and read.delim() to importing/reading data or write.csv() and write.table() for exporting/writing data\nWhen importing data (exception is object from .RData), you must assign it to an object, otherwise it cannot be used\nIf data are imported correctly, they can be found in the Environment pane of RStudio\nYou only need to install a package once (unless you update R or the package), but you will need to attach a package each time you want to use it.\nTo complete a task you don’t know how to do (e.g., reading in an excel data file) use the following steps: 1. Google / Ask ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Attach package, 5. Use function"
+    "text": "Summary\n\nImporting or ‘Reading in’ data are the first step of any real project / data analysis\nThe Base R ‘util’ package has useful functions including read.csv() and read.delim() to importing/reading data or write.csv() and write.table() for exporting/writing data\nWhen importing data (exception is object from .RData), you must assign it to an object, otherwise it cannot be used\nIf data are imported correctly, they can be found in the Environment pane of RStudio\nYou only need to install a package once (unless you update R or the package), but you will need to attach a package each time you want to use it.\nTo complete a task you don’t know how to do (e.g., reading in an excel data file) use the following steps: 1. Asl Google / ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Attach package, 5. Use function"
   },
   {
     "objectID": "modules/Module05-DataImportExport.html#acknowledgements",
@@ -1703,14 +1703,14 @@
     "href": "modules/Module05-DataImportExport.html#mini-exercise-1",
     "title": "Module 5: Data Import and Export",
     "section": "Mini exercise",
-    "text": "Mini exercise\nIf your R Project is not already open, open it so we take advantage of it setting a useful working directory for us in order to import data."
+    "text": "Mini exercise"
   },
   {
     "objectID": "modules/Module05-DataImportExport.html#mini-exercise-2",
     "href": "modules/Module05-DataImportExport.html#mini-exercise-2",
     "title": "Module 5: Data Import and Export",
     "section": "Mini exercise",
-    "text": "Mini exercise\nLets make some mistakes\n\nWhat if we read in the data without assigning it to an object (i.e., read_excel(path = \"data/serodata.xlsx\", sheet = \"Data\"))?\nWhat if we forget to specify the sheet argument? (i.e., dd &lt;- read_excel(path = \"data/serodata.xlsx\"))?"
+    "text": "Mini exercise\nIf your R Project is not already open, open it so we take advantage of it setting a useful working directory for us in order to import data."
   },
   {
     "objectID": "modules/Module06-DataSubset.html#learning-objectives",
@@ -2551,5 +2551,19 @@
     "title": "Module 7: Variable Creation, Classes, and Summaries",
     "section": "Numeric variable data summary",
     "text": "Numeric variable data summary\nLet’s look at a help file for mean() to make note of the na.rm argument\n\n?range\n\nRange of Values\nDescription:\n 'range' returns a vector containing the minimum and maximum of all\n the given arguments.\nUsage:\n range(..., na.rm = FALSE)\n \n ## Default S3 method:\n range(..., na.rm = FALSE, finite = FALSE)\n \nArguments:\n ...: any 'numeric' or character objects.\nna.rm: logical, indicating if ‘NA’’s should be omitted.\nfinite: logical, indicating if all non-finite elements should be omitted.\nDetails:\n 'range' is a generic function: methods can be defined for it\n directly or via the 'Summary' group generic.  For this to work\n properly, the arguments '...' should be unnamed, and dispatch is\n on the first argument.\n\n If 'na.rm' is 'FALSE', 'NA' and 'NaN' values in any of the\n arguments will cause 'NA' values to be returned, otherwise 'NA'\n values are ignored.\n\n If 'finite' is 'TRUE', the minimum and maximum of all finite\n values is computed, i.e., 'finite = TRUE' _includes_ 'na.rm =\n TRUE'.\n\n A special situation occurs when there is no (after omission of\n 'NA's) nonempty argument left, see 'min'.\nS4 methods:\n This is part of the S4 'Summary' group generic.  Methods for it\n must use the signature 'x, ..., na.rm'.\nReferences:\n Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S\n Language_.  Wadsworth & Brooks/Cole.\nSee Also:\n 'min', 'max'.\n\n The 'extendrange()' utility in package 'grDevices'.\nExamples:\n (r.x &lt;- range(stats::rnorm(100)))\n diff(r.x) # the SAMPLE range\n \n x &lt;- c(NA, 1:3, -1:1/0); x\n range(x)\n range(x, na.rm = TRUE)\n range(x, finite = TRUE)"
+  },
+  {
+    "objectID": "modules/Module05-DataImportExport.html#installing-and-attaching-packages---common-confusion",
+    "href": "modules/Module05-DataImportExport.html#installing-and-attaching-packages---common-confusion",
+    "title": "Module 5: Data Import and Export",
+    "section": "Installing and attaching packages - Common confusion",
+    "text": "Installing and attaching packages - Common confusion\n\nYou only need to install a package once (unless you update R or want to update the package), but you will need to attach a package each time you want to use it.\n\nThe exception to this rule are the “base” set of packages (i.e., Base R) that are installed automatically when you install R and that automatically attached whenever you open R or RStudio."
+  },
+  {
+    "objectID": "modules/Module05-DataImportExport.html#what-would-happen-if-we-made-these-mistakes",
+    "href": "modules/Module05-DataImportExport.html#what-would-happen-if-we-made-these-mistakes",
+    "title": "Module 5: Data Import and Export",
+    "section": "What would happen if we made these mistakes (*)",
+    "text": "What would happen if we made these mistakes (*)\n\nWhat do you think would happen if I had imported the data without assigning it to an object\n\n\nread_excel(path = \"data/serodata.xlsx\", sheet = \"Data\")\n\n\nWhat do you think would happen if I forgot to specify the sheet argument?\n\n\ndd &lt;- read_excel(path = \"data/serodata.xlsx\")"
   }
 ]

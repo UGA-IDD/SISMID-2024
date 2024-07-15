@@ -40,6 +40,12 @@ A delimited file is a sequential file with column delimiters. Each delimited fil
 
 1. Determine the delimiter of the two '.txt' files
 
+## Mini exercise
+
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("images/txt_files.png")
+```
+
 
 ## Import delimited data
 
@@ -62,30 +68,18 @@ read.csv(file, header = TRUE, sep = ",", quote = "\"",
          dec = ".", fill = TRUE, comment.char = "", ...)
 ```
 
-		-		`file` is the first argument and is the path to your file, in quotes 
-		
-				-		can be path in your local computer -- absolute file path or relative file path 
-				-		can be path to a file on a website
-
-## Mini exercise
-
-If your R Project is not already open, open it so we take advantage of it setting a useful working directory for us in order to import data.
-
-
-## Import .csv files
-
-Lets import a new data file
-
 ```{r, echo=TRUE, eval = FALSE}
 ## Examples
 df <- read.csv(file = "data/serodata.csv") #relative path
 ```
 
-
 Note #1, I assigned the data frame to an object called `df`.  I could have called the data anything, but in order to use the data (i.e., as an object we can find in the Environment), I need to assign it as an object. 
 
-Note #2, Look to the Environment pane, you will see the `df` object ready to be used.
+Note #2, If the data is imported correct, you can expect to see the `df` object ready to be used.
 
+```{r, out.width = "100%", echo = FALSE}
+knitr::include_graphics("images/df_in_env.png")
+```
 
 ## Import .txt files
 
@@ -100,10 +94,7 @@ read.delim(file, header = TRUE, sep = "\t", quote = "\"",
 		- `file` is the path to your file, in quotes 
 		- `delim` is what separates the fields within a record. The default for csv is comma
 
-## Import .txt files
-
-Lets first import 'serodata1.txt' which uses a tab delimiter and 'serodata2.txt' which uses a semicolon delimiter.
-
+We can import the '.txt' files given that we know that 'serodata1.txt' uses a tab delimiter and 'serodata2.txt' uses a semicolon delimiter.
 
 ```{r, eval = FALSE}
 ## Examples
@@ -111,12 +102,12 @@ df <- read.delim(file = "data/serodata.txt", sep = "\t")
 df <- read.delim(file = "data/serodata.txt", sep = ";")
 ```
 
-The dataset is now successfully read into your R workspace, **many times actually.** Notice, that each time we imported the data we assigned the data to the `df` object, meaning we replaced it each time we reassinged the `df` object.  
+The dataset is now successfully read into your R workspace, **many times actually.** Notice, that each time we imported the data we assigned the data to the `df` object, meaning we replaced it each time we reassigned the `df` object.  
 
 
 ## What if we have a .xlsx file - what do we do?
 
-1. Google / Ask ChatGPT
+1. Ask Google / ChatGPT
 2. Find and vet function and package you want
 3. Install package
 4. Attach package
@@ -137,7 +128,7 @@ I am getting consistent message to use the the `read_excel()` function found in 
 
 ## 3. Install Package
 
-To use the bundle or "package" of code (and or possibly data) from a package, you need to install and also call the package.
+To use the bundle or "package" of code (and or possibly data) from a package, you need to install and also attach the package.
 
 To install a package you can 
 
@@ -208,22 +199,28 @@ df <- read_excel(path = "data/serodata.xlsx", sheet = "Data")
 ```
 
 
-## Lets make some mistakes
+## What would happen if we made these mistakes (*)
 
-1. What if we read in the data without assigning it to an object (i.e., `read_excel(path = "data/serodata.xlsx", sheet = "Data")`)?
+1. What do you think would happen if I had imported  the data without assigning it to an object 
+```{r echo=TRUE, eval=FALSE}
+read_excel(path = "data/serodata.xlsx", sheet = "Data")
+```
 
-2. What if we forget to specify the sheet argument? (i.e., `dd <- read_excel(path = "data/serodata.xlsx")`)?
+2. What do you think would happen if I forgot to specify the `sheet` argument?
+```{r echo=TRUE, eval=FALSE}
+dd <- read_excel(path = "data/serodata.xlsx")
+```
 
 
-## Installing and calling packages - Common confusion
+## Installing and attaching packages - Common confusion
 
 </br>
 
-You only need to install a package once (unless you update R or want to update the package), but you will need to call or load a package each time you want to use it. 
+You only need to install a package once (unless you update R or want to update the package), but you will need to attach a package each time you want to use it. 
 
 </br>
 
-The exception to this rule are the "base" set of packages (i.e., **Base R**) that are installed automatically when you install R and that automatically called whenever you open R or RStudio.
+The exception to this rule are the "base" set of packages (i.e., **Base R**) that are installed automatically when you install R and that automatically attached whenever you open R or RStudio.
 
 
 ## Common Error
@@ -282,7 +279,7 @@ Saving datasets in `.rds` format can save time if you have to read it back in la
 `write_rds()` and `read_rds()` from `readr` package can be used to write/read a single R object to/from file.
 
 ```
-library(readr)
+require(readr)
 write_rds(object1, file = "filename.rds")
 object1 <- read_rds(file = "filename.rds")
 ```
@@ -311,7 +308,7 @@ Note, that you separate the objects you want to save with commas.
 - When importing data (exception is object from .RData), you must assign it to an object, otherwise it cannot be used
 - If data are imported correctly, they can be found in the Environment pane of RStudio
 - You only need to install a package once (unless you update R or the package), but you will need to attach a package each time you want to use it. 
-- To complete a task you don't know how to do (e.g., reading in an excel data file) use the following steps: 1. Google / Ask ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Attach package, 5. Use function
+- To complete a task you don't know how to do (e.g., reading in an excel data file) use the following steps: 1. Asl Google / ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Attach package, 5. Use function
 
 
 ## Acknowledgements

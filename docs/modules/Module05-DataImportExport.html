@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) - Module 5: Data Import and Export</title>
+  <title>SISMID Module NUMBER Materials (2025) – Module 5: Data Import and Export</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -432,7 +433,7 @@
 </ul>
 <p>A delimited file is a sequential file with column delimiters. Each delimited file is a stream of records, which consists of fields that are ordered by column. Each record contains fields for one row. Within each row, individual fields are separated by column <strong>delimiters</strong> (IBM.com definition)</p>
 </section>
-<section id="mini-exercise" class="slide level2">
+<section id="mini-exercise" class="slide level2 scrollable">
 <h2>Mini exercise</h2>
 <ol type="1">
 <li><p>Download Module 5 data from the website and save the data to your data subdirectory – specifically <code>SISMID_IntroToR_RProject/data</code></p></li>
@@ -441,11 +442,15 @@
 <li><p>Determine the delimiter of the two ‘.txt’ files</p></li>
 </ol>
 </section>
+<section id="mini-exercise-1" class="slide level2">
+<h2>Mini exercise</h2>
+
+<img data-src="images/txt_files.png" style="width:100.0%" class="r-stretch"></section>
 <section id="import-delimited-data" class="slide level2">
 <h2>Import delimited data</h2>
 <p>Within the Base R ‘util’ package we can find a handful of useful functions including <code>read.csv()</code> and <code>read.delim()</code> to importing data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>?read.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>?read.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
@@ -808,25 +813,14 @@ Examples:
 <p>Function signature reminder</p>
 <pre><code>read.csv(file, header = TRUE, sep = ",", quote = "\"",
          dec = ".", fill = TRUE, comment.char = "", ...)</code></pre>
-<pre><code>    -       `file` is the first argument and is the path to your file, in quotes 
-    
-            -       can be path in your local computer -- absolute file path or relative file path 
-            -       can be path to a file on a website</code></pre>
-</section>
-<section id="mini-exercise-1" class="slide level2">
-<h2>Mini exercise</h2>
-<p>If your R Project is not already open, open it so we take advantage of it setting a useful working directory for us in order to import data.</p>
-</section>
-<section id="import-.csv-files-1" class="slide level2">
-<h2>Import .csv files</h2>
-<p>Lets import a new data file</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="do">## Examples</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="do">## Examples</span></span>
+<span id="cb5-2"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note #1, I assigned the data frame to an object called <code>df</code>. I could have called the data anything, but in order to use the data (i.e., as an object we can find in the Environment), I need to assign it as an object.</p>
-<p>Note #2, Look to the Environment pane, you will see the <code>df</code> object ready to be used.</p>
-</section>
+<p>Note #2, If the data is imported correct, you can expect to see the <code>df</code> object ready to be used.</p>
+
+<img data-src="images/df_in_env.png" style="width:100.0%" class="r-stretch"></section>
 <section id="import-.txt-files" class="slide level2">
 <h2>Import .txt files</h2>
 <p><code>read.csv()</code> is a special case of <code>read.delim()</code> – a general function to read a delimited file into a data frame</p>
@@ -835,21 +829,18 @@ Examples:
            dec = ".", fill = TRUE, comment.char = "", ...)</code></pre>
 <pre><code>    - `file` is the path to your file, in quotes 
     - `delim` is what separates the fields within a record. The default for csv is comma</code></pre>
-</section>
-<section id="import-.txt-files-1" class="slide level2">
-<h2>Import .txt files</h2>
-<p>Lets first import ‘serodata1.txt’ which uses a tab delimiter and ‘serodata2.txt’ which uses a semicolon delimiter.</p>
+<p>We can import the ‘.txt’ files given that we know that ‘serodata1.txt’ uses a tab delimiter and ‘serodata2.txt’ uses a semicolon delimiter.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="do">## Examples</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"data/serodata.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3"></a>df <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"data/serodata.txt"</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="do">## Examples</span></span>
+<span id="cb8-2"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"data/serodata.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb8-3"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"data/serodata.txt"</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The dataset is now successfully read into your R workspace, <strong>many times actually.</strong> Notice, that each time we imported the data we assigned the data to the <code>df</code> object, meaning we replaced it each time we reassinged the <code>df</code> object.</p>
+<p>The dataset is now successfully read into your R workspace, <strong>many times actually.</strong> Notice, that each time we imported the data we assigned the data to the <code>df</code> object, meaning we replaced it each time we reassigned the <code>df</code> object.</p>
 </section>
-<section id="what-if-we-have-a-.xlsx-file---what-do-we-do" class="slide level2">
+<section id="what-if-we-have-a-.xlsx-file---what-do-we-do" class="slide level2 scrollable">
 <h2>What if we have a .xlsx file - what do we do?</h2>
 <ol type="1">
-<li>Google / Ask ChatGPT</li>
+<li>Ask Google / ChatGPT</li>
 <li>Find and vet function and package you want</li>
 <li>Install package</li>
 <li>Attach package</li>
@@ -860,13 +851,25 @@ Examples:
 <h2>1. Internet Search</h2>
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="images/ChatGPT.png" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="images/GoogleSearch.png" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="images/StackOverflow.png" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -874,9 +877,9 @@ Examples:
 <h2>2. Find and vet function and package you want</h2>
 <p>I am getting consistent message to use the the <code>read_excel()</code> function found in the <code>readxl</code> package. This package was developed by Hadley Wickham, who we know is reputable. Also, you can check that data was read in correctly, b/c this is a straightforward task.</p>
 </section>
-<section id="install-package" class="slide level2">
+<section id="install-package" class="slide level2 scrollable">
 <h2>3. Install Package</h2>
-<p>To use the bundle or “package” of code (and or possibly data) from a package, you need to install and also call the package.</p>
+<p>To use the bundle or “package” of code (and or possibly data) from a package, you need to install and also attach the package.</p>
 <p>To install a package you can</p>
 <ol type="1">
 <li>go to Tools —&gt; Install Packages in the RStudio header</li>
@@ -886,28 +889,28 @@ Examples:
 <li>use the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Therefore,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="attach-package" class="slide level2">
 <h2>4. Attach Package</h2>
 <p>Reminder - To attach (i.e., be able to use the package) you can use the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">require</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">require</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Therefore,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">require</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">require</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-function" class="slide level2">
 <h2>5. Use Function</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>?read_excel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>?read_excel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Read xls and xlsx files</p>
 <p>Description:</p>
@@ -1070,28 +1073,36 @@ Examples:
 )</code></pre>
 <p>Let’s practice</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data/serodata.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data/serodata.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="lets-make-some-mistakes" class="slide level2">
-<h2>Lets make some mistakes</h2>
+<section id="what-would-happen-if-we-made-these-mistakes" class="slide level2 scrollable">
+<h2>What would happen if we made these mistakes (*)</h2>
 <ol type="1">
-<li><p>What if we read in the data without assigning it to an object (i.e., <code>read_excel(path = "data/serodata.xlsx", sheet = "Data")</code>)?</p></li>
-<li><p>What if we forget to specify the sheet argument? (i.e., <code>dd &lt;- read_excel(path = "data/serodata.xlsx")</code>)?</p></li>
+<li>What do you think would happen if I had imported the data without assigning it to an object</li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data/serodata.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>What do you think would happen if I forgot to specify the <code>sheet</code> argument?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>dd <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data/serodata.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="installing-and-calling-packages---common-confusion" class="slide level2">
-<h2>Installing and calling packages - Common confusion</h2>
+<section id="installing-and-attaching-packages---common-confusion" class="slide level2">
+<h2>Installing and attaching packages - Common confusion</h2>
 <p><br></p>
-<p>You only need to install a package once (unless you update R or want to update the package), but you will need to call or load a package each time you want to use it.</p>
+<p>You only need to install a package once (unless you update R or want to update the package), but you will need to attach a package each time you want to use it.</p>
 <p><br></p>
-<p>The exception to this rule are the “base” set of packages (i.e., <strong>Base R</strong>) that are installed automatically when you install R and that automatically called whenever you open R or RStudio.</p>
+<p>The exception to this rule are the “base” set of packages (i.e., <strong>Base R</strong>) that are installed automatically when you install R and that automatically attached whenever you open R or RStudio.</p>
 </section>
 <section id="common-error" class="slide level2">
 <h2>Common Error</h2>
 <p>Be prepared to see this error</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>Error<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">"some_function_name"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>Error<span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">"some_function_name"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This usually means that either</p>
 <ul>
@@ -1323,9 +1334,9 @@ Examples:
 <h2>Export delimited data</h2>
 <p>Let’s practice exporting the data as three files with three different delimiters (comma, tab, semicolon)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">write.csv</span>(df, <span class="at">file=</span><span class="st">"data/serodata_new.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#comma delimited</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">write.table</span>(df, <span class="at">file=</span><span class="st">"data/serodata1_new.txt"</span>, <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#tab delimited</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">write.table</span>(df, <span class="at">file=</span><span class="st">"data/serodata2_new.txt"</span>, <span class="at">sep=</span><span class="st">";"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#semicolon delimited</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">write.csv</span>(df, <span class="at">file=</span><span class="st">"data/serodata_new.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#comma delimited</span></span>
+<span id="cb28-2"><a></a><span class="fu">write.table</span>(df, <span class="at">file=</span><span class="st">"data/serodata1_new.txt"</span>, <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#tab delimited</span></span>
+<span id="cb28-3"><a></a><span class="fu">write.table</span>(df, <span class="at">file=</span><span class="st">"data/serodata2_new.txt"</span>, <span class="at">sep=</span><span class="st">";"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="co">#semicolon delimited</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note, I wrote the data to new file names. Even though we didn’t change the data at all in this module, it is good practice to keep raw data raw, and not to write over it.</p>
 </section>
@@ -1338,7 +1349,7 @@ Examples:
 <h2>.rds binary file</h2>
 <p>Saving datasets in <code>.rds</code> format can save time if you have to read it back in later.</p>
 <p><code>write_rds()</code> and <code>read_rds()</code> from <code>readr</code> package can be used to write/read a single R object to/from file.</p>
-<pre><code>library(readr)
+<pre><code>require(readr)
 write_rds(object1, file = "filename.rds")
 object1 &lt;- read_rds(file = "filename.rds")</code></pre>
 </section>
@@ -1359,7 +1370,7 @@ load("filename.RData")</code></pre>
 <li>When importing data (exception is object from .RData), you must assign it to an object, otherwise it cannot be used</li>
 <li>If data are imported correctly, they can be found in the Environment pane of RStudio</li>
 <li>You only need to install a package once (unless you update R or the package), but you will need to attach a package each time you want to use it.</li>
-<li>To complete a task you don’t know how to do (e.g., reading in an excel data file) use the following steps: 1. Google / Ask ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Attach package, 5. Use function</li>
+<li>To complete a task you don’t know how to do (e.g., reading in an excel data file) use the following steps: 1. Asl Google / ChatGPT, 2. Find and vet function and package you want, 3. Install package, 4. Attach package, 5. Use function</li>
 </ul>
 </section>
 <section id="acknowledgements" class="slide level2">
@@ -1369,8 +1380,10 @@ load("filename.RData")</code></pre>
 <li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -1399,7 +1412,6 @@ load("filename.RData")</code></pre>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1654,18 +1666,7 @@ load("filename.RData")</code></pre>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1697,11 +1698,50 @@ load("filename.RData")</code></pre>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1711,8 +1751,17 @@ load("filename.RData")</code></pre>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1726,7 +1775,11 @@ load("filename.RData")</code></pre>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
