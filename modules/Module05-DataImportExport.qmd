@@ -30,15 +30,16 @@ A delimited file is a sequential file with column delimiters. Each delimited fil
 
 ## Mini exercise
 
-1. Download Module 5 data from the website and save the data to your data subdirectory -- specifically `SISMID_IntroToR_RProject/data`
+1. Download 5 data from the website and save the data to your data subdirectory -- specifically `SISMID_IntroToR_RProject/data`
 
-1. Open the '.csv' and '.txt' data files in a text editor application and familiarize yourself with the data (i.e., Notepad for Windows and TextEdit for Mac)
+1. Open the 'serodata.csv' and 'serodata1.txt' and 'serodata2.txt' data files in a text editor application and familiarize yourself with the data (i.e., Notepad for Windows and TextEdit for Mac)
 
-1. Open the '.xlsx' data file in excel and familiarize yourself with the data
+1. Determine the delimiter of the two '.txt' files
+
+1. Open the 'serodata.xlsx' data file in excel and familiarize yourself with the data
 		-		if you use a Mac **do not** open in Numbers, it can corrupt the file
 		-		if you do not have excel, you can upload it to Google Sheets
 
-1. Determine the delimiter of the two '.txt' files
 
 ## Mini exercise
 

@@ -45,6 +45,21 @@ library(printr)
 ?merge
 ```
 
+## Join Types
+
+- Full join: includes all unique observations in object df.x and df.y
+    - `merged.df <- merge(df.x, df.y, all.x=T, all.y=T, by=merge_variable)`
+    -  arguments `all = TRUE` is the same as `all.x = TRUE, all.y = TRUE`
+    -  the number of rows in `merged.df` is >= max(nrow(df.x), nrow(df.y))
+- Inner join: includes observations that are in both df.x and df.y
+    - `merged.df <- merge(df.x, df.y, all.x=F, all.y=F, by=merge_variable)`
+    - the number of rows in `merged.df` is <= min(nrow(df.x), nrow(df.y))
+- Left join: joining on the first object (df.x) so it includes observations that in df.x
+    - `merged.df <- merge(df.x, df.y, all.x=T, all.y=F, by=merge_variable)`
+    - the number of rows in `merged.df` is nrow(df.x)
+- Right join: joining on the second object (df.y) so it includes observations that in df.y
+    - `merged.df <- merge(df.x, df.y, all.x=F, all.y=T, by=merge_variable)`
+    - the number of rows in `merged.df` is nrow(df.y)
     
 ## Lets import the new data we want to merge and take a look
 
@@ -91,6 +106,7 @@ Now, lets merge.
 ```{r echo=TRUE}
 df_all_wide <- merge(df, df_new, all.x=T, all.y=T, by=c('observation_id'))
 str(df_all_wide)
+head(df_all_wide)
 ```
 
 ## Merge the new data with the original data
@@ -112,6 +128,7 @@ head(df_new)
 Now, lets merge. Note, "By default the data frames are merged on the columns with names they both have" therefore if I don't specify the by argument it will merge on all matching variables.
 ```{r echo=TRUE}
 df_all_long <- merge(df, df_new, all.x=T, all.y=T)
+str(df_all_long)
 head(df_all_long)
 ```
 
@@ -310,17 +327,17 @@ df_back_to_wide <- reshape(df_wide_to_long)
 
 ## Let's get real
 
-Use the `pivot_wider()` and `pivot_longer()` from the tidyr package!
+We recommend checking out the `pivot_wider()` and `pivot_longer()` from the tidyr package!
 
 
 
 ## Summary
 
-- the `merge()` function can be used to marge datasets. 
+- the `merge()` function can be used to merge datasets. 
 - pay close attention to the number of rows in your data set before and after a merge
-- wide data has many columns and has many columns per observation
-- long data has many rows and can have multiple rows per observation
-- the `reshape()` function allows you to toggle between wide and long data. although we highly recommend using `pivot_wider()` and `pivot_longer()` from the tidyr package instead 
+- wide data has many columns per observation
+- long data has many rows per observation
+- the `reshape()`function allows you to toggle between wide and long data. although we highly recommend playing around with the `pivot_wider()` and `pivot_longer()` from the tidyr package instead 
 		
 
 ## Acknowledgements
