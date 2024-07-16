@@ -18,6 +18,8 @@
 # Part A: Load the "measles_final" dataset you created at the end of exercise 3.
 # If you didn't finish exercise 3, you can download the finished Rds file from
 # the course website and start there.
+meas <- readRDS("data/measles_final.Rds") 
+#or
 meas <- readRDS(here::here("data", "measles_final.Rds"))
 
 # Part B: choose a country from the dataset to focus on, and make a new data
@@ -115,6 +117,8 @@ cor.test(
 # Q2: Diphtheria data ##########################################################
 # Part A: Load the Diphtheria_IgG_Serology dataset into R.
 library(haven)
+diph <- haven::read_sas("data/Diphtheria_IgG_Serology.sas7bdat")
+#OR
 diph <- haven::read_sas(here::here("data", "Diphtheria_IgG_Serology.sas7bdat"))
 
 # Part B: Make a 2x2 table of infection and vaccination. Format the labels so
