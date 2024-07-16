@@ -461,7 +461,7 @@
 Description:
 
 Package:            graphics
-Version:            4.3.1
+Version:            4.4.1
 Priority:           base
 Title:              The R Graphics Package
 Author:             R Core Team and contributors worldwide
@@ -469,10 +469,11 @@ Maintainer:         R Core Team &lt;do-use-Contact-address@r-project.org&gt;
 Contact:            R-help mailing list &lt;r-help@r-project.org&gt;
 Description:        R functions for base graphics.
 Imports:            grDevices
-License:            Part of R 4.3.1
+License:            Part of R 4.4.1
 NeedsCompilation:   yes
-Built:              R 4.3.1; aarch64-apple-darwin20; 2023-06-16
-                    21:53:01 UTC; unix
+Enhances:           vcd
+Built:              R 4.4.1; x86_64-w64-mingw32; 2024-06-14 08:20:40
+                    UTC; windows
 
 Index:
 
@@ -618,25 +619,25 @@ xspline                 Draw an X-spline</code></pre>
 
  Several parameters can only be set by a call to 'par()':
 
-    • '"ask"',
+    * '"ask"',
 
-    • '"fig"', '"fin"',
+    * '"fig"', '"fin"',
 
-    • '"lheight"',
+    * '"lheight"',
 
-    • '"mai"', '"mar"', '"mex"', '"mfcol"', '"mfrow"', '"mfg"',
+    * '"mai"', '"mar"', '"mex"', '"mfcol"', '"mfrow"', '"mfg"',
 
-    • '"new"',
+    * '"new"',
 
-    • '"oma"', '"omd"', '"omi"',
+    * '"oma"', '"omd"', '"omi"',
 
-    • '"pin"', '"plt"', '"ps"', '"pty"',
+    * '"pin"', '"plt"', '"ps"', '"pty"',
 
-    • '"usr"',
+    * '"usr"',
 
-    • '"xlog"', '"ylog"',
+    * '"xlog"', '"ylog"',
 
-    • '"ylbias"'
+    * '"ylbias"'
 
  The remaining parameters can also be set as arguments (often via
  '...') to high-level plot functions such as 'plot.default',
@@ -1121,12 +1122,16 @@ xspline                 Draw an X-spline</code></pre>
  directly in terms of their RGB components with a string of the
  form '"#RRGGBB"' where each of the pairs 'RR', 'GG', 'BB' consist
  of two hexadecimal digits giving a value in the range '00' to
- 'FF'.  Colors can also be specified by giving an index into a
- small table of colors, the 'palette': indices wrap round so with
- the default palette of size 8, '10' is the same as '2'.  This
- provides compatibility with S.  Index '0' corresponds to the
- background color.  Note that the palette (apart from '0' which is
- per-device) is a per-session setting.
+ 'FF'.  Hexadecimal colors can be in the long hexadecimal form
+ (e.g., '"#rrggbb"' or '"#rrggbbaa"') or the short form (e.g,
+ '"#rgb"' or '"#rgba"'). The short form is expanded to the long
+ form by replicating digits (not by adding zeroes), e.g., '"#rgb"'
+ becomes '"#rrggbb"'. Colors can also be specified by giving an
+ index into a small table of colors, the 'palette': indices wrap
+ round so with the default palette of size 8, '10' is the same as
+ '2'.  This provides compatibility with S.  Index '0' corresponds
+ to the background color.  Note that the palette (apart from '0'
+ which is per-device) is a per-session setting.
 
  Negative integer colours are errors.
 
@@ -1173,8 +1178,8 @@ xspline                 Draw an X-spline</code></pre>
 <p>See Also:</p>
 <pre><code> 'plot.default' for some high-level plotting parameters; 'colors';
  'clip'; 'options' for other setup parameters; graphic devices
- 'x11', 'postscript' and setting up device regions by 'layout' and
- 'split.screen'.</code></pre>
+ 'x11', 'pdf', 'postscript' and setting up device regions by
+ 'layout' and 'split.screen'.</code></pre>
 <p>Examples:</p>
 <pre><code> op &lt;- par(mfrow = c(2, 2), # 2 x 2 pictures on one plot
            pty = "s")       # square plotting region,
@@ -1297,17 +1302,17 @@ xspline                 Draw an X-spline</code></pre>
 <p>Arguments:</p>
 <pre><code>   x: a vector of values for which the histogram is desired.</code></pre>
 <p>breaks: one of:</p>
-<pre><code>        • a vector giving the breakpoints between histogram cells,
+<pre><code>        * a vector giving the breakpoints between histogram cells,
 
-        • a function to compute the vector of breakpoints,
+        * a function to compute the vector of breakpoints,
 
-        • a single number giving the number of cells for the
+        * a single number giving the number of cells for the
           histogram,
 
-        • a character string naming an algorithm to compute the
+        * a character string naming an algorithm to compute the
           number of cells (see 'Details'),
 
-        • a function to compute the number of cells.
+        * a function to compute the number of cells.
 
       In the last three cases the number is a suggestion only; as
       the breakpoints will be set to 'pretty' values, the number is
@@ -1351,13 +1356,13 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
       TRUE').</code></pre>
 <p>Details:</p>
 <pre><code> The definition of _histogram_ differs by source (with
- country-specific biases).  R's default with equi-spaced breaks
+ country-specific biases).  R's default with equispaced breaks
  (also the default) is to plot the counts in the cells defined by
  'breaks'.  Thus the height of a rectangle is proportional to the
  number of points falling into the cell, as is the area _provided_
  the breaks are equally-spaced.
 
- The default with non-equi-spaced breaks is to give a plot of area
+ The default with non-equispaced breaks is to give a plot of area
  one, in which the _area_ of the rectangles is the fraction of the
  data points falling in the cells.
 
@@ -1513,30 +1518,30 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
    y: the y coordinates of points in the plot, _optional_ if 'x' is
       an appropriate structure.
 
- ...: Arguments to be passed to methods, such as graphical
+ ...: arguments to be passed to methods, such as graphical
       parameters (see 'par').  Many methods will accept the
       following arguments:
 
       'type' what type of plot should be drawn.  Possible types are
 
-            • '"p"' for *p*oints,
+            * '"p"' for *p*oints,
 
-            • '"l"' for *l*ines,
+            * '"l"' for *l*ines,
 
-            • '"b"' for *b*oth,
+            * '"b"' for *b*oth,
 
-            • '"c"' for the lines part alone of '"b"',
+            * '"c"' for the lines part alone of '"b"',
 
-            • '"o"' for both '*o*verplotted',
+            * '"o"' for both '*o*verplotted',
 
-            • '"h"' for '*h*istogram' like (or 'high-density')
+            * '"h"' for '*h*istogram' like (or 'high-density')
               vertical lines,
 
-            • '"s"' for stair *s*teps,
+            * '"s"' for stair *s*teps,
 
-            • '"S"' for other *s*teps, see 'Details' below,
+            * '"S"' for other *s*teps, see 'Details' below,
 
-            • '"n"' for no plotting.
+            * '"n"' for no plotting.
 
           All other 'type's give a warning or an error; using,
           e.g., 'type = "punkte"' being equivalent to 'type = "p"'
@@ -1709,7 +1714,7 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
 <p>range: this determines how far the plot whiskers extend out from the box. If ‘range’ is positive, the whiskers extend to the most extreme data point which is no more than ‘range’ times the interquartile range from the box. A value of zero causes the whiskers to extend to the data extremes.</p>
 <p>width: a vector giving the relative widths of the boxes making up the plot.</p>
 <p>varwidth: if ‘varwidth’ is ‘TRUE’, the boxes are drawn with widths proportional to the square-roots of the number of observations in the groups.</p>
-<p>notch: if ‘notch’ is ‘TRUE’, a notch is drawn in each side of the boxes. If the notches of two plots do not overlap this is ‘strong evidence’ that the two medians differ (Chambers <em>et al</em>, 1983, p.&nbsp;62). See ‘boxplot.stats’ for the calculations used.</p>
+<p>notch: if ‘notch’ is ‘TRUE’, a notch is drawn in each side of the boxes. If the notches of two plots do not overlap this is ‘strong evidence’ that the two medians differ (Chambers et al., 1983, p.&nbsp;62). See ‘boxplot.stats’ for the calculations used.</p>
 <p>outline: if ‘outline’ is not true, the outliers are not drawn (as points whereas S+ uses lines).</p>
 <p>names: group labels which will be printed under each boxplot. Can be a character vector or an expression (see plotmath).</p>
 <p>boxwex: a scale factor to be applied to all boxes. When there are only a few groups, the appearance of the plot can be improved by making the boxes narrower.</p>
@@ -1904,7 +1909,7 @@ conf: a matrix where each column contains the lower and upper
       gamma-corrected grey palette if 'height' is a matrix; see
       'grey.colors'.</code></pre>
 <p>border: the color to be used for the border of the bars. Use ‘border = NA’ to omit borders. If there are shading lines, ‘border = TRUE’ means use the same colour for the border as for the shading lines.</p>
-<p>main,sub: main title and subtitle for the plot.</p>
+<p>main, sub: main title and subtitle for the plot.</p>
 <pre><code>xlab: a label for the x axis.
 
 ylab: a label for the y axis.
@@ -2028,7 +2033,6 @@ data: a data frame (or list) from which the variables in formula
  
  # Border color
  barplot(VADeaths, border = "dark blue") 
- 
  
  # Log scales (not much sense here)
  barplot(tN, col = heat.colors(12), log = "y")
@@ -2512,6 +2516,46 @@ Examples:
 <h2><code>barplot()</code> example</h2>
 
 <img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"></section>
+<section id="saving-plots-to-file" class="slide level2 scrollable">
+<h2>Saving plots to file</h2>
+<p>If you want to include your graphic in a paper or anything else, you need to save it as an image. One limitation of base R graphics is that the process for saving plots is a bit annoying.</p>
+<ol type="1">
+<li>Open a graphics device connection with a graphics function – examples include <code>pdf()</code>, <code>png()</code>, and <code>tiff()</code> for the most useful.</li>
+<li>Run the code that creates your plot.</li>
+<li>Use <code>dev.off()</code> to close the graphics device connection.</li>
+</ol>
+<p>Let’s do an example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a><span class="co"># Open the graphics device</span></span>
+<span id="cb92-2"><a></a><span class="fu">png</span>(</span>
+<span id="cb92-3"><a></a>    <span class="st">"my-barplot.png"</span>,</span>
+<span id="cb92-4"><a></a>    <span class="at">width =</span> <span class="dv">800</span>,</span>
+<span id="cb92-5"><a></a>    <span class="at">height =</span> <span class="dv">450</span>,</span>
+<span id="cb92-6"><a></a>    <span class="at">units =</span> <span class="st">"px"</span></span>
+<span id="cb92-7"><a></a>)</span>
+<span id="cb92-8"><a></a><span class="co"># Set the plot layout -- this is an alternative to par(mfrow = ...)</span></span>
+<span id="cb92-9"><a></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb92-10"><a></a><span class="co"># Make the plot</span></span>
+<span id="cb92-11"><a></a><span class="fu">barplot</span>(prop.column.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
+<span id="cb92-12"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb92-13"><a></a><span class="fu">legend</span>(<span class="st">"topright"</span>,</span>
+<span id="cb92-14"><a></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
+<span id="cb92-15"><a></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
+<span id="cb92-16"><a></a></span>
+<span id="cb92-17"><a></a><span class="fu">barplot</span>(prop.column.percentages2, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Residence"</span>)</span>
+<span id="cb92-18"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb92-19"><a></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>),  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
+<span id="cb92-20"><a></a><span class="co"># Close the graphics device</span></span>
+<span id="cb92-21"><a></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>png 
+  2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a></a><span class="co"># Reset the layout</span></span>
+<span id="cb94-2"><a></a><span class="fu">layout</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note: after you do an interactive graphics session, it is often helpful to restart R or run the function <code>graphics.off()</code> before opening the graphics connection device.</p>
+</section>
 <section id="base-r-plots-vs-the-tidyverse-ggplot2-package" class="slide level2">
 <h2>Base R plots vs the Tidyverse ggplot2 package</h2>
 <p>It is good to know both b/c they each have their strengths</p>

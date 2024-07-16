@@ -616,7 +616,7 @@ Examples:
 </section>
 <section id="creating-conditional-variables" class="slide level2">
 <h2>Creating conditional variables</h2>
-<p>One frequently used tool is creating variables with conditions. A general function for creating new variables based on existing variables is the Base R <code>ifelse()</code> function, which “returns a value depending on whether the element of test is <code>TRUE</code> or <code>FALSE</code>.”</p>
+<p>One frequently used tool is creating variables with conditions. A general function for creating new variables based on existing variables is the Base R <code>ifelse()</code> function, which “returns a value depending on whether the element of test is <code>TRUE</code> or <code>FALSE</code> or <code>NA</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>?ifelse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1584,7 +1584,7 @@ Examples:
 </section>
 <section id="numeric-variable-data-summary-1" class="slide level2">
 <h2>Numeric variable data summary</h2>
-<p>Let’s look at a help file for <code>mean()</code> to make note of the <code>na.rm</code> argument</p>
+<p>Let’s look at a help file for <code>range()</code> to make note of the <code>na.rm</code> argument</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a>?range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2067,7 +2067,7 @@ Examples:
 <li>One useful function for creating new variables based on existing variables is the <code>ifelse()</code> function, which returns a value depending on whether the element of test is <code>TRUE</code> or <code>FALSE</code></li>
 <li>The <code>class()</code> function allows you to evaluate the class of an object.</li>
 <li>There are two types of numeric class objects: integer and double</li>
-<li>Logical class objects only have <code>TRUE</code> or <code>False</code> (without quotes)</li>
+<li>Logical class objects only have <code>TRUE</code> or <code>FALSE</code> or <code>NA</code> (without quotes)</li>
 <li><code>is.CLASS_NAME(x)</code> can be used to test the class of an object x</li>
 <li><code>as.CLASS_NAME(x)</code> can be used to change the class of an object x</li>
 <li>Factors are a special character class that has levels</li>

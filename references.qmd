@@ -14,6 +14,18 @@ nocite: "@*"
     - And the rendered HTML file is here: [click to download](./modules/Module11-Rmarkdown-Demo.html){target="_blank"}
 * Course GitHub where all materials can be found (to download the entire course as a zip file click the green "Code" button): [https://github.com/UGA-IDD/SISMID-2024](https://github.com/UGA-IDD/SISMID-2024){target="_blank"}.
 
+# Useful (+ Free) Resources
+
+- R for Data Science: http://r4ds.had.co.nz/  
+(great general information)
+- Fundamentals of Data Visualization: https://clauswilke.com/dataviz/ 
+- R for Epidemiology: https://www.r4epi.com/
+- The Epidemiologist R Handbook: https://epirhandbook.com/en/
+- R basics by Rafael A. Irizarry: https://rafalab.github.io/dsbook/r-basics.html
+(great general information)
+- Open Case Studies: https://www.opencasestudies.org/  
+(resource for specific public health cases with statistical implementation and interpretation)
+
 # Need help?
 
 - Various "Cheat Sheets": [https://github.com/rstudio/cheatsheets/](https://github.com/rstudio/cheatsheets/)

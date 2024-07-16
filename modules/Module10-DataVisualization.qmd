@@ -436,6 +436,49 @@ axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
 legend("topright", fill=c("darkblue","red"),  legend = c("seronegative", "seropositive"))
 ```
 
+## Saving plots to file
+
+If you want to include your graphic in a paper or anything else, you need to
+save it as an image. One limitation of base R graphics is that the process for
+saving plots is a bit annoying.
+
+1. Open a graphics device connection with a graphics function -- examples
+include `pdf()`, `png()`, and `tiff()` for the most useful.
+1. Run the code that creates your plot.
+1. Use `dev.off()` to close the graphics device connection.
+
+Let's do an example.
+
+```{r}
+# Open the graphics device
+png(
+	"my-barplot.png",
+	width = 800,
+	height = 450,
+	units = "px"
+)
+# Set the plot layout -- this is an alternative to par(mfrow = ...)
+layout(matrix(c(1, 2), ncol = 2))
+# Make the plot
+barplot(prop.column.percentages, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Age Group")
+axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
+legend("topright",
+			 fill=c("darkblue","red"), 
+			 legend = c("seronegative", "seropositive"))
+
+barplot(prop.column.percentages2, col=c("darkblue","red"), ylim=c(0,1.35), main="Seropositivity by Residence")
+axis(2, at = c(0.2, 0.4, 0.6, 0.8,1))
+legend("topright", fill=c("darkblue","red"),  legend = c("seronegative", "seropositive"))
+# Close the graphics device
+dev.off()
+# Reset the layout
+layout(1)
+```
+
+Note: after you do an interactive graphics session, it is often helpful to
+restart R or run the function `graphics.off()` before opening the graphics
+connection device.
+
 ## Base R plots vs the Tidyverse ggplot2 package
 
 It is good to know both b/c they each have their strengths

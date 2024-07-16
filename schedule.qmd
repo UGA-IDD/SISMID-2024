@@ -40,21 +40,21 @@ All times are in Eastern Daylight Time (EDT; UTC-4)
 
 | Time                | Section |
 |:--------------------|:--------|
-| 08:30 am - 09:00 am | exercise review and questions / catchup |
-| 09:00 am - 09:15 am | Module 8 |
-| 09:15 am - 10:00 am | Exercise 3 work time |
+| 08:30 am - 09:00 am | exercise review and questions / catchup (Zane) |
+| 09:00 am - 09:15 am | Module 8 (Amy) |
+| 09:15 am - 10:00 am | Data analysis walkthrough (Zane and Amy) |
 | 10:00 am - 10:30 am | Coffee break |
-| 10:30 am - 10:45 am | Exercise review |
-| 10:45 am - 11:15 am | Module 9 |
-| 11:15 am - 12:00 pm | Data analysis walkthrough |
+| 10:30 am - 10:45 am | Exercise 3 work time |
+| 10:45 am - 11:15 am | Exercise review (Zane) |
+| 11:15 am - 12:00 pm | Module 9 (Amy) |
 | 12:00 pm - 01:30 pm | Lunch (2nd floor lobby); **Lunch and Learn!** |
 | 01:30 pm - 02:00 pm | Exercise 4 |
-| 02:00 pm - 02:30 pm | Exercise 4 review |
-| 02:30 pm - 03:00 pm | Module 10 |
+| 02:00 pm - 02:30 pm | Exercise 4 review (Zane) |
+| 02:30 pm - 03:00 pm | Module 10 (Amy) |
 | 03:00 pm - 03:30 pm | Coffee break |
 | 03:30 pm - 04:00 pm | Exercise 5 |
-| 04:00 pm - 04:30 pm | Review exercise 5 |
-| 04:30 pm - 05:00 pm | Module 11 |
+| 04:00 pm - 04:30 pm | Review exercise 5 (Zane) |
+| 04:30 pm - 05:00 pm | Module 11 (Zane) |
 
 : {.striped .hover tbl-colwidths="[25,75]"}
 

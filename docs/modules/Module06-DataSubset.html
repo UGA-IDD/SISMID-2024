@@ -1478,18 +1478,19 @@ $gsu
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>cn[cn<span class="sc">==</span><span class="st">"IgG_concentration"</span>] <span class="ot">&lt;-</span><span class="st">"IgG_concentration_mIU"</span> <span class="co">#rename cn to "IgG_concentration_mIU" when cn is "IgG_concentration"</span></span>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>cn[cn<span class="sc">==</span><span class="st">"IgG_concentration"</span>] <span class="ot">&lt;-</span><span class="st">"IgG_concentration_IU/mL"</span> <span class="co">#rename cn to "IgG_concentration_IU" when cn is "IgG_concentration"</span></span>
 <span id="cb73-2"><a></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> cn</span>
 <span id="cb73-3"><a></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "observation_id"        "IgG_concentration_mIU" "age"                  
-[4] "gender"                "slum"                 </code></pre>
+<pre><code>[1] "observation_id"          "IgG_concentration_IU/mL"
+[3] "age"                     "gender"                 
+[5] "slum"                   </code></pre>
 </div>
 </div>
 <p><br></p>
 <p>Note, I am resetting the column name back to the original name for the sake of the rest of the module.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">colnames</span>(df)[<span class="fu">colnames</span>(df)<span class="sc">==</span><span class="st">"IgG_concentration_mIU"</span>] <span class="ot">&lt;-</span> <span class="st">"IgG_concentration"</span> <span class="co">#reset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">colnames</span>(df)[<span class="fu">colnames</span>(df)<span class="sc">==</span><span class="st">"IgG_concentration_IU/mL"</span>] <span class="ot">&lt;-</span> <span class="st">"IgG_concentration"</span> <span class="co">#reset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-indexing-and-logical-operators-to-subset-data" class="slide level2">

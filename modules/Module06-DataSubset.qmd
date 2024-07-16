@@ -282,7 +282,7 @@ colnames(df)
 
 Note, I am resetting the column name back to the original name for the sake of the rest of the module.
 ```{r echo=TRUE}
-colnames(df)[colnames(df)=="IgG_concentration_IU"] <- "IgG_concentration" #reset
+colnames(df)[colnames(df)=="IgG_concentration_IU/mL"] <- "IgG_concentration" #reset
 ```
 
 
