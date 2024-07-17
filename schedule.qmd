@@ -62,8 +62,12 @@ All times are in Eastern Daylight Time (EDT; UTC-4)
 
 | Time                | Section |
 |:--------------------|:--------|
-| 08:30 am - 10:00 am | tbd; Modules 12 (Amy) and 13 (Zane) |
-| 10:00 am - 10:15 am | Coffee break |
-| 10:30 am - 12:00 pm | tbd; Module 14, practice, questions, review |
+| 08:30 am - 09:00 am | Exercise 5 review |
+| 09:00 am - 09:30 am | Module 11 |
+| 09:30 am - 10:00 am | RMarkdown Practice |
+| 10:00 am - 10:30 am | Coffee break |
+| 10:30 am - 11:00 am | Module 12 |
+| 11:00 am - 11:30 am | Module 13 |
+| 11:30 am - 12:00 pm | Practice, review, questions |
 
 : {.striped .hover tbl-colwidths="[25,75]"}

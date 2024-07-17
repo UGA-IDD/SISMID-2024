@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.54">
+  <meta name="generator" content="quarto-1.4.510">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) – Module 12: Function</title>
+  <title>SISMID Module NUMBER Materials (2025) - Module 13: Functions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.cf { color: #003b4f; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.kw { color: #003b4f; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -393,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Module 12: Function</h1>
+  <h1 class="title">Module 13: Functions</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -411,12 +411,12 @@
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
-<p>After module 12, you should be able to:</p>
+<p>After module 13, you should be able to:</p>
 <ul>
 <li>Create your own function</li>
 </ul>
 </section>
-<section id="writing-your-own-functions" class="slide level2 scrollable">
+<section id="writing-your-own-functions" class="slide level2">
 <h2>Writing your own functions</h2>
 <p>So far, we have seen many functions (e.g., <code>c()</code>, <code>class()</code>, <code>mean()</code>, <code>tranform()</code>, <code>aggregate()</code> and many more</p>
 <p><strong>why create your own function?</strong></p>
@@ -431,11 +431,11 @@
 <h2>Writing your own functions</h2>
 <p>Here we will write a function that multiplies some number (x) by 2:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>times_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>times_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When you run the line of code above, you make it ready to use (no output yet!) Let’s test it!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">times_2</span>(<span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">times_2</span>(<span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20</code></pre>
 </div>
@@ -445,10 +445,10 @@
 <h2>Writing your own functions:</h2>
 <p>Adding the curly brackets - <code>{ }</code> - allows you to use functions spanning multiple lines:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>times_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb4-2"><a></a>  x<span class="sc">*</span><span class="dv">3</span></span>
-<span id="cb4-3"><a></a>}</span>
-<span id="cb4-4"><a></a><span class="fu">times_3</span>(<span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>times_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  x<span class="sc">*</span><span class="dv">3</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>}</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">times_3</span>(<span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
@@ -458,11 +458,11 @@
 <h2>Writing your own functions: <code>return</code></h2>
 <p>If we want something specific for the function’s output, we use <code>return()</code>. Note, if you want to return more than one object, you need to put it into a list using the <code>list()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>times_4 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb6-2"><a></a>  output <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">4</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">return</span>(<span class="fu">list</span>(output, x))</span>
-<span id="cb6-4"><a></a>}</span>
-<span id="cb6-5"><a></a><span class="fu">times_4</span>(<span class="at">x =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>times_4 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  output <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">4</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">return</span>(<span class="fu">list</span>(output, x))</span>
+<span id="cb6-4"><a href="#cb6-4"></a>}</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">times_4</span>(<span class="at">x =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 40
@@ -472,7 +472,7 @@
 </div>
 </div>
 </section>
-<section id="function-syntax" class="slide level2 scrollable">
+<section id="function-syntax" class="slide level2">
 <h2>Function Syntax</h2>
 <p>This is a brief introduction. The syntax is:</p>
 <pre><code>functionName = function(inputs) {
@@ -490,11 +490,11 @@ return(list(value1, value2))
 <h2>Writing your own functions: multiple arguments</h2>
 <p>Functions can take multiple arguments / inputs. Here the function has two arguments <code>x</code> and <code>y</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>times_2_plus_y <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb9-2"><a></a>  out <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span> <span class="sc">+</span> y</span>
-<span id="cb9-3"><a></a>  <span class="fu">return</span>(out)</span>
-<span id="cb9-4"><a></a>}</span>
-<span id="cb9-5"><a></a><span class="fu">times_2_plus_y</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>times_2_plus_y <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  out <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span> <span class="sc">+</span> y</span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb9-4"><a href="#cb9-4"></a>}</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">times_2_plus_y</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 23</code></pre>
 </div>
@@ -504,18 +504,18 @@ return(list(value1, value2))
 <h2>Writing your own functions: arugment defaults</h2>
 <p>Functions can have default arguments. This lets us use the function without specifying the arguments</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>times_2_plus_y <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="dv">3</span>) {</span>
-<span id="cb11-2"><a></a>  out <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span> <span class="sc">+</span> y</span>
-<span id="cb11-3"><a></a>  <span class="fu">return</span>(out)</span>
-<span id="cb11-4"><a></a>}</span>
-<span id="cb11-5"><a></a><span class="fu">times_2_plus_y</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>times_2_plus_y <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="dv">3</span>) {</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  out <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span> <span class="sc">+</span> y</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>}</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">times_2_plus_y</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 23</code></pre>
 </div>
 </div>
 <p>We got an answer b/c we put defaults into the function arguments.</p>
 </section>
-<section id="writing-a-simple-function" class="slide level2 scrollable">
+<section id="writing-a-simple-function" class="slide level2">
 <h2>Writing a simple function</h2>
 <p>Let’s write a function, <code>sqdif</code>, that:</p>
 <ol type="1">
@@ -529,20 +529,20 @@ return(list(value1, value2))
 return(list(value1, value2))
 }</code></pre>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>sqdif <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x=</span><span class="dv">2</span>,<span class="at">y=</span><span class="dv">3</span>){</span>
-<span id="cb14-2"><a></a>     output <span class="ot">&lt;-</span> (x<span class="sc">-</span>y)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb14-3"><a></a>     <span class="fu">return</span>(output)</span>
-<span id="cb14-4"><a></a>}</span>
-<span id="cb14-5"><a></a></span>
-<span id="cb14-6"><a></a><span class="fu">sqdif</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>sqdif <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x=</span><span class="dv">2</span>,<span class="at">y=</span><span class="dv">3</span>){</span>
+<span id="cb14-2"><a href="#cb14-2"></a>     output <span class="ot">&lt;-</span> (x<span class="sc">-</span>y)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>     <span class="fu">return</span>(output)</span>
+<span id="cb14-4"><a href="#cb14-4"></a>}</span>
+<span id="cb14-5"><a href="#cb14-5"></a></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="fu">sqdif</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">sqdif</span>(<span class="at">x=</span><span class="dv">10</span>,<span class="at">y=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">sqdif</span>(<span class="at">x=</span><span class="dv">10</span>,<span class="at">y=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">sqdif</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">sqdif</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25</code></pre>
 </div>
@@ -552,11 +552,11 @@ return(list(value1, value2))
 <h2>Writing your own functions: characters</h2>
 <p>Functions can have any kind of data type input. For example, here is a function with characters:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>loud <span class="ot">&lt;-</span> <span class="cf">function</span>(word) {</span>
-<span id="cb20-2"><a></a>  output <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">toupper</span>(word), <span class="dv">5</span>)</span>
-<span id="cb20-3"><a></a>  <span class="fu">return</span>(output)</span>
-<span id="cb20-4"><a></a>}</span>
-<span id="cb20-5"><a></a><span class="fu">loud</span>(<span class="at">word =</span> <span class="st">"hooray!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>loud <span class="ot">&lt;-</span> <span class="cf">function</span>(word) {</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  output <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">toupper</span>(word), <span class="dv">5</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">return</span>(output)</span>
+<span id="cb20-4"><a href="#cb20-4"></a>}</span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="fu">loud</span>(<span class="at">word =</span> <span class="st">"hooray!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "HOORAY!" "HOORAY!" "HOORAY!" "HOORAY!" "HOORAY!"</code></pre>
 </div>
@@ -566,7 +566,7 @@ return(list(value1, value2))
 <h2>Using functions with <code>aggregate()</code></h2>
 <p>You can apply functions easily to groups with <code>aggregate()</code>. As a reminder, we learned <code>aggregate()</code> yesterday in Module 9. We will take a quick look at the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  observation_id IgG_concentration age gender     slum age_group seropos
 1           5772        0.31768953   2 Female Non slum     young       0
@@ -579,11 +579,11 @@ return(list(value1, value2))
 </div>
 <p>Then, we used the following code to estimate the standard deviation of <code>IgG_concentration</code> for each unique combination of <code>age_group</code> and <code>slum</code> variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">aggregate</span>(</span>
-<span id="cb24-2"><a></a>    IgG_concentration <span class="sc">~</span> age_group <span class="sc">+</span> slum,</span>
-<span id="cb24-3"><a></a>    <span class="at">data =</span> df,</span>
-<span id="cb24-4"><a></a>    <span class="at">FUN =</span> sd <span class="co"># standard deviation</span></span>
-<span id="cb24-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">aggregate</span>(</span>
+<span id="cb24-2"><a href="#cb24-2"></a>    IgG_concentration <span class="sc">~</span> age_group <span class="sc">+</span> slum,</span>
+<span id="cb24-3"><a href="#cb24-3"></a>    <span class="at">data =</span> df,</span>
+<span id="cb24-4"><a href="#cb24-4"></a>    <span class="at">FUN =</span> sd <span class="co"># standard deviation</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  age_group     slum IgG_concentration
 1     young    Mixed         174.89797
@@ -603,10 +603,10 @@ return(list(value1, value2))
 <p>But, lets say we want to do something different. Rather than taking the standard deviation and using a function that already exists (<code>sd()</code>), lets take the natural log of <code>IgG_concentration</code> and then get the mean. To do this, we can create our own function and this plug it into the <code>FUN</code> argument.</p>
 <p>Step 1 - code/type our own function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>log_mean_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb26-2"><a></a>    output <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(x))</span>
-<span id="cb26-3"><a></a>    <span class="fu">return</span>(output)</span>
-<span id="cb26-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>log_mean_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    output <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">log</span>(x))</span>
+<span id="cb26-3"><a href="#cb26-3"></a>    <span class="fu">return</span>(output)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p>Step 2 - execute our function (i.e., run the lines of code), and you would not be able to see it in you Environment pane.</p>
@@ -614,11 +614,11 @@ return(list(value1, value2))
 <img data-src="images/log_mean_function.png" class="quarto-figure quarto-figure-left r-stretch" style="width:100.0%"><p><br></p>
 <p>Step 3 - use the function by plugging it in the <code>aggregate()</code> function in order to complete our task</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">aggregate</span>(</span>
-<span id="cb27-2"><a></a>    IgG_concentration <span class="sc">~</span> age_group <span class="sc">+</span> slum,</span>
-<span id="cb27-3"><a></a>    <span class="at">data =</span> df,</span>
-<span id="cb27-4"><a></a>    <span class="at">FUN =</span> log_mean_function</span>
-<span id="cb27-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">aggregate</span>(</span>
+<span id="cb27-2"><a href="#cb27-2"></a>    IgG_concentration <span class="sc">~</span> age_group <span class="sc">+</span> slum,</span>
+<span id="cb27-3"><a href="#cb27-3"></a>    <span class="at">data =</span> df,</span>
+<span id="cb27-4"><a href="#cb27-4"></a>    <span class="at">FUN =</span> log_mean_function</span>
+<span id="cb27-5"><a href="#cb27-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  age_group     slum IgG_concentration
 1     young    Mixed        0.50082888
@@ -637,30 +637,30 @@ return(list(value1, value2))
 <h2>Example from Module 12</h2>
 <p>In the last Module 12, we used loops to loop through every country in the dataset, and get the median, first and third quartiles, and range for each country and stored those summary statistics in a data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
-<span id="cb29-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
-<span id="cb29-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
-<span id="cb29-4"><a></a>    </span>
-<span id="cb29-5"><a></a>    <span class="co"># Get the summary statistics for this country</span></span>
-<span id="cb29-6"><a></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
-<span id="cb29-7"><a></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
-<span id="cb29-8"><a></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
-<span id="cb29-9"><a></a>    )</span>
-<span id="cb29-10"><a></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb29-11"><a></a>    </span>
-<span id="cb29-12"><a></a>    <span class="co"># Save the summary statistics into a data frame</span></span>
-<span id="cb29-13"><a></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb29-14"><a></a>        <span class="at">country =</span> countries[[i]],</span>
-<span id="cb29-15"><a></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
-<span id="cb29-16"><a></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
-<span id="cb29-17"><a></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
-<span id="cb29-18"><a></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
-<span id="cb29-19"><a></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
-<span id="cb29-20"><a></a>    )</span>
-<span id="cb29-21"><a></a>    </span>
-<span id="cb29-22"><a></a>    <span class="co"># Save the results to our container</span></span>
-<span id="cb29-23"><a></a>    res[[i]] <span class="ot">&lt;-</span> country_summary</span>
-<span id="cb29-24"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb29-2"><a href="#cb29-2"></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb29-4"><a href="#cb29-4"></a>    </span>
+<span id="cb29-5"><a href="#cb29-5"></a>    <span class="co"># Get the summary statistics for this country</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
+<span id="cb29-7"><a href="#cb29-7"></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb29-8"><a href="#cb29-8"></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb29-9"><a href="#cb29-9"></a>    )</span>
+<span id="cb29-10"><a href="#cb29-10"></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-11"><a href="#cb29-11"></a>    </span>
+<span id="cb29-12"><a href="#cb29-12"></a>    <span class="co"># Save the summary statistics into a data frame</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb29-14"><a href="#cb29-14"></a>        <span class="at">country =</span> countries[[i]],</span>
+<span id="cb29-15"><a href="#cb29-15"></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
+<span id="cb29-16"><a href="#cb29-16"></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
+<span id="cb29-17"><a href="#cb29-17"></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
+<span id="cb29-18"><a href="#cb29-18"></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
+<span id="cb29-19"><a href="#cb29-19"></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
+<span id="cb29-20"><a href="#cb29-20"></a>    )</span>
+<span id="cb29-21"><a href="#cb29-21"></a>    </span>
+<span id="cb29-22"><a href="#cb29-22"></a>    <span class="co"># Save the results to our container</span></span>
+<span id="cb29-23"><a href="#cb29-23"></a>    res[[i]] <span class="ot">&lt;-</span> country_summary</span>
+<span id="cb29-24"><a href="#cb29-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="function-instead-of-loop" class="slide level2">
@@ -668,41 +668,41 @@ return(list(value1, value2))
 <p>Here we are going to set up a function that takes our data frame and outputs the median, first and third quartiles, and range of measles cases for a specified country.</p>
 <p>Step 1 - code/type our own function. We specify two arguments, the first argument is our data frame and the second is one country’s iso3 code. Notice, I included common documentation for</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>get_country_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(df, iso3_code){</span>
-<span id="cb30-2"><a></a>    </span>
-<span id="cb30-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, iso3c <span class="sc">==</span> iso3_code)</span>
-<span id="cb30-4"><a></a>    </span>
-<span id="cb30-5"><a></a>    <span class="co"># Get the summary statistics for this country</span></span>
-<span id="cb30-6"><a></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
-<span id="cb30-7"><a></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
-<span id="cb30-8"><a></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
-<span id="cb30-9"><a></a>    )</span>
-<span id="cb30-10"><a></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-11"><a></a>    </span>
-<span id="cb30-12"><a></a>    country_name <span class="ot">&lt;-</span> <span class="fu">unique</span>(country_data<span class="sc">$</span>country)</span>
-<span id="cb30-13"><a></a>    </span>
-<span id="cb30-14"><a></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb30-15"><a></a>        <span class="at">country =</span> country_name,</span>
-<span id="cb30-16"><a></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
-<span id="cb30-17"><a></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
-<span id="cb30-18"><a></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
-<span id="cb30-19"><a></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
-<span id="cb30-20"><a></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
-<span id="cb30-21"><a></a>    )</span>
-<span id="cb30-22"><a></a>    </span>
-<span id="cb30-23"><a></a>    <span class="fu">return</span>(country_summary)</span>
-<span id="cb30-24"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>get_country_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(df, iso3_code){</span>
+<span id="cb30-2"><a href="#cb30-2"></a>    </span>
+<span id="cb30-3"><a href="#cb30-3"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, iso3c <span class="sc">==</span> iso3_code)</span>
+<span id="cb30-4"><a href="#cb30-4"></a>    </span>
+<span id="cb30-5"><a href="#cb30-5"></a>    <span class="co"># Get the summary statistics for this country</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
+<span id="cb30-7"><a href="#cb30-7"></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb30-8"><a href="#cb30-8"></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb30-9"><a href="#cb30-9"></a>    )</span>
+<span id="cb30-10"><a href="#cb30-10"></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-11"><a href="#cb30-11"></a>    </span>
+<span id="cb30-12"><a href="#cb30-12"></a>    country_name <span class="ot">&lt;-</span> <span class="fu">unique</span>(country_data<span class="sc">$</span>country)</span>
+<span id="cb30-13"><a href="#cb30-13"></a>    </span>
+<span id="cb30-14"><a href="#cb30-14"></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-15"><a href="#cb30-15"></a>        <span class="at">country =</span> country_name,</span>
+<span id="cb30-16"><a href="#cb30-16"></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
+<span id="cb30-17"><a href="#cb30-17"></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
+<span id="cb30-18"><a href="#cb30-18"></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
+<span id="cb30-19"><a href="#cb30-19"></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
+<span id="cb30-20"><a href="#cb30-20"></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
+<span id="cb30-21"><a href="#cb30-21"></a>    )</span>
+<span id="cb30-22"><a href="#cb30-22"></a>    </span>
+<span id="cb30-23"><a href="#cb30-23"></a>    <span class="fu">return</span>(country_summary)</span>
+<span id="cb30-24"><a href="#cb30-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 2 - execute our function (i.e., run the lines of code), and you would not be able to see it in you Environment pane.</p>
 
 <img data-src="images/get_country_stats_function.png" class="quarto-figure quarto-figure-left r-stretch" style="width:100.0%"><p>Step 3 - use the function by pulling out stats for India and Pakistan</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">get_country_stats</span>(<span class="at">df=</span>meas, <span class="at">iso3_code=</span><span class="st">"IND"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">get_country_stats</span>(<span class="at">df=</span>meas, <span class="at">iso3_code=</span><span class="st">"IND"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  country  min    Q1 median      Q3    max
 1   India 3305 30813  47072 74828.5 252940</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">get_country_stats</span>(<span class="at">df=</span>meas, <span class="at">iso3_code=</span><span class="st">"PAK"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">get_country_stats</span>(<span class="at">df=</span>meas, <span class="at">iso3_code=</span><span class="st">"PAK"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   country min   Q1 median      Q3   max
 1 Pakistan 386 2065   3903 13860.5 55543</code></pre>
@@ -734,24 +734,22 @@ return(list(value1, value2))
 <section id="mini-exercise-answer" class="title-slide slide level1 center">
 <h1>Mini Exercise Answer</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>get_time_series_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, iso3_code){</span>
-<span id="cb36-2"><a></a>    </span>
-<span id="cb36-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, iso3c <span class="sc">==</span> iso3_code)</span>
-<span id="cb36-4"><a></a>    </span>
-<span id="cb36-5"><a></a>    <span class="fu">png</span>(<span class="at">filename=</span><span class="fu">paste0</span>(<span class="st">"output/time_series_"</span>, iso3_code, <span class="st">".png"</span>))</span>
-<span id="cb36-6"><a></a>    <span class="fu">plot</span>(country_data<span class="sc">$</span>time, country_data<span class="sc">$</span>Cases, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">xlab=</span><span class="st">"year"</span>, <span class="at">ylab=</span><span class="st">"Measles Cases"</span>)</span>
-<span id="cb36-7"><a></a>    <span class="fu">dev.off</span>()</span>
-<span id="cb36-8"><a></a>    </span>
-<span id="cb36-9"><a></a>}</span>
-<span id="cb36-10"><a></a></span>
-<span id="cb36-11"><a></a><span class="fu">get_time_series_plot</span>(<span class="at">df=</span>meas, <span class="at">iso3_code=</span><span class="st">"IND"</span>)</span>
-<span id="cb36-12"><a></a><span class="fu">get_time_series_plot</span>(<span class="at">df=</span>meas, <span class="at">iso3_code=</span><span class="st">"PAK"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>get_time_series_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, iso3_code){</span>
+<span id="cb36-2"><a href="#cb36-2"></a>    </span>
+<span id="cb36-3"><a href="#cb36-3"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(df, iso3c <span class="sc">==</span> iso3_code)</span>
+<span id="cb36-4"><a href="#cb36-4"></a>    </span>
+<span id="cb36-5"><a href="#cb36-5"></a>    <span class="fu">png</span>(<span class="at">filename=</span><span class="fu">paste0</span>(<span class="st">"output/time_series_"</span>, iso3_code, <span class="st">".png"</span>))</span>
+<span id="cb36-6"><a href="#cb36-6"></a>    <span class="fu">plot</span>(country_data<span class="sc">$</span>time, country_data<span class="sc">$</span>Cases, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">xlab=</span><span class="st">"year"</span>, <span class="at">ylab=</span><span class="st">"Measles Cases"</span>)</span>
+<span id="cb36-7"><a href="#cb36-7"></a>    <span class="fu">dev.off</span>()</span>
+<span id="cb36-8"><a href="#cb36-8"></a>    </span>
+<span id="cb36-9"><a href="#cb36-9"></a>}</span>
+<span id="cb36-10"><a href="#cb36-10"></a></span>
+<span id="cb36-11"><a href="#cb36-11"></a><span class="fu">get_time_series_plot</span>(<span class="at">df=</span>meas, <span class="at">iso3_code=</span><span class="st">"IND"</span>)</span>
+<span id="cb36-12"><a href="#cb36-12"></a><span class="fu">get_time_series_plot</span>(<span class="at">df=</span>meas, <span class="at">iso3_code=</span><span class="st">"PAK"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
     </div>
@@ -1034,7 +1032,18 @@ return(list(value1, value2))
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1066,47 +1075,7 @@ return(list(value1, value2))
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1143,11 +1112,7 @@ return(list(value1, value2))
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {

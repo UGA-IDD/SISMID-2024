@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.54">
+  <meta name="generator" content="quarto-1.4.510">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) – Module 9: Data Analysis</title>
+  <title>SISMID Module NUMBER Materials (2025) - Module 9: Data Analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.cf { color: #003b4f; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.kw { color: #003b4f; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -422,8 +422,8 @@
 <h2>Import data for this module</h2>
 <p>Let’s read in our data (again) and take a quick look.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span>
-<span id="cb1-2"><a></a><span class="fu">head</span>(<span class="at">x=</span>df, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">head</span>(<span class="at">x=</span>df, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  observation_id IgG_concentration age gender     slum
 1           5772         0.3176895   2 Female Non slum
@@ -436,13 +436,13 @@
 <h2>Prep data</h2>
 <p>Create <code>age_group</code> three level factor variable</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, </span>
-<span id="cb3-2"><a></a>                       <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">5</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span>
-<span id="cb3-3"><a></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, </span>
+<span id="cb3-2"><a href="#cb3-2"></a>                       <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">5</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3"></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create <code>seropos</code> binary variable representing seropositivity if antibody concentrations are &gt;10 IU/mL.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>df<span class="sc">$</span>seropos <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>IgG_concentration<span class="sc">&lt;</span><span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df<span class="sc">$</span>seropos <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>IgG_concentration<span class="sc">&lt;</span><span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="grouped-analyses" class="slide level2">
@@ -452,16 +452,16 @@
 <li>We can use the <code>aggregate()</code> function to do many analyses across groups.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>?aggregate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>?aggregate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(printr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(printr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Registered S3 method overwritten by 'printr':
   method                from     
   knit_print.data.frame rmarkdown</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>?aggregate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>?aggregate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Compute Summary Statistics of Data Subsets
 
@@ -669,15 +669,15 @@ Examples:
 <li>The easiest way to use <code>aggregate()</code> is with the formula option. The syntax is <code>variable_of_intest ~ grouping_variables</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">aggregate</span>(</span>
-<span id="cb10-2"><a></a>    <span class="co"># Formula specifies we are calculating statistics on seropos, separately for</span></span>
-<span id="cb10-3"><a></a>    <span class="co"># each level of age_group</span></span>
-<span id="cb10-4"><a></a>    seropos <span class="sc">~</span> age_group,</span>
-<span id="cb10-5"><a></a>    <span class="at">data =</span> df, <span class="co"># Data argument</span></span>
-<span id="cb10-6"><a></a>    <span class="at">FUN =</span> mean <span class="co"># function for our calculation WITHOUT PARENTHESES</span></span>
-<span id="cb10-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">aggregate</span>(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>    <span class="co"># Formula specifies we are calculating statistics on seropos, separately for</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>    <span class="co"># each level of age_group</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>    seropos <span class="sc">~</span> age_group,</span>
+<span id="cb10-5"><a href="#cb10-5"></a>    <span class="at">data =</span> df, <span class="co"># Data argument</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>    <span class="at">FUN =</span> mean <span class="co"># function for our calculation WITHOUT PARENTHESES</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top">
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">age_group</th>
@@ -705,13 +705,13 @@ Examples:
 <li>We can add as many things as we want on the RHS of the formula.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">aggregate</span>(</span>
-<span id="cb11-2"><a></a>    IgG_concentration <span class="sc">~</span> age_group <span class="sc">+</span> slum,</span>
-<span id="cb11-3"><a></a>    <span class="at">data =</span> df,</span>
-<span id="cb11-4"><a></a>    <span class="at">FUN =</span> sd <span class="co"># standard deviation</span></span>
-<span id="cb11-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">aggregate</span>(</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    IgG_concentration <span class="sc">~</span> age_group <span class="sc">+</span> slum,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>    <span class="at">data =</span> df,</span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="at">FUN =</span> sd <span class="co"># standard deviation</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top">
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">age_group</th>
@@ -773,13 +773,13 @@ Examples:
 <li>We can also add multiple variables on the LHS at the same time using <code>cbind()</code> syntax.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">aggregate</span>(</span>
-<span id="cb12-2"><a></a>    <span class="fu">cbind</span>(age, IgG_concentration) <span class="sc">~</span> gender <span class="sc">+</span> slum,</span>
-<span id="cb12-3"><a></a>    <span class="at">data =</span> df,</span>
-<span id="cb12-4"><a></a>    <span class="at">FUN =</span> median</span>
-<span id="cb12-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">aggregate</span>(</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="fu">cbind</span>(age, IgG_concentration) <span class="sc">~</span> gender <span class="sc">+</span> slum,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="at">data =</span> df,</span>
+<span id="cb12-4"><a href="#cb12-4"></a>    <span class="at">FUN =</span> median</span>
+<span id="cb12-5"><a href="#cb12-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top">
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">gender</th>
@@ -834,11 +834,11 @@ Examples:
 <h2>2 variable contingency tables</h2>
 <p>We use <code>table()</code> prior to look at one variable, now we can generate frequency tables for 2 plus variables. To get cell percentages, the <code>prop.table()</code> is useful.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>?prop.table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>?prop.table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">library</span>(printr)</span>
-<span id="cb14-2"><a></a>?prop.table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(printr)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>?prop.table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Express Table Entries as Fraction of Marginal Table
 
@@ -895,10 +895,10 @@ Examples:
 <h2>2 variable contingency tables</h2>
 <p>Let’s practice</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>age_group, df<span class="sc">$</span>seropos)</span>
-<span id="cb16-2"><a></a>freq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>age_group, df<span class="sc">$</span>seropos)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>freq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top">
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">/</th>
@@ -928,10 +928,10 @@ Examples:
 </div>
 <p>Now, lets move to percentages</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>prop.cell.percentages <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq)</span>
-<span id="cb17-2"><a></a>prop.cell.percentages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>prop.cell.percentages <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>prop.cell.percentages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top">
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">/</th>
@@ -958,10 +958,10 @@ Examples:
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>prop.column.percentages <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq, <span class="at">margin=</span><span class="dv">2</span>)</span>
-<span id="cb18-2"><a></a>prop.column.percentages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>prop.column.percentages <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq, <span class="at">margin=</span><span class="dv">2</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>prop.column.percentages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top">
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">/</th>
@@ -994,7 +994,7 @@ Examples:
 <h2>Chi-Square test</h2>
 <p>The <code>chisq.test()</code> function test of independence of factor variables from <code>stats</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>?chisq.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>?chisq.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Pearson’s Chi-squared Test for Count Data</p>
 <p>Description:</p>
@@ -1129,7 +1129,7 @@ Examples:
 <section id="chi-square-test-1" class="slide level2">
 <h2>Chi-Square test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">chisq.test</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">chisq.test</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1145,11 +1145,11 @@ X-squared = 175.85, df = 2, p-value &lt; 2.2e-16</code></pre>
 <p>First, we compute correlation by providing two vectors.</p>
 <p>Like other functions, if there are <code>NA</code>s, you get <code>NA</code> as the result. But if you specify use only the complete observations, then it will give you correlation using the non-missing data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">cor</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration, <span class="at">method=</span><span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration, <span class="at">method=</span><span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">cor</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration, <span class="at">method=</span><span class="st">"pearson"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>) <span class="co">#IF have missing data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration, <span class="at">method=</span><span class="st">"pearson"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>) <span class="co">#IF have missing data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2604783</code></pre>
 </div>
@@ -1160,7 +1160,7 @@ X-squared = 175.85, df = 2, p-value &lt; 2.2e-16</code></pre>
 <h2>Correlation confidence interval</h2>
 <p>The function <code>cor.test()</code> also gives you the confidence interval of the correlation statistic. Note, it uses complete observations by default.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">cor.test</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration, <span class="at">method=</span><span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration, <span class="at">method=</span><span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -1188,7 +1188,7 @@ sample estimates:
 <h2>T-test</h2>
 <p>We can use the <code>t.test()</code> function from the <code>stats</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>?t.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>?t.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Student’s t-Test</p>
 <p>Description:</p>
@@ -1288,10 +1288,10 @@ sample estimates:
 <section id="running-two-sample-t-test-1" class="slide level2">
 <h2>Running two-sample t-test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>IgG_young <span class="ot">&lt;-</span> df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>age_group<span class="sc">==</span><span class="st">"young"</span>]</span>
-<span id="cb50-2"><a></a>IgG_old <span class="ot">&lt;-</span> df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>age_group<span class="sc">==</span><span class="st">"old"</span>]</span>
-<span id="cb50-3"><a></a></span>
-<span id="cb50-4"><a></a><span class="fu">t.test</span>(IgG_young, IgG_old)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>IgG_young <span class="ot">&lt;-</span> df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>age_group<span class="sc">==</span><span class="st">"young"</span>]</span>
+<span id="cb50-2"><a href="#cb50-2"></a>IgG_old <span class="ot">&lt;-</span> df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>age_group<span class="sc">==</span><span class="st">"old"</span>]</span>
+<span id="cb50-3"><a href="#cb50-3"></a></span>
+<span id="cb50-4"><a href="#cb50-4"></a><span class="fu">t.test</span>(IgG_young, IgG_old)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1312,7 +1312,7 @@ mean of x mean of y
 <h2>Linear regression fit in R</h2>
 <p>To fit regression models in R, we use the function <code>glm()</code> (Generalized Linear Model).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>?glm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>?glm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Fitting Generalized Linear Models</p>
 <p>Description:</p>
@@ -1603,8 +1603,8 @@ x, y: For 'glm': logical values indicating whether the response
 <li><code>family</code> – error distribution and link function</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>fit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(IgG_concentration<span class="sc">~</span>age<span class="sc">+</span>gender<span class="sc">+</span>slum, <span class="at">data=</span>df, <span class="at">family=</span><span class="fu">gaussian</span>())</span>
-<span id="cb72-2"><a></a>fit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(seropos<span class="sc">~</span>age_group<span class="sc">+</span>gender<span class="sc">+</span>slum, <span class="at">data=</span>df, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(IgG_concentration<span class="sc">~</span>age<span class="sc">+</span>gender<span class="sc">+</span>slum, <span class="at">data=</span>df, <span class="at">family=</span><span class="fu">gaussian</span>())</span>
+<span id="cb72-2"><a href="#cb72-2"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(seropos<span class="sc">~</span>age_group<span class="sc">+</span>gender<span class="sc">+</span>slum, <span class="at">data=</span>df, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="summary.glm" class="slide level2">
@@ -1700,7 +1700,7 @@ call: the component from 'object'.</code></pre>
 <h2>Linear regression fit in R</h2>
 <p>Lets look at the output…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a><span class="fu">summary</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="fu">summary</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1726,7 +1726,7 @@ AIC: 8087.9
 
 Number of Fisher Scoring iterations: 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a><span class="fu">summary</span>(fit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">summary</span>(fit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1774,10 +1774,8 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <li><a href="https://jhudatascience.org/intro_to_r/">“Introduction to R for Public Health Researchers” Johns Hopkins University</a></li>
 </ul>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
     </div>
@@ -1991,80 +1989,42 @@ Number of Fisher Scoring iterations: 4</code></pre>
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2098,7 +2058,18 @@ Number of Fisher Scoring iterations: 4</code></pre>
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -2130,47 +2101,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -2207,11 +2138,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {

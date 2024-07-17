@@ -52,7 +52,11 @@ website:
             target: _blank
       - section: "Day 3"
         contents:
-          - href: modules/Module13-Iteration.qmd
+          - href: modules/Module11-Rmarkdown.qmd
+            target: _blank
+          - href: modules/Module12-Iteration.qmd
+            target: _blank
+          - href: modules/Module13-Functions.qmd
             target: _blank
   repo-url: https://github.com/UGA-IDD/SISMID-2024
   reader-mode: true

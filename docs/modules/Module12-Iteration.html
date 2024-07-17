@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.54">
+  <meta name="generator" content="quarto-1.4.510">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) – Module 13: Iteration in R</title>
+  <title>SISMID Module NUMBER Materials (2025) - Module 12: Iteration in R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.cf { color: #003b4f; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.kw { color: #003b4f; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Module 13: Iteration in R</h1>
+  <h1 class="title">Module 12: Iteration in R</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -422,16 +422,16 @@
 <li>In <code>R</code>, this means running the same code multiple times in a row.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">data</span>(<span class="st">"penguins"</span>, <span class="at">package =</span> <span class="st">"palmerpenguins"</span>)</span>
-<span id="cb1-2"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
-<span id="cb1-3"><a></a>    island_mean <span class="ot">&lt;-</span></span>
-<span id="cb1-4"><a></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb1-7"><a></a>    </span>
-<span id="cb1-8"><a></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
-<span id="cb1-9"><a></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb1-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">data</span>(<span class="st">"penguins"</span>, <span class="at">package =</span> <span class="st">"palmerpenguins"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    island_mean <span class="ot">&lt;-</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    </span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb1-10"><a href="#cb1-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The mean bill depth on Biscoe Island was 15.87 mm.
 The mean bill depth on Dream Island was 18.34 mm.
@@ -442,37 +442,37 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <section id="parts-of-a-loop" class="slide level2">
 <h2>Parts of a loop</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="1,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
-<span id="cb3-2"><a></a>    island_mean <span class="ot">&lt;-</span></span>
-<span id="cb3-3"><a></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
-<span id="cb3-4"><a></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-5"><a></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb3-6"><a></a>    </span>
-<span id="cb3-7"><a></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
-<span id="cb3-8"><a></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb3-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="1,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    island_mean <span class="ot">&lt;-</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    </span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb3-9"><a href="#cb3-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <strong>header</strong> declares how many times we will repeat the same code. The header contains a <strong>control variable</strong> that changes in each repetition and a <strong>sequence</strong> of values for the control variable to take.</p>
 </section>
 <section id="parts-of-a-loop-1" class="slide level2">
 <h2>Parts of a loop</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
-<span id="cb4-2"><a></a>    island_mean <span class="ot">&lt;-</span></span>
-<span id="cb4-3"><a></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-5"><a></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb4-6"><a></a>    </span>
-<span id="cb4-7"><a></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
-<span id="cb4-8"><a></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb4-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    island_mean <span class="ot">&lt;-</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    </span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb4-8"><a href="#cb4-8"></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb4-9"><a href="#cb4-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <strong>body</strong> of the loop contains code that will be repeated a number of times based on the header instructions. In <code>R</code>, the body has to be surrounded by curly braces.</p>
 </section>
 <section id="header-parts" class="slide level2">
 <h2>Header parts</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>for</code>: keyword that declares we are doing a for loop.</li>
@@ -486,12 +486,12 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <section id="header-parts-1" class="slide level2">
 <h2>Header parts</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Since <code>levels(penguins$island)</code> evaluates to <code>c("Biscoe", "Dream", "Torgersen")</code>, our loop will repeat 3 times.</li>
 </ul>
-<table class="caption-top">
+<table>
 <thead>
 <tr class="header">
 <th>Iteration</th>
@@ -520,13 +520,13 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <section id="loop-iteration-1" class="slide level2">
 <h2>Loop iteration 1</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>island_mean <span class="ot">&lt;-</span></span>
-<span id="cb7-2"><a></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Biscoe"</span>] <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb7-4"><a></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Biscoe"</span>, <span class="st">"Island was"</span>, island_mean,</span>
-<span id="cb7-7"><a></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>island_mean <span class="ot">&lt;-</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Biscoe"</span>] <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Biscoe"</span>, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb7-7"><a href="#cb7-7"></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The mean bill depth on Biscoe Island was 15.87 mm.</code></pre>
 </div>
@@ -535,13 +535,13 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <section id="loop-iteration-2" class="slide level2">
 <h2>Loop iteration 2</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>island_mean <span class="ot">&lt;-</span></span>
-<span id="cb9-2"><a></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Dream"</span>] <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb9-5"><a></a></span>
-<span id="cb9-6"><a></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Dream"</span>, <span class="st">"Island was"</span>, island_mean,</span>
-<span id="cb9-7"><a></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>island_mean <span class="ot">&lt;-</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Dream"</span>] <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Dream"</span>, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb9-7"><a href="#cb9-7"></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The mean bill depth on Dream Island was 18.34 mm.</code></pre>
 </div>
@@ -550,13 +550,13 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <section id="loop-iteration-3" class="slide level2">
 <h2>Loop iteration 3</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>island_mean <span class="ot">&lt;-</span></span>
-<span id="cb11-2"><a></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>] <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb11-5"><a></a></span>
-<span id="cb11-6"><a></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Torgersen"</span>, <span class="st">"Island was"</span>, island_mean,</span>
-<span id="cb11-7"><a></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>island_mean <span class="ot">&lt;-</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>] <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, <span class="st">"Torgersen"</span>, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb11-7"><a href="#cb11-7"></a>                    <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 </div>
@@ -565,15 +565,15 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <section id="the-loop-structure-automates-this-process-for-us-so-we-dont-have-to-copy-and-paste-our-code" class="slide level2">
 <h2>The loop structure automates this process for us so we don’t have to copy and paste our code!</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
-<span id="cb13-2"><a></a>    island_mean <span class="ot">&lt;-</span></span>
-<span id="cb13-3"><a></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb13-5"><a></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb13-6"><a></a>    </span>
-<span id="cb13-7"><a></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
-<span id="cb13-8"><a></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb13-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">for</span> (this_island <span class="cf">in</span> <span class="fu">levels</span>(penguins<span class="sc">$</span>island)) {</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    island_mean <span class="ot">&lt;-</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>        penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> this_island] <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>        <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>        <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>    </span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"The mean bill depth on"</span>, this_island, <span class="st">"Island was"</span>, island_mean,</span>
+<span id="cb13-8"><a href="#cb13-8"></a>                            <span class="st">"mm.</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb13-9"><a href="#cb13-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The mean bill depth on Biscoe Island was 15.87 mm.
 The mean bill depth on Dream Island was 18.34 mm.
@@ -588,28 +588,28 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <li>E.g. the code</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>island_mean <span class="ot">&lt;-</span></span>
-<span id="cb15-2"><a></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>] <span class="sc">|&gt;</span></span>
-<span id="cb15-3"><a></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb15-4"><a></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>island_mean <span class="ot">&lt;-</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>    penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>] <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>will be transformed by R into</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>island_mean <span class="ot">&lt;-</span></span>
-<span id="cb16-2"><a></a>    <span class="fu">round</span>(</span>
-<span id="cb16-3"><a></a>        <span class="fu">mean</span>(</span>
-<span id="cb16-4"><a></a>            penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>],</span>
-<span id="cb16-5"><a></a>            <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb16-6"><a></a>        ),</span>
-<span id="cb16-7"><a></a>        <span class="at">digits =</span> <span class="dv">2</span></span>
-<span id="cb16-8"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>island_mean <span class="ot">&lt;-</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>    <span class="fu">round</span>(</span>
+<span id="cb16-3"><a href="#cb16-3"></a>        <span class="fu">mean</span>(</span>
+<span id="cb16-4"><a href="#cb16-4"></a>            penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>],</span>
+<span id="cb16-5"><a href="#cb16-5"></a>            <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>        ),</span>
+<span id="cb16-7"><a href="#cb16-7"></a>        <span class="at">digits =</span> <span class="dv">2</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>before it gets run. So using the pipe is a way to avoid deeply nested functions.</p>
 <p>Note that another alernative could be like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>island_data <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>]</span>
-<span id="cb17-2"><a></a>island_mean_raw <span class="ot">&lt;-</span> <span class="fu">mean</span>(island_data, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-3"><a></a>island_mean <span class="ot">&lt;-</span> <span class="fu">round</span>(island_mean_raw, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>island_data <span class="ot">&lt;-</span> penguins<span class="sc">$</span>bill_depth_mm[penguins<span class="sc">$</span>island <span class="sc">==</span> <span class="st">"Torgersen"</span>]</span>
+<span id="cb17-2"><a href="#cb17-2"></a>island_mean_raw <span class="ot">&lt;-</span> <span class="fu">mean</span>(island_data, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>island_mean <span class="ot">&lt;-</span> <span class="fu">round</span>(island_mean_raw, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So using <code>|&gt;</code> can also help us to avoid a lot of assignments.</p>
 <ul>
@@ -641,9 +641,9 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <p>Write a loop that goes from 1 to 10, squares each of the numbers, and prints the squared number.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb18-2"><a></a>    <span class="fu">cat</span>(i <span class="sc">^</span> <span class="dv">2</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb18-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb18-2"><a href="#cb18-2"></a>    <span class="fu">cat</span>(i <span class="sc">^</span> <span class="dv">2</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1 
 4 
@@ -675,16 +675,16 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <li>Almost all basic operations in R are <strong>vectorized</strong>: they work on a vector of arguments all at the same time.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># No loop needed!</span></span>
-<span id="cb20-2"><a></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># No loop needed!</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># Get the first 10 odd numbers, a common CS 101 loop problem on exams</span></span>
-<span id="cb22-2"><a></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)[<span class="fu">which</span>((<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="sc">%%</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">1</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Get the first 10 odd numbers, a common CS 101 loop problem on exams</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)[<span class="fu">which</span>((<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span> <span class="sc">%%</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">1</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  3  5  7  9 11 13 15 17 19</code></pre>
 </div>
@@ -704,9 +704,9 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>meas <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"measles_final.Rds"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a></a>    <span class="fu">subset</span>(vaccine_antigen <span class="sc">==</span> <span class="st">"MCV1"</span>)</span>
-<span id="cb24-3"><a></a><span class="fu">str</span>(meas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>meas <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"measles_final.Rds"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>    <span class="fu">subset</span>(vaccine_antigen <span class="sc">==</span> <span class="st">"MCV1"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="fu">str</span>(meas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   7972 obs. of  7 variables:
  $ iso3c           : chr  "AFG" "AFG" "AFG" "AFG" ...
@@ -727,7 +727,7 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(<span class="fu">unique</span>(meas<span class="sc">$</span>country)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> <span class="fu">length</span>(<span class="fu">unique</span>(meas<span class="sc">$</span>country)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>This is called <em>preallocation</em> and it can make your loops much faster.</li>
@@ -742,8 +742,8 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>countries <span class="ot">&lt;-</span> <span class="fu">unique</span>(meas<span class="sc">$</span>country)</span>
-<span id="cb27-2"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>countries <span class="ot">&lt;-</span> <span class="fu">unique</span>(meas<span class="sc">$</span>country)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {...}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -759,10 +759,10 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
-<span id="cb28-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
-<span id="cb28-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
-<span id="cb28-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb28-2"><a href="#cb28-2"></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb28-4"><a href="#cb28-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -772,17 +772,17 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
-<span id="cb29-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
-<span id="cb29-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
-<span id="cb29-4"><a></a>    </span>
-<span id="cb29-5"><a></a>    <span class="co"># Get the summary statistics for this country</span></span>
-<span id="cb29-6"><a></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
-<span id="cb29-7"><a></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
-<span id="cb29-8"><a></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
-<span id="cb29-9"><a></a>    )</span>
-<span id="cb29-10"><a></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb29-11"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb29-2"><a href="#cb29-2"></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb29-4"><a href="#cb29-4"></a>    </span>
+<span id="cb29-5"><a href="#cb29-5"></a>    <span class="co"># Get the summary statistics for this country</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
+<span id="cb29-7"><a href="#cb29-7"></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb29-8"><a href="#cb29-8"></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb29-9"><a href="#cb29-9"></a>    )</span>
+<span id="cb29-10"><a href="#cb29-10"></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-11"><a href="#cb29-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -790,27 +790,27 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <li>Next we save the summary statistics into a data frame.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
-<span id="cb30-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
-<span id="cb30-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
-<span id="cb30-4"><a></a>    </span>
-<span id="cb30-5"><a></a>    <span class="co"># Get the summary statistics for this country</span></span>
-<span id="cb30-6"><a></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
-<span id="cb30-7"><a></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
-<span id="cb30-8"><a></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
-<span id="cb30-9"><a></a>    )</span>
-<span id="cb30-10"><a></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-11"><a></a>    </span>
-<span id="cb30-12"><a></a>    <span class="co"># Save the summary statistics into a data frame</span></span>
-<span id="cb30-13"><a></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb30-14"><a></a>        <span class="at">country =</span> countries[[i]],</span>
-<span id="cb30-15"><a></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
-<span id="cb30-16"><a></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
-<span id="cb30-17"><a></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
-<span id="cb30-18"><a></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
-<span id="cb30-19"><a></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
-<span id="cb30-20"><a></a>    )</span>
-<span id="cb30-21"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb30-2"><a href="#cb30-2"></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb30-4"><a href="#cb30-4"></a>    </span>
+<span id="cb30-5"><a href="#cb30-5"></a>    <span class="co"># Get the summary statistics for this country</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
+<span id="cb30-7"><a href="#cb30-7"></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb30-8"><a href="#cb30-8"></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb30-9"><a href="#cb30-9"></a>    )</span>
+<span id="cb30-10"><a href="#cb30-10"></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-11"><a href="#cb30-11"></a>    </span>
+<span id="cb30-12"><a href="#cb30-12"></a>    <span class="co"># Save the summary statistics into a data frame</span></span>
+<span id="cb30-13"><a href="#cb30-13"></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-14"><a href="#cb30-14"></a>        <span class="at">country =</span> countries[[i]],</span>
+<span id="cb30-15"><a href="#cb30-15"></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
+<span id="cb30-16"><a href="#cb30-16"></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
+<span id="cb30-17"><a href="#cb30-17"></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
+<span id="cb30-18"><a href="#cb30-18"></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
+<span id="cb30-19"><a href="#cb30-19"></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
+<span id="cb30-20"><a href="#cb30-20"></a>    )</span>
+<span id="cb30-21"><a href="#cb30-21"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -818,30 +818,30 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <li>And finally, we save the data frame as the next element in our storage list.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
-<span id="cb31-2"><a></a>    <span class="co"># Get the data for the current country only</span></span>
-<span id="cb31-3"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
-<span id="cb31-4"><a></a>    </span>
-<span id="cb31-5"><a></a>    <span class="co"># Get the summary statistics for this country</span></span>
-<span id="cb31-6"><a></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
-<span id="cb31-7"><a></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
-<span id="cb31-8"><a></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
-<span id="cb31-9"><a></a>    )</span>
-<span id="cb31-10"><a></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-11"><a></a>    </span>
-<span id="cb31-12"><a></a>    <span class="co"># Save the summary statistics into a data frame</span></span>
-<span id="cb31-13"><a></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb31-14"><a></a>        <span class="at">country =</span> countries[[i]],</span>
-<span id="cb31-15"><a></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
-<span id="cb31-16"><a></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
-<span id="cb31-17"><a></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
-<span id="cb31-18"><a></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
-<span id="cb31-19"><a></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
-<span id="cb31-20"><a></a>    )</span>
-<span id="cb31-21"><a></a>    </span>
-<span id="cb31-22"><a></a>    <span class="co"># Save the results to our container</span></span>
-<span id="cb31-23"><a></a>    res[[i]] <span class="ot">&lt;-</span> country_summary</span>
-<span id="cb31-24"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb31-2"><a href="#cb31-2"></a>    <span class="co"># Get the data for the current country only</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[i])</span>
+<span id="cb31-4"><a href="#cb31-4"></a>    </span>
+<span id="cb31-5"><a href="#cb31-5"></a>    <span class="co"># Get the summary statistics for this country</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>    country_cases <span class="ot">&lt;-</span> country_data<span class="sc">$</span>Cases</span>
+<span id="cb31-7"><a href="#cb31-7"></a>    country_quart <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb31-8"><a href="#cb31-8"></a>        country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb31-9"><a href="#cb31-9"></a>    )</span>
+<span id="cb31-10"><a href="#cb31-10"></a>    country_range <span class="ot">&lt;-</span> <span class="fu">range</span>(country_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-11"><a href="#cb31-11"></a>    </span>
+<span id="cb31-12"><a href="#cb31-12"></a>    <span class="co"># Save the summary statistics into a data frame</span></span>
+<span id="cb31-13"><a href="#cb31-13"></a>    country_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb31-14"><a href="#cb31-14"></a>        <span class="at">country =</span> countries[[i]],</span>
+<span id="cb31-15"><a href="#cb31-15"></a>        <span class="at">min =</span> country_range[[<span class="dv">1</span>]],</span>
+<span id="cb31-16"><a href="#cb31-16"></a>        <span class="at">Q1 =</span> country_quart[[<span class="dv">1</span>]],</span>
+<span id="cb31-17"><a href="#cb31-17"></a>        <span class="at">median =</span> country_quart[[<span class="dv">2</span>]],</span>
+<span id="cb31-18"><a href="#cb31-18"></a>        <span class="at">Q3 =</span> country_quart[[<span class="dv">3</span>]],</span>
+<span id="cb31-19"><a href="#cb31-19"></a>        <span class="at">max =</span> country_range[[<span class="dv">2</span>]]</span>
+<span id="cb31-20"><a href="#cb31-20"></a>    )</span>
+<span id="cb31-21"><a href="#cb31-21"></a>    </span>
+<span id="cb31-22"><a href="#cb31-22"></a>    <span class="co"># Save the results to our container</span></span>
+<span id="cb31-23"><a href="#cb31-23"></a>    res[[i]] <span class="ot">&lt;-</span> country_summary</span>
+<span id="cb31-24"><a href="#cb31-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in min(x): no non-missing arguments to min; returning Inf</code></pre>
 </div>
@@ -867,7 +867,7 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <li>Let’s take a look at the results.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">head</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">head</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
       country min   Q1 median   Q3   max
@@ -903,10 +903,10 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 <li>We can use a <em>vectorization</em> trick: the function <code>do.call()</code> seems like ancient computer science magic. And it is. But it will actually help us a lot.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>res_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, res)</span>
-<span id="cb40-2"><a></a><span class="fu">head</span>(res_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>res_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, res)</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">head</span>(res_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="caption-top">
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">country</th>
@@ -976,7 +976,7 @@ The mean bill depth on Torgersen Island was 18.43 mm.</code></pre>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>?rbind</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>?rbind</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Combine R Objects by Rows or Columns
 
@@ -1195,7 +1195,7 @@ Examples:
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>?do.call</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>?do.call</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Execute a Function Call
 
@@ -1292,13 +1292,13 @@ Examples:
 <li>OK, so basically what happened is that</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">do.call</span>(rbind, list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">do.call</span>(rbind, list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Gets transformed into</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">rbind</span>(list[[<span class="dv">1</span>]], list[[<span class="dv">2</span>]], list[[<span class="dv">3</span>]], ..., list[[<span class="fu">length</span>(list)]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">rbind</span>(list[[<span class="dv">1</span>]], list[[<span class="dv">2</span>]], list[[<span class="dv">3</span>]], ..., list[[<span class="fu">length</span>(list)]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>That’s vectorization magic!</li>
@@ -1318,72 +1318,72 @@ Examples:
 <section id="main-problem-solution" class="slide level2">
 <h2>Main problem solution</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>meas<span class="sc">$</span>cases_per_thousand <span class="ot">&lt;-</span> meas<span class="sc">$</span>Cases <span class="sc">/</span> <span class="fu">as.numeric</span>(meas<span class="sc">$</span>total_pop) <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb47-2"><a></a>countries <span class="ot">&lt;-</span> <span class="fu">unique</span>(meas<span class="sc">$</span>country)</span>
-<span id="cb47-3"><a></a></span>
-<span id="cb47-4"><a></a><span class="fu">plot</span>(</span>
-<span id="cb47-5"><a></a>    <span class="cn">NULL</span>, <span class="cn">NULL</span>,</span>
-<span id="cb47-6"><a></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1980</span>, <span class="dv">2022</span>),</span>
-<span id="cb47-7"><a></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>),</span>
-<span id="cb47-8"><a></a>    <span class="at">xlab =</span> <span class="st">"Year"</span>,</span>
-<span id="cb47-9"><a></a>    <span class="at">ylab =</span> <span class="st">"Incidence per 1000 people"</span></span>
-<span id="cb47-10"><a></a>)</span>
-<span id="cb47-11"><a></a></span>
-<span id="cb47-12"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
-<span id="cb47-13"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[[i]])</span>
-<span id="cb47-14"><a></a>    <span class="fu">lines</span>(</span>
-<span id="cb47-15"><a></a>        <span class="at">x =</span> country_data<span class="sc">$</span>time,</span>
-<span id="cb47-16"><a></a>        <span class="at">y =</span> country_data<span class="sc">$</span>cases_per_thousand,</span>
-<span id="cb47-17"><a></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"black"</span>, <span class="at">alpha.f =</span> <span class="fl">0.25</span>)</span>
-<span id="cb47-18"><a></a>    )</span>
-<span id="cb47-19"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>meas<span class="sc">$</span>cases_per_thousand <span class="ot">&lt;-</span> meas<span class="sc">$</span>Cases <span class="sc">/</span> <span class="fu">as.numeric</span>(meas<span class="sc">$</span>total_pop) <span class="sc">*</span> <span class="dv">1000</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>countries <span class="ot">&lt;-</span> <span class="fu">unique</span>(meas<span class="sc">$</span>country)</span>
+<span id="cb47-3"><a href="#cb47-3"></a></span>
+<span id="cb47-4"><a href="#cb47-4"></a><span class="fu">plot</span>(</span>
+<span id="cb47-5"><a href="#cb47-5"></a>    <span class="cn">NULL</span>, <span class="cn">NULL</span>,</span>
+<span id="cb47-6"><a href="#cb47-6"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1980</span>, <span class="dv">2022</span>),</span>
+<span id="cb47-7"><a href="#cb47-7"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>),</span>
+<span id="cb47-8"><a href="#cb47-8"></a>    <span class="at">xlab =</span> <span class="st">"Year"</span>,</span>
+<span id="cb47-9"><a href="#cb47-9"></a>    <span class="at">ylab =</span> <span class="st">"Incidence per 1000 people"</span></span>
+<span id="cb47-10"><a href="#cb47-10"></a>)</span>
+<span id="cb47-11"><a href="#cb47-11"></a></span>
+<span id="cb47-12"><a href="#cb47-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb47-13"><a href="#cb47-13"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[[i]])</span>
+<span id="cb47-14"><a href="#cb47-14"></a>    <span class="fu">lines</span>(</span>
+<span id="cb47-15"><a href="#cb47-15"></a>        <span class="at">x =</span> country_data<span class="sc">$</span>time,</span>
+<span id="cb47-16"><a href="#cb47-16"></a>        <span class="at">y =</span> country_data<span class="sc">$</span>cases_per_thousand,</span>
+<span id="cb47-17"><a href="#cb47-17"></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"black"</span>, <span class="at">alpha.f =</span> <span class="fl">0.25</span>)</span>
+<span id="cb47-18"><a href="#cb47-18"></a>    )</span>
+<span id="cb47-19"><a href="#cb47-19"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="main-problem-solution-1" class="slide level2">
 <h2>Main problem solution</h2>
 
-<img data-src="Module13-Iteration_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
+<img data-src="Module12-Iteration_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
 <section id="bonus-problem-solution" class="slide level2">
 <h2>Bonus problem solution</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="co"># First calculate the cumulative cases, treating NA as zeroes</span></span>
-<span id="cb48-2"><a></a>cumulative_cases <span class="ot">&lt;-</span> <span class="fu">ave</span>(</span>
-<span id="cb48-3"><a></a>    <span class="at">x =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(meas<span class="sc">$</span>Cases), <span class="dv">0</span>, meas<span class="sc">$</span>Cases),</span>
-<span id="cb48-4"><a></a>    meas<span class="sc">$</span>country,</span>
-<span id="cb48-5"><a></a>    <span class="at">FUN =</span> cumsum</span>
-<span id="cb48-6"><a></a>)</span>
-<span id="cb48-7"><a></a></span>
-<span id="cb48-8"><a></a><span class="co"># Now put the NAs back where they should be</span></span>
-<span id="cb48-9"><a></a>meas<span class="sc">$</span>cumulative_cases <span class="ot">&lt;-</span> cumulative_cases <span class="sc">+</span> (meas<span class="sc">$</span>Cases <span class="sc">*</span> <span class="dv">0</span>)</span>
-<span id="cb48-10"><a></a></span>
-<span id="cb48-11"><a></a><span class="fu">plot</span>(</span>
-<span id="cb48-12"><a></a>    <span class="cn">NULL</span>, <span class="cn">NULL</span>,</span>
-<span id="cb48-13"><a></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1980</span>, <span class="dv">2022</span>),</span>
-<span id="cb48-14"><a></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">6.2e6</span>),</span>
-<span id="cb48-15"><a></a>    <span class="at">xlab =</span> <span class="st">"Year"</span>,</span>
-<span id="cb48-16"><a></a>    <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">"Cumulative cases since"</span>, <span class="fu">min</span>(meas<span class="sc">$</span>time))</span>
-<span id="cb48-17"><a></a>)</span>
-<span id="cb48-18"><a></a></span>
-<span id="cb48-19"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
-<span id="cb48-20"><a></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[[i]])</span>
-<span id="cb48-21"><a></a>    <span class="fu">lines</span>(</span>
-<span id="cb48-22"><a></a>        <span class="at">x =</span> country_data<span class="sc">$</span>time,</span>
-<span id="cb48-23"><a></a>        <span class="at">y =</span> country_data<span class="sc">$</span>cumulative_cases,</span>
-<span id="cb48-24"><a></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"black"</span>, <span class="at">alpha.f =</span> <span class="fl">0.25</span>)</span>
-<span id="cb48-25"><a></a>    )</span>
-<span id="cb48-26"><a></a>}</span>
-<span id="cb48-27"><a></a></span>
-<span id="cb48-28"><a></a><span class="fu">text</span>(</span>
-<span id="cb48-29"><a></a>    <span class="at">x =</span> <span class="dv">2020</span>,</span>
-<span id="cb48-30"><a></a>    <span class="at">y =</span> <span class="fl">6e6</span>,</span>
-<span id="cb48-31"><a></a>    <span class="at">labels =</span> <span class="st">"China →"</span></span>
-<span id="cb48-32"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># First calculate the cumulative cases, treating NA as zeroes</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a>cumulative_cases <span class="ot">&lt;-</span> <span class="fu">ave</span>(</span>
+<span id="cb48-3"><a href="#cb48-3"></a>    <span class="at">x =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(meas<span class="sc">$</span>Cases), <span class="dv">0</span>, meas<span class="sc">$</span>Cases),</span>
+<span id="cb48-4"><a href="#cb48-4"></a>    meas<span class="sc">$</span>country,</span>
+<span id="cb48-5"><a href="#cb48-5"></a>    <span class="at">FUN =</span> cumsum</span>
+<span id="cb48-6"><a href="#cb48-6"></a>)</span>
+<span id="cb48-7"><a href="#cb48-7"></a></span>
+<span id="cb48-8"><a href="#cb48-8"></a><span class="co"># Now put the NAs back where they should be</span></span>
+<span id="cb48-9"><a href="#cb48-9"></a>meas<span class="sc">$</span>cumulative_cases <span class="ot">&lt;-</span> cumulative_cases <span class="sc">+</span> (meas<span class="sc">$</span>Cases <span class="sc">*</span> <span class="dv">0</span>)</span>
+<span id="cb48-10"><a href="#cb48-10"></a></span>
+<span id="cb48-11"><a href="#cb48-11"></a><span class="fu">plot</span>(</span>
+<span id="cb48-12"><a href="#cb48-12"></a>    <span class="cn">NULL</span>, <span class="cn">NULL</span>,</span>
+<span id="cb48-13"><a href="#cb48-13"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1980</span>, <span class="dv">2022</span>),</span>
+<span id="cb48-14"><a href="#cb48-14"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">6.2e6</span>),</span>
+<span id="cb48-15"><a href="#cb48-15"></a>    <span class="at">xlab =</span> <span class="st">"Year"</span>,</span>
+<span id="cb48-16"><a href="#cb48-16"></a>    <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">"Cumulative cases since"</span>, <span class="fu">min</span>(meas<span class="sc">$</span>time))</span>
+<span id="cb48-17"><a href="#cb48-17"></a>)</span>
+<span id="cb48-18"><a href="#cb48-18"></a></span>
+<span id="cb48-19"><a href="#cb48-19"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(countries)) {</span>
+<span id="cb48-20"><a href="#cb48-20"></a>    country_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(meas, country <span class="sc">==</span> countries[[i]])</span>
+<span id="cb48-21"><a href="#cb48-21"></a>    <span class="fu">lines</span>(</span>
+<span id="cb48-22"><a href="#cb48-22"></a>        <span class="at">x =</span> country_data<span class="sc">$</span>time,</span>
+<span id="cb48-23"><a href="#cb48-23"></a>        <span class="at">y =</span> country_data<span class="sc">$</span>cumulative_cases,</span>
+<span id="cb48-24"><a href="#cb48-24"></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"black"</span>, <span class="at">alpha.f =</span> <span class="fl">0.25</span>)</span>
+<span id="cb48-25"><a href="#cb48-25"></a>    )</span>
+<span id="cb48-26"><a href="#cb48-26"></a>}</span>
+<span id="cb48-27"><a href="#cb48-27"></a></span>
+<span id="cb48-28"><a href="#cb48-28"></a><span class="fu">text</span>(</span>
+<span id="cb48-29"><a href="#cb48-29"></a>    <span class="at">x =</span> <span class="dv">2020</span>,</span>
+<span id="cb48-30"><a href="#cb48-30"></a>    <span class="at">y =</span> <span class="fl">6e6</span>,</span>
+<span id="cb48-31"><a href="#cb48-31"></a>    <span class="at">labels =</span> <span class="st">"China →"</span></span>
+<span id="cb48-32"><a href="#cb48-32"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bonus-problem-solution-1" class="slide level2">
 <h2>Bonus problem solution</h2>
 
-<img data-src="Module13-Iteration_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section>
+<img data-src="Module12-Iteration_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section>
 <section id="more-practice-on-your-own" class="slide level2 smaller">
 <h2>More practice on your own</h2>
 <ul>
@@ -1391,10 +1391,8 @@ Examples:
 <li>Assess the impact of <code>age_months</code> as a confounder in the Diphtheria serology data. First, write code to transform <code>age_months</code> into age ranges for each year. Then, using a loop, calculate the crude odds ratio for the effect of vaccination on infection for each of the age ranges. How does the odds ratio change as age increases? Can you formalize this analysis by fitting a logistic regression model with <code>age_months</code> and vaccination as predictors?</li>
 </ul>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
     </div>
@@ -1608,80 +1606,42 @@ Examples:
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1715,7 +1675,18 @@ Examples:
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1747,47 +1718,7 @@ Examples:
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1824,11 +1755,7 @@ Examples:
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {

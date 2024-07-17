@@ -17,7 +17,7 @@ After module 10, you should be able to:
 
 Let's read in our data (again) and take a quick look.
 
-```{r echo=TRUE}
+```{r, echo=TRUE}
 df <- read.csv(file = "data/serodata.csv") #relative path
 head(x=df, n=3)
 ```
@@ -200,7 +200,7 @@ plot(
 * We can use the functions `points()` or `lines()` to add additional points
 or additional lines to an existing plot.
 
-```{r eval=TRUE echo=TRUE}
+```{r eval=TRUE, echo=TRUE}
 plot(
 	df$age[df$slum == "Non slum"],
 	df$IgG_concentration[df$slum == "Non slum"],

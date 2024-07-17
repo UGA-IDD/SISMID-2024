@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.54">
+  <meta name="generator" content="quarto-1.4.510">
 
   <meta name="author" content="Amy Winter">
   <meta name="author" content="Zane Billings">
-  <title>SISMID Module NUMBER Materials (2025) – Module 10: Data Visualization</title>
+  <title>SISMID Module NUMBER Materials (2025) - Module 10: Data Visualization</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.cf { color: #003b4f; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.kw { color: #003b4f; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -420,8 +420,8 @@
 <h2>Import data for this module</h2>
 <p>Let’s read in our data (again) and take a quick look.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span>
-<span id="cb1-2"><a></a><span class="fu">head</span>(<span class="at">x=</span>df, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/serodata.csv"</span>) <span class="co">#relative path</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">head</span>(<span class="at">x=</span>df, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  observation_id IgG_concentration age gender     slum
 1           5772         0.3176895   2 Female Non slum
@@ -434,20 +434,20 @@
 <h2>Prep data</h2>
 <p>Create <code>age_group</code> three level factor variable</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, </span>
-<span id="cb3-2"><a></a>                       <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">5</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>)) </span>
-<span id="cb3-3"><a></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">5</span>, <span class="st">"young"</span>, </span>
+<span id="cb3-2"><a href="#cb3-2"></a>                       <span class="fu">ifelse</span>(df<span class="sc">$</span>age<span class="sc">&lt;=</span><span class="dv">10</span> <span class="sc">&amp;</span> df<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">5</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>)) </span>
+<span id="cb3-3"><a href="#cb3-3"></a>df<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>age_group, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"young"</span>, <span class="st">"middle"</span>, <span class="st">"old"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create <code>seropos</code> binary variable representing seropositivity if antibody concentrations are &gt;10 IU/mL.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>df<span class="sc">$</span>seropos <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>IgG_concentration<span class="sc">&lt;</span><span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df<span class="sc">$</span>seropos <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>IgG_concentration<span class="sc">&lt;</span><span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="base-r-data-visualizattion-functions" class="slide level2">
 <h2>Base R data visualizattion functions</h2>
 <p>The Base R ‘graphics’ package has a ton of graphics options.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">"graphics"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">"graphics"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
@@ -472,8 +472,8 @@ Imports:            grDevices
 License:            Part of R 4.4.1
 NeedsCompilation:   yes
 Enhances:           vcd
-Built:              R 4.4.1; x86_64-w64-mingw32; 2024-06-14 08:20:40
-                    UTC; windows
+Built:              R 4.4.1; x86_64-apple-darwin20; 2024-06-15 17:31:38
+                    UTC; unix
 
 Index:
 
@@ -555,7 +555,7 @@ xspline                 Draw an X-spline</code></pre>
 </div>
 </div>
 </section>
-<section id="base-r-plotting" class="slide level2 scrollable">
+<section id="base-r-plotting" class="slide level2">
 <h2>Base R Plotting</h2>
 <p>To make a plot you often need to specify the following features:</p>
 <ol type="1">
@@ -582,7 +582,7 @@ xspline                 Draw an X-spline</code></pre>
 <h2>Lots of parameters options</h2>
 <p>However, there are many more parameter options that can be specified in the ‘global’ settings or specific to a certain plot option.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>?par</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>?par</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Set or Query Graphical Parameters</p>
 <p>Description:</p>
@@ -619,25 +619,25 @@ xspline                 Draw an X-spline</code></pre>
 
  Several parameters can only be set by a call to 'par()':
 
-    * '"ask"',
+    • '"ask"',
 
-    * '"fig"', '"fin"',
+    • '"fig"', '"fin"',
 
-    * '"lheight"',
+    • '"lheight"',
 
-    * '"mai"', '"mar"', '"mex"', '"mfcol"', '"mfrow"', '"mfg"',
+    • '"mai"', '"mar"', '"mex"', '"mfcol"', '"mfrow"', '"mfg"',
 
-    * '"new"',
+    • '"new"',
 
-    * '"oma"', '"omd"', '"omi"',
+    • '"oma"', '"omd"', '"omi"',
 
-    * '"pin"', '"plt"', '"ps"', '"pty"',
+    • '"pin"', '"plt"', '"ps"', '"pty"',
 
-    * '"usr"',
+    • '"usr"',
 
-    * '"xlog"', '"ylog"',
+    • '"xlog"', '"ylog"',
 
-    * '"ylbias"'
+    • '"ylbias"'
 
  The remaining parameters can also be set as arguments (often via
  '...') to high-level plot functions such as 'plot.default',
@@ -1277,7 +1277,7 @@ xspline                 Draw an X-spline</code></pre>
 <section id="hist-help-file" class="slide level2">
 <h2><code>hist()</code> Help File</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>?hist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>?hist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Histograms</p>
 <p>Description:</p>
@@ -1302,17 +1302,17 @@ xspline                 Draw an X-spline</code></pre>
 <p>Arguments:</p>
 <pre><code>   x: a vector of values for which the histogram is desired.</code></pre>
 <p>breaks: one of:</p>
-<pre><code>        * a vector giving the breakpoints between histogram cells,
+<pre><code>        • a vector giving the breakpoints between histogram cells,
 
-        * a function to compute the vector of breakpoints,
+        • a function to compute the vector of breakpoints,
 
-        * a single number giving the number of cells for the
+        • a single number giving the number of cells for the
           histogram,
 
-        * a character string naming an algorithm to compute the
+        • a character string naming an algorithm to compute the
           number of cells (see 'Details'),
 
-        * a function to compute the number of cells.
+        • a function to compute the number of cells.
 
       In the last three cases the number is a suggestion only; as
       the breakpoints will be set to 'pretty' values, the number is
@@ -1466,7 +1466,7 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
      nclass = NULL, warn.unused = TRUE, ...)</code></pre>
 <p>Let’s practice</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">hist</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">hist</span>(df<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1474,12 +1474,12 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">hist</span>(</span>
-<span id="cb39-2"><a></a>    df<span class="sc">$</span>age, </span>
-<span id="cb39-3"><a></a>    <span class="at">freq=</span><span class="cn">FALSE</span>, </span>
-<span id="cb39-4"><a></a>    <span class="at">main=</span><span class="st">"Histogram"</span>, </span>
-<span id="cb39-5"><a></a>    <span class="at">xlab=</span><span class="st">"Age (years)"</span></span>
-<span id="cb39-6"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">hist</span>(</span>
+<span id="cb39-2"><a href="#cb39-2"></a>    df<span class="sc">$</span>age, </span>
+<span id="cb39-3"><a href="#cb39-3"></a>    <span class="at">freq=</span><span class="cn">FALSE</span>, </span>
+<span id="cb39-4"><a href="#cb39-4"></a>    <span class="at">main=</span><span class="st">"Histogram"</span>, </span>
+<span id="cb39-5"><a href="#cb39-5"></a>    <span class="at">xlab=</span><span class="st">"Age (years)"</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1492,7 +1492,7 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
 <section id="plot-help-file" class="slide level2">
 <h2><code>plot()</code> Help File</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>?plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>?plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Generic X-Y Plotting</p>
 <p>Description:</p>
@@ -1524,24 +1524,24 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
 
       'type' what type of plot should be drawn.  Possible types are
 
-            * '"p"' for *p*oints,
+            • '"p"' for *p*oints,
 
-            * '"l"' for *l*ines,
+            • '"l"' for *l*ines,
 
-            * '"b"' for *b*oth,
+            • '"b"' for *b*oth,
 
-            * '"c"' for the lines part alone of '"b"',
+            • '"c"' for the lines part alone of '"b"',
 
-            * '"o"' for both '*o*verplotted',
+            • '"o"' for both '*o*verplotted',
 
-            * '"h"' for '*h*istogram' like (or 'high-density')
+            • '"h"' for '*h*istogram' like (or 'high-density')
               vertical lines,
 
-            * '"s"' for stair *s*teps,
+            • '"s"' for stair *s*teps,
 
-            * '"S"' for other *s*teps, see 'Details' below,
+            • '"S"' for other *s*teps, see 'Details' below,
 
-            * '"n"' for no plotting.
+            • '"n"' for no plotting.
 
           All other 'type's give a warning or an error; using,
           e.g., 'type = "punkte"' being equivalent to 'type = "p"'
@@ -1592,7 +1592,7 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
 <section id="plot-example" class="slide level2">
 <h2><code>plot()</code> example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">plot</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>age, df<span class="sc">$</span>IgG_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1600,16 +1600,16 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">plot</span>(</span>
-<span id="cb49-2"><a></a>    df<span class="sc">$</span>age, </span>
-<span id="cb49-3"><a></a>    df<span class="sc">$</span>IgG_concentration, </span>
-<span id="cb49-4"><a></a>    <span class="at">type=</span><span class="st">"p"</span>, </span>
-<span id="cb49-5"><a></a>    <span class="at">main=</span><span class="st">"Age by IgG Concentrations"</span>, </span>
-<span id="cb49-6"><a></a>    <span class="at">xlab=</span><span class="st">"Age (years)"</span>, </span>
-<span id="cb49-7"><a></a>    <span class="at">ylab=</span><span class="st">"IgG Concentration (IU/mL)"</span>, </span>
-<span id="cb49-8"><a></a>    <span class="at">pch=</span><span class="dv">16</span>, </span>
-<span id="cb49-9"><a></a>    <span class="at">cex=</span><span class="fl">0.9</span>,</span>
-<span id="cb49-10"><a></a>    <span class="at">col=</span><span class="st">"lightblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">plot</span>(</span>
+<span id="cb49-2"><a href="#cb49-2"></a>    df<span class="sc">$</span>age, </span>
+<span id="cb49-3"><a href="#cb49-3"></a>    df<span class="sc">$</span>IgG_concentration, </span>
+<span id="cb49-4"><a href="#cb49-4"></a>    <span class="at">type=</span><span class="st">"p"</span>, </span>
+<span id="cb49-5"><a href="#cb49-5"></a>    <span class="at">main=</span><span class="st">"Age by IgG Concentrations"</span>, </span>
+<span id="cb49-6"><a href="#cb49-6"></a>    <span class="at">xlab=</span><span class="st">"Age (years)"</span>, </span>
+<span id="cb49-7"><a href="#cb49-7"></a>    <span class="at">ylab=</span><span class="st">"IgG Concentration (IU/mL)"</span>, </span>
+<span id="cb49-8"><a href="#cb49-8"></a>    <span class="at">pch=</span><span class="dv">16</span>, </span>
+<span id="cb49-9"><a href="#cb49-9"></a>    <span class="at">cex=</span><span class="fl">0.9</span>,</span>
+<span id="cb49-10"><a href="#cb49-10"></a>    <span class="at">col=</span><span class="st">"lightblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1625,33 +1625,33 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
 <li>We can use the functions <code>points()</code> or <code>lines()</code> to add additional points or additional lines to an existing plot.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">plot</span>(</span>
-<span id="cb50-2"><a></a>    df<span class="sc">$</span>age[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Non slum"</span>],</span>
-<span id="cb50-3"><a></a>    df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Non slum"</span>],</span>
-<span id="cb50-4"><a></a>    <span class="at">type =</span> <span class="st">"p"</span>,</span>
-<span id="cb50-5"><a></a>    <span class="at">main =</span> <span class="st">"IgG Concentration vs Age"</span>,</span>
-<span id="cb50-6"><a></a>    <span class="at">xlab =</span> <span class="st">"Age (years)"</span>,</span>
-<span id="cb50-7"><a></a>    <span class="at">ylab =</span> <span class="st">"IgG Concentration (IU/mL)"</span>,</span>
-<span id="cb50-8"><a></a>    <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb50-9"><a></a>    <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
-<span id="cb50-10"><a></a>    <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb50-11"><a></a>    <span class="at">xlim =</span> <span class="fu">range</span>(df<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb50-12"><a></a>    <span class="at">ylim =</span> <span class="fu">range</span>(df<span class="sc">$</span>IgG_concentration, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb50-13"><a></a>)</span>
-<span id="cb50-14"><a></a><span class="fu">points</span>(</span>
-<span id="cb50-15"><a></a>    df<span class="sc">$</span>age[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Mixed"</span>],</span>
-<span id="cb50-16"><a></a>    df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Mixed"</span>],</span>
-<span id="cb50-17"><a></a>    <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb50-18"><a></a>    <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
-<span id="cb50-19"><a></a>    <span class="at">col =</span> <span class="st">"blue"</span></span>
-<span id="cb50-20"><a></a>)</span>
-<span id="cb50-21"><a></a><span class="fu">points</span>(</span>
-<span id="cb50-22"><a></a>    df<span class="sc">$</span>age[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Slum"</span>],</span>
-<span id="cb50-23"><a></a>    df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Slum"</span>],</span>
-<span id="cb50-24"><a></a>    <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb50-25"><a></a>    <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
-<span id="cb50-26"><a></a>    <span class="at">col =</span> <span class="st">"darkblue"</span></span>
-<span id="cb50-27"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">plot</span>(</span>
+<span id="cb50-2"><a href="#cb50-2"></a>    df<span class="sc">$</span>age[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Non slum"</span>],</span>
+<span id="cb50-3"><a href="#cb50-3"></a>    df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Non slum"</span>],</span>
+<span id="cb50-4"><a href="#cb50-4"></a>    <span class="at">type =</span> <span class="st">"p"</span>,</span>
+<span id="cb50-5"><a href="#cb50-5"></a>    <span class="at">main =</span> <span class="st">"IgG Concentration vs Age"</span>,</span>
+<span id="cb50-6"><a href="#cb50-6"></a>    <span class="at">xlab =</span> <span class="st">"Age (years)"</span>,</span>
+<span id="cb50-7"><a href="#cb50-7"></a>    <span class="at">ylab =</span> <span class="st">"IgG Concentration (IU/mL)"</span>,</span>
+<span id="cb50-8"><a href="#cb50-8"></a>    <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb50-9"><a href="#cb50-9"></a>    <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
+<span id="cb50-10"><a href="#cb50-10"></a>    <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb50-11"><a href="#cb50-11"></a>    <span class="at">xlim =</span> <span class="fu">range</span>(df<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb50-12"><a href="#cb50-12"></a>    <span class="at">ylim =</span> <span class="fu">range</span>(df<span class="sc">$</span>IgG_concentration, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-13"><a href="#cb50-13"></a>)</span>
+<span id="cb50-14"><a href="#cb50-14"></a><span class="fu">points</span>(</span>
+<span id="cb50-15"><a href="#cb50-15"></a>    df<span class="sc">$</span>age[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Mixed"</span>],</span>
+<span id="cb50-16"><a href="#cb50-16"></a>    df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Mixed"</span>],</span>
+<span id="cb50-17"><a href="#cb50-17"></a>    <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb50-18"><a href="#cb50-18"></a>    <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
+<span id="cb50-19"><a href="#cb50-19"></a>    <span class="at">col =</span> <span class="st">"blue"</span></span>
+<span id="cb50-20"><a href="#cb50-20"></a>)</span>
+<span id="cb50-21"><a href="#cb50-21"></a><span class="fu">points</span>(</span>
+<span id="cb50-22"><a href="#cb50-22"></a>    df<span class="sc">$</span>age[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Slum"</span>],</span>
+<span id="cb50-23"><a href="#cb50-23"></a>    df<span class="sc">$</span>IgG_concentration[df<span class="sc">$</span>slum <span class="sc">==</span> <span class="st">"Slum"</span>],</span>
+<span id="cb50-24"><a href="#cb50-24"></a>    <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb50-25"><a href="#cb50-25"></a>    <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
+<span id="cb50-26"><a href="#cb50-26"></a>    <span class="at">col =</span> <span class="st">"darkblue"</span></span>
+<span id="cb50-27"><a href="#cb50-27"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"><ul>
@@ -1663,7 +1663,7 @@ plot: logical.  If 'TRUE' (default), a histogram is plotted,
 <section id="boxplot-help-file" class="slide level2">
 <h2><code>boxplot()</code> Help File</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a>?boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>?boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Box Plots</p>
 <p>Description:</p>
@@ -1842,7 +1842,7 @@ conf: a matrix where each column contains the lower and upper
         drop = FALSE, sep = ".", lex.order = FALSE)</code></pre>
 <p>Let’s practice</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">boxplot</span>(IgG_concentration<span class="sc">~</span>age_group, <span class="at">data=</span>df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="fu">boxplot</span>(IgG_concentration<span class="sc">~</span>age_group, <span class="at">data=</span>df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1850,14 +1850,14 @@ conf: a matrix where each column contains the lower and upper
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a><span class="fu">boxplot</span>(</span>
-<span id="cb68-2"><a></a>    <span class="fu">log</span>(df<span class="sc">$</span>IgG_concentration)<span class="sc">~</span>df<span class="sc">$</span>age_group, </span>
-<span id="cb68-3"><a></a>    <span class="at">main=</span><span class="st">"Age by IgG Concentrations"</span>, </span>
-<span id="cb68-4"><a></a>    <span class="at">xlab=</span><span class="st">"Age Group (years)"</span>, </span>
-<span id="cb68-5"><a></a>    <span class="at">ylab=</span><span class="st">"log IgG Concentration (mIU/mL)"</span>, </span>
-<span id="cb68-6"><a></a>    <span class="at">names=</span><span class="fu">c</span>(<span class="st">"1-5"</span>,<span class="st">"6-10"</span>, <span class="st">"11-15"</span>), </span>
-<span id="cb68-7"><a></a>    <span class="at">varwidth=</span>T</span>
-<span id="cb68-8"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">boxplot</span>(</span>
+<span id="cb68-2"><a href="#cb68-2"></a>    <span class="fu">log</span>(df<span class="sc">$</span>IgG_concentration)<span class="sc">~</span>df<span class="sc">$</span>age_group, </span>
+<span id="cb68-3"><a href="#cb68-3"></a>    <span class="at">main=</span><span class="st">"Age by IgG Concentrations"</span>, </span>
+<span id="cb68-4"><a href="#cb68-4"></a>    <span class="at">xlab=</span><span class="st">"Age Group (years)"</span>, </span>
+<span id="cb68-5"><a href="#cb68-5"></a>    <span class="at">ylab=</span><span class="st">"log IgG Concentration (mIU/mL)"</span>, </span>
+<span id="cb68-6"><a href="#cb68-6"></a>    <span class="at">names=</span><span class="fu">c</span>(<span class="st">"1-5"</span>,<span class="st">"6-10"</span>, <span class="st">"11-15"</span>), </span>
+<span id="cb68-7"><a href="#cb68-7"></a>    <span class="at">varwidth=</span>T</span>
+<span id="cb68-8"><a href="#cb68-8"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1870,7 +1870,7 @@ conf: a matrix where each column contains the lower and upper
 <section id="barplot-help-file" class="slide level2">
 <h2><code>barplot()</code> Help File</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>?barplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>?barplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Bar Plots</p>
 <p>Description:</p>
@@ -2063,8 +2063,8 @@ data: a data frame (or list) from which the variables in formula
         inside = TRUE, plot = TRUE, axis.lty = 0, offset = 0,
         add = FALSE, ann = !add &amp;&amp; par("ann"), args.legend = NULL, ...)</code></pre>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>seropos, df<span class="sc">$</span>age_group)</span>
-<span id="cb84-2"><a></a><span class="fu">barplot</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>seropos, df<span class="sc">$</span>age_group)</span>
+<span id="cb84-2"><a href="#cb84-2"></a><span class="fu">barplot</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2072,8 +2072,8 @@ data: a data frame (or list) from which the variables in formula
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a>prop.cell.percentages <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq)</span>
-<span id="cb85-2"><a></a><span class="fu">barplot</span>(prop.cell.percentages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>prop.cell.percentages <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq)</span>
+<span id="cb85-2"><a href="#cb85-2"></a><span class="fu">barplot</span>(prop.cell.percentages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2087,7 +2087,7 @@ data: a data frame (or list) from which the variables in formula
 <h2>3. Legend!</h2>
 <p>In Base R plotting the legend is not automatically generated. This is nice because it gives you a huge amount of control over how your legend looks, but it is also easy to mislabel your colors, symbols, line types, etc. So, basically be careful.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a>?legend</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>?legend</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -2467,10 +2467,10 @@ Examples:
        seg.len = 2)</code></pre>
 <p>Let’s practice</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a></a><span class="fu">barplot</span>(prop.cell.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
-<span id="cb89-2"><a></a><span class="fu">legend</span>(<span class="at">x=</span><span class="fl">2.5</span>, <span class="at">y=</span><span class="fl">0.5</span>,</span>
-<span id="cb89-3"><a></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
-<span id="cb89-4"><a></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">barplot</span>(prop.cell.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
+<span id="cb89-2"><a href="#cb89-2"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="fl">2.5</span>, <span class="at">y=</span><span class="fl">0.5</span>,</span>
+<span id="cb89-3"><a href="#cb89-3"></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
+<span id="cb89-4"><a href="#cb89-4"></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="add-legend-to-the-plot-1" class="slide level2">
@@ -2481,15 +2481,15 @@ Examples:
 <h2><code>barplot()</code> example</h2>
 <p>Getting closer, but what I really want is column proportions (i.e., the proportions should sum to one for each age group). Also, the age groups need more meaningful names.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>seropos, df<span class="sc">$</span>age_group)</span>
-<span id="cb90-2"><a></a>prop.column.percentages <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq, <span class="at">margin=</span><span class="dv">2</span>)</span>
-<span id="cb90-3"><a></a><span class="fu">colnames</span>(prop.column.percentages) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1-5 yo"</span>, <span class="st">"6-10 yo"</span>, <span class="st">"11-15 yo"</span>)</span>
-<span id="cb90-4"><a></a></span>
-<span id="cb90-5"><a></a><span class="fu">barplot</span>(prop.column.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
-<span id="cb90-6"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
-<span id="cb90-7"><a></a><span class="fu">legend</span>(<span class="at">x=</span><span class="fl">2.8</span>, <span class="at">y=</span><span class="fl">1.35</span>,</span>
-<span id="cb90-8"><a></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
-<span id="cb90-9"><a></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>seropos, df<span class="sc">$</span>age_group)</span>
+<span id="cb90-2"><a href="#cb90-2"></a>prop.column.percentages <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq, <span class="at">margin=</span><span class="dv">2</span>)</span>
+<span id="cb90-3"><a href="#cb90-3"></a><span class="fu">colnames</span>(prop.column.percentages) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1-5 yo"</span>, <span class="st">"6-10 yo"</span>, <span class="st">"11-15 yo"</span>)</span>
+<span id="cb90-4"><a href="#cb90-4"></a></span>
+<span id="cb90-5"><a href="#cb90-5"></a><span class="fu">barplot</span>(prop.column.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
+<span id="cb90-6"><a href="#cb90-6"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb90-7"><a href="#cb90-7"></a><span class="fu">legend</span>(<span class="at">x=</span><span class="fl">2.8</span>, <span class="at">y=</span><span class="fl">1.35</span>,</span>
+<span id="cb90-8"><a href="#cb90-8"></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
+<span id="cb90-9"><a href="#cb90-9"></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="barplot-example-2" class="slide level2">
@@ -2500,23 +2500,23 @@ Examples:
 <h2><code>barplot()</code> example</h2>
 <p>Now, let look at seropositivity by two individual level characteristics in the same plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb91-2"><a></a><span class="fu">barplot</span>(prop.column.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
-<span id="cb91-3"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
-<span id="cb91-4"><a></a><span class="fu">legend</span>(<span class="st">"topright"</span>,</span>
-<span id="cb91-5"><a></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
-<span id="cb91-6"><a></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
-<span id="cb91-7"><a></a></span>
-<span id="cb91-8"><a></a><span class="fu">barplot</span>(prop.column.percentages2, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Residence"</span>)</span>
-<span id="cb91-9"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
-<span id="cb91-10"><a></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>),  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb91-2"><a href="#cb91-2"></a><span class="fu">barplot</span>(prop.column.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
+<span id="cb91-3"><a href="#cb91-3"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb91-4"><a href="#cb91-4"></a><span class="fu">legend</span>(<span class="st">"topright"</span>,</span>
+<span id="cb91-5"><a href="#cb91-5"></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
+<span id="cb91-6"><a href="#cb91-6"></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
+<span id="cb91-7"><a href="#cb91-7"></a></span>
+<span id="cb91-8"><a href="#cb91-8"></a><span class="fu">barplot</span>(prop.column.percentages2, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Residence"</span>)</span>
+<span id="cb91-9"><a href="#cb91-9"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb91-10"><a href="#cb91-10"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>),  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="barplot-example-4" class="slide level2">
 <h2><code>barplot()</code> example</h2>
 
 <img data-src="Module10-DataVisualization_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"></section>
-<section id="saving-plots-to-file" class="slide level2 scrollable">
+<section id="saving-plots-to-file" class="slide level2">
 <h2>Saving plots to file</h2>
 <p>If you want to include your graphic in a paper or anything else, you need to save it as an image. One limitation of base R graphics is that the process for saving plots is a bit annoying.</p>
 <ol type="1">
@@ -2526,33 +2526,33 @@ Examples:
 </ol>
 <p>Let’s do an example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a><span class="co"># Open the graphics device</span></span>
-<span id="cb92-2"><a></a><span class="fu">png</span>(</span>
-<span id="cb92-3"><a></a>    <span class="st">"my-barplot.png"</span>,</span>
-<span id="cb92-4"><a></a>    <span class="at">width =</span> <span class="dv">800</span>,</span>
-<span id="cb92-5"><a></a>    <span class="at">height =</span> <span class="dv">450</span>,</span>
-<span id="cb92-6"><a></a>    <span class="at">units =</span> <span class="st">"px"</span></span>
-<span id="cb92-7"><a></a>)</span>
-<span id="cb92-8"><a></a><span class="co"># Set the plot layout -- this is an alternative to par(mfrow = ...)</span></span>
-<span id="cb92-9"><a></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>))</span>
-<span id="cb92-10"><a></a><span class="co"># Make the plot</span></span>
-<span id="cb92-11"><a></a><span class="fu">barplot</span>(prop.column.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
-<span id="cb92-12"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
-<span id="cb92-13"><a></a><span class="fu">legend</span>(<span class="st">"topright"</span>,</span>
-<span id="cb92-14"><a></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
-<span id="cb92-15"><a></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
-<span id="cb92-16"><a></a></span>
-<span id="cb92-17"><a></a><span class="fu">barplot</span>(prop.column.percentages2, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Residence"</span>)</span>
-<span id="cb92-18"><a></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
-<span id="cb92-19"><a></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>),  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
-<span id="cb92-20"><a></a><span class="co"># Close the graphics device</span></span>
-<span id="cb92-21"><a></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Open the graphics device</span></span>
+<span id="cb92-2"><a href="#cb92-2"></a><span class="fu">png</span>(</span>
+<span id="cb92-3"><a href="#cb92-3"></a>    <span class="st">"my-barplot.png"</span>,</span>
+<span id="cb92-4"><a href="#cb92-4"></a>    <span class="at">width =</span> <span class="dv">800</span>,</span>
+<span id="cb92-5"><a href="#cb92-5"></a>    <span class="at">height =</span> <span class="dv">450</span>,</span>
+<span id="cb92-6"><a href="#cb92-6"></a>    <span class="at">units =</span> <span class="st">"px"</span></span>
+<span id="cb92-7"><a href="#cb92-7"></a>)</span>
+<span id="cb92-8"><a href="#cb92-8"></a><span class="co"># Set the plot layout -- this is an alternative to par(mfrow = ...)</span></span>
+<span id="cb92-9"><a href="#cb92-9"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb92-10"><a href="#cb92-10"></a><span class="co"># Make the plot</span></span>
+<span id="cb92-11"><a href="#cb92-11"></a><span class="fu">barplot</span>(prop.column.percentages, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Age Group"</span>)</span>
+<span id="cb92-12"><a href="#cb92-12"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb92-13"><a href="#cb92-13"></a><span class="fu">legend</span>(<span class="st">"topright"</span>,</span>
+<span id="cb92-14"><a href="#cb92-14"></a>             <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), </span>
+<span id="cb92-15"><a href="#cb92-15"></a>             <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
+<span id="cb92-16"><a href="#cb92-16"></a></span>
+<span id="cb92-17"><a href="#cb92-17"></a><span class="fu">barplot</span>(prop.column.percentages2, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.35</span>), <span class="at">main=</span><span class="st">"Seropositivity by Residence"</span>)</span>
+<span id="cb92-18"><a href="#cb92-18"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>,<span class="dv">1</span>))</span>
+<span id="cb92-19"><a href="#cb92-19"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">fill=</span><span class="fu">c</span>(<span class="st">"darkblue"</span>,<span class="st">"red"</span>),  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"seronegative"</span>, <span class="st">"seropositive"</span>))</span>
+<span id="cb92-20"><a href="#cb92-20"></a><span class="co"># Close the graphics device</span></span>
+<span id="cb92-21"><a href="#cb92-21"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>png 
-  2 </code></pre>
+<pre><code>quartz_off_screen 
+                2 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a></a><span class="co"># Reset the layout</span></span>
-<span id="cb94-2"><a></a><span class="fu">layout</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="co"># Reset the layout</span></span>
+<span id="cb94-2"><a href="#cb94-2"></a><span class="fu">layout</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note: after you do an interactive graphics session, it is often helpful to restart R or run the function <code>graphics.off()</code> before opening the graphics connection device.</p>
 </section>
@@ -2577,10 +2577,8 @@ Examples:
 <li><pre><code>  ["Base R margins: a cheatsheet"](https://r-graph-gallery.com/74-margin-and-oma-cheatsheet.html)</code></pre></li>
 </ul>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 </section>
     </div>
@@ -2794,80 +2792,42 @@ Examples:
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2901,7 +2861,18 @@ Examples:
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -2933,47 +2904,7 @@ Examples:
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -3010,11 +2941,7 @@ Examples:
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {
