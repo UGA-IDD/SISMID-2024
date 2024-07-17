@@ -3323,5 +3323,117 @@
       "Day 1",
       "Module 6: Get to Know Your Data and Subsetting"
     ]
+  },
+  {
+    "objectID": "modules/Module12-Function.html#learning-objectives",
+    "href": "modules/Module12-Function.html#learning-objectives",
+    "title": "Module 12: Function",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\nAfter module 12, you should be able to:\n\nCreate your own function"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#writing-your-own-functions",
+    "href": "modules/Module12-Function.html#writing-your-own-functions",
+    "title": "Module 12: Function",
+    "section": "Writing your own functions",
+    "text": "Writing your own functions\nSo far, we have seen many functions (e.g., c(), class(), mean(), tranform(), aggregate() and many more\nwhy create your own function?\n\nto cut down on repetitive coding\nto organize code into manageable chunks\nto avoid running code unintentionally\nto use names that make sense to you"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#writing-your-own-functions-1",
+    "href": "modules/Module12-Function.html#writing-your-own-functions-1",
+    "title": "Module 12: Function",
+    "section": "Writing your own functions",
+    "text": "Writing your own functions\nHere we will write a function that multiplies some number (x) by 2:\n\ntimes_2 &lt;- function(x) x*2\n\nWhen you run the line of code above, you make it ready to use (no output yet!) Let’s test it!\n\ntimes_2(x=10)\n\n[1] 20"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#writing-your-own-functions-2",
+    "href": "modules/Module12-Function.html#writing-your-own-functions-2",
+    "title": "Module 12: Function",
+    "section": "Writing your own functions:",
+    "text": "Writing your own functions:\nAdding the curly brackets - { } - allows you to use functions spanning multiple lines:\n\ntimes_3 &lt;- function(x) {\n  x*3\n}\ntimes_3(x=10)\n\n[1] 30"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#writing-your-own-functions-return",
+    "href": "modules/Module12-Function.html#writing-your-own-functions-return",
+    "title": "Module 12: Function",
+    "section": "Writing your own functions: return",
+    "text": "Writing your own functions: return\nIf we want something specific for the function’s output, we use return(). Note, if you want to return more than one object, you need to put it into a list using the list() function.\n\ntimes_4 &lt;- function(x) {\n  output &lt;- x * 4\n  return(list(output, x))\n}\ntimes_4(x = 10)\n\n[[1]]\n[1] 40\n\n[[2]]\n[1] 10"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#function-syntax",
+    "href": "modules/Module12-Function.html#function-syntax",
+    "title": "Module 12: Function",
+    "section": "Function Syntax",
+    "text": "Function Syntax\nThis is a brief introduction. The syntax is:\nfunctionName = function(inputs) {\n&lt; function body &gt;\nreturn(list(value1, value2))\n}\nNote to create the function for use you need to\n\nCode/type the function\nExecute/run the lines of code\n\nOnly then will the function be available in the Environment pane and ready to use."
+  },
+  {
+    "objectID": "modules/Module12-Function.html#writing-your-own-functions-multiple-arguments",
+    "href": "modules/Module12-Function.html#writing-your-own-functions-multiple-arguments",
+    "title": "Module 12: Function",
+    "section": "Writing your own functions: multiple arguments",
+    "text": "Writing your own functions: multiple arguments\nFunctions can take multiple arguments / inputs. Here the function has two arguments x and y\n\ntimes_2_plus_y &lt;- function(x, y) {\n  out &lt;- x * 2 + y\n  return(out)\n}\ntimes_2_plus_y(x = 10, y = 3)\n\n[1] 23"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#writing-your-own-functions-arugment-defaults",
+    "href": "modules/Module12-Function.html#writing-your-own-functions-arugment-defaults",
+    "title": "Module 12: Function",
+    "section": "Writing your own functions: arugment defaults",
+    "text": "Writing your own functions: arugment defaults\nFunctions can have default arguments. This lets us use the function without specifying the arguments\n\ntimes_2_plus_y &lt;- function(x = 10, y = 3) {\n  out &lt;- x * 2 + y\n  return(out)\n}\ntimes_2_plus_y()\n\n[1] 23\n\n\nWe got an answer b/c we put defaults into the function arguments."
+  },
+  {
+    "objectID": "modules/Module12-Function.html#writing-a-simple-function",
+    "href": "modules/Module12-Function.html#writing-a-simple-function",
+    "title": "Module 12: Function",
+    "section": "Writing a simple function",
+    "text": "Writing a simple function\nLet’s write a function, sqdif, that:\n\ntakes two numbers x and y with default values of 2 and 3.\ntakes the difference\nsquares this difference\nthen returns the final value\n\nfunctionName = function(inputs) {\n&lt; function body &gt;\nreturn(list(value1, value2))\n}\n\nsqdif &lt;- function(x=2,y=3){\n     output &lt;- (x-y)^2\n     return(output)\n}\n\nsqdif()\n\n[1] 1\n\nsqdif(x=10,y=5)\n\n[1] 25\n\nsqdif(10,5)\n\n[1] 25"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#writing-your-own-functions-characters",
+    "href": "modules/Module12-Function.html#writing-your-own-functions-characters",
+    "title": "Module 12: Function",
+    "section": "Writing your own functions: characters",
+    "text": "Writing your own functions: characters\nFunctions can have any kind of data type input. For example, here is a function with characters:\n\nloud &lt;- function(word) {\n  output &lt;- rep(toupper(word), 5)\n  return(output)\n}\nloud(word = \"hooray!\")\n\n[1] \"HOORAY!\" \"HOORAY!\" \"HOORAY!\" \"HOORAY!\" \"HOORAY!\""
+  },
+  {
+    "objectID": "modules/Module12-Function.html#using-functions-with-aggregate",
+    "href": "modules/Module12-Function.html#using-functions-with-aggregate",
+    "title": "Module 12: Function",
+    "section": "Using functions with aggregate()",
+    "text": "Using functions with aggregate()\nYou can apply functions easily to groups with aggregate(). As a reminder, we learned aggregate() yesterday in Module 9. We will take a quick look at the data.\n\nhead(df)\n\n  observation_id IgG_concentration age gender     slum age_group seropos\n1           5772        0.31768953   2 Female Non slum     young       0\n2           8095        3.43682311   4 Female Non slum     young       0\n3           9784        0.30000000   4   Male Non slum     young       0\n4           9338      143.23630140   4   Male Non slum     young       1\n5           6369        0.44765343   1   Male Non slum     young       0\n6           6885        0.02527076   4   Male Non slum     young       0\n\n\nThen, we used the following code to estimate the standard deviation of IgG_concentration for each unique combination of age_group and slum variables.\n\naggregate(\n    IgG_concentration ~ age_group + slum,\n    data = df,\n    FUN = sd # standard deviation\n)\n\n  age_group     slum IgG_concentration\n1     young    Mixed         174.89797\n2    middle    Mixed         162.08188\n3       old    Mixed         150.07063\n4     young Non slum         114.68422\n5    middle Non slum         177.62113\n6       old Non slum         141.22330\n7     young     Slum          61.85705\n8    middle     Slum         202.42018\n9       old     Slum          74.75217"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#using-functions-with-aggregate-1",
+    "href": "modules/Module12-Function.html#using-functions-with-aggregate-1",
+    "title": "Module 12: Function",
+    "section": "Using functions with aggregate()",
+    "text": "Using functions with aggregate()\nBut, lets say we want to do something different. Rather than taking the standard deviation and using a function that already exists (sd()), lets take the natural log of IgG_concentration and then get the mean. To do this, we can create our own function and this plug it into the FUN argument.\nStep 1 - code/type our own function\n\nlog_mean_function &lt;- function(x){\n    output &lt;- mean(log(x))\n    return(output)\n}\n\n\nStep 2 - execute our function (i.e., run the lines of code), and you would not be able to see it in you Environment pane.\n\n\nStep 3 - use the function by plugging it in the aggregate() function in order to complete our task\n\naggregate(\n    IgG_concentration ~ age_group + slum,\n    data = df,\n    FUN = log_mean_function\n)\n\n  age_group     slum IgG_concentration\n1     young    Mixed        0.50082888\n2    middle    Mixed        2.85916401\n3       old    Mixed        3.13971163\n4     young Non slum        0.14060433\n5    middle Non slum        2.30717077\n6       old Non slum        3.77021233\n7     young     Slum       -0.04611508\n8    middle     Slum        2.46490973\n9       old     Slum        3.52357989"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#example-from-module-12",
+    "href": "modules/Module12-Function.html#example-from-module-12",
+    "title": "Module 12: Function",
+    "section": "Example from Module 12",
+    "text": "Example from Module 12\nIn the last Module 12, we used loops to loop through every country in the dataset, and get the median, first and third quartiles, and range for each country and stored those summary statistics in a data frame.\n\nfor (i in 1:length(countries)) {\n    # Get the data for the current country only\n    country_data &lt;- subset(meas, country == countries[i])\n    \n    # Get the summary statistics for this country\n    country_cases &lt;- country_data$Cases\n    country_quart &lt;- quantile(\n        country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)\n    )\n    country_range &lt;- range(country_cases, na.rm = TRUE)\n    \n    # Save the summary statistics into a data frame\n    country_summary &lt;- data.frame(\n        country = countries[[i]],\n        min = country_range[[1]],\n        Q1 = country_quart[[1]],\n        median = country_quart[[2]],\n        Q3 = country_quart[[3]],\n        max = country_range[[2]]\n    )\n    \n    # Save the results to our container\n    res[[i]] &lt;- country_summary\n}"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#function-instead-of-loop",
+    "href": "modules/Module12-Function.html#function-instead-of-loop",
+    "title": "Module 12: Function",
+    "section": "Function instead of Loop",
+    "text": "Function instead of Loop\nHere we are going to set up a function that takes our data frame and outputs the median, first and third quartiles, and range of measles cases for a specified country.\nStep 1 - code/type our own function. We specify two arguments, the first argument is our data frame and the second is one country’s iso3 code. Notice, I included common documentation for\n\nget_country_stats &lt;- function(df, iso3_code){\n    \n    country_data &lt;- subset(df, iso3c == iso3_code)\n    \n    # Get the summary statistics for this country\n    country_cases &lt;- country_data$Cases\n    country_quart &lt;- quantile(\n        country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)\n    )\n    country_range &lt;- range(country_cases, na.rm = TRUE)\n    \n    country_name &lt;- unique(country_data$country)\n    \n    country_summary &lt;- data.frame(\n        country = country_name,\n        min = country_range[[1]],\n        Q1 = country_quart[[1]],\n        median = country_quart[[2]],\n        Q3 = country_quart[[3]],\n        max = country_range[[2]]\n    )\n    \n    return(country_summary)\n}\n\nStep 2 - execute our function (i.e., run the lines of code), and you would not be able to see it in you Environment pane.\n\nStep 3 - use the function by pulling out stats for India and Pakistan\n\nget_country_stats(df=meas, iso3_code=\"IND\")\n\n  country  min    Q1 median      Q3    max\n1   India 3305 30813  47072 74828.5 252940\n\nget_country_stats(df=meas, iso3_code=\"PAK\")\n\n   country min   Q1 median      Q3   max\n1 Pakistan 386 2065   3903 13860.5 55543"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#summary",
+    "href": "modules/Module12-Function.html#summary",
+    "title": "Module 12: Function",
+    "section": "Summary",
+    "text": "Summary\n\nSimple functions take the form:\n\nfunctionName = function(arguments) {\n    &lt; function body &gt;\n    return(list(outputs))\n}\n\nWe can specify arguments defaults when you create the function"
+  },
+  {
+    "objectID": "modules/Module12-Function.html#mini-exercise",
+    "href": "modules/Module12-Function.html#mini-exercise",
+    "title": "Module 12: Function",
+    "section": "Mini Exercise",
+    "text": "Mini Exercise\nCreate your own function that saves a line plot of a time series of measles cases for a specified country.\nStep 1. Determine your arguments, which are the same as the last example\nStep 2. Begin your function by subsetting the data to include only the country specified in the arguments (i.e, country_data), this is the same as the first line of code in the last example.\nStep 3. Return to Module 10 to remember how to use the plot() function. Hint you will need to specify the argument `type=“l” to make it a line plot.\nStep 4. Return to your function and add code to create a new plot using the country_data object. Note you will need to use the png() function before the plot() function and end it with dev.off() in order to save the file.\nStep 5. Use the function to generate a plot for India and Pakistan"
   }
 ]

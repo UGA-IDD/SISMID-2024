@@ -200,7 +200,7 @@ plot(
 * We can use the functions `points()` or `lines()` to add additional points
 or additional lines to an existing plot.
 
-```{r}
+```{r eval=TRUE echo=TRUE}
 plot(
 	df$age[df$slum == "Non slum"],
 	df$IgG_concentration[df$slum == "Non slum"],

@@ -1,0 +1,342 @@
+---
+title: "Module 13: Functions"
+format: 
+  revealjs:
+    scrollable: true
+    smaller: true
+    toc: false
+---
+
+## Learning Objectives
+
+After module 13, you should be able to:
+
+- Create your own function
+
+## Writing your own functions
+
+So far, we have seen many functions (e.g., `c()`, `class()`, `mean()`, `tranform()`, `aggregate()` and many more
+
+**why create your own function?**
+
+1. to cut down on repetitive coding
+2. to organize code into manageable chunks
+3. to avoid running code unintentionally
+4. to use names that make sense to you
+
+## Writing your own functions
+
+Here we will write a function that multiplies some number (x) by 2:
+
+```{r eval=TRUE, echo=TRUE}
+times_2 <- function(x) x*2
+```
+When you run the line of code above, you make it ready to use (no output yet!)
+Let's test it!
+
+```{r eval=TRUE, echo=TRUE}
+times_2(x=10)
+```
+
+## Writing your own functions: { }
+
+Adding the curly brackets - `{ }` - allows you to use functions spanning multiple lines:
+
+
+```{r eval=TRUE, echo=TRUE}
+times_3 <- function(x) {
+  x*3
+}
+times_3(x=10)
+```
+
+## Writing your own functions: `return`
+
+If we want something specific for the function's output, we use `return()`. Note, if you want to return more than one object, you need to put it into a list using the `list()` function.
+
+```{r eval=TRUE, echo=TRUE}
+times_4 <- function(x) {
+  output <- x * 4
+  return(list(output, x))
+}
+times_4(x = 10)
+```
+
+
+## Function Syntax
+
+This is a brief introduction. The syntax is:
+
+```
+functionName = function(inputs) {
+< function body >
+return(list(value1, value2))
+}
+```
+
+Note to create the function for use you need to 
+
+1. Code/type the function
+2. Execute/run the lines of code
+
+Only then will the function be available in the Environment pane and ready to use.
+
+## Writing your own functions: multiple arguments
+
+Functions can take multiple arguments / inputs. Here the function has two arguments `x` and `y`
+
+```{r eval=TRUE, echo=TRUE}
+times_2_plus_y <- function(x, y) {
+  out <- x * 2 + y
+  return(out)
+}
+times_2_plus_y(x = 10, y = 3)
+```
+
+## Writing your own functions: arugment defaults
+
+Functions can have default arguments. This lets us use the function without specifying the arguments
+
+```{r eval=TRUE, echo=TRUE}
+times_2_plus_y <- function(x = 10, y = 3) {
+  out <- x * 2 + y
+  return(out)
+}
+times_2_plus_y()
+```
+
+We got an answer b/c we put defaults into the function arguments.
+
+## Writing a simple function
+
+Let's write a function, `sqdif`, that:
+
+1. takes two numbers `x` and `y` with default values of 2 and 3.
+2. takes the difference
+3. squares this difference
+4. then returns the final value
+
+```
+functionName = function(inputs) {
+< function body >
+return(list(value1, value2))
+}
+```
+
+```{r eval=TRUE, echo=TRUE}
+sqdif <- function(x=2,y=3){
+     output <- (x-y)^2
+     return(output)
+}
+
+sqdif()
+sqdif(x=10,y=5)
+sqdif(10,5)
+```
+
+## Writing your own functions: characters
+
+Functions can have any kind of data type input. For example, here is a function with characters:
+
+```{r eval=TRUE, echo=TRUE}
+loud <- function(word) {
+  output <- rep(toupper(word), 5)
+  return(output)
+}
+loud(word = "hooray!")
+```
+
+
+## Using functions with `aggregate()`
+
+You can apply functions easily to groups with `aggregate()`. As a reminder, we learned `aggregate()` yesterday in Module 9. We will take a quick look at the data.
+
+```{r echo=FALSE, eval=TRUE}
+df <- read.csv(file = "data/serodata.csv") #relative path
+df$age_group <- ifelse(df$age <= 5, "young", 
+                       ifelse(df$age<=10 & df$age>5, "middle", "old"))
+df$age_group <- factor(df$age_group, levels=c("young", "middle", "old"))
+df$seropos <- ifelse(df$IgG_concentration<10, 0, 1)
+```
+
+```{r echo=TRUE, eval=TRUE}
+head(df)
+```
+
+Then, we used the following code to estimate the standard deviation of `IgG_concentration` for each unique combination of `age_group` and `slum` variables.  
+
+```{r}
+aggregate(
+	IgG_concentration ~ age_group + slum,
+	data = df,
+	FUN = sd # standard deviation
+)
+```
+
+
+## Using functions with `aggregate()`
+
+But, lets say we want to do something different. Rather than taking the standard deviation and using a function that already exists (`sd()`), lets take the natural log of `IgG_concentration` and then get the mean.  To do this, we can create our own function and this plug it into the `FUN` argument.  
+
+Step 1 - code/type our own function
+```{r eval=TRUE, echo=TRUE}
+log_mean_function <- function(x){
+	output <- mean(log(x))
+	return(output)
+}
+```
+
+</br>
+
+Step 2 - execute our function (i.e., run the lines of code), and you would not be able to see it in you Environment pane.
+
+```{r, out.width = "100%", echo = FALSE, fig.align='left'}
+knitr::include_graphics("images/log_mean_function.png")
+```
+
+</br>
+
+Step 3 - use the function by plugging it in the `aggregate()` function in order to complete our task
+```{r echo=TRUE, eval=TRUE}
+aggregate(
+	IgG_concentration ~ age_group + slum,
+	data = df,
+	FUN = log_mean_function
+)
+```
+
+
+## Example from Module 12
+
+In the last Module 12, we used loops to loop through every country in the dataset, and get the median, first and third quartiles, and range for each country and stored those summary statistics in a data frame.
+
+
+```{r echo=FALSE, eval=TRUE}
+meas <- readRDS(here::here("data", "measles_final.Rds")) |>
+	subset(vaccine_antigen == "MCV1")
+```
+
+```{r eval=FALSE, echo=TRUE}
+for (i in 1:length(countries)) {
+	# Get the data for the current country only
+	country_data <- subset(meas, country == countries[i])
+	
+	# Get the summary statistics for this country
+	country_cases <- country_data$Cases
+	country_quart <- quantile(
+		country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)
+	)
+	country_range <- range(country_cases, na.rm = TRUE)
+	
+	# Save the summary statistics into a data frame
+	country_summary <- data.frame(
+		country = countries[[i]],
+		min = country_range[[1]],
+		Q1 = country_quart[[1]],
+		median = country_quart[[2]],
+		Q3 = country_quart[[3]],
+		max = country_range[[2]]
+	)
+	
+	# Save the results to our container
+	res[[i]] <- country_summary
+}
+```
+
+## Function instead of Loop
+
+Here we are going to set up a function that takes our data frame and outputs the median, first and third quartiles, and range of measles cases for a specified country.
+
+Step 1 - code/type our own function.  We specify two arguments, the first argument is our data frame and the second is one country's iso3 code.  Notice, I included common documentation for  
+
+```{r echo=FALSE, eval=FALSE}
+#' Get the median, first and third quartiles, and range of measles cases for a specified country
+#'
+#' @param df - data frame - coming from measles_final.Rds file
+#' @param iso3_code - character - the iso3 code for a specified country
+#'
+#' @return data frame country summary
+```
+
+```{r eval=TRUE, echo=TRUE}
+get_country_stats <- function(df, iso3_code){
+	
+	country_data <- subset(df, iso3c == iso3_code)
+	
+	# Get the summary statistics for this country
+	country_cases <- country_data$Cases
+	country_quart <- quantile(
+		country_cases, na.rm = TRUE, probs = c(0.25, 0.5, 0.75)
+	)
+	country_range <- range(country_cases, na.rm = TRUE)
+	
+	country_name <- unique(country_data$country)
+	
+	country_summary <- data.frame(
+		country = country_name,
+		min = country_range[[1]],
+		Q1 = country_quart[[1]],
+		median = country_quart[[2]],
+		Q3 = country_quart[[3]],
+		max = country_range[[2]]
+	)
+	
+	return(country_summary)
+}
+```
+
+Step 2 - execute our function (i.e., run the lines of code), and you would not be able to see it in you Environment pane.
+
+```{r, out.width = "100%", echo = FALSE, fig.align='left'}
+knitr::include_graphics("images/get_country_stats_function.png")
+```
+
+Step 3 - use the function by pulling out stats for India and Pakistan
+```{r eval=TRUE, echo=TRUE}
+get_country_stats(df=meas, iso3_code="IND")
+get_country_stats(df=meas, iso3_code="PAK")
+```
+
+
+## Summary
+
+- Simple functions take the form:
+```
+functionName = function(arguments) {
+	< function body >
+	return(list(outputs))
+}
+```
+- We can specify arguments defaults when you create the function
+
+
+## Mini Exercise
+
+Create your own function that saves a line plot of a time series of measles cases for a specified country.
+
+Step 1. Determine your arguments, which are the same as the last example
+
+Step 2. Begin your function by subsetting the data to include only the country specified in the arguments (i.e, `country_data`), this is the same as the first line of code in the last example.
+
+Step 3. Return to Module 10 to remember how to use the `plot()` function.  Hint you will need to specify the argument `type="l" to make it a line plot.  
+
+Step 4. Return to your function and add code to create a new plot using the `country_data` object. Note you will need to use the `png()` function before the `plot()` function and end it with `dev.off()` in order to save the file.
+
+Step 5. Use the function to generate a plot for India and Pakistan
+
+# Mini Exercise Answer
+
+```{r echo=TRUE, eval=FALSE}
+get_time_series_plot <- function(df, iso3_code){
+	
+	country_data <- subset(df, iso3c == iso3_code)
+	
+	png(filename=paste0("output/time_series_", iso3_code, ".png"))
+	plot(country_data$time, country_data$Cases, type="l", xlab="year", ylab="Measles Cases")
+	dev.off()
+	
+}
+
+get_time_series_plot(df=meas, iso3_code="IND")
+get_time_series_plot(df=meas, iso3_code="PAK")
+```
