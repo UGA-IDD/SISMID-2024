@@ -48,11 +48,9 @@ website:
             target: _blank
           - href: modules/Module10-DataVisualization.qmd
             target: _blank
-          - href: modules/Module11-RMarkdown.qmd
-            target: _blank
       - section: "Day 3"
         contents:
-          - href: modules/Module11-Rmarkdown.qmd
+          - href: modules/Module11-RMarkdown.qmd
             target: _blank
           - href: modules/Module12-Iteration.qmd
             target: _blank
